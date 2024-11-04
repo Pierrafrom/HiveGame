@@ -1,0 +1,58 @@
+# Fichiers de build
+/build/
+/cmake-build-debug/
+
+# Fichiers générés par CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Fichiers de débogage
+*.dSYM/
+*.vcxproj*
+*.VC.db
+*.suo
+*.user
+*.ncb
+*.opendb
+*.aps
+*.pch
+*.pdb
+
+# Fichiers de compilation
+*.o
+*.obj
+*.lo
+*.la
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+
+# Fichiers temporaires et backups
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*.DS_Store
+
+# Exécutables
+*.exe
+*.out
+*.app
+
+# Fichiers de configuration de l'IDE
+.idea/
+.vscode/
+*.iml
+
+# CTest
+Testing/
+CTestTestfile.cmake
+CTestCostData.txt
+
+# Fichiers de log
+*.log
