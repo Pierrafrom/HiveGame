@@ -19,7 +19,7 @@ file(GLOB_RECURSE HEADERS
 )
 
 # Create the main executable
-add_executable(HiveGame ${SOURCES} src/main.cpp)
+add_executable(HiveGame ${SOURCES} src/main.cpp "includes/models/Game.h" "src/models/Game.cpp" "includes/models/Player.h")
 
 # Add Google Test
 add_subdirectory(external/googletest)
@@ -30,7 +30,7 @@ file(GLOB_RECURSE TEST_SOURCES
         tests/models/*.cpp
         tests/main.cpp
 )
-add_executable(HiveGameTests ${TEST_SOURCES} ${SOURCES})
+add_executable(HiveGameTests ${TEST_SOURCES} ${SOURCES} "includes/models/Game.h" "src/models/Game.cpp" "includes/models/Player.h")
 
 # Link Google Test to the test executable
 target_link_libraries(HiveGameTests gtest gtest_main)

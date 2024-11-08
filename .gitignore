@@ -56,3 +56,10 @@ CTestCostData.txt
 
 # Fichiers de log
 *.log
+
+# d'apres le chat
+.vs/
+*.vsidx
+*.vspx
+*.user
+*.suo
