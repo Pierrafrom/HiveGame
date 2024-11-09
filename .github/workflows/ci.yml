@@ -16,18 +16,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          submodules: 'true'
-
-      - name: Set up C++ environment
-        uses: actions/setup-cpp@v1
+          submodules: true  # This ensures that the submodules (like googletest) are pulled
 
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y cmake ninja-build g++ 
+          sudo apt-get install -y cmake ninja-build g++  # Installing required dependencies
 
       - name: Configure CMake
-        run: cmake -B build -G Ninja
+        run: cmake -B build -S . -G Ninja
 
       - name: Build project
         run: cmake --build build
