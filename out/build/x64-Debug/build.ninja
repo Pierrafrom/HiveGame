@@ -65,6 +65,14 @@ build CMakeFiles\HiveGame.dir\src\models\Game.cpp.obj: CXX_COMPILER__HiveGame_un
   TARGET_COMPILE_PDB = CMakeFiles\HiveGame.dir\
   TARGET_PDB = HiveGame.pdb
 
+build CMakeFiles\HiveGame.dir\src\models\GameState.cpp.obj: CXX_COMPILER__HiveGame_unscanned_Debug C$:\TRAVAIL\UTC\LO21\projet\src\models\GameState.cpp || cmake_object_order_depends_target_HiveGame
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
+  INCLUDES = -IC:\TRAVAIL\UTC\LO21\projet\includes -IC:\TRAVAIL\UTC\LO21\projet\external\googletest\googletest\include -IC:\TRAVAIL\UTC\LO21\projet\external\googletest\googletest
+  OBJECT_DIR = CMakeFiles\HiveGame.dir
+  OBJECT_FILE_DIR = CMakeFiles\HiveGame.dir\src\models
+  TARGET_COMPILE_PDB = CMakeFiles\HiveGame.dir\
+  TARGET_PDB = HiveGame.pdb
+
 build CMakeFiles\HiveGame.dir\src\models\Hex.cpp.obj: CXX_COMPILER__HiveGame_unscanned_Debug C$:\TRAVAIL\UTC\LO21\projet\src\models\Hex.cpp || cmake_object_order_depends_target_HiveGame
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
   INCLUDES = -IC:\TRAVAIL\UTC\LO21\projet\includes -IC:\TRAVAIL\UTC\LO21\projet\external\googletest\googletest\include -IC:\TRAVAIL\UTC\LO21\projet\external\googletest\googletest
@@ -97,7 +105,7 @@ build CMakeFiles\HiveGame.dir\src\main.cpp.obj: CXX_COMPILER__HiveGame_unscanned
 #############################################
 # Link the executable HiveGame.exe
 
-build HiveGame.exe: CXX_EXECUTABLE_LINKER__HiveGame_Debug CMakeFiles\HiveGame.dir\src\models\Board.cpp.obj CMakeFiles\HiveGame.dir\src\models\Game.cpp.obj CMakeFiles\HiveGame.dir\src\models\Hex.cpp.obj CMakeFiles\HiveGame.dir\src\models\Piece.cpp.obj CMakeFiles\HiveGame.dir\src\main.cpp.obj
+build HiveGame.exe: CXX_EXECUTABLE_LINKER__HiveGame_Debug CMakeFiles\HiveGame.dir\src\models\Board.cpp.obj CMakeFiles\HiveGame.dir\src\models\Game.cpp.obj CMakeFiles\HiveGame.dir\src\models\GameState.cpp.obj CMakeFiles\HiveGame.dir\src\models\Hex.cpp.obj CMakeFiles\HiveGame.dir\src\models\Piece.cpp.obj CMakeFiles\HiveGame.dir\src\main.cpp.obj
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
@@ -150,6 +158,14 @@ build CMakeFiles\HiveGameTests.dir\src\models\Game.cpp.obj: CXX_COMPILER__HiveGa
   TARGET_COMPILE_PDB = CMakeFiles\HiveGameTests.dir\
   TARGET_PDB = HiveGameTests.pdb
 
+build CMakeFiles\HiveGameTests.dir\src\models\GameState.cpp.obj: CXX_COMPILER__HiveGameTests_unscanned_Debug C$:\TRAVAIL\UTC\LO21\projet\src\models\GameState.cpp || cmake_object_order_depends_target_HiveGameTests
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
+  INCLUDES = -IC:\TRAVAIL\UTC\LO21\projet\includes -external:IC:\TRAVAIL\UTC\LO21\projet\external\googletest\googletest\include -external:IC:\TRAVAIL\UTC\LO21\projet\external\googletest\googletest -external:W0
+  OBJECT_DIR = CMakeFiles\HiveGameTests.dir
+  OBJECT_FILE_DIR = CMakeFiles\HiveGameTests.dir\src\models
+  TARGET_COMPILE_PDB = CMakeFiles\HiveGameTests.dir\
+  TARGET_PDB = HiveGameTests.pdb
+
 build CMakeFiles\HiveGameTests.dir\src\models\Hex.cpp.obj: CXX_COMPILER__HiveGameTests_unscanned_Debug C$:\TRAVAIL\UTC\LO21\projet\src\models\Hex.cpp || cmake_object_order_depends_target_HiveGameTests
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
   INCLUDES = -IC:\TRAVAIL\UTC\LO21\projet\includes -external:IC:\TRAVAIL\UTC\LO21\projet\external\googletest\googletest\include -external:IC:\TRAVAIL\UTC\LO21\projet\external\googletest\googletest -external:W0
@@ -174,7 +190,7 @@ build CMakeFiles\HiveGameTests.dir\src\models\Piece.cpp.obj: CXX_COMPILER__HiveG
 #############################################
 # Link the executable HiveGameTests.exe
 
-build HiveGameTests.exe: CXX_EXECUTABLE_LINKER__HiveGameTests_Debug CMakeFiles\HiveGameTests.dir\tests\main.cpp.obj CMakeFiles\HiveGameTests.dir\tests\models\BoardTest.cpp.obj CMakeFiles\HiveGameTests.dir\src\models\Board.cpp.obj CMakeFiles\HiveGameTests.dir\src\models\Game.cpp.obj CMakeFiles\HiveGameTests.dir\src\models\Hex.cpp.obj CMakeFiles\HiveGameTests.dir\src\models\Piece.cpp.obj | lib\gtest.lib lib\gtest_main.lib lib\gtest.lib || lib\gtest.lib lib\gtest_main.lib
+build HiveGameTests.exe: CXX_EXECUTABLE_LINKER__HiveGameTests_Debug CMakeFiles\HiveGameTests.dir\tests\main.cpp.obj CMakeFiles\HiveGameTests.dir\tests\models\BoardTest.cpp.obj CMakeFiles\HiveGameTests.dir\src\models\Board.cpp.obj CMakeFiles\HiveGameTests.dir\src\models\Game.cpp.obj CMakeFiles\HiveGameTests.dir\src\models\GameState.cpp.obj CMakeFiles\HiveGameTests.dir\src\models\Hex.cpp.obj CMakeFiles\HiveGameTests.dir\src\models\Piece.cpp.obj | lib\gtest.lib lib\gtest_main.lib lib\gtest.lib || lib\gtest.lib lib\gtest_main.lib
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = lib\gtest.lib  lib\gtest_main.lib  lib\gtest.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib

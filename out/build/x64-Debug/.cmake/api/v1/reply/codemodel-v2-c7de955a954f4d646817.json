@@ -146,14 +146,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "HiveGame::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-HiveGame-Debug-43c6d74e463b40a35799.json",
+					"jsonFile" : "target-HiveGame-Debug-3af40a93ce82db8c2d40.json",
 					"name" : "HiveGame",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "HiveGameTests::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-HiveGameTests-Debug-7cb5369b797d7334b576.json",
+					"jsonFile" : "target-HiveGameTests-Debug-a30c165dc4dc8c8506e6.json",
 					"name" : "HiveGameTests",
 					"projectIndex" : 0
 				},

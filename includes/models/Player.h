@@ -12,7 +12,7 @@ namespace hive::models {
 	class Player {
 		std::string name;
 	public:
-
+		Player(std::string n) : name(n) {};
 		~Player() = default;
 	};
 }

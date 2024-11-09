@@ -33,7 +33,7 @@ namespace hive::models {
         static Board &getInstance();
 
         // Delete copy constructor and assignment operator to enforce singleton
-        Board(const Board &) = delete;
+        // Board(const Board &) = delete;
 
         Board &operator=(const Board &) = delete;
 
