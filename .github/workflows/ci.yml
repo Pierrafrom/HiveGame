@@ -1,14 +1,12 @@
-# .github/workflows/ci.yml
-name: CI Pipeline
+name: CI/CD Pipeline
 
 on:
   push:
     branches:
-      - ci-setup
+      - ci-setup   # Only runs on this branch for now
   pull_request:
     branches:
-      - main
-      - ci-setup
+      - main          # Runs on pull requests targeting main
 
 jobs:
   build-and-test:
@@ -21,18 +19,20 @@ jobs:
       - name: Set up C++ environment
         uses: aminya/setup-cpp@v1
         with:
-          compiler: 'gcc'         # Specify gcc or clang as needed
+          compiler: 'gcc'       # or 'clang' if you prefer
           build-tool: 'cmake'
 
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y cmake
+          sudo apt-get install -y cmake ninja-build
 
-      - name: Build and Run Tests
+      - name: Build with CMake
         run: |
-          mkdir -p build
+          cmake -B build -S . -G Ninja
+          cmake --build build
+
+      - name: Run tests
+        run: |
           cd build
-          cmake ..
-          make
           ctest --output-on-failure
