@@ -1,0 +1,38 @@
+# .github/workflows/ci.yml
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - ci-setup
+  pull_request:
+    branches:
+      - main
+      - ci-setup
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up C++ environment
+        uses: aminya/setup-cpp@v1
+        with:
+          compiler: 'gcc'         # Specify gcc or clang as needed
+          build-tool: 'cmake'
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake
+
+      - name: Build and Run Tests
+        run: |
+          mkdir -p build
+          cd build
+          cmake ..
+          make
+          ctest --output-on-failure
