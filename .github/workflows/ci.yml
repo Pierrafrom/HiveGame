@@ -3,10 +3,10 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - ci-setup   # Only runs on this branch for now
+      - ci-setup
   pull_request:
     branches:
-      - main          # Runs on pull requests targeting main
+      - main
 
 jobs:
   build-and-test:
@@ -15,22 +15,22 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          submodules: 'true'
 
       - name: Set up C++ environment
-        uses: aminya/setup-cpp@v1
-        with:
-          compiler: 'gcc'       # or 'clang' if you prefer
-          build-tool: 'cmake'
+        uses: actions/setup-cpp@v1
 
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y cmake ninja-build
+          sudo apt-get install -y cmake ninja-build g++ 
 
-      - name: Build with CMake
-        run: |
-          cmake -B build -S . -G Ninja
-          cmake --build build
+      - name: Configure CMake
+        run: cmake -B build -G Ninja
+
+      - name: Build project
+        run: cmake --build build
 
       - name: Run tests
         run: |
