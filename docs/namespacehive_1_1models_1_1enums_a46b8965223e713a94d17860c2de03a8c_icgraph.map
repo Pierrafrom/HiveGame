@@ -1,0 +1,10 @@
+<map id="hive::models::enums::getDirectionOffset" name="hive::models::enums::getDirectionOffset">
+<area shape="rect" id="node1" title="Retrieves the offset coordinates for each direction in cube coordinates." alt="" coords="687,68,845,109"/>
+<area shape="rect" id="node2" href="$classhive_1_1models_1_1Board.html#ab5ae023f0e876fc73f405c97abfb8ac0" title="Frees hexes surrounding a given hex location if no longer needed." alt="" coords="207,5,382,47"/>
+<area shape="rect" id="node4" href="$classhive_1_1models_1_1Board.html#a663c09a5e9ed6333ecb0c706464b6159" title="Generates hexes surrounding a given hex location." alt="" coords="432,100,639,141"/>
+<area shape="rect" id="node6" href="$classhive_1_1models_1_1Board.html#af9869119bb0893b43b10525efc6980f4" title="Retrieves all hexes surrounding a specific hex location." alt="" coords="459,165,611,207"/>
+<area shape="rect" id="node8" href="$classhive_1_1models_1_1Board.html#a462b8c1ef8af1ee4db256136c3dd20d7" title="Checks if a hex location has non&#45;empty neighboring hexes." alt="" coords="442,35,629,76"/>
+<area shape="rect" id="node3" href="$classhive_1_1models_1_1Board.html#a13435bb1cc4960b521169cfe62dd2c70" title="Removes and returns the top piece from a specific hex location." alt="" coords="5,5,157,47"/>
+<area shape="rect" id="node5" href="$classhive_1_1models_1_1Board.html#a5e594b1bd58f341d006491fac5b6d9bf" title="Adds a piece to a specific hex location on the board." alt="" coords="219,100,371,141"/>
+<area shape="rect" id="node7" href="$classhive_1_1models_1_1Board.html#af6d61726e1d7de39fccb01402c5856ec" title="Checks if all pieces on the board are connected." alt="" coords="205,165,384,207"/>
+</map>

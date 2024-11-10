@@ -1,0 +1,109 @@
+\hypertarget{namespacehive_1_1models_1_1enums}{}\doxysection{hive\+::models\+::enums Namespace Reference}
+\label{namespacehive_1_1models_1_1enums}\index{hive::models::enums@{hive::models::enums}}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513db}{Direction}} \{ \newline
+\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba9d1250c1be563879340211b990a1297c}{NORTH\+\_\+\+EAST}}
+, \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba45ac78bf3d4882ac520f4e7fb08d55c5}{EAST}}
+, \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba851c1766426329f3aed605f25b08f769}{SOUTH\+\_\+\+EAST}}
+, \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dbaca96c91342c9c847a70b11d29692ec01}{SOUTH\+\_\+\+WEST}}
+, \newline
+\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba83c9f5692281bf59471b13dfddb3af91}{WEST}}
+, \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dbaa284a013a2af9189373c41351330e0d3}{NORTH\+\_\+\+WEST}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumerates the six possible directions on a hexagonal grid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr std\+::tuple$<$ int, int, int $>$ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a46b8965223e713a94d17860c2de03a8c}{get\+Direction\+Offset}} (const \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513db}{Direction}} direction)
+\begin{DoxyCompactList}\small\item\em Retrieves the offset coordinates for each direction in cube coordinates. \end{DoxyCompactList}\item 
+constexpr std\+::array$<$ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513db}{Direction}}, 6 $>$ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a510d9bf57dcbde2ad3e38280b513802c}{get\+All\+Directions}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves all possible directions in an array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513db}\label{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513db}} 
+\index{hive::models::enums@{hive::models::enums}!Direction@{Direction}}
+\index{Direction@{Direction}!hive::models::enums@{hive::models::enums}}
+\doxysubsubsection{\texorpdfstring{Direction}{Direction}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513db}{hive\+::models\+::enums\+::\+Direction}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Enumerates the six possible directions on a hexagonal grid. 
+
+Represents the six cardinal directions used to navigate a hexagonal grid using cube coordinates. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NORTH\_EAST@{NORTH\_EAST}!hive::models::enums@{hive::models::enums}}\index{hive::models::enums@{hive::models::enums}!NORTH\_EAST@{NORTH\_EAST}}}\mbox{\Hypertarget{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba9d1250c1be563879340211b990a1297c}\label{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba9d1250c1be563879340211b990a1297c}} 
+NORTH\+\_\+\+EAST&Direction towards North-\/\+East \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EAST@{EAST}!hive::models::enums@{hive::models::enums}}\index{hive::models::enums@{hive::models::enums}!EAST@{EAST}}}\mbox{\Hypertarget{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba45ac78bf3d4882ac520f4e7fb08d55c5}\label{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba45ac78bf3d4882ac520f4e7fb08d55c5}} 
+EAST&Direction towards East \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOUTH\_EAST@{SOUTH\_EAST}!hive::models::enums@{hive::models::enums}}\index{hive::models::enums@{hive::models::enums}!SOUTH\_EAST@{SOUTH\_EAST}}}\mbox{\Hypertarget{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba851c1766426329f3aed605f25b08f769}\label{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba851c1766426329f3aed605f25b08f769}} 
+SOUTH\+\_\+\+EAST&Direction towards South-\/\+East \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOUTH\_WEST@{SOUTH\_WEST}!hive::models::enums@{hive::models::enums}}\index{hive::models::enums@{hive::models::enums}!SOUTH\_WEST@{SOUTH\_WEST}}}\mbox{\Hypertarget{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dbaca96c91342c9c847a70b11d29692ec01}\label{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dbaca96c91342c9c847a70b11d29692ec01}} 
+SOUTH\+\_\+\+WEST&Direction towards South-\/\+West \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WEST@{WEST}!hive::models::enums@{hive::models::enums}}\index{hive::models::enums@{hive::models::enums}!WEST@{WEST}}}\mbox{\Hypertarget{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba83c9f5692281bf59471b13dfddb3af91}\label{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba83c9f5692281bf59471b13dfddb3af91}} 
+WEST&Direction towards West \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NORTH\_WEST@{NORTH\_WEST}!hive::models::enums@{hive::models::enums}}\index{hive::models::enums@{hive::models::enums}!NORTH\_WEST@{NORTH\_WEST}}}\mbox{\Hypertarget{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dbaa284a013a2af9189373c41351330e0d3}\label{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dbaa284a013a2af9189373c41351330e0d3}} 
+NORTH\+\_\+\+WEST&Direction towards North-\/\+West \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacehive_1_1models_1_1enums_a510d9bf57dcbde2ad3e38280b513802c}\label{namespacehive_1_1models_1_1enums_a510d9bf57dcbde2ad3e38280b513802c}} 
+\index{hive::models::enums@{hive::models::enums}!getAllDirections@{getAllDirections}}
+\index{getAllDirections@{getAllDirections}!hive::models::enums@{hive::models::enums}}
+\doxysubsubsection{\texorpdfstring{getAllDirections()}{getAllDirections()}}
+{\footnotesize\ttfamily constexpr std\+::array$<$\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513db}{Direction}}, 6$>$ hive\+::models\+::enums\+::get\+All\+Directions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Retrieves all possible directions in an array. 
+
+\begin{DoxyReturn}{Returns}
+A std\+::array containing all Direction enum values.
+\end{DoxyReturn}
+Useful for iterating over all directions when examining neighboring hexes. Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacehive_1_1models_1_1enums_a510d9bf57dcbde2ad3e38280b513802c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacehive_1_1models_1_1enums_a46b8965223e713a94d17860c2de03a8c}\label{namespacehive_1_1models_1_1enums_a46b8965223e713a94d17860c2de03a8c}} 
+\index{hive::models::enums@{hive::models::enums}!getDirectionOffset@{getDirectionOffset}}
+\index{getDirectionOffset@{getDirectionOffset}!hive::models::enums@{hive::models::enums}}
+\doxysubsubsection{\texorpdfstring{getDirectionOffset()}{getDirectionOffset()}}
+{\footnotesize\ttfamily constexpr std\+::tuple$<$int, int, int$>$ hive\+::models\+::enums\+::get\+Direction\+Offset (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513db}{Direction}}}]{direction }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Retrieves the offset coordinates for each direction in cube coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & The direction for which to get the offset. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A tuple containing the (x, y, z) offsets for the specified direction.
+\end{DoxyReturn}
+Provides the cube coordinate offsets corresponding to each direction, which can be used to find neighboring hexagons on the grid. Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacehive_1_1models_1_1enums_a46b8965223e713a94d17860c2de03a8c_icgraph}
+\end{center}
+\end{figure}

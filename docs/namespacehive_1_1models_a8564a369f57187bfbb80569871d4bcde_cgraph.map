@@ -1,0 +1,6 @@
+<map id="hive::models::operator&lt;&lt;" name="hive::models::operator&lt;&lt;">
+<area shape="rect" id="node1" title="Overloads the stream insertion operator for Hex objects." alt="" coords="5,56,196,83"/>
+<area shape="rect" id="node2" href="$classhive_1_1models_1_1Hex.html#a94e250128565af8fbae3c988af319bbf" title="Retrieves the x&#45;coordinate of the hex cell." alt="" coords="244,5,423,32"/>
+<area shape="rect" id="node3" href="$classhive_1_1models_1_1Hex.html#a18c77d5b702f072962352f4d84ccca4d" title="Retrieves the y&#45;coordinate of the hex cell." alt="" coords="245,56,422,83"/>
+<area shape="rect" id="node4" href="$classhive_1_1models_1_1Hex.html#a6fb2c3680c7bddfddaeff4e356650552" title="Retrieves the z&#45;coordinate of the hex cell." alt="" coords="244,107,423,133"/>
+</map>

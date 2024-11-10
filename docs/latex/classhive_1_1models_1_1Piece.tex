@@ -1,0 +1,150 @@
+\hypertarget{classhive_1_1models_1_1Piece}{}\doxysection{hive\+::models\+::Piece Class Reference}
+\label{classhive_1_1models_1_1Piece}\index{hive::models::Piece@{hive::models::Piece}}
+
+
+Represents a game piece in the Hive game.  
+
+
+
+
+{\ttfamily \#include $<$Piece.\+h$>$}
+
+
+
+Collaboration diagram for hive\+::models\+::Piece\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{classhive_1_1models_1_1Piece__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhive_1_1models_1_1Piece_ac6e1574174dc8835818fb9ddbf06f264}{Piece}} (const size\+\_\+t \mbox{\hyperlink{classhive_1_1models_1_1Piece_a97bbf039eb80718ebce7d51b3df1454f}{id}}, std\+::string \mbox{\hyperlink{classhive_1_1models_1_1Piece_a6098700bc2d3e7353bf95660d042ed66}{type}})
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} with a given ID and type. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classhive_1_1models_1_1Piece_a556eb4d729bb5fc033c08a735cfe9e4f}{get\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the ID of the piece. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classhive_1_1models_1_1Piece_a22a8a901f5470e275edab883e972e0d6}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the type of the piece. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classhive_1_1models_1_1Piece_a5cc4ff1d44e916ac235019e94ff971e1}{operator==}} (const \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} \&other) const
+\begin{DoxyCompactList}\small\item\em Equality operator for \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classhive_1_1models_1_1Piece_ace32346b464179cb283b61b2107f2ffb}{operator!=}} (const \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} \&other) const
+\begin{DoxyCompactList}\small\item\em Inequality operator for \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{classhive_1_1models_1_1Piece_a97bbf039eb80718ebce7d51b3df1454f}{id}}
+\item 
+std\+::string \mbox{\hyperlink{classhive_1_1models_1_1Piece_a6098700bc2d3e7353bf95660d042ed66}{type}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a game piece in the Hive game. 
+
+Each piece has a unique ID and possibly additional attributes depending on the specific type of piece (e.\+g., Queen Bee, Beetle). 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classhive_1_1models_1_1Piece_ac6e1574174dc8835818fb9ddbf06f264}\label{classhive_1_1models_1_1Piece_ac6e1574174dc8835818fb9ddbf06f264}} 
+\index{hive::models::Piece@{hive::models::Piece}!Piece@{Piece}}
+\index{Piece@{Piece}!hive::models::Piece@{hive::models::Piece}}
+\doxysubsubsection{\texorpdfstring{Piece()}{Piece()}}
+{\footnotesize\ttfamily hive\+::models\+::\+Piece\+::\+Piece (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{id,  }\item[{std\+::string}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} with a given ID and type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The unique identifier for the piece. \\
+\hline
+{\em type} & The type of the piece. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classhive_1_1models_1_1Piece_a556eb4d729bb5fc033c08a735cfe9e4f}\label{classhive_1_1models_1_1Piece_a556eb4d729bb5fc033c08a735cfe9e4f}} 
+\index{hive::models::Piece@{hive::models::Piece}!getId@{getId}}
+\index{getId@{getId}!hive::models::Piece@{hive::models::Piece}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily size\+\_\+t hive\+::models\+::\+Piece\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves the ID of the piece. 
+
+\begin{DoxyReturn}{Returns}
+The ID of the piece. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classhive_1_1models_1_1Piece_a22a8a901f5470e275edab883e972e0d6}\label{classhive_1_1models_1_1Piece_a22a8a901f5470e275edab883e972e0d6}} 
+\index{hive::models::Piece@{hive::models::Piece}!getType@{getType}}
+\index{getType@{getType}!hive::models::Piece@{hive::models::Piece}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily std\+::string hive\+::models\+::\+Piece\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves the type of the piece. 
+
+\begin{DoxyReturn}{Returns}
+The type as a string. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classhive_1_1models_1_1Piece_ace32346b464179cb283b61b2107f2ffb}\label{classhive_1_1models_1_1Piece_ace32346b464179cb283b61b2107f2ffb}} 
+\index{hive::models::Piece@{hive::models::Piece}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!hive::models::Piece@{hive::models::Piece}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool hive\+::models\+::\+Piece\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inequality operator for \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The other \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if pieces are not equal; otherwise, false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classhive_1_1models_1_1Piece_a5cc4ff1d44e916ac235019e94ff971e1}\label{classhive_1_1models_1_1Piece_a5cc4ff1d44e916ac235019e94ff971e1}} 
+\index{hive::models::Piece@{hive::models::Piece}!operator==@{operator==}}
+\index{operator==@{operator==}!hive::models::Piece@{hive::models::Piece}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool hive\+::models\+::\+Piece\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Equality operator for \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The other \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if both pieces have the same ID and type; otherwise, false. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classhive_1_1models_1_1Piece_a97bbf039eb80718ebce7d51b3df1454f}\label{classhive_1_1models_1_1Piece_a97bbf039eb80718ebce7d51b3df1454f}} 
+\index{hive::models::Piece@{hive::models::Piece}!id@{id}}
+\index{id@{id}!hive::models::Piece@{hive::models::Piece}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily size\+\_\+t hive\+::models\+::\+Piece\+::id\hspace{0.3cm}{\ttfamily [private]}}
+
+Unique identifier for the piece \mbox{\Hypertarget{classhive_1_1models_1_1Piece_a6098700bc2d3e7353bf95660d042ed66}\label{classhive_1_1models_1_1Piece_a6098700bc2d3e7353bf95660d042ed66}} 
+\index{hive::models::Piece@{hive::models::Piece}!type@{type}}
+\index{type@{type}!hive::models::Piece@{hive::models::Piece}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily std\+::string hive\+::models\+::\+Piece\+::type\hspace{0.3cm}{\ttfamily [private]}}
+
+Type of the piece (e.\+g., \char`\"{}\+Queen\char`\"{}, \char`\"{}\+Beetle\char`\"{}) 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+includes/models/\mbox{\hyperlink{Piece_8h}{Piece.\+h}}\end{DoxyCompactItemize}

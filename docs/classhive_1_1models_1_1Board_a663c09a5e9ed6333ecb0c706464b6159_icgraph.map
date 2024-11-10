@@ -1,0 +1,4 @@
+<map id="hive::models::Board::generateSurroundingHexes" name="hive::models::Board::generateSurroundingHexes">
+<area shape="rect" id="node1" title="Generates hexes surrounding a given hex location." alt="" coords="205,5,412,47"/>
+<area shape="rect" id="node2" href="$classhive_1_1models_1_1Board.html#a5e594b1bd58f341d006491fac5b6d9bf" title="Adds a piece to a specific hex location on the board." alt="" coords="5,5,157,47"/>
+</map>

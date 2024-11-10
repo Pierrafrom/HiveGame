@@ -1,0 +1,10 @@
+<map id="hive::models::Board::unstackPiece" name="hive::models::Board::unstackPiece">
+<area shape="rect" id="node1" title="Removes and returns the top piece from a specific hex location." alt="" coords="5,141,157,183"/>
+<area shape="rect" id="node2" href="$classhive_1_1models_1_1Board.html#ab5ae023f0e876fc73f405c97abfb8ac0" title="Frees hexes surrounding a given hex location if no longer needed." alt="" coords="205,141,380,183"/>
+<area shape="rect" id="node3" href="$namespacehive_1_1models_1_1enums.html#a510d9bf57dcbde2ad3e38280b513802c" title="Retrieves all possible directions in an array." alt="" coords="673,5,831,47"/>
+<area shape="rect" id="node4" href="$namespacehive_1_1models_1_1enums.html#a46b8965223e713a94d17860c2de03a8c" title="Retrieves the offset coordinates for each direction in cube coordinates." alt="" coords="673,72,831,113"/>
+<area shape="rect" id="node5" href="$classhive_1_1models_1_1Hex.html#a94e250128565af8fbae3c988af319bbf" title="Retrieves the x&#45;coordinate of the hex cell." alt="" coords="663,141,841,167"/>
+<area shape="rect" id="node6" href="$classhive_1_1models_1_1Hex.html#a18c77d5b702f072962352f4d84ccca4d" title="Retrieves the y&#45;coordinate of the hex cell." alt="" coords="663,197,841,223"/>
+<area shape="rect" id="node7" href="$classhive_1_1models_1_1Hex.html#a6fb2c3680c7bddfddaeff4e356650552" title="Retrieves the z&#45;coordinate of the hex cell." alt="" coords="663,258,841,285"/>
+<area shape="rect" id="node8" href="$classhive_1_1models_1_1Board.html#a462b8c1ef8af1ee4db256136c3dd20d7" title="Checks if a hex location has non&#45;empty neighboring hexes." alt="" coords="428,112,615,153"/>
+</map>

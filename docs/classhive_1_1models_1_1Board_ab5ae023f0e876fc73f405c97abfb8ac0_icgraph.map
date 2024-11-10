@@ -1,0 +1,4 @@
+<map id="hive::models::Board::freeSurroundingHexes" name="hive::models::Board::freeSurroundingHexes">
+<area shape="rect" id="node1" title="Frees hexes surrounding a given hex location if no longer needed." alt="" coords="205,5,380,47"/>
+<area shape="rect" id="node2" href="$classhive_1_1models_1_1Board.html#a13435bb1cc4960b521169cfe62dd2c70" title="Removes and returns the top piece from a specific hex location." alt="" coords="5,5,157,47"/>
+</map>
