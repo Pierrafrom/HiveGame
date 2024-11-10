@@ -3,7 +3,7 @@ name: Generate and Publish Documentation
 on:
   push:
     branches:
-      - docs-generation
+      - main
 
 jobs:
   build:
@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v3
@@ -26,6 +26,7 @@ jobs:
           doxygen Doxyfile
 
       - name: Deploy to GitHub Pages
+        if: ${{ success() }} # Deploy only if previous steps succeed (including tests)
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GH_PAGES_TOKEN }}
@@ -34,6 +35,3 @@ jobs:
           force_orphan: true
           keep_files: false
           allow_empty_commit: false
-
-
-

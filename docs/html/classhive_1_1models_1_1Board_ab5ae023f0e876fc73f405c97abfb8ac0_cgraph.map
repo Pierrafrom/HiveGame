@@ -1,9 +1,0 @@
-<map id="hive::models::Board::freeSurroundingHexes" name="hive::models::Board::freeSurroundingHexes">
-<area shape="rect" id="node1" title="Frees hexes surrounding a given hex location if no longer needed." alt="" coords="5,141,180,183"/>
-<area shape="rect" id="node2" href="$namespacehive_1_1models_1_1enums.html#a510d9bf57dcbde2ad3e38280b513802c" title="Retrieves all possible directions in an array." alt="" coords="473,5,631,47"/>
-<area shape="rect" id="node3" href="$namespacehive_1_1models_1_1enums.html#a46b8965223e713a94d17860c2de03a8c" title="Retrieves the offset coordinates for each direction in cube coordinates." alt="" coords="473,72,631,113"/>
-<area shape="rect" id="node4" href="$classhive_1_1models_1_1Hex.html#a94e250128565af8fbae3c988af319bbf" title="Retrieves the x&#45;coordinate of the hex cell." alt="" coords="463,141,641,167"/>
-<area shape="rect" id="node5" href="$classhive_1_1models_1_1Hex.html#a18c77d5b702f072962352f4d84ccca4d" title="Retrieves the y&#45;coordinate of the hex cell." alt="" coords="463,197,641,223"/>
-<area shape="rect" id="node6" href="$classhive_1_1models_1_1Hex.html#a6fb2c3680c7bddfddaeff4e356650552" title="Retrieves the z&#45;coordinate of the hex cell." alt="" coords="463,258,641,285"/>
-<area shape="rect" id="node7" href="$classhive_1_1models_1_1Board.html#a462b8c1ef8af1ee4db256136c3dd20d7" title="Checks if a hex location has non&#45;empty neighboring hexes." alt="" coords="228,112,415,153"/>
-</map>

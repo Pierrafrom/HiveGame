@@ -1,8 +1,0 @@
-<map id="hive::models::Board::generateSurroundingHexes" name="hive::models::Board::generateSurroundingHexes">
-<area shape="rect" id="node1" title="Generates hexes surrounding a given hex location." alt="" coords="5,129,212,171"/>
-<area shape="rect" id="node2" href="$namespacehive_1_1models_1_1enums.html#a510d9bf57dcbde2ad3e38280b513802c" title="Retrieves all possible directions in an array." alt="" coords="270,5,429,47"/>
-<area shape="rect" id="node3" href="$namespacehive_1_1models_1_1enums.html#a46b8965223e713a94d17860c2de03a8c" title="Retrieves the offset coordinates for each direction in cube coordinates." alt="" coords="270,71,429,112"/>
-<area shape="rect" id="node4" href="$classhive_1_1models_1_1Hex.html#a94e250128565af8fbae3c988af319bbf" title="Retrieves the x&#45;coordinate of the hex cell." alt="" coords="260,137,439,163"/>
-<area shape="rect" id="node5" href="$classhive_1_1models_1_1Hex.html#a18c77d5b702f072962352f4d84ccca4d" title="Retrieves the y&#45;coordinate of the hex cell." alt="" coords="261,187,438,214"/>
-<area shape="rect" id="node6" href="$classhive_1_1models_1_1Hex.html#a6fb2c3680c7bddfddaeff4e356650552" title="Retrieves the z&#45;coordinate of the hex cell." alt="" coords="260,238,439,265"/>
-</map>

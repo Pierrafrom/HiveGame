@@ -56,3 +56,6 @@ CTestCostData.txt
 
 # Fichiers de log
 *.log
+
+# Documentation générée
+/docs/html/

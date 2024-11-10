@@ -1,4 +1,0 @@
-<map id="hive::models::Board::getNeighborHexes" name="hive::models::Board::getNeighborHexes">
-<area shape="rect" id="node1" title="Retrieves all hexes surrounding a specific hex location." alt="" coords="232,5,384,47"/>
-<area shape="rect" id="node2" href="$classhive_1_1models_1_1Board.html#af6d61726e1d7de39fccb01402c5856ec" title="Checks if all pieces on the board are connected." alt="" coords="5,5,184,47"/>
-</map>
