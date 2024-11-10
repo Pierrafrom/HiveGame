@@ -14,14 +14,14 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
-          submodules: true  # This ensures that the submodules (like googletest) are pulled
+          submodules: true
 
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y cmake ninja-build g++  # Installing required dependencies
+          sudo apt-get install -y cmake ninja-build g++
 
       - name: Configure CMake
         run: cmake -B build -S . -G Ninja
@@ -29,7 +29,8 @@ jobs:
       - name: Build project
         run: cmake --build build
 
-      - name: Run tests
+      - name: Run tests with detailed output
         run: |
           cd build
           ctest --output-on-failure
+
