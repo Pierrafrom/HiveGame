@@ -38,3 +38,7 @@ target_link_libraries(HiveGameTests gtest gtest_main)
 # Enable CTest for test discovery and running
 enable_testing()
 add_test(NAME AllTests COMMAND HiveGameTests)
+
+# Include GoogleTest module for automatic test discovery
+include(GoogleTest)
+gtest_discover_tests(HiveGameTests)

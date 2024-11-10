@@ -1,0 +1,36 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - ci-setup
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake ninja-build g++
+
+      - name: Configure CMake
+        run: cmake -B build -S . -G Ninja
+
+      - name: Build project
+        run: cmake --build build
+
+      - name: Run tests with detailed output
+        run: |
+          cd build
+          ctest --output-on-failure
+
