@@ -1,9 +1,9 @@
-name: CI/CD Pipeline
+name: Unit Tests Pipeline
 
 on:
   push:
     branches:
-      - ci-setup
+      - main
   pull_request:
     branches:
       - main
@@ -33,4 +33,3 @@ jobs:
         run: |
           cd build
           ctest --output-on-failure
-
