@@ -19,7 +19,7 @@ file(GLOB_RECURSE HEADERS
 )
 
 # Create the main executable
-add_executable(HiveGame ${SOURCES} src/main.cpp)
+add_executable(HiveGame ${SOURCES})
 
 # Add Google Test
 add_subdirectory(external/googletest)

@@ -17,7 +17,7 @@ namespace hive::models {
 
         // Helper function to create a unique_ptr to a Piece
         static std::unique_ptr<Piece> createPiece(size_t id, const std::string &type) {
-            return std::make_unique<Piece>(id, type);
+            return std::make_unique<Piece>(id);
         }
     };
 

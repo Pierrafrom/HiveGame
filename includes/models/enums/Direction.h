@@ -56,6 +56,8 @@ namespace hive::models::enums {
             Direction::SOUTH_WEST, Direction::WEST, Direction::NORTH_WEST
         };
     }
+
+
 } // namespace hive::models::enums
 
 
