@@ -11,20 +11,21 @@ include_directories(includes)
 # Add source files for the main executable
 file(GLOB_RECURSE SOURCES
         src/models/*.cpp
+        src/controllers/*.cpp
+        src/utils/*.cpp
         src/main.cpp
 )
 
 # Add header files (for IDEs, mainly)
 file(GLOB_RECURSE HEADERS
         includes/models/*.h
+        includes/controllers/*.h
+        includes/utils/*.h
+        includes/config/*.h
 )
 
 # Create the main executable
-add_executable(HiveGame ${SOURCES}
-        includes/models/Move.h
-        includes/models/GameRules.h
-        includes/controllers/GameController.h
-        includes/utils/Serializer.h)
+add_executable(HiveGame ${SOURCES})
 
 # Add Google Test
 add_subdirectory(external/googletest)
@@ -35,6 +36,8 @@ file(GLOB_RECURSE TEST_SOURCES
         tests/models/*.cpp
         tests/main.cpp
         src/models/*.cpp
+        src/controllers/*.cpp
+        src/utils/*.cpp
 )
 
 # Remove src/main.cpp from TEST_SOURCES to avoid multiple main definitions
