@@ -75,6 +75,17 @@ namespace hive::models {
         bool operator!=(const Hex &other) const;
 
         /**
+         * @brief Copy constructor for Hex.
+         *
+         * Initializes a new Hex object with the same coordinates as another Hex.
+         * This constructor is useful for creating a copy of a Hex with identical
+         * x, y, and z values.
+         *
+         * @param other The Hex object to copy from.
+         */
+        Hex(const Hex &other) = default;
+
+        /**
          * @brief Default destructor.
          */
         ~Hex() = default;

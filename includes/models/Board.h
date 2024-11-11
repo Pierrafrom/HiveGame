@@ -11,6 +11,7 @@
 #include "Hex.h"
 #include "Piece.h"
 
+//TODO: implement the movePiece method
 
 namespace hive::models {
     /**

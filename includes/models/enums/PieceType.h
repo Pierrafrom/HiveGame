@@ -1,18 +1,17 @@
-#ifndef HIVEGAME_PIECETYPE_H
-#define HIVEGAME_PIECETYPE_H
+#ifndef PIECE_TYPE_H
+#define PIECE_TYPE_H
+
 namespace hive::models::enums {
-/**
- * Represents the eight types of insect used in our version of Hive
- */
     enum class PieceType {
-        QueenBee,
-        Ant,
-        Beetle,
-        Ladybug,
-        Mosquito,
-        Spider,
-        Pillbug,
-        Grasshopper
+        QUEEN_BEE,
+        ANT,
+        BEETLE,
+        LADYBUG,
+        MOSQUITO,
+        SPIDER,
+        PILLBUG,
+        GRASSHOPPER
     };
-}
-#endif //HIVEGAME_PIECETYPE_H
+} // namespace hive::models::enums
+
+#endif // PIECE_TYPE_H

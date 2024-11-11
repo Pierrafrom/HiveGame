@@ -1,100 +1,120 @@
 #ifndef PIECE_H
 #define PIECE_H
 
-#include <cstddef> // For size_t
-#include <string>
-#include <utility>
+#include <cstddef>
+#include <memory>
 #include "models/enums/PieceType.h"
-#include "Hex.h"
-#include "Player.h"
-#include "MoveStrategy.h"
-
+#include "models/strategies/MoveStrategy.h"
 
 namespace hive::models {
     /**
-     * Reste à faire :
-     * • reDéfinir la méthode move()
-     * • reDéfinir la méthode getNeighbors()
-     * • Changer le MoveStrategy des classes filles par <type>MoveStrategy
-     *
      * @class Piece
-     * @brief Represents a game piece in the Hive game.
+     * @brief Base class representing a generic game piece in the Hive game.
      *
-     * Each piece has a unique ID and possibly additional attributes
-     * depending on the specific type of piece (e.g., Queen Bee, Beetle).
-     *
-     * /!\ Piece possède des classes filles dont les MoveSTrategy seront à remplacer lorsque l'on aura codé movestrat pour chacune d'entre elle
-     *
+     * This class serves as the foundation for all specific types of game pieces in Hive.
+     * It contains attributes and methods that are common to all pieces, such as unique
+     * identifiers, type information, and movement strategies.
      */
     class Piece {
     protected:
-        size_t id; /**< Unique identifier for the piece */
-        //std::string type; /**< Type of the piece (e.g., "Queen", "Beetle") */
-        Hex position;
-        const Player* player;
-        MoveStrategy* moveStrategy;
-        bool isImmobilized;
+        /**
+         * @brief Static counter used for auto-incrementing unique piece IDs.
+         *
+         * Each new piece created without an explicit ID will be assigned a unique ID
+         * based on this counter. It ensures that all pieces have distinct identifiers.
+         */
+        static size_t nextId;
+
+        /**
+         * @brief Unique identifier for the piece.
+         *
+         * This ID is unique across all instances of Piece and can either be auto-generated
+         * or explicitly provided.
+         */
+        size_t id;
+
+        /**
+         * @brief Type of the piece (e.g., QueenBee, Ant).
+         *
+         * Represents the specific type of insect for each piece, using an enum defined
+         * in `PieceType`.
+         */
+        enums::PieceType type;
+
+        /**
+         * @brief Movement strategy for the piece.
+         *
+         * Each piece may have a unique movement strategy depending on its type. This
+         * attribute holds a pointer to a strategy object that defines how the piece moves.
+         */
+        std::unique_ptr<strategies::MoveStrategy> moveStrategy;
+
+        /**
+         * @brief Constructor for a piece with either an auto-incremented ID or a specified ID.
+         * @param id Optional unique identifier for the piece. If not provided, an auto-incremented ID is assigned.
+         * @param type The specific type of the piece (e.g., QueenBee, Ant).
+         * @param strategy A unique pointer to the MoveStrategy object (default is nullptr).
+         *
+         * This constructor can assign a unique ID to the piece using the `nextId` counter, or it can accept
+         * a specific ID, allowing for flexibility in ID assignment.
+         */
+        explicit Piece(const size_t id, const enums::PieceType type,
+                       std::unique_ptr<strategies::MoveStrategy> strategy = nullptr)
+            : id(id), type(type), moveStrategy(std::move(strategy)) {
+        }
 
     public:
         /**
-         * @brief Constructs a Piece with a given ID and type.
-         * @param id The unique identifier for the piece.
-         * @param type The type of the piece.
+         * @brief Virtual destructor.
+         *
+         * Ensures that derived classes can override and properly clean up resources if needed.
          */
-        Piece(const size_t id, const Player* player, const Hex& posInitiale) : id(id), player(player), isImmobilized(false), moveStrategy(nullptr), position(posInitiale) {}
-        ~Piece();
-        Piece(const Piece& p) = delete;
-        Piece& operator=(const Piece& p) = delete;
-
-        //void move(); // --> verifier que liste des move strategy n'est pas vide
-
-
-        //Méthode générales de la classe pièce
-        void setMoveStrategy(MoveStrategy* strategy);
-        [[nodiscard]] const MoveStrategy* getMoveStrategy() const {return moveStrategy;}
-
-        /*void setPosition(const Hex& newPosition);*/
-        [[nodiscard]] const Hex& getPosition() const {return position;}
-
-        [[nodiscard]] const Player* getPlayer() const {return player;}
-
-        [[nodiscard]] const bool getIsImmobilized() const {return isImmobilized;}
-        void immobilize();
-        void release();
-
-        //std::vector<Piece*> getNeighbors();
+        virtual ~Piece() = default;
 
         /**
-         * @brief Retrieves the ID of the piece.
-         * @return The ID of the piece.
+         * @brief Retrieves the unique identifier of the piece.
+         * @return The unique ID of the piece.
          */
         [[nodiscard]] size_t getId() const { return id; }
 
         /**
          * @brief Retrieves the type of the piece.
-         * @return The type as a string.
+         * @return The type of the piece as defined in the PieceType enum.
          */
-        //[[nodiscard]] std::string getType() const { return type; }
+        [[nodiscard]] enums::PieceType getType() const { return type; }
 
         /**
-         * @brief Equality operator for Piece.
-         * @param other The other Piece to compare with.
-         * @return True if both pieces have the same ID and type; otherwise, false.
+         * @brief Sets the movement strategy for the piece.
+         * @param strategy A unique pointer to the MoveStrategy object.
+         *
+         * This method allows assigning a specific movement strategy to the piece, enabling
+         * polymorphic movement behavior depending on the type of piece.
          */
-        bool operator==(const Piece &other) const {
-            return id == other.id /*&& type == other.type*/;
-        }
+        void setMoveStrategy(std::unique_ptr<strategies::MoveStrategy> strategy) { moveStrategy = std::move(strategy); }
 
         /**
-         * @brief Inequality operator for Piece.
-         * @param other The other Piece to compare with.
-         * @return True if pieces are not equal; otherwise, false.
+         * @brief Retrieves the movement strategy of the piece.
+         * @return A reference to the MoveStrategy object.
+         *
+         * Provides access to the piece's movement strategy, allowing external classes to
+         * determine how the piece can move on the board.
          */
-        bool operator!=(const Piece &other) const {
-            return !(*this == other);
-        }
+        [[nodiscard]] const strategies::MoveStrategy &getMoveStrategy() const { return *moveStrategy; }
+
+        /**
+         * @brief Equality operator for comparing two pieces.
+         * @param other The other piece to compare with.
+         * @return True if both pieces have the same ID, false otherwise.
+         */
+        bool operator==(const Piece &other) const { return id == other.id; }
+
+        /**
+         * @brief Inequality operator for comparing two pieces.
+         * @param other The other piece to compare with.
+         * @return True if the pieces differ in ID, false otherwise.
+         */
+        bool operator!=(const Piece &other) const { return !(*this == other); }
     };
 } // namespace hive::models
-
 
 #endif // PIECE_H

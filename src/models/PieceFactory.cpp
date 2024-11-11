@@ -1,46 +1,36 @@
 #include "models/PieceFactory.h"
 
+#include <models/pieces/Ant.h>
+#include <models/pieces/Beetle.h>
+#include <models/pieces/Grasshopper.h>
+#include <models/pieces/Ladybug.h>
+#include <models/pieces/Mosquito.h>
+#include <models/pieces/Pillbug.h>
+#include <models/pieces/QueenBee.h>
+#include <models/pieces/Spider.h>
+
 namespace hive::models{
-
-    /**
-     * Méthode qui instancie l'objet dérivé de Piece selon le type souhaité
-     *
-     * Reste à faire :
-     * • Vérifier le nombre max de piece par type !
-     *
-     */
-
-    std::unique_ptr<Piece> createPiece(enums::PieceType type, const size_t id, const Player* player, const Hex& posInitiale) { //mettre auto au lieu de Piece* ?
+    // Factory method to create a piece based on the specified type with an optional ID.
+    std::unique_ptr<Piece> PieceFactory::createPiece(const enums::PieceType type, size_t id) {
         switch (type) {
-            case enums::PieceType::Ant:
-                //Condition pour savoir si le joueur a créé le nombre max de Ant --> à fixer en fonction de la classe player
-                return std::make_unique<Ant>(id, player, posInitiale);
-
-            case enums::PieceType::Grasshopper:
-                return std::make_unique<Grasshopper>(id, player, posInitiale);
-
-            case enums::PieceType::QueenBee:
-                return std::make_unique<QueenBee>(id, player, posInitiale);
-
-            case enums::PieceType::Beetle:
-                return std::make_unique<Beetle>(id, player, posInitiale);
-
-            case enums::PieceType::Ladybug:
-                return std::make_unique<LadyBug>(id, player, posInitiale);
-
-            case enums::PieceType::Mosquito:
-                return std::make_unique<Mosquito>(id, player, posInitiale);
-
-            case enums::PieceType::Spider:
-                return std::make_unique<Spider>(id, player, posInitiale);
-
-            case enums::PieceType::Pillbug:
-                return std::make_unique<Pillbug>(id, player, posInitiale);
-
+            case enums::PieceType::QUEEN_BEE:
+                return id ? std::make_unique<pieces::QueenBee>(id) : std::make_unique<pieces::QueenBee>();
+            case enums::PieceType::ANT:
+                return id ? std::make_unique<pieces::Ant>(id) : std::make_unique<pieces::Ant>();
+            case enums::PieceType::BEETLE:
+                return id ? std::make_unique<pieces::Beetle>(id) : std::make_unique<pieces::Beetle>();
+            case enums::PieceType::LADYBUG:
+                return id ? std::make_unique<pieces::Ladybug>(id) : std::make_unique<pieces::Ladybug>();
+            case enums::PieceType::MOSQUITO:
+                return id ? std::make_unique<pieces::Mosquito>(id) : std::make_unique<pieces::Mosquito>();
+            case enums::PieceType::SPIDER:
+                return id ? std::make_unique<pieces::Spider>(id) : std::make_unique<pieces::Spider>();
+            case enums::PieceType::PILLBUG:
+                return id ? std::make_unique<pieces::Pillbug>(id) : std::make_unique<pieces::Pillbug>();
+            case enums::PieceType::GRASSHOPPER:
+                return id ? std::make_unique<pieces::Grasshopper>(id) : std::make_unique<pieces::Grasshopper>();
             default:
-                return nullptr;
+                throw std::invalid_argument("Invalid piece type");
         }
     }
-
-
-}
+} // namespace hive::models

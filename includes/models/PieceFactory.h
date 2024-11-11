@@ -1,29 +1,36 @@
-#ifndef HIVEGAME_PIECEFACTORY_H
-#define HIVEGAME_PIECEFACTORY_H
+#ifndef PIECE_FACTORY_H
+#define PIECE_FACTORY_H
 
-#include "Piece.h"
+#include <memory>
+#include "models/Piece.h"
 #include "models/enums/PieceType.h"
-#include "Ant.h"
-#include "Beetle.h"
-#include "Grasshopper.h"
-#include "LadyBug.h"
-#include "Mosquito.h"
-#include "Pillbug.h"
-#include "QueenBee.h"
-#include "Spider.h"
 
-namespace hive::models{
+//TODO: Manage maximum number of pieces
+
+namespace hive::models {
     /**
-     * Design pattern factory pour instancier les objets filles de la classe piece selon le bon type passé en paramètre
+     * @class PieceFactory
+     * @brief Factory class for creating game pieces in the Hive game.
      *
-     * Reste à faire :
-     * • Vérifier que le nombre de pièce max n'a pas été atteint
+     * The `PieceFactory` class provides a centralized mechanism for creating
+     * various types of pieces in the Hive game. It encapsulates the logic
+     * necessary to create each type of piece, ensuring consistency and
+     * facilitating code maintainability.
      */
     class PieceFactory {
     public:
-        std::unique_ptr<Piece> createPiece(enums::PieceType type, const size_t id, const Player* player, const Hex& posInitiale);
-        std::unique_ptr<Piece> createPiece(enums::PieceType type, const size_t id);
+        /**
+         * @brief Creates a piece based on the specified type with an optional ID.
+         * @param type The type of piece to create (e.g., QueenBee, Ant).
+         * @param id Optional unique identifier for the piece. If not provided, an auto-incremented ID is assigned.
+         * @return A unique pointer to the created piece.
+         *
+         * This function creates and returns a unique pointer to the requested piece
+         * type. If an ID is provided, it assigns that ID to the piece; otherwise,
+         * an auto-incremented ID is generated.
+         */
+        static std::unique_ptr<Piece> createPiece(enums::PieceType type, size_t id = 0);
     };
-}
+} // namespace hive::models
 
-#endif //HIVEGAME_PIECEFACTORY_H
+#endif // PIECE_FACTORY_H
