@@ -20,7 +20,11 @@ file(GLOB_RECURSE HEADERS
 )
 
 # Create the main executable
-add_executable(HiveGame ${SOURCES})
+add_executable(HiveGame ${SOURCES}
+        includes/models/Move.h
+        includes/models/GameRules.h
+        includes/controllers/GameController.h
+        includes/utils/Serializer.h)
 
 # Add Google Test
 add_subdirectory(external/googletest)

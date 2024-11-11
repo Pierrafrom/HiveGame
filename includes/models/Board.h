@@ -12,7 +12,6 @@
 #include "Piece.h"
 
 //TODO: implement the movePiece method
-//TODO: implement a method to know if a piece can be moved
 
 namespace hive::models {
     /**
