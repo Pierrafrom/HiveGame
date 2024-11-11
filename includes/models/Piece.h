@@ -6,6 +6,8 @@
 #include "models/enums/PieceType.h"
 #include "models/strategies/MoveStrategy.h"
 
+// TODO: Create a test suite for the Piece class
+
 namespace hive::models {
     /**
      * @class Piece
