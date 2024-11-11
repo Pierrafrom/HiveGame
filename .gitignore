@@ -57,7 +57,10 @@ CTestCostData.txt
 # Fichiers de log
 *.log
 
-# d'apres le chat
+# Documentation générée
+/docs/html/
+
+# Autres
 .vs/
 *.vsidx
 *.vspx

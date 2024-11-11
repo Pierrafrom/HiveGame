@@ -11,6 +11,7 @@ include_directories(includes)
 # Add source files for the main executable
 file(GLOB_RECURSE SOURCES
         src/models/*.cpp
+        src/main.cpp
 )
 
 # Add header files (for IDEs, mainly)
@@ -19,18 +20,24 @@ file(GLOB_RECURSE HEADERS
 )
 
 # Create the main executable
-add_executable(HiveGame ${SOURCES} src/main.cpp "includes/models/Game.h" "src/models/Game.cpp" "includes/models/Player.h" "src/models/GameState.cpp" "includes/models/GameState.h")
+add_executable(HiveGame ${SOURCES})
 
 # Add Google Test
 add_subdirectory(external/googletest)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
-# Define the test executable (without src/main.cpp)
+# Define the test sources without src/main.cpp
 file(GLOB_RECURSE TEST_SOURCES
         tests/models/*.cpp
         tests/main.cpp
+        src/models/*.cpp
 )
-add_executable(HiveGameTests ${TEST_SOURCES} ${SOURCES} "includes/models/Game.h" "src/models/Game.cpp" "includes/models/Player.h" "src/models/GameState.cpp" "includes/models/GameState.h")
+
+# Remove src/main.cpp from TEST_SOURCES to avoid multiple main definitions
+list(REMOVE_ITEM TEST_SOURCES ${CMAKE_SOURCE_DIR}/src/main.cpp)
+
+# Create the test executable
+add_executable(HiveGameTests ${TEST_SOURCES})
 
 # Link Google Test to the test executable
 target_link_libraries(HiveGameTests gtest gtest_main)
@@ -38,3 +45,7 @@ target_link_libraries(HiveGameTests gtest gtest_main)
 # Enable CTest for test discovery and running
 enable_testing()
 add_test(NAME AllTests COMMAND HiveGameTests)
+
+# Include GoogleTest module for automatic test discovery
+include(GoogleTest)
+gtest_discover_tests(HiveGameTests)
