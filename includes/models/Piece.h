@@ -60,10 +60,8 @@ namespace hive::models {
          * This constructor can assign a unique ID to the piece using the `nextId` counter, or it can accept
          * a specific ID, allowing for flexibility in ID assignment.
          */
-        explicit Piece(const size_t id, const enums::PieceType type,
-                       std::unique_ptr<strategies::MoveStrategy> strategy = nullptr)
-            : id(id), type(type), moveStrategy(std::move(strategy)) {
-        }
+        explicit Piece(size_t id, enums::PieceType type,
+                       std::unique_ptr<strategies::MoveStrategy> strategy = nullptr);
 
     public:
         /**
@@ -101,14 +99,14 @@ namespace hive::models {
          * Provides access to the piece's movement strategy, allowing external classes to
          * determine how the piece can move on the board.
          */
-        [[nodiscard]] const strategies::MoveStrategy &getMoveStrategy() const { return *moveStrategy; }
+        [[nodiscard]] const strategies::MoveStrategy &getMoveStrategy() const;
 
         /**
          * @brief Equality operator for comparing two pieces.
          * @param other The other piece to compare with.
          * @return True if both pieces have the same ID, false otherwise.
          */
-        bool operator==(const Piece &other) const { return id == other.id; }
+        bool operator==(const Piece &other) const { return id == other.id && type == other.type; }
 
         /**
          * @brief Inequality operator for comparing two pieces.

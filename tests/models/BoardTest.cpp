@@ -15,12 +15,6 @@ namespace hive::models {
     class BoardTest : public testing::Test {
     protected:
         Board board; /**< Board instance used in tests */
-
-        // Helper function to create a unique_ptr to a Piece using the PieceFactory
-        static std::unique_ptr<Piece> createPiece(const enums::PieceType type, const size_t id = 0) {
-            return PieceFactory::createPiece(type, id);
-        }
-
     };
 
     /**
@@ -28,7 +22,7 @@ namespace hive::models {
      */
     TEST_F(BoardTest, AddPiece) {
         const Hex hex(0, 0, 0);
-        const auto piece = createPiece(enums::PieceType::QUEEN_BEE);
+        const auto piece = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
         board.addPiece(hex, piece.get());
 
         EXPECT_TRUE(board.isOccupied(hex));
@@ -42,7 +36,7 @@ namespace hive::models {
      */
     TEST_F(BoardTest, UnstackPiece) {
         const Hex hex(0, 0, 0);
-        const auto piece = createPiece(enums::PieceType::QUEEN_BEE);
+        const auto piece = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
         board.addPiece(hex, piece.get());
 
         Piece *removedPiece = board.unstackPiece(hex);
@@ -57,8 +51,8 @@ namespace hive::models {
      */
     TEST_F(BoardTest, StackMultiplePieces) {
         const Hex hex(0, 0, 0);
-        const auto piece1 = createPiece(enums::PieceType::BEETLE);
-        const auto piece2 = createPiece(enums::PieceType::BEETLE);
+        const auto piece1 = PieceFactory::createPiece(enums::PieceType::BEETLE);
+        const auto piece2 = PieceFactory::createPiece(enums::PieceType::BEETLE);
 
         board.addPiece(hex, piece1.get());
         board.addPiece(hex, piece2.get());
@@ -101,9 +95,9 @@ namespace hive::models {
     TEST_F(BoardTest, PieceCount) {
         const Hex hex1(0, 0, 0);
         const Hex hex2(1, -1, 0);
-        const auto piece1 = createPiece(enums::PieceType::QUEEN_BEE);
-        const auto piece2 = createPiece(enums::PieceType::SPIDER);
-        const auto piece3 = createPiece(enums::PieceType::ANT);
+        const auto piece1 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        const auto piece2 = PieceFactory::createPiece(enums::PieceType::SPIDER);
+        const auto piece3 = PieceFactory::createPiece(enums::PieceType::ANT);
 
         board.addPiece(hex1, piece1.get());
         board.addPiece(hex2, piece2.get());
@@ -117,7 +111,7 @@ namespace hive::models {
      */
     TEST_F(BoardTest, ClearBoard) {
         const Hex hex(0, 0, 0);
-        const auto piece = createPiece(enums::PieceType::QUEEN_BEE);
+        const auto piece = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
         board.addPiece(hex, piece.get());
 
         board.clear();
@@ -133,8 +127,8 @@ namespace hive::models {
         // Place pieces adjacent to each other
         const Hex hex1(0, 0, 0);
         const Hex hex2(1, -1, 0);
-        const auto piece1 = createPiece(enums::PieceType::QUEEN_BEE);
-        const auto piece2 = createPiece(enums::PieceType::SPIDER);
+        const auto piece1 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        const auto piece2 = PieceFactory::createPiece(enums::PieceType::SPIDER);
 
         board.addPiece(hex1, piece1.get());
         board.addPiece(hex2, piece2.get());
@@ -149,8 +143,8 @@ namespace hive::models {
         // Place pieces not adjacent
         const Hex hex1(0, 0, 0);
         const Hex hex2(2, -2, 0);
-        const auto piece1 = createPiece(enums::PieceType::QUEEN_BEE);
-        const auto piece2 = createPiece(enums::PieceType::SPIDER);
+        const auto piece1 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        const auto piece2 = PieceFactory::createPiece(enums::PieceType::SPIDER);
 
         board.addPiece(hex1, piece1.get());
         board.addPiece(hex2, piece2.get());
@@ -166,9 +160,9 @@ namespace hive::models {
         const Hex adjacentHex1(1, -1, 0);
         const Hex adjacentHex2(1, 0, -1);
 
-        auto piece1 = createPiece(enums::PieceType::QUEEN_BEE);
-        auto piece2 = createPiece(enums::PieceType::BEETLE);
-        auto piece3 = createPiece(enums::PieceType::ANT);
+        auto piece1 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        auto piece2 = PieceFactory::createPiece(enums::PieceType::BEETLE);
+        auto piece3 = PieceFactory::createPiece(enums::PieceType::ANT);
 
         // Initially, the board should have no pieces and one hex (origin hex)
         EXPECT_EQ(board.pieceCount(), 0);
@@ -236,8 +230,8 @@ namespace hive::models {
     TEST_F(BoardTest, IsOccupiedMultipleHexes) {
         const Hex hex1(0, 0, 0);
         const Hex hex2(1, -1, 0);
-        const auto piece1 = createPiece(enums::PieceType::QUEEN_BEE);
-        const auto piece2 = createPiece(enums::PieceType::ANT);
+        const auto piece1 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        const auto piece2 = PieceFactory::createPiece(enums::PieceType::ANT);
 
         board.addPiece(hex1, piece1.get());
         board.addPiece(hex2, piece2.get());
@@ -255,7 +249,7 @@ namespace hive::models {
      */
     TEST_F(BoardTest, OutputOperator) {
         const Hex hex(0, 0, 0);
-        const auto piece = createPiece(enums::PieceType::QUEEN_BEE);
+        const auto piece = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
         board.addPiece(hex, piece.get());
         std::ostringstream oss;
         oss << board;
@@ -270,7 +264,7 @@ namespace hive::models {
      */
     TEST_F(BoardTest, GenerateSurroundingHexes) {
         const Hex hex(0, 0, 0);
-        const auto piece = createPiece(enums::PieceType::QUEEN_BEE);
+        const auto piece = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
         board.addPiece(hex, piece.get());
 
         const std::vector<Hex> neighbors = board.getNeighborHexes(hex);
@@ -278,7 +272,7 @@ namespace hive::models {
 
         // Add a piece to one of the neighbors
         const Hex neighborHex = neighbors[0];
-        const auto piece2 = createPiece(enums::PieceType::ANT);
+        const auto piece2 = PieceFactory::createPiece(enums::PieceType::ANT);
         board.addPiece(neighborHex, piece2.get());
 
         // Now check that new neighbors are generated around the neighborHex
@@ -291,7 +285,7 @@ namespace hive::models {
      */
     TEST_F(BoardTest, FreeSurroundingHexes) {
         const Hex hex(0, 0, 0);
-        const auto piece = createPiece(enums::PieceType::QUEEN_BEE);
+        const auto piece = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
         board.addPiece(hex, piece.get());
 
         // Remove the piece
@@ -312,8 +306,8 @@ namespace hive::models {
     TEST_F(BoardTest, PieceCountAddRemove) {
         const Hex hex1(0, 0, 0);
         const Hex hex2(1, -1, 0);
-        const auto piece1 = createPiece(enums::PieceType::QUEEN_BEE);
-        const auto piece2 = createPiece(enums::PieceType::BEETLE);
+        const auto piece1 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        const auto piece2 = PieceFactory::createPiece(enums::PieceType::BEETLE);
 
         board.addPiece(hex1, piece1.get());
         board.addPiece(hex2, piece2.get());
@@ -332,8 +326,8 @@ namespace hive::models {
      */
     TEST_F(BoardTest, AddPieceToOccupiedHex) {
         const Hex hex(0, 0, 0);
-        const auto piece1 = createPiece(enums::PieceType::BEETLE);
-        const auto piece2 = createPiece(enums::PieceType::BEETLE);
+        const auto piece1 = PieceFactory::createPiece(enums::PieceType::BEETLE);
+        const auto piece2 = PieceFactory::createPiece(enums::PieceType::BEETLE);
 
         board.addPiece(hex, piece1.get());
         board.addPiece(hex, piece2.get());
@@ -357,7 +351,7 @@ namespace hive::models {
      */
     TEST_F(BoardTest, AddPieceToNonExistentHex) {
         const Hex hex(5, -5, 0); // A hex not adjacent to any existing pieces
-        const auto piece = createPiece(enums::PieceType::ANT);
+        const auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
 
         board.addPiece(hex, piece.get());
 
@@ -379,10 +373,10 @@ namespace hive::models {
         const Hex hex2(1, -1, 0);
         const Hex hex3(1, 0, -1);
         const Hex hex4(1, 1, -2);
-        const auto piece1 = createPiece(enums::PieceType::QUEEN_BEE);
-        const auto piece2 = createPiece(enums::PieceType::SPIDER);
-        const auto piece3 = createPiece(enums::PieceType::ANT);
-        const auto piece4 = createPiece(enums::PieceType::BEETLE);
+        const auto piece1 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        const auto piece2 = PieceFactory::createPiece(enums::PieceType::SPIDER);
+        const auto piece3 = PieceFactory::createPiece(enums::PieceType::ANT);
+        const auto piece4 = PieceFactory::createPiece(enums::PieceType::BEETLE);
 
         board.addPiece(hex1, piece1.get());
         board.addPiece(hex2, piece2.get());
