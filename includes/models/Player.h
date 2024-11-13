@@ -20,15 +20,18 @@ namespace hive::models {
      * interactions with the game logic.
      */
     class Player {
+        static size_t nextId;
         size_t id; /**< Unique identifier for the player */
         std::vector<std::unique_ptr<Piece> > pieces; /**< Pieces owned by the player */
+        std::string name; /**< Name for the player */
 
     public:
         /**
          * @brief Constructs a Player with a unique identifier.
          * @param id Unique identifier for the player.
+         * @param name Player name
          */
-        explicit Player(const size_t id) : id(id) {
+        explicit Player(const std::string& name) : id(nextId++), name(name) {
         }
 
         /**
@@ -68,6 +71,11 @@ namespace hive::models {
          * @return The player's identifier.
          */
         [[nodiscard]] size_t getId() const { return id; }
+        /**
+         * @brief Gets the player's name.
+         * @return The player's name.
+         */
+        [[nodiscard]] std::string getName() const { return name; }
     };
 } // namespace hive::models
 
