@@ -12,6 +12,7 @@
 #include "Piece.h"
 
 //TODO: implement the movePiece method
+//TODO: think about the possibility of singleton for this class
 
 namespace hive::models {
     /**
@@ -136,6 +137,18 @@ namespace hive::models {
          * used to determine if a move would split the hive, which is not allowed.
          */
         bool areAllPiecesConnected() const;
+
+
+        /**
+         * @brief Moves a piece from one hex to another.
+         * @param from The hex location of the piece to move.
+         * @param to The target hex location for the piece.
+         *
+         * Moves the top piece from the 'from' hex to the 'to' hex. This method is used
+         * to implement the MOVE move type in the game, where a piece is shifted to a new
+         * location on the board.
+         */
+        void movePiece(const Hex &from, const Hex &to);
 
         /**
          * @brief Clears the board, removing all pieces and hexes.

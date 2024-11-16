@@ -130,6 +130,18 @@ namespace hive::models {
         return visited.size() == totalOccupied;
     }
 
+    // Moves a piece from one hex to another
+    void Board::movePiece(const Hex &from, const Hex &to) {
+        // Retrieve the top piece from the 'from' hex
+        Piece *movedPiece = unstackPiece(from);
+        if (!movedPiece) {
+            throw std::runtime_error("Cannot move a piece from an empty hex.");
+        }
+
+        // Place the piece onto the 'to' hex
+        addPiece(to, movedPiece);
+    }
+
     // Clears the board, removing all pieces and hexes
     void Board::clear() {
         board.clear();
