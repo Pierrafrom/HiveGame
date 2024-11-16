@@ -46,6 +46,11 @@ namespace hive::config::constants {
     constexpr int MAX_GRASSHOPPER = 3;
 
     /**
+     * @brief Maximum number of turns before the Queen Bee must be placed.
+     */
+    constexpr int MAX_TURN_BEFORE_QUEEN_PLACEMENT = 4;
+
+    /**
      * @brief Mapping of each piece type to its maximum allowable count per player.
      *
      * This unordered map provides quick access to the maximum count of each piece type, which

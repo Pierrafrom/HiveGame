@@ -142,12 +142,17 @@ namespace hive::models {
     TEST_F(BoardTest, AreAllPiecesConnectedFalse) {
         // Place pieces not adjacent
         const Hex hex1(0, 0, 0);
+        const Hex tmpHex(1, -1, 0); // Temporary hex to place a piece
         const Hex hex2(2, -2, 0);
         const auto piece1 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        const auto tmpPiece = PieceFactory::createPiece(enums::PieceType::BEETLE);
         const auto piece2 = PieceFactory::createPiece(enums::PieceType::SPIDER);
 
         board.addPiece(hex1, piece1.get());
+        board.addPiece(tmpHex, tmpPiece.get());
         board.addPiece(hex2, piece2.get());
+
+        board.unstackPiece(tmpHex); // Remove the temporary piece
 
         EXPECT_FALSE(board.areAllPiecesConnected());
     }
@@ -347,21 +352,37 @@ namespace hive::models {
     }
 
     /**
-     * @test Tests adding a piece to a non-existent hex (should create the hex).
+     * @test Tests adding a piece to a non-existent hex (should throw an exception).
      */
     TEST_F(BoardTest, AddPieceToNonExistentHex) {
-        const Hex hex(5, -5, 0); // A hex not adjacent to any existing pieces
+        const Hex nonExistentHex(5, -5, 0); // A hex not adjacent to any existing pieces
         const auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
 
-        board.addPiece(hex, piece.get());
+        // Adding a piece to a non-existent hex should throw an exception
+        EXPECT_THROW({
+                     board.addPiece(nonExistentHex, piece.get());
+                     }, std::invalid_argument);
 
-        // Even though the hex was not connected, the board should now have the piece
-        EXPECT_TRUE(board.isOccupied(hex));
-        EXPECT_EQ(board.getTopPiece(hex), piece.get());
-        EXPECT_EQ(board.pieceCount(), 1);
+        // Verify that the board remains unchanged
+        EXPECT_EQ(board.pieceCount(), 0);
+        EXPECT_FALSE(board.isOccupied(nonExistentHex));
+    }
 
-        // The board should now have additional hexes
-        EXPECT_GT(board.getBoard().size(), 1);
+    /**
+     * @test Tests adding a null piece to the board.
+     * @expected_exception std::invalid_argument
+     */
+    TEST_F(BoardTest, AddNullPiece) {
+        const Hex hex(0, 0, 0); // An existing hex on the board
+
+        // Attempt to add a null piece to the board, which should throw an exception
+        EXPECT_THROW({
+                     board.addPiece(hex, nullptr);
+                     }, std::invalid_argument);
+
+        // Verify that the board state remains unchanged
+        EXPECT_FALSE(board.isOccupied(hex));
+        EXPECT_EQ(board.pieceCount(), 0);
     }
 
     /**

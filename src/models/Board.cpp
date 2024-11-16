@@ -27,6 +27,12 @@ namespace hive::models {
 
     // Adds a piece to a specific hex location on the board
     void Board::addPiece(const Hex &hex, Piece *piece) {
+        if (!piece) {
+            throw std::invalid_argument("Piece cannot be null.");
+        }
+        if (const auto it = board.find(hex); it == board.end()) {
+            throw std::invalid_argument("Hex does not exist on the board.");
+        }
         // Place the piece onto the specified hex, stacking if necessary
         board[hex].push(piece);
         // Update the board by generating surrounding hexes
@@ -133,13 +139,18 @@ namespace hive::models {
     // Moves a piece from one hex to another
     void Board::movePiece(const Hex &from, const Hex &to) {
         // Retrieve the top piece from the 'from' hex
-        Piece *movedPiece = unstackPiece(from);
+        Piece *movedPiece = this->getTopPiece(from);
         if (!movedPiece) {
             throw std::runtime_error("Cannot move a piece from an empty hex.");
         }
 
         // Place the piece onto the 'to' hex
         addPiece(to, movedPiece);
+
+        // Remove the piece from the 'from' hex
+        // We have to remove the piece after adding it to the new hex to avoid freeing the surrounding hexes
+        // before the piece is added to the new hex and raise an exception when trying to add the piece
+        unstackPiece(from);
     }
 
     // Clears the board, removing all pieces and hexes

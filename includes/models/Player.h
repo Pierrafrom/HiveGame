@@ -64,6 +64,15 @@ namespace hive::models {
         std::vector<std::unique_ptr<Piece> > &getPieces() { return pieces; }
 
         /**
+         * @brief Gets the collection of pieces owned by the player without modification.
+         * @return Const reference to the vector of pieces.
+         *
+         * The returned vector allows direct access to the player's pieces, which can be useful for
+         * operations that require iterating through without modifying the pieces.
+         */
+        [[nodiscard]] const std::vector<std::unique_ptr<Piece> > &getPieces() const { return pieces; }
+
+        /**
          * @brief Gets the player's unique identifier.
          * @return The player's identifier.
          */
