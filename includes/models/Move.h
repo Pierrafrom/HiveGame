@@ -4,6 +4,7 @@
 #include <memory>
 #include "models/Hex.h"
 #include "models/Piece.h"
+#include "models/Player.h"  // Inclusion de la classe Player
 
 namespace hive::models {
     /**
@@ -29,7 +30,7 @@ namespace hive::models {
 
     private:
         MoveType type; /**< The type of move (PLACE or MOVE). */
-        size_t playerId; /**< ID of the player making the move. */
+        Player *player; /**< Pointer to the player making the move. */
         Piece *piece; /**< Pointer to the piece being placed or moved. */
         Hex from; /**< The starting position (used for MOVE type only). */
         Hex to; /**< The target position. */
@@ -37,7 +38,7 @@ namespace hive::models {
     public:
         /**
          * @brief Constructs a placement move.
-         * @param playerId The ID of the player making the move.
+         * @param player The player making the move (must not be null).
          * @param piece The piece to place (must not be null).
          * @param to The target position for placing the piece.
          *
@@ -45,11 +46,11 @@ namespace hive::models {
          * at the specified position.
          * @throws std::invalid_argument If the piece is null.
          */
-        Move(size_t playerId, std::unique_ptr<Piece> piece, const Hex &to);
+        Move(Player *player, Piece *piece, const Hex &to);
 
         /**
          * @brief Constructs a movement move.
-         * @param playerId The ID of the player making the move.
+         * @param player The player making the move (must not be null).
          * @param piece The piece to move (must not be null).
          * @param from The starting position of the piece.
          * @param to The target position of the piece.
@@ -58,7 +59,7 @@ namespace hive::models {
          * starting position to a target position.
          * @throws std::invalid_argument If the piece is null.
          */
-        Move(size_t playerId, Piece *piece, const Hex &from, const Hex &to);
+        Move(Player *player, Piece *piece, const Hex &from, const Hex &to);
 
         /**
          * @brief Executes the move on the specified game board.
@@ -81,10 +82,10 @@ namespace hive::models {
         void undo(Board &board) const;
 
         /**
-         * @brief Retrieves the ID of the player who made the move.
-         * @return The ID of the player.
+         * @brief Retrieves the player who made the move.
+         * @return A pointer to the player.
          */
-        [[nodiscard]] size_t getPlayerId() const { return playerId; }
+        [[nodiscard]] const Player *getPlayer() const { return player; }
 
         /**
          * @brief Retrieves the type of the move.
@@ -96,7 +97,7 @@ namespace hive::models {
          * @brief Retrieves the piece involved in the move.
          * @return A pointer to the piece.
          */
-        [[nodiscard]] Piece *getPiece() const { return piece; }
+        [[nodiscard]] const Piece *getPiece() const { return piece; }
 
         /**
          * @brief Retrieves the starting position of the piece.

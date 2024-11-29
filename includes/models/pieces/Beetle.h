@@ -21,7 +21,7 @@ namespace hive::models::pieces {
          *
          * This constructor initializes a Beetle piece, assigning a `BeetleMoveStrategy` for its unique movement.
          */
-        explicit Beetle(const size_t id = nextId++) : Piece(id, enums::PieceType::BEETLE,
+        explicit Beetle(const size_t id = pieceNextId++) : Piece(id, enums::PieceType::BEETLE,
                                                             std::make_unique<strategies::BeetleMoveStrategy>()) {
         }
 

@@ -21,7 +21,7 @@ namespace hive::models::pieces {
          *
          * This constructor initializes a Ladybug piece, assigning a `LadybugMoveStrategy` for its unique movement.
          */
-        explicit Ladybug(size_t id = nextId++) : Piece(id, enums::PieceType::LADYBUG,
+        explicit Ladybug(const size_t id = pieceNextId++) : Piece(id, enums::PieceType::LADYBUG,
                                                        std::make_unique<strategies::LadybugMoveStrategy>()) {
         }
 

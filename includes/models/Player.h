@@ -7,9 +7,7 @@
 #include "models/enums/PieceType.h"
 
 //TODO: may add some attributes for the player class (name for example)
-//TODO: autoincrement ?
 // TODO: Create a test suite for the Player class
-// TODO: Implement the Player class
 
 namespace hive::models {
     /**
@@ -20,6 +18,7 @@ namespace hive::models {
      * interactions with the game logic.
      */
     class Player {
+        static size_t playerNextId; /**< Static counter for generating unique player identifiers */
         size_t id; /**< Unique identifier for the player */
         std::vector<std::unique_ptr<Piece> > pieces; /**< Pieces owned by the player */
 
@@ -29,6 +28,14 @@ namespace hive::models {
          * @param id Unique identifier for the player.
          */
         explicit Player(const size_t id) : id(id) {
+        }
+
+        /**
+        * @brief Constructs a Player with a unique identifier.
+        *
+        * We use the playerNextId static variable to assign a unique identifier to the player.
+        */
+        Player() : id(playerNextId++) {
         }
 
         /**
@@ -73,10 +80,46 @@ namespace hive::models {
         [[nodiscard]] const std::vector<std::unique_ptr<Piece> > &getPieces() const { return pieces; }
 
         /**
+         * @brief Gets the collection of pieces owned by the player of a specific type.
+         * @param type The type of pieces to filter (e.g., QUEEN_BEE, ANT).
+         * @return A vector of pointers to the pieces of the specified type.
+         *
+         * This method filters the player's collection and returns only the pieces that
+         * match the specified type. The returned vector is read-only and contains raw
+         * pointers to the matching pieces for easier iteration.
+         */
+        [[nodiscard]] std::vector<const Piece *> getPieces(enums::PieceType type) const;
+
+        /**
+         * @brief Checks if the given piece belongs to the player.
+         * @param piece The piece to check.
+         * @return True if the piece belongs to the player, false otherwise.
+         */
+        [[nodiscard]] bool ownsPiece(const Piece &piece) const;
+
+        /**
          * @brief Gets the player's unique identifier.
          * @return The player's identifier.
          */
         [[nodiscard]] size_t getId() const { return id; }
+
+        /**
+         * @brief Equality operator for comparing two Player objects.
+         * @param other The other Player object to compare with.
+         * @return True if the two players are considered equal, false otherwise.
+         *
+         * Players are considered equal if they have the same id.
+         */
+        bool operator==(const Player &other) const { return id == other.id; }
+
+        /**
+        * @brief Inequality operator for comparing two Player objects.
+        * @param other The other Player object to compare with.
+        * @return True if the two players are considered different, false otherwise.
+        *
+        * Players are considered different if they have different ids.
+        */
+        bool operator!=(const Player &other) const { return !(*this == other); }
     };
 } // namespace hive::models
 

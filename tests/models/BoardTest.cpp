@@ -473,4 +473,73 @@ namespace hive::models {
         EXPECT_TRUE(board.isOccupied(to));
         EXPECT_EQ(board.getTopPiece(to), piece1.get()); // The moved piece should be on top
     }
+
+    /**
+     * @test Tests retrieving the position of a piece present on the board.
+     */
+    TEST_F(BoardTest, GetPiecePositionValid) {
+        const Hex hex(0, 0, 0);
+        const auto piece = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+
+        board.addPiece(hex, piece.get());
+
+        // Verify that the piece position is correctly retrieved
+        EXPECT_EQ(board.getPiecePosition(piece.get()), hex);
+    }
+
+    /**
+     * @test Tests retrieving the position of a piece not on the board.
+     * @expected_exception std::runtime_error
+     */
+    TEST_F(BoardTest, GetPiecePositionNotOnBoard) {
+        const auto piece = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+
+        // Attempting to retrieve the position of a piece not added to the board
+        EXPECT_THROW({
+                     board.getPiecePosition(piece.get());
+                     }, std::runtime_error);
+    }
+
+    /**
+     * @test Tests retrieving the position of a piece that was removed from the board.
+     */
+    TEST_F(BoardTest, GetPiecePositionRemovedPiece) {
+        const Hex hex(0, 0, 0);
+        const auto piece = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+
+        board.addPiece(hex, piece.get());
+        board.unstackPiece(hex);
+
+        // Attempting to retrieve the position of a removed piece
+        EXPECT_THROW({
+                     board.getPiecePosition(piece.get());
+                     }, std::runtime_error);
+    }
+
+    /**
+     * @test Tests retrieving the position of a null piece pointer.
+     * @expected_exception std::invalid_argument
+     */
+    TEST_F(BoardTest, GetPiecePositionNullPiece) {
+        // Attempting to retrieve the position of a null piece
+        EXPECT_THROW({
+                     board.getPiecePosition(nullptr);
+                     }, std::invalid_argument);
+    }
+
+    /**
+     * @test Tests retrieving the position of a piece in a stack with multiple pieces.
+     */
+    TEST_F(BoardTest, GetPiecePositionStackedPieces) {
+        const Hex hex(0, 0, 0);
+        const auto piece1 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        const auto piece2 = PieceFactory::createPiece(enums::PieceType::BEETLE);
+
+        board.addPiece(hex, piece1.get());
+        board.addPiece(hex, piece2.get());
+
+        // Verify that the position of both pieces is the same (top and bottom of the stack)
+        EXPECT_EQ(board.getPiecePosition(piece1.get()), hex);
+        EXPECT_EQ(board.getPiecePosition(piece2.get()), hex);
+    }
 } // namespace hive::models

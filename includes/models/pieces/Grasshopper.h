@@ -21,7 +21,7 @@ namespace hive::models::pieces {
          *
          * This constructor initializes a Grasshopper piece, assigning a `GrasshopperMoveStrategy` for its unique movement.
          */
-        explicit Grasshopper(const size_t id = nextId++) : Piece(id, enums::PieceType::GRASSHOPPER,
+        explicit Grasshopper(const size_t id = pieceNextId++) : Piece(id, enums::PieceType::GRASSHOPPER,
                                                                  std::make_unique<
                                                                      strategies::GrasshopperMoveStrategy>()) {
         }

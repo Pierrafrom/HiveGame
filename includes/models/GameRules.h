@@ -1,96 +1,140 @@
 #ifndef GAMERULES_H
 #define GAMERULES_H
 
-#include "models/Board.h"
-#include "models/Player.h"
-#include "models/Move.h"
+#include <optional>
 #include <vector>
 
-//TODO: implement the GameRules class
-//TODO: create a test suite for the GameRules class
+#include "models/Player.h"
+#include "models/Move.h"
+
+// TODO: Create a test suite for the GameRules class
 
 namespace hive::models {
     /**
      * @class GameRules
-     * @brief Encapsulates the rules of the Hive game.
+     * @brief Singleton class encapsulating the rules of the Hive game.
      *
-     * The GameRules class provides methods to validate moves, enforce the game rules
-     * (such as queen placement before the fourth turn, maximum number of pieces per player),
-     * and check for game-ending conditions.
+     * The GameRules class provides methods to validate moves, enforce game rules,
+     * and check for game-ending conditions. As a singleton, it ensures that only
+     * one instance of the rules exists globally.
      */
     class GameRules {
-    public:
+        /****************************************************************************
+         * Singleton class: private constructor and destructor.
+         **************************************************************************/
+
         /**
-         * @brief Validates a move according to the game rules.
+         * @brief Private constructor to enforce singleton pattern.
+         */
+        GameRules() = default;
+
+        /**
+         * @brief Destructor.
+         *
+         * The destructor is kept private and defaulted as no special cleanup is required.
+         */
+        ~GameRules() = default;
+
+        /**
+         * @brief Validates a MOVE-type move.
          * @param move The move to validate.
-         * @param board The current game board.
-         * @param player The player making the move.
-         * @param turnNumber The current turn number.
+         * @param board The game board.
          * @return True if the move is valid, false otherwise.
          */
-        [[nodiscard]] bool validateMove(const Move &move, const Board &board, const Player &player,
-                                        size_t turnNumber) const;
+        [[nodiscard]] static bool validateMoveType(const Move &move, const Board &board);
 
         /**
-         * @brief Checks if a piece placement is valid according to the adjacency rules.
-         * @param move The move containing the position where the piece will be placed.
-         * @param board The current game board.
-         * @param player The player attempting to place the piece.
+         * @brief Validates a PLACE-type move.
+         * @param move The move to validate.
+         * @param board The game board.
          * @return True if the placement is valid, false otherwise.
          */
-        [[nodiscard]] bool validatePlacement(const Move &move, const Board &board, const Player &player) const;
+        [[nodiscard]] static bool validatePlaceType(const Move &move, const Board &board);
+
+    public:
+        /**
+         * @brief Retrieves the singleton instance of GameRules.
+         * @return A reference to the single instance of GameRules.
+         *
+         * This method ensures that only one instance of GameRules exists throughout
+         * the application. It creates the instance on first access and returns it
+         * on subsequent calls.
+         */
+        static GameRules &getInstance();
 
         /**
-         * @brief Checks if the player can add a specific piece type according to the max limit.
+         * @brief Validates a move according to its type.
+         * @param move The move to validate.
+         * @param board The game board.
+         * @return True if the move is valid, false otherwise.
+         */
+        [[nodiscard]] static bool validateMove(const Move &move, const Board &board);
+
+        /**
+         * @brief Checks if the player can add a specific piece type according to the maximum limit.
          * @param player The player attempting to add the piece.
          * @param type The type of the piece to add.
          * @return True if the player can add the piece, false otherwise.
          */
-        [[nodiscard]] bool canAddPiece(const Player &player, enums::PieceType type) const;
+        [[nodiscard]] static bool canAddPiece(const Player &player, enums::PieceType type);
 
         /**
          * @brief Enforces the rule that the queen must be placed by the fourth turn.
          * @param player The player to check.
          * @param turnNumber The current turn number.
-         * @return True if the queen placement is required, false otherwise.
+         * @return True if the Queen placement is required, false otherwise.
          */
-        [[nodiscard]] bool isQueenPlacementRequired(const Player &player, size_t turnNumber) const;
+        [[nodiscard]] static bool isQueenPlacementRequired(const Player &player, size_t turnNumber);
 
         /**
-         * @brief Ensures the Hive remains connected after a move.
-         * @param move The move to validate for Hive continuity.
+         * @brief Checks the victory conditions in the game.
+         *
+         * This method evaluates the current state of the game to determine if there is a winner,
+         * if the game is a draw, or if it should continue.
+         *
+         * - A victory is declared if only one player's queen bee is surrounded.
+         * - A draw is declared if all queen bees present on the board are surrounded.
+         * - If no queen bees are surrounded, the game continues without a winner.
+         *
          * @param board The current game board.
-         * @return True if the Hive remains connected, false otherwise.
+         * @param players A vector of players participating in the game.
+         * @return A pointer to the winning player if there is a winner,
+         *         `std::nullopt` for a draw, or `nullptr` if the game continues without a winner.
          */
-        [[nodiscard]] bool isHiveConnectedAfterMove(const Move &move, const Board &board) const;
+        static std::optional<const Player *>
+        getVictoryCondition(const Board &board, const std::vector<Player> &players);
+
+        /****************************************************************************
+         * Singleton class: prevent copying and moving the singleton instance.
+         **************************************************************************/
 
         /**
-         * @brief Checks if the win condition is met (one queen is fully surrounded).
-         * @param board The current game board.
-         * @param players The players in the game.
-         * @return True if the game has a winner, false otherwise.
+         * @brief Deleted copy constructor.
+         *
+         * This prevents copying the singleton instance.
          */
-        [[nodiscard]] bool isVictoryConditionMet(const Board &board, const std::vector<Player> &players) const;
+        GameRules(const GameRules &) = delete;
 
         /**
-         * @brief Checks if a stalemate condition is met (both queens are fully surrounded).
-         * @param players The players in the game.
-         * @return True if the game is a draw, false otherwise.
+         * @brief Deleted assignment operator.
+         *
+         * This prevents assigning the singleton instance.
          */
-        [[nodiscard]] bool isStalemate(const std::vector<Player> &players) const;
+        GameRules &operator=(const GameRules &) = delete;
 
         /**
-         * @brief Determines if the game is over by checking victory and stalemate conditions.
-         * @param board The current game board.
-         * @param players The players in the game.
-         * @return True if the game is over, false otherwise.
+         * @brief Deleted move constructor.
+         *
+         * This prevents moving the singleton instance.
          */
-        [[nodiscard]] bool isGameOver(const Board &board, const std::vector<Player> &players) const;
+        GameRules(GameRules &&) = delete;
 
         /**
-         * @brief Destructor.
+         * @brief Deleted move assignment operator.
+         *
+         * This prevents moving the singleton instance.
          */
-        ~GameRules() = default;
+        GameRules &operator=(GameRules &&) = delete;
     };
 } // namespace hive::models
 

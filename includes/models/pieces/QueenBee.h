@@ -22,7 +22,7 @@ namespace hive::models::pieces {
          *
          * This constructor initializes a QueenBee piece, assigning a `QueenBeeMoveStrategy` for its unique movement.
          */
-        explicit QueenBee(const size_t id = nextId++) : Piece(id, enums::PieceType::QUEEN_BEE,
+        explicit QueenBee(const size_t id = pieceNextId++) : Piece(id, enums::PieceType::QUEEN_BEE,
                                                               std::make_unique<strategies::QueenBeeMoveStrategy>()) {
         }
 

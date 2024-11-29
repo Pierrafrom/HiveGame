@@ -1,5 +1,4 @@
 // MoveTest.cpp
-
 #include <gtest/gtest.h>
 #include "models/Move.h"
 #include "models/Board.h"
@@ -17,7 +16,19 @@ namespace hive::models {
     class MoveTest : public testing::Test {
     protected:
         Board board; /**< Game board used in tests */
-        size_t playerId = 1; /**< Player ID used in tests */
+        Player *player = nullptr; /**< Pointer to the player performing the move */
+
+        // Setup method for initializing the player
+        void SetUp() override {
+            player = new Player(1); // Initialize player 1 with raw pointer
+            board.clear(); // Clear the board before each test
+        }
+
+        // TearDown method for cleaning up
+        void TearDown() override {
+            delete player; // Clean up the player pointer manually
+            // No need to manually clean up the board as it's managed by the Board class
+        }
     };
 
     /***************************************************************************
@@ -28,14 +39,14 @@ namespace hive::models {
      * @test Tests creating a PLACE move with valid inputs.
      */
     TEST_F(MoveTest, PlaceMoveConstructorValid) {
-        auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
+        const auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
         const Hex to(0, 0, 0);
-        const Move move(playerId, std::move(piece), to);
+        const Move move(player, (piece.get()), to);
 
-        EXPECT_EQ(move.getType(), Move::MoveType::PLACE);
-        EXPECT_EQ(move.getPlayerId(), playerId);
-        EXPECT_EQ(move.getTo(), to);
-        EXPECT_NE(move.getPiece(), nullptr);
+        EXPECT_EQ(move.getType(), Move::MoveType::PLACE) << "Expected MOVE type to be PLACE.";
+        EXPECT_EQ(move.getPlayer(), player) << "Player pointer should match the player used in the move.";
+        EXPECT_EQ(move.getTo(), to) << "Destination (to) coordinates should match.";
+        EXPECT_NE(move.getPiece(), nullptr) << "Piece should not be null for a valid PLACE move.";
     }
 
     /**
@@ -45,29 +56,28 @@ namespace hive::models {
     TEST_F(MoveTest, PlaceMoveConstructorNullPiece) {
         const Hex to(0, 0, 0);
         EXPECT_THROW({
-                     Move move(playerId, nullptr, to);
-                     }, std::invalid_argument);
+                     Move move(player, nullptr, to);
+                     }, std::invalid_argument) << "Expected invalid_argument exception for null piece.";
     }
 
     /**
      * @test Tests creating a MOVE move with valid inputs.
      */
     TEST_F(MoveTest, MoveConstructorValid) {
-        const auto piecePtr = PieceFactory::createPiece(enums::PieceType::SPIDER);
-        Piece *piece = piecePtr.get();
+        const auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
         const Hex from(0, 0, 0);
         const Hex to(1, -1, 0);
 
-        // Place the piece on the board for consistency
-        board.addPiece(from, piece);
+        // Place the piece on the board
+        board.addPiece(from, piece.get());
 
-        const Move move(playerId, piece, from, to);
+        const Move move(player, (piece.get()), from, to);
 
-        EXPECT_EQ(move.getType(), Move::MoveType::MOVE);
-        EXPECT_EQ(move.getPlayerId(), playerId);
-        EXPECT_EQ(move.getFrom(), from);
-        EXPECT_EQ(move.getTo(), to);
-        EXPECT_EQ(move.getPiece(), piece);
+        EXPECT_EQ(move.getType(), Move::MoveType::MOVE) << "Expected MOVE type to be MOVE.";
+        EXPECT_EQ(move.getPlayer(), player) << "Player pointer should match the player used in the move.";
+        EXPECT_EQ(move.getFrom(), from) << "Starting position (from) coordinates should match.";
+        EXPECT_EQ(move.getTo(), to) << "Destination (to) coordinates should match.";
+        EXPECT_EQ(move.getPiece(), piece.get()) << "Piece should match the piece used in the move.";
     }
 
     /**
@@ -78,8 +88,8 @@ namespace hive::models {
         const Hex from(0, 0, 0);
         const Hex to(1, -1, 0);
         EXPECT_THROW({
-                     Move move(playerId, nullptr, from, to);
-                     }, std::invalid_argument);
+                     Move move(player, nullptr, from, to);
+                     }, std::invalid_argument) << "Expected invalid_argument exception for null piece in MOVE move.";
     }
 
     /***************************************************************************
@@ -90,16 +100,16 @@ namespace hive::models {
      * @test Tests executing a PLACE move and verifying the board state.
      */
     TEST_F(MoveTest, ExecutePlaceMove) {
-        auto piece = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
-        Piece *piecePtr = piece.get();
+        const auto piece = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
         const Hex to(0, 0, 0);
 
-        const Move move(playerId, std::move(piece), to);
+        const Move move(player, (piece.get()), to);
         move.execute(board);
 
-        EXPECT_TRUE(board.isOccupied(to));
-        EXPECT_EQ(board.getTopPiece(to), piecePtr);
-        EXPECT_EQ(board.pieceCount(), 1);
+        EXPECT_TRUE(board.isOccupied(to)) << "Expected position to be occupied after placing the piece.";
+        EXPECT_EQ(board.getTopPiece(to),
+                  piece.get()) << "The top piece at the destination should match the placed piece.";
+        EXPECT_EQ(board.pieceCount(), 1) << "The piece count should be 1 after placing a piece.";
     }
 
     /**
@@ -107,19 +117,19 @@ namespace hive::models {
      */
     TEST_F(MoveTest, ExecuteMoveMove) {
         const auto piece = PieceFactory::createPiece(enums::PieceType::BEETLE);
-        Piece *piecePtr = piece.get();
         const Hex from(0, 0, 0);
         const Hex to(1, -1, 0);
 
         // Place the piece on the board
-        board.addPiece(from, piecePtr);
+        board.addPiece(from, piece.get());
 
-        const Move move(playerId, piecePtr, from, to);
+        const Move move(player, (piece.get()), from, to);
         move.execute(board);
 
-        EXPECT_FALSE(board.isOccupied(from));
-        EXPECT_TRUE(board.isOccupied(to));
-        EXPECT_EQ(board.getTopPiece(to), piecePtr);
+        EXPECT_FALSE(board.isOccupied(from)) << "Expected the starting position to be empty after the move.";
+        EXPECT_TRUE(board.isOccupied(to)) << "Expected the destination to be occupied after the move.";
+        EXPECT_EQ(board.getTopPiece(to),
+                  piece.get()) << "The top piece at the destination should match the moved piece.";
     }
 
     /***************************************************************************
@@ -130,20 +140,22 @@ namespace hive::models {
      * @test Tests undoing a PLACE move and verifying the board state.
      */
     TEST_F(MoveTest, UndoPlaceMove) {
-        auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
+        const auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
         const Hex to(0, 0, 0);
 
-        const Move move(playerId, std::move(piece), to);
+        // Create the move and execute it
+        const Move move(player, (piece.get()), to);
         move.execute(board);
 
         // Verify the piece is on the board
-        EXPECT_TRUE(board.isOccupied(to));
+        EXPECT_TRUE(board.isOccupied(to)) << "Piece should be on the board after executing a PLACE move.";
 
+        // Undo the move
         move.undo(board);
 
         // Verify the piece is removed
-        EXPECT_FALSE(board.isOccupied(to));
-        EXPECT_EQ(board.pieceCount(), 0);
+        EXPECT_FALSE(board.isOccupied(to)) << "Piece should be removed from the board after undoing the PLACE move.";
+        EXPECT_EQ(board.pieceCount(), 0) << "There should be no pieces on the board after undoing the PLACE move.";
     }
 
     /**
@@ -151,25 +163,26 @@ namespace hive::models {
      */
     TEST_F(MoveTest, UndoMoveMove) {
         const auto piece = PieceFactory::createPiece(enums::PieceType::BEETLE);
-        Piece *piecePtr = piece.get();
         const Hex from(0, 0, 0);
         const Hex to(1, -1, 0);
 
         // Place the piece on the board
-        board.addPiece(from, piecePtr);
+        board.addPiece(from, piece.get());
 
-        const Move move(playerId, piecePtr, from, to);
+        // Create the move and execute it
+        const Move move(player, (piece.get()), from, to);
         move.execute(board);
 
         // Verify the piece is at 'to'
-        EXPECT_TRUE(board.isOccupied(to));
-        EXPECT_FALSE(board.isOccupied(from));
+        EXPECT_TRUE(board.isOccupied(to)) << "Piece should be at destination after MOVE.";
+        EXPECT_FALSE(board.isOccupied(from)) << "Piece should no longer be at the starting position.";
 
+        // Undo the move
         move.undo(board);
 
         // Verify the piece is back at 'from'
-        EXPECT_TRUE(board.isOccupied(from));
-        EXPECT_FALSE(board.isOccupied(to));
+        EXPECT_TRUE(board.isOccupied(from)) << "Piece should be back at the starting position after undoing the MOVE.";
+        EXPECT_FALSE(board.isOccupied(to)) << "Piece should no longer be at the destination after undoing the MOVE.";
     }
 
     /***************************************************************************
@@ -181,13 +194,12 @@ namespace hive::models {
      */
     TEST_F(MoveTest, GetFromForMove) {
         const auto piece = PieceFactory::createPiece(enums::PieceType::SPIDER);
-        Piece *piecePtr = piece.get();
         const Hex from(0, 0, 0);
         const Hex to(1, -1, 0);
 
-        const Move move(playerId, piecePtr, from, to);
+        const Move move(player, (piece.get()), from, to);
 
-        EXPECT_EQ(move.getFrom(), from);
+        EXPECT_EQ(move.getFrom(), from) << "getFrom() should return the correct starting position for MOVE.";
     }
 
     /**
@@ -195,79 +207,70 @@ namespace hive::models {
      * @expected_exception std::runtime_error
      */
     TEST_F(MoveTest, GetFromForPlace) {
-        auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
+        const auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
         const Hex to(0, 0, 0);
 
-        const Move move(playerId, std::move(piece), to);
+        const Move move(player, (piece.get()), to);
 
         EXPECT_THROW({
                      move.getFrom();
-                     }, std::runtime_error);
+                     }, std::runtime_error) << "getFrom() should throw an exception for PLACE moves.";
     }
 
     /**
      * @test Tests accessing getTo() for both MOVE and PLACE moves.
      */
     TEST_F(MoveTest, GetTo) {
-        auto piecePlace = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        const auto piecePlace = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
         const Hex toPlace(0, 0, 0);
-        const Move placeMove(playerId, std::move(piecePlace), toPlace);
+        const Move placeMove(player, (piecePlace.get()), toPlace);
+        EXPECT_EQ(placeMove.getTo(), toPlace) << "getTo() should return the correct destination for PLACE.";
 
-        EXPECT_EQ(placeMove.getTo(), toPlace);
-
-        const auto pieceMove = PieceFactory::createPiece(enums::PieceType::BEETLE);
-        Piece *piecePtr = pieceMove.get();
-        const Hex from(1, -1, 0);
-        const Hex toMove(2, -2, 0);
-
-        const Move moveMove(playerId, piecePtr, from, toMove);
-
-        EXPECT_EQ(moveMove.getTo(), toMove);
+        const auto pieceMove = PieceFactory::createPiece(enums::PieceType::SPIDER);
+        const Hex from(0, 0, 0);
+        const Hex toMove(1, -1, 0);
+        const Move move(player, (pieceMove.get()), from, toMove);
+        EXPECT_EQ(move.getTo(), toMove) << "getTo() should return the correct destination for MOVE.";
     }
 
     /**
      * @test Tests accessing getPiece().
      */
     TEST_F(MoveTest, GetPiece) {
-        auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
-        Piece *piecePtr = piece.get();
-        const Hex to(0, 0, 0);
+        const auto piece = PieceFactory::createPiece(enums::PieceType::BEETLE);
+        const Hex from(0, 0, 0);
+        const Hex to(1, -1, 0);
 
-        const Move move(playerId, std::move(piece), to);
+        const Move move(player, (piece.get()), from, to);
 
-        EXPECT_EQ(move.getPiece(), piecePtr);
+        EXPECT_EQ(move.getPiece(), piece.get()) << "getPiece() should return the correct piece for the move.";
     }
 
     /**
-     * @test Tests accessing getPlayerId().
+     * @test Tests accessing getPlayer().
      */
     TEST_F(MoveTest, GetPlayerId) {
-        auto piece = PieceFactory::createPiece(enums::PieceType::SPIDER);
+        const auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
         const Hex to(0, 0, 0);
 
-        const Move move(playerId, std::move(piece), to);
+        const Move move(player, (piece.get()), to);
 
-        EXPECT_EQ(move.getPlayerId(), playerId);
+        EXPECT_EQ(move.getPlayer(), player) << "getPlayer() should return the correct player.";
     }
 
     /**
      * @test Tests accessing getType().
      */
     TEST_F(MoveTest, GetType) {
-        auto piecePlace = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
-        const Hex toPlace(0, 0, 0);
-        const Move placeMove(playerId, std::move(piecePlace), toPlace);
+        const auto piece = PieceFactory::createPiece(enums::PieceType::SPIDER);
+        const Hex from(0, 0, 0);
+        const Hex to(1, -1, 0);
+        const Move move(player, (piece.get()), from, to);
 
-        EXPECT_EQ(placeMove.getType(), Move::MoveType::PLACE);
+        EXPECT_EQ(move.getType(), Move::MoveType::MOVE) << "getType() should return MOVE for a MOVE move.";
 
-        const auto pieceMove = PieceFactory::createPiece(enums::PieceType::BEETLE);
-        Piece *piecePtr = pieceMove.get();
-        const Hex from(1, -1, 0);
-        const Hex toMove(2, -2, 0);
-
-        const Move moveMove(playerId, piecePtr, from, toMove);
-
-        EXPECT_EQ(moveMove.getType(), Move::MoveType::MOVE);
+        const Move placeMove(player, (piece.get()), to);
+        EXPECT_EQ(placeMove.getType(), Move::MoveType::PLACE) << "getType() should return PLACE for a PLACE move.";
     }
 
     /***************************************************************************
@@ -278,20 +281,19 @@ namespace hive::models {
      * @test Tests executing and undoing a PLACE move.
      */
     TEST_F(MoveTest, ExecuteAndUndoPlaceMove) {
-        auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
-        Piece *piecePtr = piece.get();
+        const auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
         const Hex to(0, 0, 0);
 
-        const Move move(playerId, std::move(piece), to);
+        const Move move(player, (piece.get()), to);
 
         // Execute the move
         move.execute(board);
-        EXPECT_TRUE(board.isOccupied(to));
-        EXPECT_EQ(board.getTopPiece(to), piecePtr);
+        EXPECT_TRUE(board.isOccupied(to)) << "Board should be occupied after the PLACE move.";
+        EXPECT_EQ(board.getTopPiece(to), piece.get()) << "The piece at the destination should be the one just placed.";
 
         // Undo the move
         move.undo(board);
-        EXPECT_FALSE(board.isOccupied(to));
+        EXPECT_FALSE(board.isOccupied(to)) << "Board should be empty after undoing the PLACE move.";
     }
 
     /**
@@ -299,26 +301,25 @@ namespace hive::models {
      */
     TEST_F(MoveTest, ExecuteAndUndoMoveMove) {
         const auto piece = PieceFactory::createPiece(enums::PieceType::BEETLE);
-        Piece *piecePtr = piece.get();
         const Hex from(0, 0, 0);
         const Hex to(1, -1, 0);
 
         // Place the piece on the board
-        board.addPiece(from, piecePtr);
+        board.addPiece(from, piece.get());
 
-        const Move move(playerId, piecePtr, from, to);
+        const Move move(player, (piece.get()), from, to);
 
         // Execute the move
         move.execute(board);
-        EXPECT_FALSE(board.isOccupied(from));
-        EXPECT_TRUE(board.isOccupied(to));
-        EXPECT_EQ(board.getTopPiece(to), piecePtr);
+        EXPECT_FALSE(board.isOccupied(from)) << "The starting position should be empty after the move.";
+        EXPECT_TRUE(board.isOccupied(to)) << "The destination position should be occupied after the move.";
+        EXPECT_EQ(board.getTopPiece(to), piece.get()) << "The piece should be at the destination.";
 
         // Undo the move
         move.undo(board);
-        EXPECT_TRUE(board.isOccupied(from));
-        EXPECT_FALSE(board.isOccupied(to));
-        EXPECT_EQ(board.getTopPiece(from), piecePtr);
+        EXPECT_TRUE(board.isOccupied(from)) << "The starting position should be occupied after undoing the move.";
+        EXPECT_FALSE(board.isOccupied(to)) << "The destination position should be empty after undoing the move.";
+        EXPECT_EQ(board.getTopPiece(from), piece.get()) << "The piece should be back at the starting position.";
     }
 
     /**
@@ -331,16 +332,15 @@ namespace hive::models {
         // Create and execute several moves
         for (std::int8_t i = 0; i < 5; ++i) {
             auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
-            Piece *piecePtr = piece.get();
             const Hex to(i, -i, 0);
-            moves.emplace_back(std::make_unique<Move>(playerId, std::move(piece), to));
-            pieces.push_back(piecePtr);
+            moves.emplace_back(std::make_unique<Move>(player, (piece.get()), to));
+            pieces.push_back(piece.get());
 
             moves.back()->execute(board);
         }
 
         // Verify board state
-        EXPECT_EQ(board.pieceCount(), 5);
+        EXPECT_EQ(board.pieceCount(), 5) << "There should be 5 pieces on the board after executing the moves.";
 
         // Undo moves in reverse order
         for (const auto &move: std::ranges::reverse_view(moves)) {
@@ -348,7 +348,7 @@ namespace hive::models {
         }
 
         // Verify board is empty
-        EXPECT_EQ(board.pieceCount(), 0);
+        EXPECT_EQ(board.pieceCount(), 0) << "Board should be empty after undoing all moves.";
     }
 
     /***************************************************************************
@@ -362,13 +362,14 @@ namespace hive::models {
     TEST_F(MoveTest, NullPieceHandling) {
         const Hex to(0, 0, 0);
         EXPECT_THROW({
-                     Move move(playerId, nullptr, to);
-                     }, std::invalid_argument);
+                     Move move(player, nullptr, to);
+                     }, std::invalid_argument) << "Constructor should throw exception when given nullptr for piece.";
 
         const Hex from(0, 0, 0);
         EXPECT_THROW({
-                     Move move(playerId, nullptr, from, to);
-                     }, std::invalid_argument);
+                     Move move(player, nullptr, from, to);
+                     }, std::
+                     invalid_argument) << "Constructor should throw exception when given nullptr for piece in MOVE.";
     }
 
     /**
@@ -376,22 +377,21 @@ namespace hive::models {
      * @expected_exception std::invalid_argument
      */
     TEST_F(MoveTest, InvalidHexCoordinates) {
-        auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
+        const auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
         const Hex invalidHex(100, -100, 0); // Assuming the board does not handle such distant hexes
 
         // Attempt a PLACE move with an invalid 'to' hex
-        const Move placeMove(playerId, std::move(piece), invalidHex);
+        const Move placeMove(player, (piece.get()), invalidHex);
 
         // Verify that executing the move throws an exception
         EXPECT_THROW({
                      placeMove.execute(board);
-                     }, std::invalid_argument);
+                     }, std::invalid_argument) << "Executing move with invalid hex should throw exception.";
 
         // Verify that the board remains unchanged and does not have the piece at the invalid hex
-        EXPECT_FALSE(board.isOccupied(invalidHex));
-        EXPECT_EQ(board.pieceCount(), 0);
+        EXPECT_FALSE(board.isOccupied(invalidHex)) << "Board should not have the piece at the invalid hex.";
+        EXPECT_EQ(board.pieceCount(), 0) << "Board should remain empty when an invalid hex is provided.";
     }
-
 
     /**
      * @test Attempts to execute a MOVE move where the starting hex is empty.
@@ -399,15 +399,14 @@ namespace hive::models {
      */
     TEST_F(MoveTest, EmptyStartingHexForMove) {
         const auto piece = PieceFactory::createPiece(enums::PieceType::BEETLE);
-        Piece *piecePtr = piece.get();
         const Hex from(0, 0, 0); // Empty hex
         const Hex to(1, -1, 0);
 
-        const Move move(playerId, piecePtr, from, to);
+        const Move move(player, (piece.get()), from, to);
 
         EXPECT_THROW({
                      move.execute(board);
-                     }, std::runtime_error);
+                     }, std::runtime_error) << "Executing a MOVE from an empty starting hex should throw exception.";
     }
 
     /**
@@ -415,31 +414,28 @@ namespace hive::models {
      */
     TEST_F(MoveTest, OverlappingMoves) {
         const auto piece1 = PieceFactory::createPiece(enums::PieceType::ANT);
-        Piece *piecePtr1 = piece1.get();
-        auto piece2 = PieceFactory::createPiece(enums::PieceType::BEETLE);
-        Piece *piecePtr2 = piece2.get();
+        const auto piece2 = PieceFactory::createPiece(enums::PieceType::BEETLE);
         const Hex hex(0, 0, 0);
 
         // Place the first piece
-        board.addPiece(hex, piecePtr1);
+        board.addPiece(hex, piece1.get());
 
         // Attempt to place the second piece on the same hex
-        const Move move(playerId, std::move(piece2), hex);
+        const Move move(player, (piece2.get()), hex);
         move.execute(board);
 
         // Verify that both pieces are on the hex, with the new one on top
-        EXPECT_EQ(board.getTopPiece(hex), piecePtr2);
+        EXPECT_EQ(board.getTopPiece(hex), piece2.get()) << "The second piece should be on top of the first piece.";
     }
 
     /**
      * @test Ensures that executing and undoing moves in quick succession does not corrupt board state.
      */
     TEST_F(MoveTest, BoardStateCorruption) {
-        auto piece = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
-        Piece *piecePtr = piece.get();
+        const auto piece = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
         const Hex to(0, 0, 0);
 
-        const Move move(playerId, std::move(piece), to);
+        const Move move(player, (piece.get()), to);
 
         // Rapid execution and undo
         for (int i = 0; i < 10; ++i) {
@@ -448,7 +444,7 @@ namespace hive::models {
         }
 
         // Board should be empty
-        EXPECT_EQ(board.pieceCount(), 0);
+        EXPECT_EQ(board.pieceCount(), 0) << "Board should be empty after rapid execution and undo.";
     }
 
     /***************************************************************************
@@ -486,21 +482,20 @@ namespace hive::models {
 
             // Create the actual move
             auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
-            Piece *piecePtr = piece.get();
-            moves.emplace_back(std::make_unique<Move>(playerId, std::move(piece), to));
-            EXPECT_NO_THROW(moves.back()->execute(board));
+            moves.emplace_back(std::make_unique<Move>(player, (piece.get()), to));
+            EXPECT_NO_THROW(moves.back()->execute(board)) << "Executing move " << i <<
+ " should not throw an exception.";
         }
 
-        EXPECT_EQ(board.pieceCount(), numMoves + 1); // Includes the initial piece
+        EXPECT_EQ(board.pieceCount(), numMoves + 1) << "There should be " << numMoves + 1 << " pieces on the board.";
 
         // Undo all moves
         for (const auto &move: std::ranges::reverse_view(moves)) {
-            EXPECT_NO_THROW(move->undo(board));
+            EXPECT_NO_THROW(move->undo(board)) << "Undoing move should not throw an exception.";
         }
 
-        EXPECT_EQ(board.pieceCount(), 1); // Only the initial piece remains
+        EXPECT_EQ(board.pieceCount(), 1) << "Only the initial piece should remain on the board.";
     }
-
 
     /**
      * @test Ensures that std::unique_ptr for piece is correctly managing memory.
@@ -509,13 +504,18 @@ namespace hive::models {
      * to check for memory leaks externally.
      */
     TEST_F(MoveTest, MemoryUsage) { {
-            auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
-            const Hex to(0, 0, 0);
-            const Move move(playerId, std::move(piece), to);
-            move.execute(board);
-            move.undo(board);
-        } // Move and piece should be destroyed here
+            const auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
+            const Hex to(1, 0, -1);
+            board.addPiece(Hex(0, 0, 0), piece.get());
 
-        SUCCEED(); // Test passes if no memory leaks are detected externally
+            const Move move(player, (piece.get()), to);
+            move.execute(board);
+
+            // After moving the piece, ensure memory is freed after move is out of scope
+            SUCCEED();
+        }
+
+        // Check for memory leaks (typically done with Valgrind or AddressSanitizer)
+        // No additional checks in code, but this is a reminder to use such tools.
     }
-} // namespace hive::models
+}

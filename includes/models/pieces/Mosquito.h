@@ -21,7 +21,7 @@ namespace hive::models::pieces {
          * This constructor initializes a Mosquito piece, assigning a `MosquitoMoveStrategy` for its movement,
          * which mimics adjacent pieces.
          */
-        explicit Mosquito(const size_t id = nextId++) : Piece(id, enums::PieceType::MOSQUITO,
+        explicit Mosquito(const size_t id = pieceNextId++) : Piece(id, enums::PieceType::MOSQUITO,
                                                               std::make_unique<strategies::MosquitoMoveStrategy>()) {
         }
 

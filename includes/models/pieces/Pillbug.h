@@ -23,7 +23,7 @@ namespace hive::models::pieces {
          * This constructor initializes a Pillbug piece, assigning a `PillbugMoveStrategy` for its movement
          * and special pulling ability.
          */
-        explicit Pillbug(const size_t id = nextId++) : Piece(id, enums::PieceType::PILLBUG,
+        explicit Pillbug(const size_t id = pieceNextId++) : Piece(id, enums::PieceType::PILLBUG,
                                                              std::make_unique<strategies::PillbugMoveStrategy>()) {
         }
 

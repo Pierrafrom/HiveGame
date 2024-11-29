@@ -159,6 +159,27 @@ namespace hive::models {
         board[Hex(0, 0, 0)];
     }
 
+    // Retrieves the position of a piece on the board
+    Hex Board::getPiecePosition(const Piece *piece) const {
+        if (!piece) {
+            throw std::invalid_argument("Piece pointer cannot be null.");
+        }
+
+        // Iterate through the map to find the piece
+        for (const auto &[hex, stack]: board) {
+            // Check each piece in the stack
+            std::stack<Piece *> tempStack = stack; // Create a copy to iterate safely
+            while (!tempStack.empty()) {
+                if (tempStack.top() == piece) {
+                    return hex; // Return the hex if the piece is found
+                }
+                tempStack.pop();
+            }
+        }
+
+        throw std::runtime_error("Piece not found on the board.");
+    }
+
     // Overloads the stream insertion operator for Board
     std::ostream &operator<<(std::ostream &os, const Board &board) {
         os << "Board state:\n";

@@ -4,16 +4,16 @@
 
 namespace hive::models {
     // Constructor for PLACE move
-    Move::Move(const size_t playerId, std::unique_ptr<Piece> piece, const Hex &to)
-        : type(MoveType::PLACE), playerId(playerId), piece(piece.release()), from(Hex(0, 0, 0)), to(to) {
+    Move::Move(Player* player, Piece* piece, const Hex& to)
+        : type(MoveType::PLACE), player(player), piece(piece), from(Hex(0, 0, 0)), to(to) {
         if (!this->piece) {
             throw std::invalid_argument("Piece cannot be null for a PLACE move.");
         }
     }
 
     // Constructor for MOVE move
-    Move::Move(const size_t playerId, Piece *piece, const Hex &from, const Hex &to)
-        : type(MoveType::MOVE), playerId(playerId), piece(piece), from(from), to(to) {
+    Move::Move(Player* player, Piece* piece, const Hex& from, const Hex& to)
+        : type(MoveType::MOVE), player(player), piece(piece), from(from), to(to) {
         if (!piece) {
             throw std::invalid_argument("Piece cannot be null for a MOVE move.");
         }

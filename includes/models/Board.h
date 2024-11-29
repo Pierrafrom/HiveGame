@@ -11,7 +11,6 @@
 #include "Hex.h"
 #include "Piece.h"
 
-//TODO: implement the movePiece method
 //TODO: think about the possibility of singleton for this class
 
 namespace hive::models {
@@ -138,7 +137,6 @@ namespace hive::models {
          */
         bool areAllPiecesConnected() const;
 
-
         /**
          * @brief Moves a piece from one hex to another.
          * @param from The hex location of the piece to move.
@@ -157,6 +155,14 @@ namespace hive::models {
          * or resetting after an undo operation.
          */
         void clear();
+
+        /**
+         * @brief Retrieves the position of a given piece on the board.
+         * @param piece A pointer to the piece whose position is to be found.
+         * @return The Hex representing the position of the piece on the board.
+         * @throws std::runtime_error If the piece is not found on the board.
+         */
+        [[nodiscard]] Hex getPiecePosition(const Piece *piece) const;
 
         /**
          * @brief Overloads the stream insertion operator for Board.

@@ -23,7 +23,7 @@ namespace hive::models::pieces {
          * This constructor initializes an Ant piece, assigning an `AntMoveStrategy` for the Ant's unique movement.
          * If no ID is provided, it defaults to an auto-incremented ID.
          */
-        explicit Ant(const size_t id = nextId++) : Piece(id, enums::PieceType::ANT,
+        explicit Ant(const size_t id = pieceNextId++) : Piece(id, enums::PieceType::ANT,
                                                          std::make_unique<strategies::AntMoveStrategy>()) {
         }
 

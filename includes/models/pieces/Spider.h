@@ -21,7 +21,7 @@ namespace hive::models::pieces {
          *
          * This constructor initializes a Spider piece, assigning a `SpiderMoveStrategy` for its unique movement.
          */
-        explicit Spider(const size_t id = nextId++) : Piece(id, enums::PieceType::SPIDER,
+        explicit Spider(const size_t id = pieceNextId++) : Piece(id, enums::PieceType::SPIDER,
                                                             std::make_unique<strategies::SpiderMoveStrategy>()) {
         }
 

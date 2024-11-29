@@ -25,7 +25,7 @@ namespace hive::models {
          * Each new piece created without an explicit ID will be assigned a unique ID
          * based on this counter. It ensures that all pieces have distinct identifiers.
          */
-        static size_t nextId;
+        static size_t pieceNextId;
 
         /**
          * @brief Unique identifier for the piece.
@@ -57,7 +57,7 @@ namespace hive::models {
          * @param type The specific type of the piece (e.g., QueenBee, Ant).
          * @param strategy A unique pointer to the MoveStrategy object (default is nullptr).
          *
-         * This constructor can assign a unique ID to the piece using the `nextId` counter, or it can accept
+         * This constructor can assign a unique ID to the piece using the `pieceNextId` counter, or it can accept
          * a specific ID, allowing for flexibility in ID assignment.
          */
         explicit Piece(const size_t id, const enums::PieceType type,
@@ -116,6 +116,13 @@ namespace hive::models {
          * @return True if the pieces differ in ID, false otherwise.
          */
         bool operator!=(const Piece &other) const { return !(*this == other); }
+
+        /**
+         * @brief Retrieves the neighboring pieces of this piece on the board.
+         * @param board A reference to the board object to get neighboring hexes and pieces.
+         * @return A vector of pointers to the neighboring pieces.
+         */
+        [[nodiscard]] std::vector<Piece *> getNeighboringPieces(const Board &board) const;
     };
 } // namespace hive::models
 
