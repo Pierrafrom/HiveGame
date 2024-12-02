@@ -1,5 +1,9 @@
 #include <iostream>
+#include <QApplication>
+#include "TestView.h"
+#include "views/BoardView.h"
 
+/*
 int main() {
     std::cout << "######################################################################################\n"
                     "#                                                                                    # \n"
@@ -46,4 +50,17 @@ int main() {
                     "#                                  |___/         |___/                               #\n"
                     "######################################################################################" << std::endl;
     return 0;
+}*/
+
+
+int main(int argc, char *argv[]) {
+    std::cout << "Hello World!" << std::endl;
+    QApplication app(argc, argv);
+
+    // Créer une instance de TestView
+    hive::views::BoardView board_view;
+    board_view.show(); // Afficher la fenêtre
+
+    // Exécuter l'application
+    return app.exec();
 }
