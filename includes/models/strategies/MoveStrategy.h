@@ -7,6 +7,7 @@
 // Forward declaration of Board class
 namespace hive::models {
     class Board;
+    class Player;
 }
 
 namespace hive::models::strategies {
@@ -30,12 +31,14 @@ namespace hive::models::strategies {
          * @brief Calculates the possible moves for a piece from a given position.
          * @param position The current position of the piece on the board.
          * @param board The current state of the game board.
+         * @param player The player that owns the piece.
          * @return A vector of `Hex` objects representing reachable positions.
          *
          * This pure virtual method must be overridden by derived classes to provide
          * specific movement logic for each type of piece.
          */
-        [[nodiscard]] virtual std::vector<Hex> getPossibleMoves(const Hex& position, const models::Board& board) const = 0;
+        [[nodiscard]] virtual std::vector<Hex> getPossibleMoves(const Hex &position, const Board &board,
+                                                                const Player &player) const = 0;
     };
 } // namespace hive::models::strategies
 

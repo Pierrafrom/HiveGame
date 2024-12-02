@@ -1,6 +1,8 @@
 #ifndef QUEEN_BEE_MOVE_STRATEGY_H
 #define QUEEN_BEE_MOVE_STRATEGY_H
 
+#include <models/Player.h>
+
 #include "models/strategies/MoveStrategy.h"
 
 namespace hive::models::strategies {
@@ -21,12 +23,14 @@ namespace hive::models::strategies {
          * @brief Calculates the possible moves for the Queen Bee piece.
          * @param position The current position of the Queen Bee on the board.
          * @param board The current state of the game board.
+         * @param player The player that owns the Queen Bee.
          * @return A vector of `Hex` objects representing all reachable positions.
          *
          * The Queen Bee can move only one space at a time to adjacent cells.
          */
         [[nodiscard]] std::vector<Hex> getPossibleMoves(const Hex &position,
-                                                        const Board &board) const override;
+                                                        const Board &board,
+                                                        const Player &player) const override;
     };
 } // namespace hive::models::strategies
 

@@ -10,8 +10,7 @@
 
 #include "Hex.h"
 #include "Piece.h"
-
-//TODO: think about the possibility of singleton for this class
+#include "enums/Direction.h"
 
 namespace hive::models {
     /**
@@ -22,27 +21,30 @@ namespace hive::models {
      * It handles the placement and removal of pieces, as well as the dynamic creation
      * and deletion of hexes (cells) as the game progresses. The board ensures that
      * there is always a single ring of empty hexes surrounding the cluster of pieces.
-     *
-     * This class is not a singleton because multiple instances may be created to
-     * manage game states for features like undo functionality.
      */
     class Board {
+        /**************************************************************************************************
+         * Attributes
+         *************************************************************************************************/
+
         /**
          * @brief The board is represented as a map of hex locations to a stack of pieces.
          *
-         * Each Hex key corresponds to a stack of Piece pointers, representing the pieces
-         * stacked at that hex location. Empty hexes are also stored to maintain the
-         * surrounding ring of empty cells.
+         * Each Hex key corresponds to a stack of `std::shared_ptr<Piece>`, representing the pieces
+         * stacked at that hex location. The ownership of the Piece objects is shared between the
+         * Board and the Player class.
          */
-        std::pmr::unordered_map<Hex, std::stack<Piece *> > board{std::pmr::get_default_resource()};
+        std::pmr::unordered_map<Hex, std::stack<std::shared_ptr<Piece> > > board{std::pmr::get_default_resource()};
+
+        /**************************************************************************************************
+         * Private methods
+         *************************************************************************************************/
 
         /**
          * @brief Generates hexes surrounding a given hex location.
          * @param hex The hex location around which to generate neighboring hexes.
          *
-         * When a piece is added to the board, this method creates empty neighboring
-         * hexes (if they don't already exist) around the specified hex. This ensures
-         * that there is always one ring of empty hexes surrounding the cluster of pieces.
+         * Ensures there is always one ring of empty hexes surrounding the cluster of pieces.
          */
         void generateSurroundingHexes(const Hex &hex);
 
@@ -50,9 +52,7 @@ namespace hive::models {
          * @brief Frees hexes surrounding a given hex location if no longer needed.
          * @param hex The hex location around which to free neighboring hexes.
          *
-         * When a piece is removed from the board, this method checks each neighboring
-         * hex and removes it if it is empty and has no non-empty neighbors. This maintains
-         * the rule of having only one ring of empty hexes around the cluster.
+         * Removes empty neighboring hexes if they have no non-empty neighbors.
          */
         void freeSurroundingHexes(const Hex &hex);
 
@@ -61,119 +61,123 @@ namespace hive::models {
          * @param hex The hex location to check.
          * @return True if at least one neighboring hex contains a piece; otherwise, false.
          */
-        bool hasNonEmptyNeighbors(const Hex &hex) const;
+        [[nodiscard]] bool hasNonEmptyNeighbors(const Hex &hex) const;
 
     public:
+        /**************************************************************************************************
+         * Constructors
+         *************************************************************************************************/
+
         /**
          * @brief Constructs a Board and initializes it with an empty hex at (0, 0, 0).
          */
         Board();
 
+        /**************************************************************************************************
+         * Getters
+         *************************************************************************************************/
+
         /**
-         * @brief Getter for the board map with read access only.
+         * @brief Retrieves the board map with read access only.
          * @return A const reference to the board map.
          *
          * Provides read-only access to the board map, allowing external classes to
          * retrieve the current state of the board without modifying it.
          */
-        const std::pmr::unordered_map<Hex, std::stack<Piece *> > &getBoard() const;
+        [[nodiscard]] const std::pmr::unordered_map<Hex, std::stack<std::shared_ptr<Piece> > > &getBoard() const {
+            return board;
+        }
+
+        /**
+         * @brief Retrieves the top piece at a specific hex location.
+         * @param hex The hex location to inspect.
+         * @return A shared pointer to the top Piece at the hex, or nullptr if none.
+         */
+        [[nodiscard]] std::shared_ptr<Piece> getTopPiece(const Hex &hex) const;
+
+        /**************************************************************************************************
+         * Public methods
+         *************************************************************************************************/
 
         /**
          * @brief Adds a piece to a specific hex location on the board.
          * @param hex The hex location where the piece will be added.
-         * @param piece A pointer to the Piece object to add.
-         *
-         * Places the piece onto the specified hex, stacking it if other pieces are
-         * already present. It also calls generateSurroundingHexes to update the board.
+         * @param piece Shared pointer to the Piece object to add.
+         * @throws std::invalid_argument If the provided piece is null.
          */
-        void addPiece(const Hex &hex, Piece *piece);
+        void addPiece(const Hex &hex, const std::shared_ptr<Piece> &piece);
 
         /**
          * @brief Removes and returns the top piece from a specific hex location.
          * @param hex The hex location from which to remove the piece.
-         * @return A pointer to the Piece that was removed, or nullptr if none.
-         *
-         * Removes the top piece from the stack at the specified hex. If the hex becomes
-         * empty, freeSurroundingHexes is called to update the board.
+         * @return A shared pointer to the Piece that was removed.
+         * @throws std::runtime_error If the hex is empty or the piece is not found.
          */
-        Piece *unstackPiece(const Hex &hex);
+        std::shared_ptr<Piece> unstackPiece(const Hex &hex);
 
         /**
          * @brief Checks if a hex location is occupied by any pieces.
          * @param hex The hex location to check.
          * @return True if the hex has at least one piece; otherwise, false.
          */
-        bool isOccupied(const Hex &hex) const;
-
-        /**
-         * @brief Retrieves the top piece at a specific hex location.
-         * @param hex The hex location to inspect.
-         * @return A pointer to the top Piece at the hex, or nullptr if none.
-         */
-        Piece *getTopPiece(const Hex &hex) const;
+        [[nodiscard]] bool isOccupied(const Hex &hex) const;
 
         /**
          * @brief Retrieves all hexes surrounding a specific hex location.
          * @param hex The hex location for which to get neighbors.
          * @return A vector of Hex objects representing neighboring hexes.
-         *
-         * Uses the Direction enum and getDirectionOffset to calculate neighboring hexes.
-         * This method returns both occupied and unoccupied neighboring hexes.
          */
-        std::vector<Hex> getNeighborHexes(const Hex &hex) const;
+        [[nodiscard]] std::vector<Hex> getNeighborHexes(const Hex &hex) const;
 
         /**
          * @brief Gets the total number of pieces on the board.
          * @return The total count of pieces present on the board.
          */
-        size_t pieceCount() const;
+        [[nodiscard]] size_t pieceCount() const;
 
         /**
          * @brief Checks if all pieces on the board are connected.
          * @return True if all pieces form a single connected cluster; otherwise, false.
-         *
-         * Verifies that the Hive remains intact as per game rules. This method can be
-         * used to determine if a move would split the hive, which is not allowed.
          */
-        bool areAllPiecesConnected() const;
+        [[nodiscard]] bool areAllPiecesConnected() const;
 
         /**
          * @brief Moves a piece from one hex to another.
          * @param from The hex location of the piece to move.
          * @param to The target hex location for the piece.
-         *
-         * Moves the top piece from the 'from' hex to the 'to' hex. This method is used
-         * to implement the MOVE move type in the game, where a piece is shifted to a new
-         * location on the board.
+         * @throws std::runtime_error If the source hex is empty or the move is invalid.
          */
         void movePiece(const Hex &from, const Hex &to);
 
         /**
+         * @brief Retrieves the neighboring hex in the given direction.
+         * @param hex The starting hex.
+         * @param direction The direction to move towards.
+         * @return The neighboring hex in the specified direction.
+         * @throws std::out_of_range If the neighboring hex does not exist on the board.
+         */
+        Hex neighbor(const Hex &hex, enums::Direction direction) const;
+
+        /**
          * @brief Clears the board, removing all pieces and hexes.
-         *
-         * Resets the board to its initial empty state. Useful for starting a new game
-         * or resetting after an undo operation.
          */
         void clear();
 
-        /**
-         * @brief Retrieves the position of a given piece on the board.
-         * @param piece A pointer to the piece whose position is to be found.
-         * @return The Hex representing the position of the piece on the board.
-         * @throws std::runtime_error If the piece is not found on the board.
-         */
-        [[nodiscard]] Hex getPiecePosition(const Piece *piece) const;
+        /**************************************************************************************************
+         * Operators
+         *************************************************************************************************/
 
         /**
          * @brief Overloads the stream insertion operator for Board.
          * @param os The output stream.
          * @param board The Board object to output.
          * @return A reference to the output stream.
-         *
-         * Allows the Board to be output to streams using the << operator, which can be
-         * useful for debugging or logging the board's state.
          */
         friend std::ostream &operator<<(std::ostream &os, const Board &board);
+
+        /**************************************************************************************************
+         * Destructor
+         *************************************************************************************************/
 
         /**
          * @brief Default destructor.
@@ -181,6 +185,5 @@ namespace hive::models {
         ~Board() = default;
     };
 } // namespace hive::models
-
 
 #endif // BOARD_H

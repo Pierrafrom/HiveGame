@@ -17,16 +17,25 @@ namespace hive::models {
     }
 
     /**************************************************************************************************
+     * Getters
+     *************************************************************************************************/
+
+    // Retrieves the top piece at a specific hex location
+    std::shared_ptr<Piece> Board::getTopPiece(const Hex &hex) const {
+        if (const auto it = board.find(hex); it != board.end() && !it->second.empty()) {
+            return it->second.top();
+        }
+        // No piece at this hex
+        return nullptr;
+    }
+
+    /**************************************************************************************************
      * Public methods
      *************************************************************************************************/
 
-    // Getter on the board map with read access only
-    const std::pmr::unordered_map<Hex, std::stack<Piece *> > &Board::getBoard() const {
-        return board;
-    }
 
     // Adds a piece to a specific hex location on the board
-    void Board::addPiece(const Hex &hex, Piece *piece) {
+    void Board::addPiece(const Hex &hex, const std::shared_ptr<Piece> &piece) {
         if (!piece) {
             throw std::invalid_argument("Piece cannot be null.");
         }
@@ -37,13 +46,15 @@ namespace hive::models {
         board[hex].push(piece);
         // Update the board by generating surrounding hexes
         generateSurroundingHexes(hex);
+        // update the position of the piece
+        piece->setPosition(hex);
     }
 
     // Removes and returns the top piece from a specific hex location
-    Piece *Board::unstackPiece(const Hex &hex) {
+    std::shared_ptr<Piece> Board::unstackPiece(const Hex &hex) {
         if (const auto it = board.find(hex); it != board.end() && !it->second.empty()) {
             // Remove the top piece from the stack
-            Piece *removedPiece = it->second.top();
+            std::shared_ptr<Piece> removedPiece = it->second.top();
             it->second.pop();
 
             // If the stack is now empty, update the board by freeing surrounding hexes
@@ -62,22 +73,13 @@ namespace hive::models {
         return it != board.end() && !it->second.empty();
     }
 
-    // Retrieves the top piece at a specific hex location
-    Piece *Board::getTopPiece(const Hex &hex) const {
-        if (const auto it = board.find(hex); it != board.end() && !it->second.empty()) {
-            return it->second.top();
-        }
-        // No piece at this hex
-        return nullptr;
-    }
-
     // Retrieves all hexes surrounding a specific hex location
     std::vector<Hex> Board::getNeighborHexes(const Hex &hex) const {
         std::vector<Hex> neighbors;
         neighbors.reserve(6); // Reserve space for six neighbors
 
         for (const auto &direction: enums::getAllDirections()) {
-            auto [dx, dy, dz] = enums::getDirectionOffset(direction);
+            auto [dx, dy, dz] = getDirectionOffset(direction);
             Hex neighbor(hex.getX() + dx, hex.getY() + dy, hex.getZ() + dz);
             neighbors.push_back(neighbor);
         }
@@ -139,7 +141,7 @@ namespace hive::models {
     // Moves a piece from one hex to another
     void Board::movePiece(const Hex &from, const Hex &to) {
         // Retrieve the top piece from the 'from' hex
-        Piece *movedPiece = this->getTopPiece(from);
+        const std::shared_ptr<Piece> movedPiece = this->getTopPiece(from);
         if (!movedPiece) {
             throw std::runtime_error("Cannot move a piece from an empty hex.");
         }
@@ -153,32 +155,35 @@ namespace hive::models {
         unstackPiece(from);
     }
 
+    // Get an Hex in a specified direction
+    Hex Board::neighbor(const Hex &hex, const enums::Direction direction) const {
+        // Get the direction offset
+        auto [dx, dy, dz] = getDirectionOffset(direction);
+
+        // Compute the neighboring hex
+        Hex neighborHex = {
+            static_cast<std::int8_t>(hex.getX() + dx),
+            static_cast<std::int8_t>(hex.getY() + dy),
+            static_cast<std::int8_t>(hex.getZ() + dz)
+        };
+
+        // Check if the neighboring hex exists in the board
+        if (!board.contains(neighborHex)) {
+            throw std::out_of_range("Neighbor in the specified direction does not exist.");
+        }
+
+        return neighborHex;
+    }
+
     // Clears the board, removing all pieces and hexes
     void Board::clear() {
         board.clear();
         board[Hex(0, 0, 0)];
     }
 
-    // Retrieves the position of a piece on the board
-    Hex Board::getPiecePosition(const Piece *piece) const {
-        if (!piece) {
-            throw std::invalid_argument("Piece pointer cannot be null.");
-        }
-
-        // Iterate through the map to find the piece
-        for (const auto &[hex, stack]: board) {
-            // Check each piece in the stack
-            std::stack<Piece *> tempStack = stack; // Create a copy to iterate safely
-            while (!tempStack.empty()) {
-                if (tempStack.top() == piece) {
-                    return hex; // Return the hex if the piece is found
-                }
-                tempStack.pop();
-            }
-        }
-
-        throw std::runtime_error("Piece not found on the board.");
-    }
+    /**************************************************************************************************
+     * Operators
+     *************************************************************************************************/
 
     // Overloads the stream insertion operator for Board
     std::ostream &operator<<(std::ostream &os, const Board &board) {
@@ -202,7 +207,7 @@ namespace hive::models {
     // Generates hexes surrounding a given hex location
     void Board::generateSurroundingHexes(const Hex &hex) {
         for (const auto &direction: enums::getAllDirections()) {
-            auto [dx, dy, dz] = enums::getDirectionOffset(direction);
+            auto [dx, dy, dz] = getDirectionOffset(direction);
 
             // If the neighbor hex doesn't exist in the board, create it with an empty stack
             if (Hex neighbor(hex.getX() + dx, hex.getY() + dy, hex.getZ() + dz); !board.contains(neighbor)) {
@@ -214,7 +219,7 @@ namespace hive::models {
     // Frees hexes surrounding a given hex location if no longer needed
     void Board::freeSurroundingHexes(const Hex &hex) {
         for (const auto &direction: enums::getAllDirections()) {
-            auto [dx, dy, dz] = enums::getDirectionOffset(direction);
+            auto [dx, dy, dz] = getDirectionOffset(direction);
             Hex neighbor(hex.getX() + dx, hex.getY() + dy, hex.getZ() + dz);
 
             if (auto it = board.find(neighbor); it != board.end() && it->second.empty()) {
@@ -229,7 +234,7 @@ namespace hive::models {
     // Checks if a hex location has non-empty neighboring hexes
     bool Board::hasNonEmptyNeighbors(const Hex &hex) const {
         for (const auto &direction: enums::getAllDirections()) {
-            auto [dx, dy, dz] = enums::getDirectionOffset(direction);
+            auto [dx, dy, dz] = getDirectionOffset(direction);
             Hex neighbor(hex.getX() + dx, hex.getY() + dy, hex.getZ() + dz);
 
             if (auto it = board.find(neighbor); it != board.end() && !it->second.empty()) {

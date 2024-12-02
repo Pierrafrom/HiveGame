@@ -71,13 +71,28 @@ namespace hive::models {
     // validate that the piece can be moved (e.g., piece is owned by the player)
     bool GameRules::validateMoveType(const Move &move, const Board &board) {
         //! WARNING: All logic regarding the possibility of moving a piece will be handled by the getPossibleMoves
-        // method of the MoveStrategy class. Therefore, it is important to ensure that this method is called before
-        // validateMoves.
+        // method of the MoveStrategy class. Therefore, it is important to ensure that this method is called before or
+        // after validateMoves.
 
         // check if the starting hex is occupied
-        if (!board.isOccupied(move.getFrom())) {
+        if (!board.isOccupied(move.getFrom().value())) {
             throw std::invalid_argument("Starting hex is not occupied.");
         }
+
+        // check if the piece is owned by the player
+        if (const auto &piece = board.getTopPiece(move.getFrom().value());
+            piece->getOwner() != *move.getPlayer()) {
+            throw std::invalid_argument("Piece is not owned by the player.");
+        }
+
+        // check if the to hex is occupied and if the piece is not a beetle
+        if (board.isOccupied(move.getTo())) {
+            if (const auto &piece = board.getTopPiece(move.getTo());
+                piece->getType() != enums::PieceType::BEETLE) {
+                throw std::invalid_argument("Target hex is already occupied.");
+            }
+        }
+
         return true;
     }
 
@@ -104,7 +119,8 @@ namespace hive::models {
         // validate that the placement hex is not adjacent to an opponent's piece
         for (const auto &neighbor: board.getNeighborHexes(move.getTo())) {
             if (board.isOccupied(neighbor)) {
-                if (!move.getPlayer()->ownsPiece(*board.getTopPiece(neighbor))) {
+                if (const auto &piece = board.getTopPiece(neighbor);
+                    piece->getOwner() != *move.getPlayer()) {
                     throw std::invalid_argument("Placement hex must not be adjacent to an opponent's piece.");
                 }
             }
@@ -119,17 +135,26 @@ namespace hive::models {
         std::vector<const Player *> surroundedPlayers; // Track players with surrounded queen bees
 
         for (const auto &player: players) {
-            const auto &queenBeePieces = player.getPieces(enums::PieceType::QUEEN_BEE);
+            // Retrieve the queen bee pieces owned by the player
+            const auto queenBeePieces = player.getPieces(enums::PieceType::QUEEN_BEE);
 
-            // Skip this player if they have no queen bee (e.g., early game)
+            // Skip this player if they do not have a queen bee piece (e.g., early game)
             if (queenBeePieces.empty()) {
                 continue;
             }
 
-            // Get the position of the player's queen bee
-            const Hex queenBeePos = board.getPiecePosition(queenBeePieces[0]);
+            // Assume there's only one queen bee per player and get its position
+            const auto &queenBee = queenBeePieces[0];
+            const auto queenBeePosOpt = queenBee->getPosition();
 
-            // Check if the queen bee is surrounded
+            // If the queen bee has no position, skip (e.g., not yet placed on the board)
+            if (!queenBeePosOpt.has_value()) {
+                continue;
+            }
+
+            const Hex &queenBeePos = queenBeePosOpt.value();
+
+            // Check if all neighboring hexes are occupied
             bool isSurrounded = true;
             for (const auto &neighbor: board.getNeighborHexes(queenBeePos)) {
                 if (!board.isOccupied(neighbor)) {
@@ -143,6 +168,7 @@ namespace hive::models {
                 surroundedPlayers.push_back(&player);
             }
         }
+
 
         // Determine the game state based on the number of surrounded players
         if (surroundedPlayers.size() == 1) {

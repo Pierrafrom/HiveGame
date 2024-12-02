@@ -15,22 +15,63 @@ namespace hive::models::pieces {
      */
     class Spider final : public Piece {
     public:
+        /**************************************************************************************************
+         * Constructors
+         *************************************************************************************************/
+
         /**
-         * @brief Constructor for the Spider piece with an optional specified ID.
+         * @brief Constructs a Spider piece with an optional specified ID, owner, and position.
          * @param id Optional unique identifier for the piece. If not provided, an auto-incremented ID is assigned.
+         * @param owner Shared pointer to the owning player (default is nullptr).
+         * @param position Optional initial position of the piece on the board (default is std::nullopt).
          *
          * This constructor initializes a Spider piece, assigning a `SpiderMoveStrategy` for its unique movement.
          */
-        explicit Spider(const size_t id = pieceNextId++) : Piece(id, enums::PieceType::SPIDER,
-                                                            std::make_unique<strategies::SpiderMoveStrategy>()) {
+        explicit Spider(const size_t id = pieceNextId++,
+                        const std::shared_ptr<Player> &owner = nullptr,
+                        const std::optional<Hex> &position = std::nullopt)
+            : Piece(id,
+                    enums::PieceType::SPIDER,
+                    std::make_unique<strategies::SpiderMoveStrategy>(),
+                    owner,
+                    position) {
         }
 
+        /**************************************************************************************************
+         * Destructor
+         *************************************************************************************************/
+
         /**
-         * @brief Destructor for the Spider piece.
+         * @brief Default destructor for the Spider piece.
          *
-         * The destructor is defaulted as no special cleanup is necessary.
+         * Ensures proper cleanup of resources specific to the Spider piece. Declared as `override`
+         * to enforce polymorphic deletion for derived classes.
          */
         ~Spider() override = default;
+
+        /**************************************************************************************************
+         * Other constructors and operators
+         *************************************************************************************************/
+
+        /**
+         * @brief Delete copy constructor.
+         */
+        Spider(const Spider &) = delete;
+
+        /**
+         * @brief Delete copy assignment operator.
+         */
+        Spider &operator=(const Spider &) = delete;
+
+        /**
+         * @brief Default move constructor.
+         */
+        Spider(Spider &&) noexcept = default;
+
+        /**
+         * @brief Default move assignment operator.
+         */
+        Spider &operator=(Spider &&) noexcept = default;
     };
 } // namespace hive::models::pieces
 

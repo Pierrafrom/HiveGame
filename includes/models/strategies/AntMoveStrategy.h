@@ -1,6 +1,8 @@
 #ifndef ANT_MOVE_STRATEGY_H
 #define ANT_MOVE_STRATEGY_H
 
+#include <models/Player.h>
+
 #include "models/strategies/MoveStrategy.h"
 
 namespace hive::models::strategies {
@@ -24,6 +26,7 @@ namespace hive::models::strategies {
          * @brief Calculates the possible moves for the Ant piece.
          * @param position The current position of the Ant on the board.
          * @param board The current state of the game board.
+         * @param player The player that owns the Ant.
          * @return A vector of `Hex` objects representing all reachable positions.
          *
          * This method overrides `getPossibleMoves` to provide the unique movement behavior for the Ant.
@@ -31,7 +34,8 @@ namespace hive::models::strategies {
          * the sliding rule that keeps it adjacent to other pieces.
          */
         [[nodiscard]] std::vector<Hex> getPossibleMoves(const Hex &position,
-                                                        const Board &board) const override;
+                                                        const Board &board,
+                                                        const Player &player) const override;
     };
 } // namespace hive::models::strategies
 

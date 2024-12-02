@@ -1,6 +1,8 @@
 #ifndef PILLBUG_MOVE_STRATEGY_H
 #define PILLBUG_MOVE_STRATEGY_H
 
+#include <models/Player.h>
+
 #include "models/strategies/MoveStrategy.h"
 
 namespace hive::models::strategies {
@@ -24,13 +26,15 @@ namespace hive::models::strategies {
          * @brief Calculates the possible moves for the Pillbug piece.
          * @param position The current position of the Pillbug on the board.
          * @param board The current state of the game board.
+         * @param player The player that owns the Pillbug.
          * @return A vector of `Hex` objects representing all reachable positions.
          *
          * The Pillbug can move one space at a time, but it also has a special ability to lift and move adjacent pieces,
          * subject to specific game rules.
          */
         [[nodiscard]] std::vector<Hex> getPossibleMoves(const Hex &position,
-                                                        const Board &board) const override;
+                                                        const Board &board,
+                                                        const Player &player) const override;
     };
 } // namespace hive::models::strategies
 
