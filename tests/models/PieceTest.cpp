@@ -1,27 +1,42 @@
-// PieceTest.cpp
-
 #include <gtest/gtest.h>
 #include "models/Piece.h"
-#include "models/PieceFactory.h"
+#include "models/Player.h"
 #include "models/enums/PieceType.h"
-#include "models/strategies/MoveStrategy.h"
-#include "models/strategies/AntMoveStrategy.h"
-#include "models/strategies/BeetleMoveStrategy.h"
-#include "models/strategies/GrasshopperMoveStrategy.h"
-#include "models/strategies/QueenBeeMoveStrategy.h"
-#include "models/strategies/SpiderMoveStrategy.h"
+#include <memory>
+#include "models/Board.h"
+#include "models/PieceFactory.h"
 
 namespace hive::models {
     /**
      * @brief Test fixture class for Piece unit tests.
      */
     class PieceTest : public testing::Test {
+    protected:
+        Board board; /**< Board instance used in tests */
+        std::shared_ptr<Player> player1; /**< First player */
+        std::shared_ptr<Player> player2; /**< Second player */
+
+        void SetUp() override {
+            player1 = std::make_shared<Player>("Player1");
+            player2 = std::make_shared<Player>("Player2");
+        }
+
+        void TearDown() override {
+            // No dynamic memory to clean up
+        }
     };
 
+    /***************************************************************************
+     * Piece Creation Tests
+     **************************************************************************/
+
     /**
-     * @test Test creation of a Piece (via derived classes) with auto-incremented ID.
+     * @test Tests that a Piece is created with an auto-incremented ID.
+     *
+     * This test ensures that when a piece is created without specifying an ID,
+     * it gets a unique ID based on the pieceNextId static counter.
      */
-    TEST_F(PieceTest, AutoIncrementId) {
+    TEST_F(PieceTest, CreatePieceWithAutoIncrementedId) {
         const auto piece1 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
         const auto piece2 = PieceFactory::createPiece(enums::PieceType::ANT);
 
@@ -31,9 +46,12 @@ namespace hive::models {
     }
 
     /**
-     * @test Test creation of a Piece with a specified ID.
+     * @test Tests that a Piece is created with a specified ID.
+     *
+     * This test ensures that when a piece is created with a specific ID,
+     * that ID is correctly assigned to the piece.
      */
-    TEST_F(PieceTest, SpecifiedId) {
+    TEST_F(PieceTest, CreatePieceWithSpecifiedId) {
         constexpr size_t customId = 42;
         const auto piece = PieceFactory::createPiece(enums::PieceType::BEETLE, customId);
 
@@ -42,9 +60,11 @@ namespace hive::models {
     }
 
     /**
-     * @test Test getType() method for each piece type.
+     * @test Tests that the type of a piece is correctly assigned during creation.
+     *
+     * This test ensures that the correct type (e.g., QueenBee, Ant) is assigned to the piece.
      */
-    TEST_F(PieceTest, GetType) {
+    TEST_F(PieceTest, PieceTypeAssignment) {
         const auto queenBee = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
         const auto ant = PieceFactory::createPiece(enums::PieceType::ANT);
         const auto beetle = PieceFactory::createPiece(enums::PieceType::BEETLE);
@@ -64,240 +84,241 @@ namespace hive::models {
         EXPECT_EQ(pillbug->getType(), enums::PieceType::PILLBUG);
     }
 
+    /***************************************************************************
+     * Piece Owner Tests
+     **************************************************************************/
+
     /**
-     * @test Test setMoveStrategy() and getMoveStrategy() methods.
+     * @test Tests setting and getting the owner of a piece.
+     *
+     * This test ensures that the owner can be correctly assigned and retrieved.
      */
-    TEST_F(PieceTest, SetGetMoveStrategy) {
-        const auto ant = PieceFactory::createPiece(enums::PieceType::ANT);
-        const auto originalStrategy = &ant->getMoveStrategy();
+    TEST_F(PieceTest, SetAndGetOwner) {
+        const auto piece = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        piece->setOwner(player1);
 
-        // Change the move strategy
-        ant->setMoveStrategy(std::make_unique<strategies::BeetleMoveStrategy>());
-        const auto newStrategy = &ant->getMoveStrategy();
-
-        EXPECT_NE(originalStrategy, newStrategy);
-        // Verify that the new strategy is a BeetleMoveStrategy
-        EXPECT_NO_THROW(dynamic_cast<const strategies::BeetleMoveStrategy&>(ant->getMoveStrategy()));
+        EXPECT_TRUE(piece->hasOwner());
+        EXPECT_EQ(&piece->getOwner(), player1.get());
     }
 
     /**
-     * @test Test equality operators operator== and operator!= for pieces with the same ID.
+     * @test Tests getting the owner when it is not set.
+     *
+     * This test ensures that trying to get the owner when it is not set throws an exception.
      */
-    TEST_F(PieceTest, EqualityOperatorsSameId) {
-        constexpr size_t id = 100;
-        const auto piece1 = PieceFactory::createPiece(enums::PieceType::SPIDER, id);
-        const auto piece2 = PieceFactory::createPiece(enums::PieceType::SPIDER, id);
+    TEST_F(PieceTest, GetOwnerWhenNotSetThrowsException) {
+        const auto piece = PieceFactory::createPiece(enums::PieceType::BEETLE);
 
-        EXPECT_TRUE(*piece1 == *piece2);
-        EXPECT_FALSE(*piece1 != *piece2);
+        EXPECT_FALSE(piece->hasOwner());
+        EXPECT_THROW(piece->getOwner(), std::runtime_error);
+    }
+
+    /***************************************************************************
+     * Move Strategy Tests
+     **************************************************************************/
+
+    /**
+     * @test Tests that a piece has a movement strategy assigned during creation.
+     *
+     * This test ensures that the movement strategy is correctly set for each piece.
+     */
+    TEST_F(PieceTest, PieceMoveStrategy) {
+        const auto piece1 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        const auto piece2 = PieceFactory::createPiece(enums::PieceType::ANT);
+
+        EXPECT_NO_THROW(piece1->getMoveStrategy()) << "The piece should have a move strategy assigned.";
+        EXPECT_NO_THROW(piece2->getMoveStrategy()) << "The piece should have a move strategy assigned.";
     }
 
     /**
-     * @test Test equality operators operator== and operator!= for pieces with different IDs.
+     * @test Tests setting a null movement strategy throws an exception.
+     *
+     * This test ensures that setting a null move strategy is not allowed.
      */
-    TEST_F(PieceTest, EqualityOperatorsDifferentId) {
-        const auto piece1 = PieceFactory::createPiece(enums::PieceType::SPIDER);
-        const auto piece2 = PieceFactory::createPiece(enums::PieceType::SPIDER);
+    TEST_F(PieceTest, SetNullMoveStrategyThrowsException) {
+        const auto piece = PieceFactory::createPiece(enums::PieceType::BEETLE);
 
-        EXPECT_FALSE(*piece1 == *piece2);
-        EXPECT_TRUE(*piece1 != *piece2);
+        EXPECT_THROW(piece->setMoveStrategy(nullptr), std::invalid_argument);
     }
 
     /**
-     * @test Test PieceFactory creating pieces without specifying an ID.
+     * @test Tests getting the move strategy when it is not set.
+     *
+     * This test ensures that trying to get the move strategy when it is not set throws an exception.
      */
-    TEST_F(PieceTest, PieceFactoryCreateWithoutId) {
+    TEST_F(PieceTest, GetMoveStrategyWhenNotSetThrowsException) {
+        // Create a piece without a move strategy
+        class TestPiece : public Piece {
+        public:
+            explicit TestPiece() : Piece(pieceNextId++, enums::PieceType::ANT) {
+            }
+        };
+
+        const auto piece = std::make_unique<TestPiece>();
+
+        EXPECT_THROW(piece->getMoveStrategy(), std::runtime_error);
+    }
+
+    /***************************************************************************
+     * Position Tests
+     **************************************************************************/
+
+    /**
+     * @test Tests setting and getting the position of a piece.
+     *
+     * This test ensures that the position can be correctly assigned and retrieved.
+     */
+    TEST_F(PieceTest, SetAndGetPosition) {
+        const auto piece = PieceFactory::createPiece(enums::PieceType::SPIDER);
+        const Hex position(0, 0, 0);
+
+        piece->setPosition(position);
+
+        EXPECT_TRUE(piece->getPosition().has_value());
+        EXPECT_EQ(piece->getPosition().value(), position);
+    }
+
+    /**
+     * @test Tests getting the position when it is not set.
+     *
+     * This test ensures that the position is initially not set.
+     */
+    TEST_F(PieceTest, GetPositionWhenNotSet) {
+        const auto piece = PieceFactory::createPiece(enums::PieceType::LADYBUG);
+
+        EXPECT_FALSE(piece->getPosition().has_value());
+    }
+
+    /***************************************************************************
+     * Equality Operator Tests
+     **************************************************************************/
+
+    /**
+     * @test Tests the equality operator (==) for comparing two pieces.
+     *
+     * This test ensures that two pieces are considered equal if they have the same ID, type, and owner.
+     */
+    TEST_F(PieceTest, EqualityOperator) {
+        constexpr size_t pieceId = 42;
+        const auto piece1 = PieceFactory::createPiece(enums::PieceType::ANT, pieceId);
+        const auto piece2 = PieceFactory::createPiece(enums::PieceType::ANT, pieceId);
+
+        piece1->setOwner(player1);
+        piece2->setOwner(player1);
+
+        EXPECT_TRUE(*piece1 == *piece2) << "Pieces with the same ID, type, and owner should be considered equal.";
+    }
+
+    /**
+     * @test Tests the inequality operator (!=) for comparing two pieces.
+     *
+     * This test ensures that two pieces are considered different if they have different IDs.
+     */
+    TEST_F(PieceTest, InequalityOperator) {
+        const auto piece1 = PieceFactory::createPiece(enums::PieceType::ANT, 42);
+        const auto piece2 = PieceFactory::createPiece(enums::PieceType::ANT, 99);
+
+        EXPECT_TRUE(*piece1 != *piece2) << "Pieces with different IDs should be considered different.";
+    }
+
+    /***************************************************************************
+     * Neighboring Pieces Tests
+     **************************************************************************/
+
+    /**
+     * @test Tests getting neighboring pieces of a piece.
+     *
+     * This test ensures that the neighboring pieces are correctly identified.
+     */
+    TEST_F(PieceTest, GetNeighbors) {
+        // Create and place pieces on the board
         const auto queenBee = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
         const auto ant = PieceFactory::createPiece(enums::PieceType::ANT);
         const auto beetle = PieceFactory::createPiece(enums::PieceType::BEETLE);
 
-        EXPECT_EQ(queenBee->getType(), enums::PieceType::QUEEN_BEE);
-        EXPECT_EQ(ant->getType(), enums::PieceType::ANT);
-        EXPECT_EQ(beetle->getType(), enums::PieceType::BEETLE);
+        // Set positions
+        queenBee->setPosition(Hex(0, 0, 0));
+        ant->setPosition(Hex(0, 1, -1));
+        beetle->setPosition(Hex(0, 2, -2));
 
-        EXPECT_GT(queenBee->getId(), 0);
-        EXPECT_GT(ant->getId(), 0);
-        EXPECT_GT(beetle->getId(), 0);
+        // Add pieces to the board
+        board.addPiece(queenBee->getPosition().value(), std::shared_ptr<Piece>(queenBee.get(), [](Piece *) {
+        }));
+        board.addPiece(ant->getPosition().value(), std::shared_ptr<Piece>(ant.get(), [](Piece *) {
+        }));
+        board.addPiece(beetle->getPosition().value(), std::shared_ptr<Piece>(beetle.get(), [](Piece *) {
+        }));
+
+        // Get neighbors of QueenBee
+        const auto neighbors = queenBee->getNeighbors(board);
+
+        // Verify that the neighbors are correct
+        EXPECT_EQ(neighbors.size(), 1) << "The QueenBee should have 1 neighbor.";
+        EXPECT_EQ(neighbors[0]->getType(), enums::PieceType::ANT);
     }
 
     /**
-     * @test Test PieceFactory creating pieces with a specified ID.
+     * @test Tests that an isolated piece has no neighbors.
+     *
+     * This test ensures that when a piece is alone on the board, it has no neighbors.
      */
-    TEST_F(PieceTest, PieceFactoryCreateWithId) {
-        constexpr size_t customId = 500;
-        const auto grasshopper = PieceFactory::createPiece(enums::PieceType::GRASSHOPPER, customId);
+    TEST_F(PieceTest, NoNeighborsForIsolatedPiece) {
+        // Place QueenBee in an isolated position on the board
+        const auto queenBee = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        queenBee->setPosition(Hex(0, 0, 0));
+        board.addPiece(queenBee->getPosition().value(), std::shared_ptr<Piece>(queenBee.get(), [](Piece *) {
+        }));
 
-        EXPECT_EQ(grasshopper->getId(), customId);
-        EXPECT_EQ(grasshopper->getType(), enums::PieceType::GRASSHOPPER);
+        // Get neighbors of QueenBee
+        const auto neighbors = queenBee->getNeighbors(board);
+
+        EXPECT_TRUE(neighbors.empty()) << "The QueenBee should have no neighbors when isolated.";
+    }
+
+    /***************************************************************************
+     * Edge Case Tests
+     **************************************************************************/
+
+    /**
+     * @test Tests that creating a piece with an invalid type throws an exception.
+     *
+     * This test ensures that the PieceFactory correctly handles invalid piece types.
+     */
+    TEST_F(PieceTest, InvalidPieceTypeThrowsException) {
+        EXPECT_THROW(PieceFactory::createPiece(static_cast<enums::PieceType>(999)), std::invalid_argument)
+            << "Creating a piece with an invalid type should throw an exception.";
     }
 
     /**
-     * @test Test PieceFactory throwing exception on invalid PieceType.
+     * @test Tests the stream insertion operator for Piece.
+     *
+     * This test ensures that the Piece can be outputted to an output stream.
      */
-    TEST_F(PieceTest, PieceFactoryInvalidPieceType) {
-        EXPECT_THROW({
-                     PieceFactory::createPiece(static_cast<enums::PieceType>(-1));
-                     }, std::invalid_argument);
+    TEST_F(PieceTest, OutputOperator) {
+        const auto piece = PieceFactory::createPiece(enums::PieceType::MOSQUITO);
+        piece->setOwner(player1);
+        piece->setPosition(Hex(0, 0, 0));
+
+        std::ostringstream oss;
+        oss << *piece;
+
+        EXPECT_FALSE(oss.str().empty()) << "The output operator should produce a non-empty string.";
     }
 
     /**
-     * @test Test creation of each derived Piece class without specifying an ID.
+     * @test Tests moving a piece (position change).
+     *
+     * This test ensures that the position of a piece can be updated.
      */
-    TEST_F(PieceTest, DerivedPiecesCreateWithoutId) {
-        auto queenBee = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
-        auto ant = PieceFactory::createPiece(enums::PieceType::ANT);
-        auto beetle = PieceFactory::createPiece(enums::PieceType::BEETLE);
-        auto grasshopper = PieceFactory::createPiece(enums::PieceType::GRASSHOPPER);
-        auto spider = PieceFactory::createPiece(enums::PieceType::SPIDER);
-        auto ladybug = PieceFactory::createPiece(enums::PieceType::LADYBUG);
-        auto mosquito = PieceFactory::createPiece(enums::PieceType::MOSQUITO);
-        auto pillbug = PieceFactory::createPiece(enums::PieceType::PILLBUG);
+    TEST_F(PieceTest, MovePiece) {
+        const auto piece = PieceFactory::createPiece(enums::PieceType::PILLBUG);
+        const Hex initialPosition(0, 0, 0);
+        const Hex newPosition(1, -1, 0);
 
-        EXPECT_EQ(queenBee->getType(), enums::PieceType::QUEEN_BEE);
-        EXPECT_EQ(ant->getType(), enums::PieceType::ANT);
-        EXPECT_EQ(beetle->getType(), enums::PieceType::BEETLE);
-        EXPECT_EQ(grasshopper->getType(), enums::PieceType::GRASSHOPPER);
-        EXPECT_EQ(spider->getType(), enums::PieceType::SPIDER);
-        EXPECT_EQ(ladybug->getType(), enums::PieceType::LADYBUG);
-        EXPECT_EQ(mosquito->getType(), enums::PieceType::MOSQUITO);
-        EXPECT_EQ(pillbug->getType(), enums::PieceType::PILLBUG);
+        piece->setPosition(initialPosition);
+        EXPECT_EQ(piece->getPosition().value(), initialPosition);
 
-        // Ensure IDs are unique
-        std::set<size_t> ids = {
-            queenBee->getId(), ant->getId(), beetle->getId(),
-            grasshopper->getId(), spider->getId(), ladybug->getId(),
-            mosquito->getId(), pillbug->getId()
-        };
-        EXPECT_EQ(ids.size(), 8);
-    }
-
-    /**
-     * @test Test creation of each derived Piece class with a specified ID.
-     */
-    TEST_F(PieceTest, DerivedPiecesCreateWithId) {
-        constexpr size_t baseId = 1000;
-        const auto queenBee = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE, baseId + 1);
-        const auto ant = PieceFactory::createPiece(enums::PieceType::ANT, baseId + 2);
-        const auto beetle = PieceFactory::createPiece(enums::PieceType::BEETLE, baseId + 3);
-        const auto grasshopper = PieceFactory::createPiece(enums::PieceType::GRASSHOPPER, baseId + 4);
-        const auto spider = PieceFactory::createPiece(enums::PieceType::SPIDER, baseId + 5);
-
-        EXPECT_EQ(queenBee->getId(), baseId + 1);
-        EXPECT_EQ(ant->getId(), baseId + 2);
-        EXPECT_EQ(beetle->getId(), baseId + 3);
-        EXPECT_EQ(grasshopper->getId(), baseId + 4);
-        EXPECT_EQ(spider->getId(), baseId + 5);
-    }
-
-    /**
-     * @test Test auto-increment of IDs when creating multiple pieces without specifying IDs.
-     */
-    TEST_F(PieceTest, AutoIncrementMultiplePieces) {
-        const auto piece1 = PieceFactory::createPiece(enums::PieceType::ANT);
-        const auto piece2 = PieceFactory::createPiece(enums::PieceType::BEETLE);
-        const auto piece3 = PieceFactory::createPiece(enums::PieceType::SPIDER);
-
-        EXPECT_GT(piece2->getId(), piece1->getId());
-        EXPECT_GT(piece3->getId(), piece2->getId());
-    }
-
-    /**
-     * @test Test that IDs continue correctly after creating a piece with a specified ID.
-     */
-    TEST_F(PieceTest, IdsContinueAfterSpecifiedId) {
-        constexpr size_t customId = 2000;
-        auto piece1 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE, customId);
-        const auto piece2 = PieceFactory::createPiece(enums::PieceType::ANT);
-        const auto piece3 = PieceFactory::createPiece(enums::PieceType::BEETLE);
-
-        EXPECT_GT(piece2->getId(), customId);
-        EXPECT_GT(piece3->getId(), piece2->getId());
-    }
-
-    /**
-     * @test Test that each piece has the correct movement strategy assigned.
-     */
-    TEST_F(PieceTest, CorrectMoveStrategyAssignment) {
-        auto queenBee = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
-        auto ant = PieceFactory::createPiece(enums::PieceType::ANT);
-        auto beetle = PieceFactory::createPiece(enums::PieceType::BEETLE);
-        auto grasshopper = PieceFactory::createPiece(enums::PieceType::GRASSHOPPER);
-        auto spider = PieceFactory::createPiece(enums::PieceType::SPIDER);
-
-        EXPECT_NO_THROW(dynamic_cast<const strategies::QueenBeeMoveStrategy&>(queenBee->getMoveStrategy()));
-        EXPECT_NO_THROW(dynamic_cast<const strategies::AntMoveStrategy&>(ant->getMoveStrategy()));
-        EXPECT_NO_THROW(dynamic_cast<const strategies::BeetleMoveStrategy&>(beetle->getMoveStrategy()));
-        EXPECT_NO_THROW(dynamic_cast<const strategies::GrasshopperMoveStrategy&>(grasshopper->getMoveStrategy()));
-        EXPECT_NO_THROW(dynamic_cast<const strategies::SpiderMoveStrategy&>(spider->getMoveStrategy()));
-    }
-
-    /**
-     * @test Test changing the movement strategy of a piece.
-     */
-    TEST_F(PieceTest, ChangeMoveStrategy) {
-        const auto ant = PieceFactory::createPiece(enums::PieceType::ANT);
-
-        // Original strategy should be AntMoveStrategy
-        EXPECT_NO_THROW(dynamic_cast<const strategies::AntMoveStrategy&>(ant->getMoveStrategy()));
-
-        // Change strategy to BeetleMoveStrategy
-        ant->setMoveStrategy(std::make_unique<strategies::BeetleMoveStrategy>());
-
-        // New strategy should be BeetleMoveStrategy
-        EXPECT_NO_THROW(dynamic_cast<const strategies::BeetleMoveStrategy&>(ant->getMoveStrategy()));
-    }
-
-    /**
-     * @test Test handling nullptr in setMoveStrategy().
-     */
-    TEST_F(PieceTest, SetMoveStrategyNullptr) {
-        const auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
-
-        // Set the move strategy to nullptr
-        piece->setMoveStrategy(nullptr);
-
-        // Example: If getMoveStrategy() returns a reference, accessing it may throw
-        EXPECT_THROW({
-                     piece->getMoveStrategy();
-                     }, std::runtime_error);
-    }
-
-    /**
-     * @test Test comparing pieces with same ID but different types.
-     */
-    TEST_F(PieceTest, EqualitySameIdDifferentType) {
-        constexpr size_t id = 3000;
-        const auto piece1 = PieceFactory::createPiece(enums::PieceType::ANT, id);
-        const auto piece2 = PieceFactory::createPiece(enums::PieceType::BEETLE, id);
-
-        EXPECT_TRUE(*piece1 != *piece2);
-        EXPECT_FALSE(*piece1 == *piece2);
-    }
-
-    /**
-     * @test Test that creating an instance of Piece is not allowed (if Piece is abstract).
-     */
-    TEST_F(PieceTest, CannotInstantiateAbstractPiece) {
-        // If Piece is an abstract class, the following should be invalid
-        // Uncommenting the following lines should cause a compilation error
-
-        // auto piece = std::make_unique<Piece>();
-        // EXPECT_EQ(piece, nullptr);
-
-        SUCCEED(); // This test passes if the code does not compile when attempting to instantiate Piece
-    }
-
-    /**
-     * @test Test that destructors are called correctly and no memory leaks occur.
-     */
-    TEST_F(PieceTest, DestructorCalls) {
-        // Use tools like Valgrind or sanitizers to check for memory leaks
-        // For the test, we'll create and destroy pieces and expect no exceptions
-
-        {
-            auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
-        } // Piece should be destroyed here without issues
-
-        SUCCEED(); // Test passes if no exceptions are thrown and no leaks are detected externally
+        piece->setPosition(newPosition);
+        EXPECT_EQ(piece->getPosition().value(), newPosition);
     }
 } // namespace hive::models

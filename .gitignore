@@ -49,6 +49,7 @@ Makefile
 .vscode/
 *.iml
 /.vs/
+/.vs/
 
 # CTest
 Testing/
@@ -60,3 +61,10 @@ CTestCostData.txt
 
 # Documentation générée
 /docs/html/
+
+# Autres
+.vs/
+*.vsidx
+*.vspx
+*.user
+*.suo

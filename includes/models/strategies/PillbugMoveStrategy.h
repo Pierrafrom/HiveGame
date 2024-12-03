@@ -14,6 +14,13 @@ namespace hive::models::strategies {
     class PillbugMoveStrategy final : public MoveStrategy {
     public:
         /**
+         * @brief Constructs a MoveStrategy object for a specific piece.
+         * @param p Pointer to the piece that uses this movement strategy.
+         */
+        explicit PillbugMoveStrategy(Piece *p) : MoveStrategy(p) {
+        }
+
+        /**
          * @brief Destructor.
          *
          * Ensures proper cleanup for the Pillbug's movement strategy if necessary.
@@ -22,15 +29,14 @@ namespace hive::models::strategies {
 
         /**
          * @brief Calculates the possible moves for the Pillbug piece.
-         * @param position The current position of the Pillbug on the board.
          * @param board The current state of the game board.
+         * @param player The player that owns the Pillbug.
          * @return A vector of `Hex` objects representing all reachable positions.
          *
          * The Pillbug can move one space at a time, but it also has a special ability to lift and move adjacent pieces,
          * subject to specific game rules.
          */
-        [[nodiscard]] std::vector<Hex> getPossibleMoves(const Hex &position,
-                                                        const Board &board) const override;
+        [[nodiscard]] std::vector<Hex> getPossibleMoves(const Board &board, const Player &player) const override;
     };
 } // namespace hive::models::strategies
 

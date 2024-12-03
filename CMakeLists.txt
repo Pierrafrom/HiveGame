@@ -11,16 +11,22 @@ include_directories(includes)
 # Add source files for the main executable
 file(GLOB_RECURSE SOURCES
         src/models/*.cpp
+        src/controllers/*.cpp
+        src/utils/*.cpp
         src/main.cpp
 )
 
 # Add header files (for IDEs, mainly)
 file(GLOB_RECURSE HEADERS
         includes/models/*.h
+        includes/controllers/*.h
+        includes/utils/*.h
+        includes/config/*.h
 )
 
 # Create the main executable
-add_executable(HiveGame ${SOURCES})
+add_executable(HiveGame ${SOURCES}
+        src/models/strategies/MoveStrategy.cpp)
 
 # Add Google Test
 add_subdirectory(external/googletest)
@@ -31,6 +37,8 @@ file(GLOB_RECURSE TEST_SOURCES
         tests/models/*.cpp
         tests/main.cpp
         src/models/*.cpp
+        src/controllers/*.cpp
+        src/utils/*.cpp
 )
 
 # Remove src/main.cpp from TEST_SOURCES to avoid multiple main definitions
@@ -38,7 +46,9 @@ list(REMOVE_ITEM TEST_SOURCES ${CMAKE_SOURCE_DIR}/src/main.cpp)
 
 # Create the test executable
 add_executable(HiveGameTests ${TEST_SOURCES}
-        tests/models/PieceTest.cpp)
+        tests/models/PlayerTest.cpp
+        tests/models/PieceTest.cpp
+        tests/models/StrategyTest.cpp)
 
 # Link Google Test to the test executable
 target_link_libraries(HiveGameTests gtest gtest_main)

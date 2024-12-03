@@ -14,6 +14,13 @@ namespace hive::models::strategies {
     class MosquitoMoveStrategy final : public MoveStrategy {
     public:
         /**
+         * @brief Constructs a MoveStrategy object for a specific piece.
+         * @param p Pointer to the piece that uses this movement strategy.
+         */
+        explicit MosquitoMoveStrategy(Piece *p) : MoveStrategy(p) {
+        }
+
+        /**
          * @brief Destructor.
          *
          * Ensures proper cleanup for the Mosquito's movement strategy if necessary.
@@ -22,14 +29,13 @@ namespace hive::models::strategies {
 
         /**
          * @brief Calculates the possible moves for the Mosquito piece.
-         * @param position The current position of the Mosquito on the board.
          * @param board The current state of the game board.
+         * @param player The player that owns the Mosquito.
          * @return A vector of `Hex` objects representing all reachable positions.
          *
          * The Mosquito can move according to the movement abilities of any adjacent piece.
          */
-        [[nodiscard]] std::vector<Hex> getPossibleMoves(const Hex &position,
-                                                        const Board &board) const override;
+        [[nodiscard]] std::vector<Hex> getPossibleMoves(const Board &board, const Player &player) const override;
     };
 } // namespace hive::models::strategies
 

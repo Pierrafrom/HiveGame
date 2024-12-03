@@ -3,10 +3,17 @@
 
 #include <cstddef>
 #include <memory>
+#include <optional>
+
 #include "models/enums/PieceType.h"
 #include "models/strategies/MoveStrategy.h"
 
 // TODO: Create a test suite for the Piece class
+
+// Forward declaration of Player class
+namespace hive::models {
+    class Player;
+}
 
 namespace hive::models {
     /**
@@ -19,57 +26,74 @@ namespace hive::models {
      */
     class Piece {
     protected:
-        /**
-         * @brief Static counter used for auto-incrementing unique piece IDs.
-         *
-         * Each new piece created without an explicit ID will be assigned a unique ID
-         * based on this counter. It ensures that all pieces have distinct identifiers.
-         */
-        static size_t nextId;
+        /**************************************************************************************************
+         * Attributes
+         *************************************************************************************************/
+
+        static size_t pieceNextId; /**< Static counter for auto-incrementing piece IDs */
+        size_t id; /**< Unique identifier for the piece */
+        enums::PieceType type; /**< The type of the piece (e.g., QUEEN_BEE, ANT) */
+        std::unique_ptr<strategies::MoveStrategy> moveStrategy; /**< Movement strategy */
+        std::weak_ptr<Player> owner; /**< Weak reference to the owning player */
+        std::optional<Hex> position; /**< Current position on the board, can be empty */
+
+        /**************************************************************************************************
+         * Constructors
+         *************************************************************************************************/
 
         /**
-         * @brief Unique identifier for the piece.
-         *
-         * This ID is unique across all instances of Piece and can either be auto-generated
-         * or explicitly provided.
+         * @brief Constructs a piece with optional attributes.
+         * @param id Unique identifier for the piece.
+         * @param type Type of the piece as defined in the PieceType enum.
+         * @param strategy Movement strategy for the piece (default is nullptr).
+         * @param owner Shared pointer to the owning player (default is nullptr).
+         * @param position Optional position of the piece on the board (default is std::nullopt).
          */
-        size_t id;
-
-        /**
-         * @brief Type of the piece (e.g., QueenBee, Ant).
-         *
-         * Represents the specific type of insect for each piece, using an enum defined
-         * in `PieceType`.
-         */
-        enums::PieceType type;
-
-        /**
-         * @brief Movement strategy for the piece.
-         *
-         * Each piece may have a unique movement strategy depending on its type. This
-         * attribute holds a pointer to a strategy object that defines how the piece moves.
-         */
-        std::unique_ptr<strategies::MoveStrategy> moveStrategy;
-
-        /**
-         * @brief Constructor for a piece with either an auto-incremented ID or a specified ID.
-         * @param id Optional unique identifier for the piece. If not provided, an auto-incremented ID is assigned.
-         * @param type The specific type of the piece (e.g., QueenBee, Ant).
-         * @param strategy A unique pointer to the MoveStrategy object (default is nullptr).
-         *
-         * This constructor can assign a unique ID to the piece using the `nextId` counter, or it can accept
-         * a specific ID, allowing for flexibility in ID assignment.
-         */
-        explicit Piece(size_t id, enums::PieceType type,
-                       std::unique_ptr<strategies::MoveStrategy> strategy = nullptr);
+        explicit Piece(size_t id,
+                       enums::PieceType type,
+                       std::unique_ptr<strategies::MoveStrategy> strategy = nullptr,
+                       const std::shared_ptr<Player> &owner = nullptr,
+                       const std::optional<Hex> &position = std::nullopt);
 
     public:
+        /**************************************************************************************************
+         * Destructor
+         *************************************************************************************************/
+
         /**
          * @brief Virtual destructor.
          *
          * Ensures that derived classes can override and properly clean up resources if needed.
          */
         virtual ~Piece() = default;
+
+        /**************************************************************************************************
+         * Other constructors and operators
+         *************************************************************************************************/
+
+        /**
+         * @brief Delete copy constructor.
+         */
+        Piece(const Piece &) = delete;
+
+        /**
+         * @brief Delete copy assignment operator.
+         */
+        Piece &operator=(const Piece &) = delete;
+
+        /**
+         * @brief Default move constructor.
+         */
+        Piece(Piece &&) noexcept;
+
+        /**
+         * @brief Default move assignment operator.
+         */
+        Piece &operator=(Piece &&) noexcept;
+
+        /**************************************************************************************************
+         * Getters
+         *************************************************************************************************/
 
         /**
          * @brief Retrieves the unique identifier of the piece.
@@ -84,29 +108,63 @@ namespace hive::models {
         [[nodiscard]] enums::PieceType getType() const { return type; }
 
         /**
-         * @brief Sets the movement strategy for the piece.
-         * @param strategy A unique pointer to the MoveStrategy object.
-         *
-         * This method allows assigning a specific movement strategy to the piece, enabling
-         * polymorphic movement behavior depending on the type of piece.
-         */
-        void setMoveStrategy(std::unique_ptr<strategies::MoveStrategy> strategy) { moveStrategy = std::move(strategy); }
-
-        /**
          * @brief Retrieves the movement strategy of the piece.
          * @return A reference to the MoveStrategy object.
-         *
-         * Provides access to the piece's movement strategy, allowing external classes to
-         * determine how the piece can move on the board.
          */
         [[nodiscard]] const strategies::MoveStrategy &getMoveStrategy() const;
 
         /**
+         * @brief Retrieves the player that owns the piece.
+         * @return A pointer to the player object that owns the piece.
+         */
+        [[nodiscard]] const Player &getOwner() const;
+
+        /**
+         * @brief Retrieves the current position of the piece.
+         * @return An optional Hex representing the position of the piece.
+         */
+        [[nodiscard]] std::optional<Hex> getPosition() const { return position; }
+
+        /**************************************************************************************************
+         * Setters
+         *************************************************************************************************/
+
+        /**
+         * @brief Sets the movement strategy for the piece.
+         * @param strategy A unique pointer to the MoveStrategy object.
+         */
+        void setMoveStrategy(std::unique_ptr<strategies::MoveStrategy> strategy);
+
+        /**
+         * @brief Sets the player that owns the piece.
+         * @param newOwner Shared pointer to the Player object.
+         */
+        void setOwner(const std::weak_ptr<Player> &newOwner);
+
+        /**
+         * @brief Sets the position of the piece on the board.
+         * @param newPosition The new position of the piece as a Hex.
+         */
+        void setPosition(const Hex &newPosition);
+
+        /**************************************************************************************************
+         * Operators
+         *************************************************************************************************/
+
+        /**
+         * @brief Stream insertion operator for debugging and logging.
+         * @param os The output stream.
+         * @param piece The Piece to output.
+         * @return The output stream.
+         */
+        friend std::ostream &operator<<(std::ostream &os, const Piece &piece);
+
+        /**
          * @brief Equality operator for comparing two pieces.
          * @param other The other piece to compare with.
-         * @return True if both pieces have the same ID, false otherwise.
+         * @return True if both pieces have the same ID, type and owner, false otherwise.
          */
-        bool operator==(const Piece &other) const { return id == other.id && type == other.type; }
+        bool operator==(const Piece &other) const;
 
         /**
          * @brief Inequality operator for comparing two pieces.
@@ -114,6 +172,32 @@ namespace hive::models {
          * @return True if the pieces differ in ID, false otherwise.
          */
         bool operator!=(const Piece &other) const { return !(*this == other); }
+
+        /**************************************************************************************************
+         * Public methods
+         *************************************************************************************************/
+
+        /**
+         * @brief Retrieves the neighboring pieces of this piece on the board.
+         * @param board A reference to the board object to get neighboring hexes and pieces.
+         * @return A vector of shared pointers to the neighboring pieces (read-only).
+         *
+         * This method ensures that the returned pieces are valid (non-null) and cannot
+         * be modified through this method.
+         */
+        [[nodiscard]] std::vector<std::shared_ptr<const Piece> > getNeighbors(const Board &board) const;
+
+
+        /**
+         * @brief Checks if the piece has an owner.
+         * @return True if the piece has an owner, false otherwise.
+         */
+        [[nodiscard]] bool hasOwner() const { return !owner.expired(); }
+
+        /**
+         * @brief Resets the position of the piece to an empty optional.
+         */
+        void resetPosition() { position.reset(); }
     };
 } // namespace hive::models
 
