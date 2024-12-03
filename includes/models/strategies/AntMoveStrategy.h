@@ -31,7 +31,6 @@ namespace hive::models::strategies {
 
         /**
          * @brief Calculates the possible moves for the Ant piece.
-         * @param position The current position of the Ant on the board.
          * @param board The current state of the game board.
          * @param player The player that owns the Ant.
          * @return A vector of `Hex` objects representing all reachable positions.
@@ -40,9 +39,7 @@ namespace hive::models::strategies {
          * The Ant can move to any location on the perimeter of connected pieces, following
          * the sliding rule that keeps it adjacent to other pieces.
          */
-        [[nodiscard]] std::vector<Hex> getPossibleMoves(const Hex &position,
-                                                        const Board &board,
-                                                        const Player &player) const override;
+        [[nodiscard]] std::vector<Hex> getPossibleMoves(const Board &board, const Player &player) const override;
     };
 } // namespace hive::models::strategies
 

@@ -74,7 +74,7 @@ namespace hive::models {
     }
 
     // Retrieves all hexes surrounding a specific hex location
-    std::vector<Hex> Board::getNeighborHexes(const Hex &hex) const {
+    std::vector<Hex> Board::neighbors(const Hex &hex) const {
         std::vector<Hex> neighbors;
         neighbors.reserve(6); // Reserve space for six neighbors
 
@@ -118,7 +118,7 @@ namespace hive::models {
             queue.pop();
 
             // Check all neighbors of the current hex
-            for (const auto &neighbor: getNeighborHexes(current)) {
+            for (const auto &neighbor: neighbors(current)) {
                 if (isOccupied(neighbor) && !visited.contains(neighbor)) {
                     queue.push(neighbor);
                     visited.insert(neighbor);
@@ -174,6 +174,33 @@ namespace hive::models {
 
         return neighborHex;
     }
+
+    // check if a slice can be made between two hexes
+    bool Board::canSliceBetween(const Hex &from, const enums::Direction direction) const {
+        switch (direction) {
+            case enums::Direction::EAST:
+                return !(isOccupied(neighbor(from, enums::Direction::NORTH_EAST)) &&
+                        isOccupied(neighbor(from, enums::Direction::SOUTH_EAST)));
+            case enums::Direction::NORTH_EAST:
+                return !(isOccupied(neighbor(from, enums::Direction::NORTH_WEST)) &&
+                        isOccupied(neighbor(from, enums::Direction::EAST)));
+            case enums::Direction::NORTH_WEST:
+                return !(isOccupied(neighbor(from, enums::Direction::NORTH_EAST)) &&
+                        isOccupied(neighbor(from, enums::Direction::WEST)));
+            case enums::Direction::WEST:
+                return !(isOccupied(neighbor(from, enums::Direction::NORTH_WEST)) &&
+                        isOccupied(neighbor(from, enums::Direction::SOUTH_WEST)));
+            case enums::Direction::SOUTH_EAST:
+                return !(isOccupied(neighbor(from, enums::Direction::EAST)) &&
+                        isOccupied(neighbor(from, enums::Direction::SOUTH_WEST)));
+            case enums::Direction::SOUTH_WEST:
+                return !(isOccupied(neighbor(from, enums::Direction::WEST)) &&
+                        isOccupied(neighbor(from, enums::Direction::SOUTH_EAST)));
+            default:
+                throw std::invalid_argument("Invalid direction.");
+        }
+    }
+
 
     // Clears the board, removing all pieces and hexes
     void Board::clear() {

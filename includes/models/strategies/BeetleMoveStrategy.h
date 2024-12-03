@@ -29,7 +29,6 @@ namespace hive::models::strategies {
 
         /**
          * @brief Calculates the possible moves for the Beetle piece.
-         * @param position The current position of the Beetle on the board.
          * @param board The current state of the game board.
          * @param player The player that owns the Beetle.
          * @return A vector of `Hex` objects representing all reachable positions.
@@ -37,9 +36,7 @@ namespace hive::models::strategies {
          * The Beetle can move one space at a time and can also move on top of other pieces,
          * allowing it to climb and block them.
          */
-        [[nodiscard]] std::vector<Hex> getPossibleMoves(const Hex &position,
-                                                        const Board &board,
-                                                        const Player &player) const override;
+        [[nodiscard]] std::vector<Hex> getPossibleMoves(const Board &board, const Player &player) const override;
     };
 } // namespace hive::models::strategies
 

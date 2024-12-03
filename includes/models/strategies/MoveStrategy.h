@@ -23,6 +23,15 @@ namespace hive::models::strategies {
     protected:
         Piece *piece;
 
+        /**
+        * @brief Checks if a hive is connected after moving a piece.
+        * @param board A copy of the game board.
+        * @param from The original position of the piece.
+        * @param to The destination position of the piece.
+        * @return True if the hive remains connected after moving the piece, false otherwise.
+        */
+        static bool isHiveConnectedAfterMove(Board board, const Hex &from, const Hex &to);
+
     public:
         /**************************************************************************************************
          * Constructors
@@ -51,7 +60,6 @@ namespace hive::models::strategies {
 
         /**
          * @brief Calculates the possible moves for a piece from a given position.
-         * @param position The current position of the piece on the board.
          * @param board The current state of the game board.
          * @param player The player that owns the piece.
          * @return A vector of `Hex` objects representing reachable positions.
@@ -59,8 +67,7 @@ namespace hive::models::strategies {
          * This pure virtual method must be overridden by derived classes to provide
          * specific movement logic for each type of piece.
          */
-        [[nodiscard]] virtual std::vector<Hex> getPossibleMoves(const Hex &position, const Board &board,
-                                                                const Player &player) const = 0;
+        [[nodiscard]] virtual std::vector<Hex> getPossibleMoves(const Board &board, const Player &player) const = 0;
 
         /**
         * @brief Checks if the piece has a valid position.

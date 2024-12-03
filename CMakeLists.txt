@@ -47,7 +47,8 @@ list(REMOVE_ITEM TEST_SOURCES ${CMAKE_SOURCE_DIR}/src/main.cpp)
 # Create the test executable
 add_executable(HiveGameTests ${TEST_SOURCES}
         tests/models/PlayerTest.cpp
-        tests/models/PieceTest.cpp)
+        tests/models/PieceTest.cpp
+        tests/models/StrategyTest.cpp)
 
 # Link Google Test to the test executable
 target_link_libraries(HiveGameTests gtest gtest_main)
