@@ -15,6 +15,13 @@ namespace hive::models::strategies {
     class GrasshopperMoveStrategy final : public MoveStrategy {
     public:
         /**
+         * @brief Constructs a MoveStrategy object for a specific piece.
+         * @param p Pointer to the piece that uses this movement strategy.
+         */
+        explicit GrasshopperMoveStrategy(Piece *p) : MoveStrategy(p) {
+        }
+
+        /**
          * @brief Destructor.
          */
         ~GrasshopperMoveStrategy() override = default;

@@ -16,6 +16,13 @@ namespace hive::models::strategies {
     class PillbugMoveStrategy final : public MoveStrategy {
     public:
         /**
+         * @brief Constructs a MoveStrategy object for a specific piece.
+         * @param p Pointer to the piece that uses this movement strategy.
+         */
+        explicit PillbugMoveStrategy(Piece *p) : MoveStrategy(p) {
+        }
+
+        /**
          * @brief Destructor.
          *
          * Ensures proper cleanup for the Pillbug's movement strategy if necessary.

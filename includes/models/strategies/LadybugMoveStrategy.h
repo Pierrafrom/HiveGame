@@ -16,6 +16,13 @@ namespace hive::models::strategies {
     class LadybugMoveStrategy final : public MoveStrategy {
     public:
         /**
+         * @brief Constructs a MoveStrategy object for a specific piece.
+         * @param p Pointer to the piece that uses this movement strategy.
+         */
+        explicit LadybugMoveStrategy(Piece *p) : MoveStrategy(p) {
+        }
+
+        /**
          * @brief Destructor.
          *
          * Ensures proper cleanup for the Ladybug's movement strategy if necessary.

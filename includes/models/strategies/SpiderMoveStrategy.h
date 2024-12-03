@@ -15,6 +15,13 @@ namespace hive::models::strategies {
     class SpiderMoveStrategy final : public MoveStrategy {
     public:
         /**
+         * @brief Constructs a MoveStrategy object for a specific piece.
+         * @param p Pointer to the piece that uses this movement strategy.
+         */
+        explicit SpiderMoveStrategy(Piece *p) : MoveStrategy(p) {
+        }
+
+        /**
          * @brief Destructor.
          */
         ~SpiderMoveStrategy() override = default;

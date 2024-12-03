@@ -6,6 +6,7 @@
 
 // Forward declaration of Board class
 namespace hive::models {
+    class Piece;
     class Board;
     class Player;
 }
@@ -19,13 +20,34 @@ namespace hive::models::strategies {
      * based on its current position and the state of the game board.
      */
     class MoveStrategy {
+    protected:
+        Piece *piece;
+
     public:
+        /**************************************************************************************************
+         * Constructors
+         *************************************************************************************************/
+
+        /**
+         * @brief Constructs a MoveStrategy object for a specific piece.
+         * @param p Pointer to the piece that uses this movement strategy.
+         */
+        explicit MoveStrategy(Piece *p) : piece(p) {
+        }
+
+        /**************************************************************************************************
+         * Destructor
+         *************************************************************************************************/
         /**
          * @brief Virtual destructor.
          *
          * Ensures that derived classes can override the destructor and clean up any resources if necessary.
          */
         virtual ~MoveStrategy() = default;
+
+        /**************************************************************************************************
+         * Public methods
+         *************************************************************************************************/
 
         /**
          * @brief Calculates the possible moves for a piece from a given position.
@@ -39,6 +61,18 @@ namespace hive::models::strategies {
          */
         [[nodiscard]] virtual std::vector<Hex> getPossibleMoves(const Hex &position, const Board &board,
                                                                 const Player &player) const = 0;
+
+        /**
+        * @brief Checks if the piece has a valid position.
+        * @return True if the piece has a valid position, false otherwise.
+        */
+        [[nodiscard]] bool hasPiece() const { return piece != nullptr; }
+
+        /**
+        * @brief Retrieves the piece that uses this movement strategy.
+        * @return A reference to the piece object.
+        */
+        [[nodiscard]] const Piece &getPiece() const;
     };
 } // namespace hive::models::strategies
 

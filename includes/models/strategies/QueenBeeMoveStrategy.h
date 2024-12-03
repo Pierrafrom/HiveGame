@@ -14,6 +14,14 @@ namespace hive::models::strategies {
      */
     class QueenBeeMoveStrategy final : public MoveStrategy {
     public:
+
+        /**
+         * @brief Constructs a MoveStrategy object for a specific piece.
+         * @param p Pointer to the piece that uses this movement strategy.
+         */
+        explicit QueenBeeMoveStrategy(Piece *p) : MoveStrategy(p) {
+        }
+
         /**
          * @brief Destructor.
          */

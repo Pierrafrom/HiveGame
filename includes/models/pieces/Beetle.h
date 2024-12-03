@@ -32,7 +32,7 @@ namespace hive::models::pieces {
                         const std::optional<Hex> &position = std::nullopt)
             : Piece(id,
                     enums::PieceType::BEETLE,
-                    std::make_unique<strategies::BeetleMoveStrategy>(),
+                    std::make_unique<strategies::BeetleMoveStrategy>(this),
                     owner,
                     position) {
         }

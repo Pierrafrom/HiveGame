@@ -16,6 +16,13 @@ namespace hive::models::strategies {
     class BeetleMoveStrategy final : public MoveStrategy {
     public:
         /**
+         * @brief Constructs a MoveStrategy object for a specific piece.
+         * @param p Pointer to the piece that uses this movement strategy.
+         */
+        explicit BeetleMoveStrategy(Piece *p) : MoveStrategy(p) {
+        }
+
+        /**
          * @brief Destructor.
          */
         ~BeetleMoveStrategy() override = default;

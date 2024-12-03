@@ -25,7 +25,8 @@ file(GLOB_RECURSE HEADERS
 )
 
 # Create the main executable
-add_executable(HiveGame ${SOURCES})
+add_executable(HiveGame ${SOURCES}
+        src/models/strategies/MoveStrategy.cpp)
 
 # Add Google Test
 add_subdirectory(external/googletest)
