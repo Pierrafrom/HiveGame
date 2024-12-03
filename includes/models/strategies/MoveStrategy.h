@@ -19,6 +19,7 @@ namespace hive::models::strategies {
      * based on its current position and the state of the game board.
      */
     class MoveStrategy {
+        std
     public:
         /**
          * @brief Virtual destructor.

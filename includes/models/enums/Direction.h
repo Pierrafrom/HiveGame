@@ -57,7 +57,6 @@ namespace hive::models::enums {
         };
     }
 
-
 } // namespace hive::models::enums
 
 

@@ -1,8 +1,6 @@
 #ifndef SPIDER_MOVE_STRATEGY_H
 #define SPIDER_MOVE_STRATEGY_H
 
-#include <models/Player.h>
-
 #include "models/strategies/MoveStrategy.h"
 
 namespace hive::models::strategies {

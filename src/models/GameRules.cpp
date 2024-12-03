@@ -169,7 +169,6 @@ namespace hive::models {
             }
         }
 
-
         // Determine the game state based on the number of surrounded players
         if (surroundedPlayers.size() == 1) {
             // If only one player's queen bee is surrounded, they lose, so the other wins
