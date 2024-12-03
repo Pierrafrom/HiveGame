@@ -130,6 +130,16 @@ namespace hive::models {
         [[nodiscard]] std::vector<Hex> neighbors(const Hex &hex) const;
 
         /**
+         * @brief Retrieves all hexes surrounding a specific hex location that are available.
+         * @param hex The hex location for which to get neighbors.
+         * @return A vector of Hex objects representing neighboring hexes.
+         *
+         * Uses the Direction enum and getDirectionOffset to calculate neighboring hexes.
+         * This method returns only unoccupied neighboring hexes.
+         */
+        std::vector<Hex> neighborsNotOccupied(const Hex &hex) const;
+
+        /**
          * @brief Gets the total number of pieces on the board.
          * @return The total count of pieces present on the board.
          */

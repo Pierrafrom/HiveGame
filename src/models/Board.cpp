@@ -86,6 +86,16 @@ namespace hive::models {
         return neighbors;
     }
 
+    // keep only non-occupied hexes
+    std::vector<Hex> Board::neighborsNotOccupied(const Hex &hex) const {
+        std::vector<Hex> surrounding = neighbors(hex);
+
+        surrounding.erase(std::remove_if(surrounding.begin(), surrounding.end(), [this](const Hex &h) {
+            return isOccupied(h);
+        }), surrounding.end());
+        return surrounding;
+    }
+
     // Gets the total number of pieces on the board
     size_t Board::pieceCount() const {
         size_t count = 0;

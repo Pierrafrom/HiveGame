@@ -2,6 +2,7 @@
 #define SPIDER_MOVE_STRATEGY_H
 
 #include "models/strategies/MoveStrategy.h"
+#include <set>
 
 namespace hive::models::strategies {
     /**
@@ -33,6 +34,13 @@ namespace hive::models::strategies {
          * The Spider must move exactly three spaces, following the sliding rule.
          */
         [[nodiscard]] std::vector<Hex> getPossibleMoves(const Board &board, const Player &player) const override;
+
+         /**
+        * @brief Recursively explores the reachable positions for the Spider.
+        * @param current The current position being explored.
+        * @param
+        */
+        void spiderExploration(const Hex &current, int depth, std::set<Hex> &visited, std::set<Hex> &reachable, const Board &board) const;
     };
 } // namespace hive::models::strategies
 
