@@ -80,6 +80,13 @@ namespace hive::models::strategies {
         * @return A reference to the piece object.
         */
         [[nodiscard]] const Piece &getPiece() const;
+
+        /**
+        * @brief Validates the ownership of the piece by the player.
+        * @param player The player to validate ownership against.
+        * @return True if the player owns the piece, false otherwise.
+        */
+        bool validatePieceOwnership(const Player &player) const;
     };
 } // namespace hive::models::strategies
 
