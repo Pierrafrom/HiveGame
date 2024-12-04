@@ -11,6 +11,13 @@ namespace hive::models {
         assert(x + y + z == 0); // Ensure the coordinates satisfy x + y + z == 0
     }
 
+    bool Hex::operator<(const Hex &other) const {
+            if (x != other.x) {
+                return x < other.x;
+            }
+            return y < other.y;
+    }
+
     Hex &Hex::operator=(Hex &&other) noexcept {
         if (this != &other) {
             // Use const_cast to modify the const members
@@ -55,4 +62,5 @@ namespace hive::models {
         os << hex.toString();
         return os;
     }
+
 } // namespace hive::models
