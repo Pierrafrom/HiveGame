@@ -16,6 +16,13 @@ namespace hive::models::strategies {
     class AntMoveStrategy final : public MoveStrategy {
     public:
         /**
+         * @brief Constructs a MoveStrategy object for a specific piece.
+         * @param p Pointer to the piece that uses this movement strategy.
+         */
+        explicit AntMoveStrategy(Piece *p) : MoveStrategy(p) {
+        }
+
+        /**
          * @brief Destructor.
          *
          * Ensures proper cleanup for the Ant's movement strategy if necessary.
@@ -24,7 +31,6 @@ namespace hive::models::strategies {
 
         /**
          * @brief Calculates the possible moves for the Ant piece.
-         * @param position The current position of the Ant on the board.
          * @param board The current state of the game board.
          * @param player The player that owns the Ant.
          * @return A vector of `Hex` objects representing all reachable positions.
@@ -33,9 +39,12 @@ namespace hive::models::strategies {
          * The Ant can move to any location on the perimeter of connected pieces, following
          * the sliding rule that keeps it adjacent to other pieces.
          */
-        [[nodiscard]] std::vector<Hex> getPossibleMoves(const Hex &position,
-                                                        const Board &board,
-                                                        const Player &player) const override;
+        [[nodiscard]] std::vector<Hex> getPossibleMoves(const Board &board, const Player &player) const override;
+
+        std::vector<Hex> addPossibleMove(const Hex &current_position, std::vector<Hex> &possibleMoves, const Board &board) const;
+
+        void antExploration(const Hex &current_position, std::vector<Hex> &possibleMoves, const Board &board) const;
+
     };
 } // namespace hive::models::strategies
 

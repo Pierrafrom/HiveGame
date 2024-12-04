@@ -34,7 +34,7 @@ namespace hive::models::pieces {
                          const std::optional<Hex> &position = std::nullopt)
             : Piece(id,
                     enums::PieceType::PILLBUG,
-                    std::make_unique<strategies::PillbugMoveStrategy>(),
+                    std::make_unique<strategies::PillbugMoveStrategy>(this),
                     owner,
                     position) {
         }

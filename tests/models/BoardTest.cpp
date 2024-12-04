@@ -86,7 +86,7 @@ namespace hive::models {
             expectedNeighbors.emplace_back(hex.getX() + dx, hex.getY() + dy, hex.getZ() + dz);
         }
 
-        std::vector<Hex> neighbors = board.getNeighborHexes(hex);
+        std::vector<Hex> neighbors = board.neighbors(hex);
         EXPECT_EQ(neighbors.size(), 6);
 
         for (const auto &neighbor: expectedNeighbors) {
@@ -296,7 +296,7 @@ namespace hive::models {
         const std::shared_ptr sharedPiece = std::move(piece);
         board.addPiece(hex, sharedPiece);
 
-        const std::vector<Hex> neighbors = board.getNeighborHexes(hex);
+        const std::vector<Hex> neighbors = board.neighbors(hex);
         EXPECT_EQ(neighbors.size(), 6);
 
         // Add a piece to one of the neighbors
@@ -306,7 +306,7 @@ namespace hive::models {
         board.addPiece(neighborHex, sharedPiece2);
 
         // Now check that new neighbors are generated around the neighborHex
-        const std::vector<Hex> neighborNeighbors = board.getNeighborHexes(neighborHex);
+        const std::vector<Hex> neighborNeighbors = board.neighbors(neighborHex);
         EXPECT_EQ(neighborNeighbors.size(), 6);
     }
 
@@ -326,7 +326,7 @@ namespace hive::models {
         EXPECT_FALSE(board.isOccupied(hex));
 
         // The neighbors should not be occupied
-        for (const auto &neighborHex: board.getNeighborHexes(hex)) {
+        for (const auto &neighborHex: board.neighbors(hex)) {
             EXPECT_FALSE(board.isOccupied(neighborHex));
         }
     }
@@ -624,13 +624,58 @@ namespace hive::models {
                      }, std::out_of_range) << "Expected exception for neighbor of non-existent hex.";
     }
 
+
     /**
-     * @test Tests adding a piece to an invalid hex (coordinates do not sum to zero).
-     * Note: This test cannot be executed because Hex constructor uses assert, which cannot be caught.
+     * @brief Test that the `canSliceBetween` method correctly identifies a sliceable path between two hexes.
      */
-    TEST_F(BoardTest, AddPieceToInvalidHex) {
-        // Cannot create an invalid Hex because the constructor uses assert
-        // If the Hex constructor is modified to throw exceptions, this test can be implemented
-        SUCCEED(); // Placeholder
+    TEST_F(BoardTest, TestCanSliceBetweenEastDirection) {
+        const Hex startHex(0, 0, 0); // Start hex at (0, 0, 0)
+
+        // create 3 Pieces to block the EAST direction
+        auto piece1 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        auto piece2 = PieceFactory::createPiece(enums::PieceType::SPIDER);
+        auto piece3 = PieceFactory::createPiece(enums::PieceType::ANT);
+
+        const std::shared_ptr sharedPiece1 = std::move(piece1);
+        const std::shared_ptr sharedPiece2 = std::move(piece2);
+        const std::shared_ptr sharedPiece3 = std::move(piece3);
+
+        board.addPiece(startHex, sharedPiece1);
+        board.addPiece(board.neighbor(startHex, enums::Direction::NORTH_EAST), sharedPiece2);
+        board.addPiece(board.neighbor(startHex, enums::Direction::SOUTH_EAST), sharedPiece3);
+
+        EXPECT_FALSE(board.canSliceBetween(startHex, enums::Direction::EAST));
+        board.unstackPiece(board.neighbor(startHex, enums::Direction::SOUTH_EAST));
+        EXPECT_TRUE(board.canSliceBetween(startHex, enums::Direction::EAST));
+
+
+    }
+
+    /**
+     * @brief Test canSliceBetween method when no pieces block the slice.
+     */
+    TEST_F(BoardTest, TestCanSliceBetweenUnblockedDirections) {
+        const Hex startHex(0, 0, 0); // Start hex at (0, 0, 0)
+        auto piece = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        const std::shared_ptr sharedPiece = std::move(piece);
+        board.addPiece(startHex, sharedPiece);
+
+        // No pieces added, so it should be possible to slice in all directions
+        EXPECT_TRUE(board.canSliceBetween(startHex, enums::Direction::EAST));
+        EXPECT_TRUE(board.canSliceBetween(startHex, enums::Direction::NORTH_EAST));
+        EXPECT_TRUE(board.canSliceBetween(startHex, enums::Direction::NORTH_WEST));
+        EXPECT_TRUE(board.canSliceBetween(startHex, enums::Direction::WEST));
+        EXPECT_TRUE(board.canSliceBetween(startHex, enums::Direction::SOUTH_EAST));
+        EXPECT_TRUE(board.canSliceBetween(startHex, enums::Direction::SOUTH_WEST));
+    }
+
+    /**
+     * @brief Test the `canSliceBetween` method for invalid direction input.
+     */
+    TEST_F(BoardTest, TestCanSliceBetweenInvalidDirection) {
+        const Hex startHex(0, 0, 0); // Start hex at (0, 0, 0)
+
+        // Expect an exception when an invalid direction is provided
+        EXPECT_THROW(board.canSliceBetween(startHex, static_cast<enums::Direction>(-1)), std::invalid_argument);
     }
 } // namespace hive::models

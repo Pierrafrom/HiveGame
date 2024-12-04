@@ -51,6 +51,11 @@ namespace hive::config::constants {
     constexpr int MAX_TURN_BEFORE_QUEEN_PLACEMENT = 4;
 
     /**
+     * @brief Maximum number of moves a Spider can make.
+     */
+    constexpr int MAX_SPIDER_MOVES = 3;
+
+    /**
      * @brief Maximum number of pieces for one player.
      */
     constexpr int MAX_PIECES_PER_PLAYER = MAX_ANT + MAX_BEETLE + MAX_GRASSHOPPER + MAX_LADYBUG + MAX_MOSQUITO +
