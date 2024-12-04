@@ -5,10 +5,12 @@
 
 namespace hive::models::strategies {
     std::vector<Hex> SpiderMoveStrategy::getPossibleMoves(const Board &board, const Player &player) const {
-        // Get the current position of the piece
-        const Hex position = this->getPiece().getPosition().value();
 
-        // TODO: add condition to verify if the piece can move
+        if (!validatePieceOwnership(player)) {
+            return {};
+        }
+
+        const Hex position = this->getPiece().getPosition().value();
 
         std::set<Hex> visited;
         std::set<Hex> reachable;
