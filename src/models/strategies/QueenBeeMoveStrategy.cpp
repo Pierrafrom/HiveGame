@@ -13,6 +13,7 @@ namespace hive::models::strategies {
         const Hex position = this->getPiece().getPosition().value();
 
         std::vector<Hex> possibleMoves{};
+
         for (const auto &direction: enums::getAllDirections()) {
             const bool occupied = board.isOccupied(board.neighbor(position, direction));
             const bool canSlice = board.canSliceBetween(position, direction);

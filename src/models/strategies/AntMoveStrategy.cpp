@@ -5,22 +5,13 @@
 
 namespace hive::models::strategies {
     std::vector<Hex> AntMoveStrategy::getPossibleMoves(const Board &board, const Player &player) const {
-        // TODO: Implement Ant movement logic
+
+        if (!validatePieceOwnership(player)) {
+            return {};
+        }
 
         //get the current position of the piece
         const Hex position = this->getPiece().getPosition().value();
-
-        //condition to verify if the piece can move
-        if (!this->hasPiece()) {
-            throw std::runtime_error("Move strategy does not have a piece.");
-        }
-        if (!this->getPiece().hasOwner()) {
-            throw std::runtime_error("Piece does not have an owner.");
-        }
-        if (this->getPiece().getOwner() != player) {
-            // Return empty vector because there is movement available for a piece that does not belong to the player
-            return {};
-        }
 
         //initialisation de vector -> un vector vide
         std::vector<Hex> possibleMoves{};

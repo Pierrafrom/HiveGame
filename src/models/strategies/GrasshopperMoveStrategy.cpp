@@ -6,17 +6,12 @@
 namespace hive::models::strategies {
     std::vector<Hex> GrasshopperMoveStrategy::getPossibleMoves(const Board &board, const Player &player) const {
 
-        const Hex position = this->getPiece().getPosition().value();
-        if (!this->hasPiece()) {
-            throw std::runtime_error("Move strategy does not have a piece.");
-        }
-        if (!this->getPiece().hasOwner()) {
-            throw std::runtime_error("Piece does not have an owner.");
-        }
-        if (this->getPiece().getOwner() != player) {
-            // Return empty vector because there is movement available for a piece that does not belong to the player
+        if (!validatePieceOwnership(player)) {
             return {};
         }
+
+        const Hex position = this->getPiece().getPosition().value();
+
         std::vector<Hex> possibleMoves{};
 
         for (const auto &direction: enums::getAllDirections()) {
