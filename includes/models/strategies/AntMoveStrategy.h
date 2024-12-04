@@ -40,6 +40,11 @@ namespace hive::models::strategies {
          * the sliding rule that keeps it adjacent to other pieces.
          */
         [[nodiscard]] std::vector<Hex> getPossibleMoves(const Board &board, const Player &player) const override;
+
+        std::vector<Hex> addPossibleMove(const Hex &current_position, std::vector<Hex> &possibleMoves, const Board &board) const;
+
+        void antExploration(const Hex &current_position, std::vector<Hex> &possibleMoves, const Board &board) const;
+
     };
 } // namespace hive::models::strategies
 
