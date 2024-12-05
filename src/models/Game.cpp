@@ -37,7 +37,7 @@ namespace hive::models {
 
     GameStatus Game::getGameStatus() const {
         const auto result = GameRules::getVictoryCondition(*board,
-                                                           {getPlayer(0), getPlayer(1)});
+                                                           {&getPlayer(0), &getPlayer(1)});
         return GameStatus{
             result.has_value(),
             result.has_value() ? result.value() : nullptr

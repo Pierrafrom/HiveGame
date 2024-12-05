@@ -100,7 +100,7 @@ namespace hive::models {
          *         `std::nullopt` for a draw, or `nullptr` if the game continues without a winner.
          */
         static std::optional<const Player *>
-        getVictoryCondition(const Board &board, const std::vector<const Player &> &players);
+        getVictoryCondition(const Board &board, const std::vector<const Player *> &players);
 
         /****************************************************************************
          * Singleton class: prevent copying and moving the singleton instance.
