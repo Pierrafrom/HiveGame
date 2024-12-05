@@ -126,7 +126,7 @@ namespace hive::models {
             return neighbors; // No position, no neighbors
         }
 
-        for (const auto &neighborHex: board.getNeighborHexes(position.value())) {
+        for (const auto &neighborHex: board.neighbors(position.value())) {
             if (auto neighborPiece = board.getTopPiece(neighborHex)) {
                 neighbors.push_back(std::const_pointer_cast<const Piece>(neighborPiece));
             }

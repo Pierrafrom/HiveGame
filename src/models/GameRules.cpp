@@ -105,7 +105,7 @@ namespace hive::models {
 
         // Validate that the piece can be placed (e.g., adjacency rules)
         bool hasAdjacentPieces = false;
-        for (const auto &neighbor: board.getNeighborHexes(move.getTo())) {
+        for (const auto &neighbor: board.neighbors(move.getTo())) {
             if (board.isOccupied(neighbor)) {
                 hasAdjacentPieces = true;
                 break;
@@ -117,7 +117,7 @@ namespace hive::models {
         }
 
         // validate that the placement hex is not adjacent to an opponent's piece
-        for (const auto &neighbor: board.getNeighborHexes(move.getTo())) {
+        for (const auto &neighbor: board.neighbors(move.getTo())) {
             if (board.isOccupied(neighbor)) {
                 if (const auto &piece = board.getTopPiece(neighbor);
                     piece->getOwner() != *move.getPlayer()) {
@@ -156,7 +156,7 @@ namespace hive::models {
 
             // Check if all neighboring hexes are occupied
             bool isSurrounded = true;
-            for (const auto &neighbor: board.getNeighborHexes(queenBeePos)) {
+            for (const auto &neighbor: board.neighbors(queenBeePos)) {
                 if (!board.isOccupied(neighbor)) {
                     isSurrounded = false;
                     break;

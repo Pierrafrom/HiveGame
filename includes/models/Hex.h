@@ -47,6 +47,11 @@ namespace hive::models {
         Hex(const Hex &other) = default;
 
         /**
+        * @brief smaller assignment operator for Hex.
+        */
+        bool operator<(const Hex& other) const;
+
+        /**
          * @brief Default move constructor for Hex.
          */
         Hex(Hex &&) noexcept = default;

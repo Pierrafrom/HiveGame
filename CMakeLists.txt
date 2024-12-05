@@ -25,7 +25,8 @@ file(GLOB_RECURSE HEADERS
 )
 
 # Create the main executable
-add_executable(HiveGame ${SOURCES})
+add_executable(HiveGame ${SOURCES}
+        src/models/strategies/MoveStrategy.cpp)
 
 # Add Google Test
 add_subdirectory(external/googletest)
@@ -44,10 +45,7 @@ file(GLOB_RECURSE TEST_SOURCES
 list(REMOVE_ITEM TEST_SOURCES ${CMAKE_SOURCE_DIR}/src/main.cpp)
 
 # Create the test executable
-add_executable(HiveGameTests ${TEST_SOURCES}
-        tests/models/PlayerTest.cpp
-        tests/models/PieceTest.cpp
-        tests/models/GameRulesTest.cpp)
+add_executable(HiveGameTests ${TEST_SOURCES})
 
 # Link Google Test to the test executable
 target_link_libraries(HiveGameTests gtest gtest_main)

@@ -127,7 +127,17 @@ namespace hive::models {
          * @param hex The hex location for which to get neighbors.
          * @return A vector of Hex objects representing neighboring hexes.
          */
-        [[nodiscard]] std::vector<Hex> getNeighborHexes(const Hex &hex) const;
+        [[nodiscard]] std::vector<Hex> neighbors(const Hex &hex) const;
+
+        /**
+         * @brief Retrieves all hexes surrounding a specific hex location that are available.
+         * @param hex The hex location for which to get neighbors.
+         * @return A vector of Hex objects representing neighboring hexes.
+         *
+         * Uses the Direction enum and getDirectionOffset to calculate neighboring hexes.
+         * This method returns only unoccupied neighboring hexes.
+         */
+        std::vector<Hex> neighborsNotOccupied(const Hex &hex) const;
 
         /**
          * @brief Gets the total number of pieces on the board.
@@ -157,6 +167,16 @@ namespace hive::models {
          * @throws std::out_of_range If the neighboring hex does not exist on the board.
          */
         Hex neighbor(const Hex &hex, enums::Direction direction) const;
+
+        /**
+         * @brief Checks if a slice can be made between two hexes.
+         * @param from The starting hex.
+         * @param direction The direction
+         *
+         * A slice can be made between two hexes if there is a piece on the starting hex
+         * and the neighboring hex in the specified direction is empty.
+         */
+        bool canSliceBetween(const Hex &from, enums::Direction direction) const;
 
         /**
          * @brief Clears the board, removing all pieces and hexes.
