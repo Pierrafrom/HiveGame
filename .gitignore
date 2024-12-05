@@ -2,6 +2,10 @@
 /build/
 /cmake-build-debug/
 /out/
+
+# Configuration de CMake
+/cmake/UserConfig.cmake
+
 # Fichiers générés par CMake
 CMakeFiles/
 CMakeCache.txt
