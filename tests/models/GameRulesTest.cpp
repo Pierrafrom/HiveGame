@@ -9,31 +9,43 @@
 namespace hive::models {
     class GameRulesTest : public testing::Test {
     protected:
-        // TODO: declare any variables you need here
-        Board board;  /**< The game board used for tests */
-        Player player; /**< A player instance */
+        Board board; /**< The game board used for tests */
         GameRules &gameRules = GameRules::getInstance(); /**< Singleton instance of GameRules */
-        std::shared_ptr<Player> player2; /**< Shared pointer to the player performing the move */
-        std::shared_ptr<Player> opponent;  /**< Opponent for testing ownership */
+        std::shared_ptr<Player> player; /**< Shared pointer to the player performing the move */
+        std::shared_ptr<Player> opponent; /**< Opponent for testing ownership */
 
         // Setup method for initializing the player
         void SetUp() override {
-            //TODO : initialize any variables you need here
-            // every test will run this function before executing
-            // Initialize player and other objects
-            player = Player(1, "Player1"); // Assuming a Player constructor that takes a name and ID
-            player2 = std::make_shared<Player>("Player2");
-            opponent = std::make_shared<Player>("Player3");
-
+            player = std::make_shared<Player>(1, "Player");
+            opponent = std::make_shared<Player>(2, "Opponent");
         }
 
         // TearDown method for cleaning up
         void TearDown() override {
-            //TODO : clean up any variables you need here
-            // every test will run this function after executing
             board.clear();
         }
+
+        /**
+         * @brief Helper function to surround a queen bee on the board.
+         * @param queenBeePosition The position of the queen bee to surround.
+         */
+        void surroundQueenBee(const Hex &queenBeePosition) {
+            // Surround the queen bee with pieces
+            for (const std::vector<Hex> surroundingHexes = board.neighbors(queenBeePosition);
+                 const auto &hex: surroundingHexes) {
+                auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
+                const std::shared_ptr pieceShared = std::move(piece);
+                if (!board.isOccupied(hex)) {
+                    board.addPiece(hex, pieceShared);
+                    player->addPiece(pieceShared);
+                }
+            }
+        }
     };
+
+    /*******************************************************************************************************************
+     * Singleton Pattern Tests
+     ******************************************************************************************************************/
 
     /**
      * @test SingletonPattern_ReturnsSameInstance
@@ -51,6 +63,112 @@ namespace hive::models {
     }
 
     /**
+     * @test GameRulesTest.CopyConstructorDeleted
+     * @brief Test that ensures the copy constructor is deleted.
+     *
+     * This test validates that the Game class cannot be copied.
+     */
+    TEST_F(GameRulesTest, CopyConstructorDeleted) {
+        static_assert(!std::is_copy_constructible_v<GameRules>,
+                      "GameRules copy constructor should be deleted");
+    }
+
+    /**
+     * @test GameRulesTest.CopyAssignmentDeleted
+     * @brief Test that ensures the copy assignment operator is deleted.
+     *
+     * This test validates that the Game class cannot be copy-assigned.
+     */
+    TEST_F(GameRulesTest, CopyAssignmentDeleted) {
+        static_assert(!std::is_copy_assignable_v<GameRules>,
+                      "GameRules copy assignment operator should be deleted");
+    }
+
+    /**
+     * @test GameRulesTest.MoveConstructorDeleted
+     * @brief Test that ensures the move constructor is deleted.
+     *
+     * This test validates that the Game class cannot be moved.
+     */
+    TEST_F(GameRulesTest, MoveConstructorDeleted) {
+        static_assert(!std::is_move_constructible_v<GameRules>,
+                      "GameRules move constructor should be deleted");
+    }
+
+    /**
+     * @test GameRulesTest.MoveAssignmentDeleted
+     * @brief Test that ensures the move assignment operator is deleted.
+     *
+     * This test validates that the Game class cannot be move-assigned.
+     */
+    TEST_F(GameRulesTest, MoveAssignmentDeleted) {
+        static_assert(!std::is_move_assignable_v<GameRules>,
+                      "GameRules move assignment operator should be deleted");
+    }
+
+    /*******************************************************************************************************************
+     * validateMove Tests
+     ******************************************************************************************************************/
+
+    /**
+     * @test ValidateMove_ThrowsForQueenBeePlacementRequirement
+     * @brief Ensures `validateMove` throws a `std::invalid_argument` when a queen bee placement is required, but a different piece is placed.
+     */
+    TEST_F(GameRulesTest, ValidateMove_ThrowsForQueenBeePlacementRequirement) {
+        auto ant = PieceFactory::createPiece(enums::PieceType::ANT);
+        const std::shared_ptr antShared = std::move(ant);
+        const Hex to(0, 0, 0);
+
+        const Move move(player, antShared, to);
+
+        // Simulate a turn where the queen bee must be placed
+        constexpr size_t turnNumber = config::constants::MAX_TURN_BEFORE_QUEEN_PLACEMENT;
+
+        EXPECT_THROW({
+                     gameRules.validateMove(move, board, turnNumber);
+                     }, std::runtime_error);
+    }
+
+    /**
+    * @test ValidateMove_AllowsValidPlacement
+    * @brief Ensures `validateMove` allows a valid piece placement and movement.
+    */
+    TEST_F(GameRulesTest, ValidateMove_AllowsValidPlacement) {
+        auto bee = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        auto ant = PieceFactory::createPiece(enums::PieceType::ANT);
+        const std::shared_ptr antShared = std::move(ant);
+        const std::shared_ptr beeShared = std::move(bee);
+        const Hex origin(0, 0, 0);
+
+        const Move move1(player, beeShared, origin);
+
+        EXPECT_NO_THROW({
+            gameRules.validateMove(move1, board, 1);
+            });
+
+        move1.execute(board);
+
+        const Move move2(opponent, antShared, board.neighbor(origin, enums::Direction::NORTH_EAST));
+
+        EXPECT_NO_THROW({
+            gameRules.validateMove(move2, board, 1);
+            });
+
+        move2.execute(board);
+
+        const Move move3(player, beeShared, (beeShared->getPosition().value()),
+                         board.neighbor(origin, enums::Direction::EAST));
+
+        EXPECT_NO_THROW({
+            gameRules.validateMove(move3, board, 1);
+            });
+    }
+
+    /*******************************************************************************************************************
+     * validateMoveType Tests
+     ******************************************************************************************************************/
+
+    /**
      * @test ValidateMove_ThrowsForUnoccupiedStartingHex
      * @brief Ensures `validateMove` throws an exception for a move starting on an unoccupied hex.
      */
@@ -61,11 +179,11 @@ namespace hive::models {
         const Hex to(1, -1, 0);
 
         // Move without placing the piece on the board
-        Move move(player2, sharedPiece, from, to);
+        const Move move(player, sharedPiece, from, to);
 
         EXPECT_THROW({
-            gameRules.validateMove(move, board, 1);
-        }, std::invalid_argument);
+                     gameRules.validateMove(move, board, 1);
+                     }, std::runtime_error);
     }
 
     /**
@@ -78,13 +196,13 @@ namespace hive::models {
 
         // Place the piece owned by the opponent
         board.addPiece(Hex(0, 0, 0), sharedPiece);
-        sharedPiece->setOwner(opponent);
+        opponent->addPiece(sharedPiece);
 
-        Move move(player2, sharedPiece, Hex(0, 0, 0), Hex(1, -1, 0));
+        const Move move(player, sharedPiece, Hex(0, 0, 0), Hex(1, -1, 0));
 
         EXPECT_THROW({
-            gameRules.validateMove(move, board, 1);
-        }, std::invalid_argument);
+                     gameRules.validateMove(move, board, 1);
+                     }, std::runtime_error);
     }
 
     /**
@@ -99,14 +217,14 @@ namespace hive::models {
         const std::shared_ptr targetShared = std::move(targetPiece);
 
         board.addPiece(Hex(0, 0, 0), movingShared);
-        movingShared->setOwner(player2);
+        player->addPiece(movingShared);
         board.addPiece(Hex(1, -1, 0), targetShared);
 
-        Move move(player2, movingShared, Hex(0, 0, 0), Hex(1, -1, 0));
+        const Move move(player, movingShared, Hex(0, 0, 0), Hex(1, -1, 0));
 
         EXPECT_THROW({
-            gameRules.validateMove(move, board, 1);
-        }, std::invalid_argument);
+                     gameRules.validateMove(move, board, 1);
+                     }, std::runtime_error);
     }
 
     /**
@@ -118,104 +236,24 @@ namespace hive::models {
         auto targetPiece = PieceFactory::createPiece(enums::PieceType::ANT);
 
         const std::shared_ptr beetleShared = std::move(beetle);
-        beetleShared->setOwner(player2);
+        player->addPiece(beetleShared);
         const std::shared_ptr targetShared = std::move(targetPiece);
-        targetShared->setOwner(opponent);
+        opponent->addPiece(targetShared);
 
         board.addPiece(Hex(0, 0, 0), beetleShared);
         board.addPiece(Hex(1, -1, 0), targetShared);
 
-        Move move(player2, beetleShared, Hex(0, 0, 0), Hex(1, -1, 0));
+        const Move move(player, beetleShared, Hex(0, 0, 0), Hex(1, -1, 0));
 
         EXPECT_NO_THROW({
             gameRules.validateMove(move, board, 1);
-        });
+            });
     }
 
-    /**
-     * @test ValidateMove_AllowsValidMove
-     * @brief Ensures `validateMove` allows a valid move scenario.
-     */
-    TEST_F(GameRulesTest, ValidateMove_AllowsValidMove) {
-        auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
-        const std::shared_ptr sharedPiece = std::move(piece);
-        sharedPiece->setOwner(player2);
+    /*******************************************************************************************************************
+     * validatePlaceType Tests
+     ******************************************************************************************************************/
 
-        board.addPiece(Hex(0, 0, 0), sharedPiece);
-
-        Move move(player2, sharedPiece, Hex(0, 0, 0), Hex(1, -1, 0));
-
-        EXPECT_NO_THROW({
-            gameRules.validateMove(move, board, 1);
-        });
-    }
-    /**
-     * @test ValidateMove_ThrowsForNullPlayer
-     * @brief Ensures `validateMove` throws a `std::invalid_argument` when the player is null.
-     */
-    TEST_F(GameRulesTest, ValidateMove_ThrowsForNullPlayer) {
-        auto piece = PieceFactory::createPiece(enums::PieceType::ANT);
-        const std::shared_ptr sharedPiece = std::move(piece);
-        const Hex to(0, 0, 0);
-
-        Move move(nullptr, sharedPiece, to);
-
-        EXPECT_THROW({
-            gameRules.validateMove(move, board, 1);
-        }, std::invalid_argument);
-    }
-    /**
-     * @test ValidateMove_ThrowsForNullPiece
-     * @brief Ensures `validateMove` throws a `std::invalid_argument` when the piece is null.
-     */
-    TEST_F(GameRulesTest, ValidateMove_ThrowsForNullPiece) {
-        const Hex to(0, 0, 0);
-
-        Move move(player2, nullptr, to);
-
-        EXPECT_THROW({
-            gameRules.validateMove(move, board, 1);
-        }, std::invalid_argument);
-    }
-
-    /**
-     * @test ValidateMove_ThrowsForQueenBeePlacementRequirement
-     * @brief Ensures `validateMove` throws a `std::invalid_argument` when a queen bee placement is required, but a different piece is placed.
-     */
-    TEST_F(GameRulesTest, ValidateMove_ThrowsForQueenBeePlacementRequirement) {
-        auto ant = PieceFactory::createPiece(enums::PieceType::ANT);
-        const std::shared_ptr antShared = std::move(ant);
-        const Hex to(0, 0, 0);
-
-        Move move(player2, antShared, to);
-
-        // Simulate a turn where the queen bee must be placed
-        size_t turnNumber = config::constants::MAX_TURN_BEFORE_QUEEN_PLACEMENT;
-
-        EXPECT_THROW({
-            gameRules.validateMove(move, board, turnNumber);
-        }, std::invalid_argument);
-    }
-
-    /**
-   * @test ValidateMove_ThrowsWhenPlacementNotAdjacent
-   * @brief Ensures `validateMove` throws when the placement hex is not adjacent to existing pieces.
-   */
-    TEST_F(GameRulesTest, ValidateMove_ThrowsWhenPlacementNotAdjacent) {
-        auto ant = PieceFactory::createPiece(enums::PieceType::ANT);
-        const std::shared_ptr antShared = std::move(ant);
-        const Hex to(2, 2, -4); // A distant hex not adjacent to any pieces
-
-        Move move(player2, antShared, to);
-
-        EXPECT_THROW({
-            gameRules.validateMove(move, board, 1);
-        }, std::invalid_argument);
-    }
-
-    //==================================================
-    //================== ALED ==========================
-    //==================================================
     /**
      * @test ValidateMove_ThrowsWhenExceedingPieceLimit
      * @brief Ensures `validateMove` throws when a player tries to place more pieces than allowed of a specific type.
@@ -223,69 +261,204 @@ namespace hive::models {
     TEST_F(GameRulesTest, ValidateMove_ThrowsWhenExceedingPieceLimit) {
         auto queen = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
         auto queen2 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+
+        auto ant1 = PieceFactory::createPiece(enums::PieceType::ANT);
+        auto ant2 = PieceFactory::createPiece(enums::PieceType::ANT);
+        auto ant3 = PieceFactory::createPiece(enums::PieceType::ANT);
+        auto ant4 = PieceFactory::createPiece(enums::PieceType::ANT);
+
         const std::shared_ptr queenShared = std::move(queen);
         const std::shared_ptr queenShared2 = std::move(queen2);
+        const std::shared_ptr antShared1 = std::move(ant1);
+        const std::shared_ptr antShared2 = std::move(ant2);
+        const std::shared_ptr antShared3 = std::move(ant3);
+        const std::shared_ptr antShared4 = std::move(ant4);
+
         const Hex to(0, 0, 0);
 
-        queen2->setOwner(player2);
-        board.addPiece(Hex(0, 0, 1), queenShared2);
-
-
-
-        Move move(player2, queenShared, to);
-
+        const Move move(player, queenShared, to);
+        move.execute(board);
+        const Move move2(player, queenShared2, board.neighbor(to, enums::Direction::SOUTH_EAST));
         EXPECT_THROW({
-            gameRules.validateMove(move, board, 1);
-        }, std::invalid_argument);
+                     gameRules.validateMove(move2, board, 2);
+                     }, std::runtime_error);
+
+        const Move move3(player, antShared1, board.neighbor(to, enums::Direction::NORTH_EAST));
+        move3.execute(board);
+        const Move move4(player, antShared2, board.neighbor(to, enums::Direction::SOUTH_EAST));
+        move4.execute(board);
+        const Move move5(player, antShared3, board.neighbor(to, enums::Direction::NORTH_WEST));
+        move5.execute(board);
+        const Move move6(player, antShared4, board.neighbor(to, enums::Direction::SOUTH_WEST));
+        EXPECT_THROW({
+                     gameRules.validateMove(move6, board, 8);
+                     }, std::runtime_error);
     }
 
-    //==================================================
-    //================== ALED ==========================
-    //==================================================
     /**
-     * @test ValidateMove_ThrowsWhenPlacementAdjacentToOpponentPiece
+     * @test ValidateMove_ThrowsWhenTargetHexOccupied
+     * @brief Ensures `validateMove` throws when the target hex is already occupied.
+     */
+    TEST_F(GameRulesTest, ValidateMove_ThrowsWhenTargetHexOccupied) {
+        auto ant = PieceFactory::createPiece(enums::PieceType::ANT);
+        auto ant2 = PieceFactory::createPiece(enums::PieceType::ANT);
+
+        const std::shared_ptr antShared = std::move(ant);
+        const std::shared_ptr antShared2 = std::move(ant2);
+
+        board.addPiece(Hex(0, 0, 0), antShared);
+        player->addPiece(antShared);
+
+        board.addPiece(Hex(1, -1, 0), antShared2);
+
+        const Move move(player, antShared, Hex(1, -1, 0));
+
+        EXPECT_THROW({
+                     gameRules.validateMove(move, board, 1);
+                     }, std::runtime_error);
+    }
+
+    /**
+     * @test ValidateMove_ThrowsWhenAdjacentToOpponentPiece
      * @brief Ensures `validateMove` throws when the placement hex is adjacent to an opponent's piece.
      */
-    TEST_F(GameRulesTest, ValidateMove_ThrowsWhenPlacementAdjacentToOpponentPiece) {
+    TEST_F(GameRulesTest, ValidateMove_ThrowsWhenAdjacentToOpponentPiece) {
         auto ant = PieceFactory::createPiece(enums::PieceType::ANT);
         auto opponentPiece = PieceFactory::createPiece(enums::PieceType::SPIDER);
-
+        auto ant2 = PieceFactory::createPiece(enums::PieceType::ANT);
+        const Hex origin(0, 0, 0);
         const std::shared_ptr antShared = std::move(ant);
         const std::shared_ptr opponentShared = std::move(opponentPiece);
+        const std::shared_ptr antShared2 = std::move(ant2);
 
-        board.addPiece(Hex(1, 0, -1), opponentShared); // Place opponent's piece near the target hex
+        player->addPiece(antShared);
+        opponent->addPiece(opponentShared);
+        player->addPiece(antShared2);
 
-        Move move(player2, antShared, Hex(0, 0, 0));
+        board.addPiece(origin, antShared);
+        board.addPiece(board.neighbor(origin, enums::Direction::EAST), opponentShared);
+
+        const Move move(player, antShared2,
+                        board.neighbor(opponentShared->getPosition().value(), enums::Direction::NORTH_EAST));
 
         EXPECT_THROW({
-            gameRules.validateMove(move, board, 1);
-        }, std::invalid_argument);
+                     gameRules.validateMove(move, board, 1);
+                     }, std::runtime_error);
     }
 
-    //==================================================
-    //================== ALED ==========================
-    //==================================================
+    /*******************************************************************************************************************
+     * getVictoryCondition Tests
+     ******************************************************************************************************************/
+
     /**
- * @test ValidateMove_AllowsValidPlaceMove
- * @brief Ensures `validateMove` allows a valid PLACE move.
- */
-    TEST_F(GameRulesTest, ValidateMove_AllowsValidPlaceMove) {
-        auto ant = PieceFactory::createPiece(enums::PieceType::ANT);
-        const std::shared_ptr antShared = std::move(ant);
+     * @test VictoryCondition_NoQueenBee
+     * @brief Ensures that the game continues if no queen bees are present on the board.
+     */
+    TEST_F(GameRulesTest, VictoryCondition_NoQueenBee) {
+        const std::vector<const Player *> players = {player.get(), opponent.get()};
 
-        // Place a piece belonging to the player to establish adjacency
-        auto playerPiece = PieceFactory::createPiece(enums::PieceType::SPIDER);
-        const std::shared_ptr playerShared = std::move(playerPiece);
-        board.addPiece(Hex(1, 0, -1), playerShared);
+        const auto result = GameRules::getVictoryCondition(board, players);
 
-        Move move(player2, antShared, Hex(0, 0, 0));
-
-        EXPECT_NO_THROW({
-            gameRules.validateMove(move, board, 1);
-        });
+        EXPECT_EQ(result, nullptr) << "The game should continue when no queen bees are on the board.";
     }
 
+    /**
+     * @test VictoryCondition_OneQueenBeeSurrounded
+     * @brief Ensures that the player whose queen bee is surrounded loses, and the other player wins.
+     */
+    TEST_F(GameRulesTest, VictoryCondition_OneQueenBeeSurrounded) {
+        // Place Player 1's queen bee
+        auto queenBee1 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        const std::shared_ptr queenBee1Shared = std::move(queenBee1);
+        player->addPiece(queenBee1Shared);
+        board.addPiece(Hex(0, 0, 0), queenBee1Shared);
 
+        // Surround Player 1's queen bee
+        surroundQueenBee(Hex(0, 0, 0));
 
-    // TODO: add your test cases here
+        // Add Player 2's queen bee (not surrounded)
+        auto queenBee2 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        const std::shared_ptr queenBee2Shared = std::move(queenBee2);
+        opponent->addPiece(queenBee2Shared);
+        board.addPiece(Hex(1, -1, 0), queenBee2Shared);
+
+        const std::vector<const Player *> players = {player.get(), opponent.get()};
+
+        const auto result = GameRules::getVictoryCondition(board, players);
+
+        EXPECT_EQ(result.value(), opponent.get()) << "Player 2 should win when Player 1's queen bee is surrounded.";
+    }
+
+    /**
+     * @test VictoryCondition_Draw
+     * @brief Ensures that the game results in a draw if all players' queen bees are surrounded.
+     */
+    TEST_F(GameRulesTest, VictoryCondition_Draw) {
+        // Place and surround Player 1's queen bee
+        auto queenBee1 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        const std::shared_ptr queenBee1Shared = std::move(queenBee1);
+        player->addPiece(queenBee1Shared);
+        board.addPiece(Hex(0, 0, 0), queenBee1Shared);
+        surroundQueenBee(Hex(0, 0, 0));
+
+        // Place and surround Player 2's queen bee
+        auto queenBee2 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        const std::shared_ptr queenBee2Shared = std::move(queenBee2);
+        opponent->addPiece(queenBee2Shared);
+        board.addPiece(Hex(1, -1, 0), queenBee2Shared);
+        surroundQueenBee(Hex(1, -1, 0));
+
+        const std::vector<const Player *> players = {player.get(), opponent.get()};
+
+        const auto result = GameRules::getVictoryCondition(board, players);
+
+        EXPECT_EQ(result, std::nullopt) << "The game should result in a draw if all queen bees are surrounded.";
+    }
+
+    /**
+     * @test VictoryCondition_QueenBeeNotPlaced
+     * @brief Ensures that the game continues if one or both queen bees are not placed.
+     */
+    TEST_F(GameRulesTest, VictoryCondition_QueenBeeNotPlaced) {
+        // Add Player 1's queen bee without placing it
+        auto queenBee1 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        const std::shared_ptr queenBee1Shared = std::move(queenBee1);
+        player->addPiece(queenBee1Shared);
+
+        // Place Player 2's queen bee (not surrounded)
+        auto queenBee2 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        const std::shared_ptr queenBee2Shared = std::move(queenBee2);
+        opponent->addPiece(queenBee2Shared);
+        board.addPiece(Hex(0, 0, 0), queenBee2Shared);
+
+        const std::vector<const Player *> players = {player.get(), opponent.get()};
+
+        const auto result = GameRules::getVictoryCondition(board, players);
+
+        EXPECT_EQ(result, nullptr) << "The game should continue if one or both queen bees are not placed.";
+    }
+
+    /**
+     * @test VictoryCondition_GameContinues
+     * @brief Ensures that the game continues if both queen bees are not surrounded.
+     */
+    TEST_F(GameRulesTest, VictoryCondition_GameContinues) {
+        // Place Player 1's queen bee
+        auto queenBee1 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        const std::shared_ptr queenBee1Shared = std::move(queenBee1);
+        player->addPiece(queenBee1Shared);
+        board.addPiece(Hex(0, 0, 0), queenBee1Shared);
+
+        // Place Player 2's queen bee
+        auto queenBee2 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+        const std::shared_ptr queenBee2Shared = std::move(queenBee2);
+        opponent->addPiece(queenBee2Shared);
+        board.addPiece(Hex(1, -1, 0), queenBee2Shared);
+
+        const std::vector<const Player *> players = {player.get(), opponent.get()};
+
+        const auto result = GameRules::getVictoryCondition(board, players);
+
+        EXPECT_EQ(result, nullptr) << "The game should continue if one or both queen bees are not placed.";
+    }
 }

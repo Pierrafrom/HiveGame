@@ -36,8 +36,8 @@ namespace hive::models {
         std::shared_ptr<Board> board; /**< The game board, managed via a shared pointer. */
         std::array<std::shared_ptr<Player>, 2> players; /**< Array holding the two players. */
         size_t currentPlayerIndex; /**< Index of the current player (0 or 1). */
-        std::stack<std::unique_ptr<Move> > undoStack; /**< Stack for undo operations. */
-        std::stack<std::unique_ptr<Move> > redoStack; /**< Stack for redo operations. */
+        std::stack<std::unique_ptr<Move> > undoStack = {}; /**< Stack for undo operations. */
+        std::stack<std::unique_ptr<Move> > redoStack = {}; /**< Stack for redo operations. */
         size_t turnNumber; /**< Current turn number. */
 
         /**
