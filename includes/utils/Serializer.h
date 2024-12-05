@@ -4,32 +4,30 @@
 #include "models/Game.h"
 #include <string>
 
-// TODO: Implement the Serializer class (not a priority at the moment)
-
 namespace hive::utils {
     /**
      * @class Serializer
-     * @brief Fournit des méthodes pour sérialiser et désérialiser l'état du jeu.
+     * @brief Provides methods for serializing and deserializing the state of the game.
      *
-     * La classe Serializer permet de sauvegarder et de charger l'état du jeu, afin de pouvoir reprendre une partie ultérieurement.
+     * The Serializer class allows saving and loading the game state to/from a file.
      */
     class Serializer {
     public:
         /**
-         * @brief Sauvegarde l'état du jeu dans un fichier.
-         * @param game La partie à sauvegarder.
-         * @param filename Le nom du fichier où sauvegarder.
-         * @return True si la partie a été sauvegardée avec succès, sinon false.
+         * @brief Saves the current game state to a file.
+         * @param game The game instance to save.
+         * @param filename The name of the file to save to.
+         * @return True if the game was successfully saved, otherwise false.
          */
-        static bool saveGame(const models::Game &game, const std::string &filename);
+        static bool saveGame(const hive::models::Game &game, const std::string &filename);
 
         /**
-         * @brief Charge une partie à partir d'un fichier.
-         * @param game L'objet Game dans lequel charger la partie.
-         * @param filename Le nom du fichier à charger.
-         * @return True si la partie a été chargée avec succès, sinon false.
+         * @brief Loads a game state from a file.
+         * @param game The game instance to load into.
+         * @param filename The name of the file to load from.
+         * @return True if the game was successfully loaded, otherwise false.
          */
-        static bool loadGame(models::Game &game, const std::string &filename);
+        static bool loadGame(hive::models::Game &game, const std::string &filename);
     };
 } // namespace hive::utils
 

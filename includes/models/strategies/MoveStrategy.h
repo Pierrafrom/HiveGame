@@ -86,7 +86,7 @@ namespace hive::models::strategies {
         * @param player The player to validate ownership against.
         * @return True if the player owns the piece, false otherwise.
         */
-        bool validatePieceOwnership(const Player &player) const;
+        [[nodiscard]] bool validatePieceOwnership(const Player &player) const;
     };
 } // namespace hive::models::strategies
 

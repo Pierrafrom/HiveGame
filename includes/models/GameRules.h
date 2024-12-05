@@ -39,36 +39,15 @@ namespace hive::models {
          * @brief Validates a MOVE-type move.
          * @param move The move to validate.
          * @param board The game board.
-         * @return True if the move is valid, false otherwise.
          */
-        [[nodiscard]] static bool validateMoveType(const Move &move, const Board &board);
+        static void validateMoveType(const Move &move, const Board &board);
 
         /**
          * @brief Validates a PLACE-type move.
          * @param move The move to validate.
          * @param board The game board.
-         * @return True if the placement is valid, false otherwise.
          */
-        [[nodiscard]] static bool validatePlaceType(const Move &move, const Board &board);
-
-    public:
-        /**
-         * @brief Retrieves the singleton instance of GameRules.
-         * @return A reference to the single instance of GameRules.
-         *
-         * This method ensures that only one instance of GameRules exists throughout
-         * the application. It creates the instance on first access and returns it
-         * on subsequent calls.
-         */
-        static GameRules &getInstance();
-
-        /**
-         * @brief Validates a move according to its type.
-         * @param move The move to validate.
-         * @param board The game board.
-         * @return True if the move is valid, false otherwise.
-         */
-        [[nodiscard]] static bool validateMove(const Move &move, const Board &board);
+        static void validatePlaceType(const Move &move, const Board &board);
 
         /**
          * @brief Checks if the player can add a specific piece type according to the maximum limit.
@@ -86,6 +65,25 @@ namespace hive::models {
          */
         [[nodiscard]] static bool isQueenPlacementRequired(const Player &player, size_t turnNumber);
 
+    public:
+        /**
+         * @brief Retrieves the singleton instance of GameRules.
+         * @return A reference to the single instance of GameRules.
+         *
+         * This method ensures that only one instance of GameRules exists throughout
+         * the application. It creates the instance on first access and returns it
+         * on subsequent calls.
+         */
+        static GameRules &getInstance();
+
+        /**
+         * @brief Validates a move according to its type.
+         * @param move The move to validate.
+         * @param board The game board.
+         * @param turnNumber The current turn number.
+         */
+        static void validateMove(const Move &move, const Board &board, size_t turnNumber);
+
         /**
          * @brief Checks the victory conditions in the game.
          *
@@ -102,7 +100,7 @@ namespace hive::models {
          *         `std::nullopt` for a draw, or `nullptr` if the game continues without a winner.
          */
         static std::optional<const Player *>
-        getVictoryCondition(const Board &board, const std::vector<Player> &players);
+        getVictoryCondition(const Board &board, const std::vector<const Player &> &players);
 
         /****************************************************************************
          * Singleton class: prevent copying and moving the singleton instance.
