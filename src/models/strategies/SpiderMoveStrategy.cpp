@@ -15,6 +15,9 @@ namespace hive::models::strategies {
         std::set<Hex> visited;
         std::set<Hex> reachable;
 
+        // add the current position to visited
+        visited.insert(position);
+
         // Start the exploration from the current position
         spiderExploration(position, 0, visited, reachable, board);
 
@@ -35,11 +38,11 @@ namespace hive::models::strategies {
 
         for (const Hex &neighbor : board.neighborsNotOccupied(current)) {
             // check if the neighbor is not already visited
-            if (visited.count(neighbor) == 0) {
-                visited.insert(neighbor);
-                spiderExploration(neighbor, depth + 1, visited, reachable, board);
-                visited.erase(neighbor);
-            }
+                if (visited.empty() || *visited.rbegin() != neighbor) {
+                    visited.insert(neighbor);
+                    spiderExploration(neighbor, depth + 1, visited, reachable, board);
+                    visited.erase(neighbor);
+                }
         }
     }
 } // namespace hive::models::strategies

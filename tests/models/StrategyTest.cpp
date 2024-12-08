@@ -85,5 +85,65 @@ namespace hive::models::strategies {
         ASSERT_TRUE(possibleMoves.empty());
     }
 
+    /*******************************************************************************************************************
+     * tests for SpiderStrategy
+     * ****************************************************************************************************************/
+    TEST_F(StrategyTest, TestNoMovesWhenSpiderIsFullySurounded) {
+        const Hex origin(0, 0, 0);
+        auto spider1 = PieceFactory::createPiece(enums::PieceType::SPIDER);
+        auto beetle = PieceFactory::createPiece(enums::PieceType::BEETLE);
+
+        const std::shared_ptr sharedSpider1 = std::move(spider1);
+        const std::shared_ptr sharedBeetle = std::move(beetle);
+
+        // Ajout de la spider du joueur 1 au centre
+        player1->addPiece(sharedSpider1);
+        board.addPiece(origin, sharedSpider1);
+
+        // Entoure la spider avec des pièces
+        board.addPiece(board.neighbor(origin, enums::Direction::NORTH_EAST), sharedBeetle);
+        board.addPiece(board.neighbor(origin, enums::Direction::EAST), sharedBeetle);
+        board.addPiece(board.neighbor(origin, enums::Direction::SOUTH_EAST), sharedBeetle);
+        board.addPiece(board.neighbor(origin, enums::Direction::SOUTH_WEST), sharedBeetle);
+        board.addPiece(board.neighbor(origin, enums::Direction::WEST), sharedBeetle);
+        board.addPiece(board.neighbor(origin, enums::Direction::NORTH_WEST), sharedBeetle);
+
+        // Obtient les mouvements possibles pour la reine bloquée
+        const std::vector<Hex> possibleMoves = sharedSpider1->getMoveStrategy().getPossibleMoves(board, *player1);
+
+        // Assure qu'aucun mouvement n'est possible
+        ASSERT_TRUE(possibleMoves.empty());
+    }
+
+    TEST_F(StrategyTest, TestValidMoveSpiderWithBacktrack) {
+        const Hex origin(0, 0, 0);
+
+        auto spider1 = PieceFactory::createPiece(enums::PieceType::SPIDER);
+        auto beetle = PieceFactory::createPiece(enums::PieceType::BEETLE);
+
+        const std::shared_ptr sharedSpider1 = std::move(spider1);
+        const std::shared_ptr sharedBeetle = std::move(beetle);
+
+        // Ajout de la spider du joueur 1 au centre
+        player1->addPiece(sharedSpider1);
+        board.addPiece(origin, sharedSpider1);
+
+        // Entoure partiellement la spider avec des pièces
+        board.addPiece(board.neighbor(origin, enums::Direction::NORTH_EAST), sharedBeetle);
+        board.addPiece(board.neighbor(origin, enums::Direction::EAST), sharedBeetle);
+        board.addPiece(board.neighbor(origin, enums::Direction::SOUTH_EAST), sharedBeetle);
+        board.addPiece(board.neighbor(origin, enums::Direction::SOUTH_WEST), sharedBeetle);
+        board.addPiece(board.neighbor(origin, enums::Direction::WEST), sharedBeetle);
+
+        // Laisse un espace libre au nord-ouest
+        // Cela permettra de tester le backtracking de la spider.
+
+        // Obtient les mouvements possibles pour la spider
+        const std::vector<Hex> possibleMoves = sharedSpider1->getMoveStrategy().getPossibleMoves(board, *player1);
+
+        // Vérifie que le nombre de mouvements est correct
+        ASSERT_EQ(possibleMoves.size(), 11);
+    }
+
     //TODO test every strategy for every piece
 } // namespace hive::models::strategies
