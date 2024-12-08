@@ -144,6 +144,80 @@ namespace hive::models::strategies {
         // Vérifie que le nombre de mouvements est correct
         ASSERT_EQ(possibleMoves.size(), 11);
     }
+    /*******************************************************************************************************************
+     * tests for GrasshopperMoveStrategy
+     * ****************************************************************************************************************/
+    TEST_F(StrategyTest, TestNoMovesWhenGrasshoperIsnotFullySuroundedAndNoPiecesToJump) {
+        const Hex origin(0, 0, 0);
+        auto grasshopper = PieceFactory::createPiece(enums::PieceType::GRASSHOPPER);
+        auto beetle = PieceFactory::createPiece(enums::PieceType::BEETLE);
+
+        const std::shared_ptr sharedGrasshopper = std::move(grasshopper);
+        const std::shared_ptr sharedBeetle = std::move(beetle);
+
+        // Ajout de la spider du joueur 1 au centre
+        player1->addPiece(sharedGrasshopper);
+        board.addPiece(origin, sharedGrasshopper);
+
+        // Entoure le grasshopper avec deux pièces
+        board.addPiece(board.neighbor(origin, enums::Direction::NORTH_EAST), sharedBeetle);
+        board.addPiece(board.neighbor(origin, enums::Direction::SOUTH_EAST), sharedBeetle);
+
+        // Obtient les mouvements possibles pour le grasshopper
+        const std::vector<Hex> possibleMoves = sharedGrasshopper->getMoveStrategy().getPossibleMoves(board, *player1);
+
+        // Vérifie que le nombre de mouvements est correct
+        ASSERT_TRUE(possibleMoves.empty());
+    }
+    TEST_F(StrategyTest, TestValidGrasshopperMoveStrategy) {
+        const Hex origin(0, 0, 0);
+        auto grasshopper = PieceFactory::createPiece(enums::PieceType::GRASSHOPPER);
+        auto beetle = PieceFactory::createPiece(enums::PieceType::BEETLE);
+
+        const std::shared_ptr sharedGrasshopper = std::move(grasshopper);
+        const std::shared_ptr sharedBeetle = std::move(beetle);
+
+        // Ajout de la spider du joueur 1 au centre
+        player1->addPiece(sharedGrasshopper);
+        board.addPiece(origin, sharedGrasshopper);
+
+        // Entoure le grasshopper avec deux pièces
+        board.addPiece(board.neighbor(origin, enums::Direction::NORTH_EAST), sharedBeetle);
+        board.addPiece(board.neighbor(origin, enums::Direction::SOUTH_EAST), sharedBeetle);
+        board.addPiece(board.neighbor(origin, enums::Direction::EAST), sharedBeetle);
+
+        // Obtient les mouvements possibles pour le grasshopper
+        const std::vector<Hex> possibleMoves = sharedGrasshopper->getMoveStrategy().getPossibleMoves(board, *player1);
+
+        // Vérifie que le nombre de mouvements est correct
+        ASSERT_EQ(possibleMoves.size(), 3);
+    }
+    TEST_F(StrategyTest, TestValidGrasshopperMoveStrategyToTheFirstValidEmplacementInADirection) {
+        const Hex origin(0, 0, 0);
+        auto grasshopper = PieceFactory::createPiece(enums::PieceType::GRASSHOPPER);
+        auto beetle = PieceFactory::createPiece(enums::PieceType::BEETLE);
+
+        const std::shared_ptr sharedGrasshopper = std::move(grasshopper);
+        const std::shared_ptr sharedBeetle = std::move(beetle);
+
+        // Ajout de la spider du joueur 1 au centre
+        player1->addPiece(sharedGrasshopper);
+        board.addPiece(origin, sharedGrasshopper);
+
+        // Créer une configuration de plateau où il y a deux emplacement valide au nord-est pour tester si le déplacement se fait bien au premier emplacement valide
+        board.addPiece(board.neighbor(origin, enums::Direction::NORTH_EAST), sharedBeetle);
+        board.addPiece(board.neighbor(origin, enums::Direction::EAST), sharedBeetle);
+        board.addPiece(board.neighbor(board.neighbor(origin, enums::Direction::EAST), enums::Direction::NORTH_EAST), sharedBeetle);
+        board.addPiece(board.neighbor(board.neighbor(board.neighbor(origin, enums::Direction::EAST), enums::Direction::NORTH_EAST), enums::Direction::NORTH_EAST), sharedBeetle);
+
+
+        // Obtient les mouvements possibles pour le grasshopper
+        const std::vector<Hex> possibleMoves = sharedGrasshopper->getMoveStrategy().getPossibleMoves(board, *player1);
+
+        // Vérifie que le nombre de mouvements est correct
+        ASSERT_EQ(possibleMoves.size(), 2);
+        ASSERT_EQ(possibleMoves[0], board.neighbor(board.neighbor(origin, enums::Direction::NORTH_EAST), enums::Direction::NORTH_EAST));
+    }
 
     //TODO test every strategy for every piece
 } // namespace hive::models::strategies
