@@ -216,7 +216,60 @@ namespace hive::models::strategies {
 
         // Vérifie que le nombre de mouvements est correct
         ASSERT_EQ(possibleMoves.size(), 2);
+        // Vérifie que le déplacement se fait bien au premier emplacement valide
         ASSERT_EQ(possibleMoves[0], board.neighbor(board.neighbor(origin, enums::Direction::NORTH_EAST), enums::Direction::NORTH_EAST));
+    }
+    /*******************************************************************************************************************
+     * tests for BeetleMoveStrategy
+     * ****************************************************************************************************************/
+    TEST_F(StrategyTest, TestValidBeetleMoveStrategyWhenIsAlmosSurounded) {
+        const Hex origin(0, 0, 0);
+        auto beetle = PieceFactory::createPiece(enums::PieceType::BEETLE);
+        auto spider = PieceFactory::createPiece(enums::PieceType::SPIDER);
+
+        const std::shared_ptr sharedBeetle = std::move(beetle);
+        const std::shared_ptr sharedSpider = std::move(spider);
+
+        // Ajout du beetle du joueur 1 au centre
+        player1->addPiece(sharedBeetle);
+        board.addPiece(origin, sharedBeetle);
+
+        // Entoure le beetle avec deux pièces
+        board.addPiece(board.neighbor(origin, enums::Direction::NORTH_EAST), sharedSpider);
+        board.addPiece(board.neighbor(origin, enums::Direction::EAST), sharedSpider);
+        board.addPiece(board.neighbor(origin, enums::Direction::SOUTH_EAST), sharedSpider);
+        board.addPiece(board.neighbor(origin, enums::Direction::SOUTH_WEST), sharedSpider);
+        board.addPiece(board.neighbor(origin, enums::Direction::WEST), sharedSpider);
+
+
+        // Obtient les mouvements possibles pour le beetle
+        const std::vector<Hex> possibleMoves = sharedBeetle->getMoveStrategy().getPossibleMoves(board, *player1);
+
+        // Vérifie que le nombre de mouvements est correct
+        ASSERT_EQ(possibleMoves.size(), 6);
+    }
+    TEST_F(StrategyTest, TestOneMoveWhenBeetleBreakTheHive) {
+        const Hex origin(0, 0, 0);
+        auto beetle = PieceFactory::createPiece(enums::PieceType::BEETLE);
+        auto spider = PieceFactory::createPiece(enums::PieceType::SPIDER);
+
+        const std::shared_ptr sharedBeetle = std::move(beetle);
+        const std::shared_ptr sharedSpider = std::move(spider);
+
+        // Ajout du beetle du joueur 1 au centre
+        player1->addPiece(sharedBeetle);
+        board.addPiece(origin, sharedBeetle);
+
+        // Entoure le beetle avec deux pièces
+        board.addPiece(board.neighbor(origin, enums::Direction::NORTH_EAST), sharedSpider);
+        board.addPiece(board.neighbor(origin, enums::Direction::SOUTH_EAST), sharedSpider);
+
+
+        // Obtient les mouvements possibles pour le beetle
+        const std::vector<Hex> possibleMoves = sharedBeetle->getMoveStrategy().getPossibleMoves(board, *player1);
+
+        // Vérifie que le nombre de mouvements est correct
+        ASSERT_EQ(possibleMoves.size(), 1);
     }
 
     //TODO test every strategy for every piece
