@@ -272,5 +272,60 @@ namespace hive::models::strategies {
         ASSERT_EQ(possibleMoves.size(), 1);
     }
 
+    /*******************************************************************************************************************
+     * tests for AntMoveStrategy
+     * ****************************************************************************************************************/
+    TEST_F(StrategyTest, TestNoMovesWhenAntIsFullySurounded) {
+        const Hex origin(0,0,0);
+
+        auto ant = PieceFactory::createPiece(enums::PieceType::ANT);
+        auto spider = PieceFactory::createPiece(enums::PieceType::SPIDER);
+
+        const std::shared_ptr sharedAnt = std::move(ant);
+        const std::shared_ptr sharedSpider = std::move(spider);
+
+        player1->addPiece(sharedAnt);
+        board.addPiece(origin, sharedAnt);
+
+        // Entoure la Ant partillement
+        board.addPiece(board.neighbor(origin, enums::Direction::NORTH_EAST), sharedSpider);
+        board.addPiece(board.neighbor(origin, enums::Direction::EAST), sharedSpider);
+        board.addPiece(board.neighbor(origin, enums::Direction::SOUTH_EAST), sharedSpider);
+        board.addPiece(board.neighbor(origin, enums::Direction::SOUTH_WEST), sharedSpider);
+        board.addPiece(board.neighbor(origin, enums::Direction::WEST), sharedSpider);
+        board.addPiece(board.neighbor(origin, enums::Direction::NORTH_WEST), sharedSpider);
+
+        // Obtient les mouvements possibles pour le beetle
+        const std::vector<Hex> possibleMoves = sharedAnt->getMoveStrategy().getPossibleMoves(board, *player1);
+
+        // Vérifie que le nombre de mouvements est correct
+        ASSERT_TRUE(possibleMoves.empty());
+    }
+
+    TEST_F(StrategyTest, TestMoveSWhenAntCanPassTroughTheSpace) {
+        const Hex origin(0,0,0);
+
+        auto ant = PieceFactory::createPiece(enums::PieceType::ANT);
+        auto spider = PieceFactory::createPiece(enums::PieceType::SPIDER);
+
+        const std::shared_ptr sharedAnt = std::move(ant);
+        const std::shared_ptr sharedSpider = std::move(spider);
+
+        player1->addPiece(sharedAnt);
+        board.addPiece(origin, sharedAnt);
+
+        // Entoure la Ant partillement
+        board.addPiece(board.neighbor(origin, enums::Direction::NORTH_WEST), sharedSpider);
+        board.addPiece(board.neighbor(origin, enums::Direction::NORTH_EAST), sharedSpider);
+        board.addPiece(board.neighbor(origin, enums::Direction::EAST), sharedSpider);
+        board.addPiece(board.neighbor(origin, enums::Direction::SOUTH_EAST), sharedSpider);
+
+        // Obtient les mouvements possibles pour le beetle
+        const std::vector<Hex> possibleMoves = sharedAnt->getMoveStrategy().getPossibleMoves(board, *player1);
+
+        // Vérifie que le nombre de mouvements est correct
+        //ASSERT_EQ(possibleMoves.size(), 11);
+    }
+
     //TODO test every strategy for every piece
 } // namespace hive::models::strategies

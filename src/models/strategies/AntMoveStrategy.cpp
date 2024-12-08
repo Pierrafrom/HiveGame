@@ -17,20 +17,20 @@ namespace hive::models::strategies {
         std::vector<Hex> possibleMoves{};
 
         // Start the exploration from the current position
-        antExploration(position, possibleMoves, board);
-
+        antExploration(position, possibleMoves, board, position);
 
         return possibleMoves;
     }
 
     //Fonction qui ajoute les hexagones sur lesquels on peut se déplacer depuis une position au vecteur possibleMoves et qui les retourne
-    std::vector<Hex> AntMoveStrategy::addPossibleMove(const Hex &current_position, std::vector<Hex> &possibleMoves, const Board &board) const {
+    std::vector<Hex> AntMoveStrategy::addPossibleMove(const Hex &current_position, std::vector<Hex> &possibleMoves, const Board &board, const Hex &initiaPosition) const {
         std::vector<Hex> newPositions{}; // initialisation du vecteur contenant les nouvelles positions ajoutées à : vide
 
         for (const auto &direction: enums::getAllDirections()) {
             const bool occupied = board.isOccupied(board.neighbor(current_position, direction));
             const bool canSlice = board.canSliceBetween(current_position, direction);
-            const bool connected = isHiveConnectedAfterMove(board, current_position, board.neighbor(current_position, direction));
+            const bool connected = isHiveConnectedAfterMove(board, initiaPosition, board.neighbor(current_position, direction));
+
 
             //check if the hex is already in the list
             bool doublon = false;
@@ -50,10 +50,10 @@ namespace hive::models::strategies {
         return newPositions;
     }
 
-    void AntMoveStrategy::antExploration(const Hex &current_position, std::vector<Hex> &possibleMoves, const Board &board) const {
-        std::vector<Hex> newPositions = addPossibleMove(current_position, possibleMoves, board);
+    void AntMoveStrategy::antExploration(const Hex &current_position, std::vector<Hex> &possibleMoves, const Board &board, const Hex &initiaPosition) const {
+        std::vector<Hex> newPositions = addPossibleMove(current_position, possibleMoves, board, initiaPosition);
         if (!newPositions.empty()){
-            for (const Hex &position : newPositions) antExploration(position, possibleMoves, board);
+            for (const Hex &position : newPositions) antExploration(position, possibleMoves, board, initiaPosition);
         }
 
 

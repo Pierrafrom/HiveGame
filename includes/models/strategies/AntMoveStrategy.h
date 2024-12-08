@@ -41,9 +41,9 @@ namespace hive::models::strategies {
          */
         [[nodiscard]] std::vector<Hex> getPossibleMoves(const Board &board, const Player &player) const override;
 
-        std::vector<Hex> addPossibleMove(const Hex &current_position, std::vector<Hex> &possibleMoves, const Board &board) const;
+        std::vector<Hex> addPossibleMove(const Hex &current_position, std::vector<Hex> &possibleMoves, const Board &board, const Hex &initiaPosition) const;
 
-        void antExploration(const Hex &current_position, std::vector<Hex> &possibleMoves, const Board &board) const;
+        void antExploration(const Hex &current_position, std::vector<Hex> &possibleMoves, const Board &board, const Hex &initiaPosition) const;
 
     };
 } // namespace hive::models::strategies
