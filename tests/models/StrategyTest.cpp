@@ -15,6 +15,27 @@ namespace hive::models::strategies {
         std::shared_ptr<Player> player2; /**< Player 2 used in tests */
         size_t turn = 1;
 
+        // Pieces for player 1
+        std::shared_ptr<Piece> ant1player1shared;
+        std::shared_ptr<Piece> spider1player1shared;
+        std::shared_ptr<Piece> beetle1player1shared;
+        std::shared_ptr<Piece> grasshopper1player1shared;
+        std::shared_ptr<Piece> ladybug1player1shared;
+        std::shared_ptr<Piece> mosquito1player1shared;
+        std::shared_ptr<Piece> pillbug1player1shared;
+        std::shared_ptr<Piece> queen1player1shared;
+
+        // Pieces for player 2
+        std::shared_ptr<Piece> ant1player2shared;
+        std::shared_ptr<Piece> spider1player2shared;
+        std::shared_ptr<Piece> beetle1player2shared;
+        std::shared_ptr<Piece> grasshopper1player2shared;
+        std::shared_ptr<Piece> ladybug1player2shared;
+        std::shared_ptr<Piece> mosquito1player2shared;
+        std::shared_ptr<Piece> pillbug1player2shared;
+        std::shared_ptr<Piece> queen1player2shared;
+
+
         // Setup method for initializing the players
         void SetUp() override {
             Player::resetPlayerNextId();
@@ -24,51 +45,51 @@ namespace hive::models::strategies {
             const Hex origine(0,0,0);
             //create one ant piece for each player
             auto ant1player1 = PieceFactory::createPiece(enums::PieceType::ANT);
-            const std::shared_ptr ant1player1shared = std::move(ant1player1);
+            ant1player1shared = std::move(ant1player1);
             auto ant1player2 = PieceFactory::createPiece(enums::PieceType::ANT);
-            const std::shared_ptr ant1player2shared = std::move(ant1player2);
+            ant1player2shared = std::move(ant1player2);
 
             // Create spider piece for each player
             auto spider1player1 = PieceFactory::createPiece(enums::PieceType::SPIDER);
-            const std::shared_ptr spider1player1shared = std::move(spider1player1);
+            spider1player1shared = std::move(spider1player1);
             auto spider1player2 = PieceFactory::createPiece(enums::PieceType::SPIDER);
-            const std::shared_ptr spider1player2shared = std::move(spider1player2);
+            spider1player2shared = std::move(spider1player2);
 
             // Create beetle piece for each player
             auto beetle1player1 = PieceFactory::createPiece(enums::PieceType::BEETLE);
-            const std::shared_ptr beetle1player1shared = std::move(beetle1player1);
+            beetle1player1shared = std::move(beetle1player1);
             auto beetle1player2 = PieceFactory::createPiece(enums::PieceType::BEETLE);
-            const std::shared_ptr beetle1player2shared = std::move(beetle1player2);
+            beetle1player2shared = std::move(beetle1player2);
 
             // Create grasshopper piece for each player
             auto grasshopper1player1 = PieceFactory::createPiece(enums::PieceType::GRASSHOPPER);
-            const std::shared_ptr grasshopper1player1shared = std::move(grasshopper1player1);
+            grasshopper1player1shared = std::move(grasshopper1player1);
             auto grasshopper1player2 = PieceFactory::createPiece(enums::PieceType::GRASSHOPPER);
-            const std::shared_ptr grasshopper1player2shared = std::move(grasshopper1player2);
+            grasshopper1player2shared = std::move(grasshopper1player2);
 
             // Create ladybug piece for each player
             auto ladybug1player1 = PieceFactory::createPiece(enums::PieceType::LADYBUG);
-            const std::shared_ptr ladybug1player1shared = std::move(ladybug1player1);
+            ladybug1player1shared = std::move(ladybug1player1);
             auto ladybug1player2 = PieceFactory::createPiece(enums::PieceType::LADYBUG);
-            const std::shared_ptr ladybug1player2shared = std::move(ladybug1player2);
+            ladybug1player2shared = std::move(ladybug1player2);
 
             // Create mosquito piece for each player
             auto mosquito1player1 = PieceFactory::createPiece(enums::PieceType::MOSQUITO);
-            const std::shared_ptr mosquito1player1shared = std::move(mosquito1player1);
+            mosquito1player1shared = std::move(mosquito1player1);
             auto mosquito1player2 = PieceFactory::createPiece(enums::PieceType::MOSQUITO);
-            const std::shared_ptr mosquito1player2shared = std::move(mosquito1player2);
+            mosquito1player2shared = std::move(mosquito1player2);
 
             // Create pillbug piece for each player
             auto pillbug1player1 = PieceFactory::createPiece(enums::PieceType::PILLBUG);
-            const std::shared_ptr pillbug1player1shared = std::move(pillbug1player1);
+            pillbug1player1shared = std::move(pillbug1player1);
             auto pillbug1player2 = PieceFactory::createPiece(enums::PieceType::PILLBUG);
-            const std::shared_ptr pillbug1player2shared = std::move(pillbug1player2);
+            pillbug1player2shared = std::move(pillbug1player2);
 
             // Create queen piece for each player
             auto queen1player1 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
-            const std::shared_ptr queen1player1shared = std::move(queen1player1);
+            queen1player1shared = std::move(queen1player1);
             auto queen1player2 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
-            const std::shared_ptr queen1player2shared = std::move(queen1player2);
+            queen1player2shared = std::move(queen1player2);
 
 
             //==========================================================================================================
@@ -81,7 +102,7 @@ namespace hive::models::strategies {
             std::cout << board.pieceCount() << std::endl;
 
             //ant1player2 place on hex(1,-1,0)
-            const Move move2(player2, ant1player2shared, board.neighbor(origine, enums::Direction::EAST));
+            const Move move2(player2, ant1player2shared, Hex(1,-1,0));
             move2.execute(board);
             turn++;
 
@@ -168,25 +189,119 @@ namespace hive::models::strategies {
     /*******************************************************************************************************************
      * tests for QueenBeeMoveStrategy
      * ****************************************************************************************************************/
-    TEST_F(StrategyTest, TestValidMoveWhenPieceBelongsToPlayer) {
-        auto bee1 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
-        auto bee2 = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
-        const std::shared_ptr sharedBee1 = std::move(bee1);
-        const std::shared_ptr sharedBee2 = std::move(bee2);
 
-        player1->addPiece(sharedBee1);
-        board.addPiece(Hex(0, 0, 0), sharedBee1);
-        player2->addPiece(sharedBee2);
-        board.addPiece(Hex(1, 0, -1), sharedBee2);
+    /**
+     * @test Verify that the Queen Bee can move to valid adjacent hexes.
+     * @details This test checks the possible moves for the Queen Bee when it belongs to the player and
+     *          is placed at position (0, 1, -1) with no blocking pieces around it.
+     */
+    TEST_F(StrategyTest, TestValidMoveForQueenBee) {
+        // Retrieve queen1player1 already placed at (0, 1, -1)
+        const std::vector<Hex> possibleMoves = queen1player1shared->getMoveStrategy().getPossibleMoves(board, *player1);
 
-        const std::vector<Hex> possiblesMoves = sharedBee1->getMoveStrategy().getPossibleMoves(board, *player1);
-
-        ASSERT_EQ(possiblesMoves.size(), 2);
+        // Check that the Queen Bee has valid adjacent moves (expected: 2 adjacent hexes are free)
+        ASSERT_EQ(possibleMoves.size(), 2);
     }
 
+    /**
+     * @test Verify that no moves are available for the Queen Bee if it does not belong to the player.
+     * @details This test ensures that the Queen Bee cannot move when another player owns the piece,
+     *          even if it is placed on the board.
+     */
     TEST_F(StrategyTest, TestNoMoveWhenPieceDoesNotBelongToPlayer) {
+        // Attempt to retrieve possible moves for player2, who does not own queen1player1
+        const std::vector<Hex> possibleMoves = queen1player1shared->getMoveStrategy().getPossibleMoves(board, *player2);
+
+        // Assert that no moves are available for a player who does not own the Queen Bee
+        ASSERT_EQ(possibleMoves.size(), 0);
     }
 
-    TEST_F(StrategyTest, TestNoMovesWhenBoardIsBlocked) {
+    /**
+     * @test Verify that no moves are available for the Queen Bee when surrounded by blocking pieces.
+     * @details This test simulates a scenario where the Queen Bee is completely surrounded by other
+     *          pieces, preventing any movement.
+     */
+    TEST_F(StrategyTest, TestNoMovesWhenQueenBeeIsBlocked) {
+        // Surround queen1player1 with blocking pieces
+        auto ant2player1 = PieceFactory::createPiece(enums::PieceType::ANT);
+        auto ant3player1 = PieceFactory::createPiece(enums::PieceType::ANT);
+        const std::shared_ptr<Piece> ant2player1shared = std::move(ant2player1);
+        const std::shared_ptr<Piece> ant3player1shared = std::move(ant3player1);
+
+        const Move move1(player1, ant2player1shared, Hex(1,0,-1));
+        move1.execute(board);
+        const Move move2(player1, ant3player1shared, Hex(1,1,-2));
+        move2.execute(board);
+
+
+        // Retrieve possible moves for queen1player1
+        const std::vector<Hex> possibleMoves = queen1player1shared->getMoveStrategy().getPossibleMoves(board, *player1);
+
+        // Assert that no moves are available when surrounded by blocking pieces
+        ASSERT_EQ(possibleMoves.size(), 0);
     }
+
+    /*******************************************************************************************************************
+     * tests for SpiderMoveStrategy
+     * ****************************************************************************************************************/
+
+    /**
+     * @test Verify that the White Spider can move to valid adjacent hexes.
+     * @details This test checks the possible moves for the White Spider when it belongs to the player and
+     *          is placed at position (-1, 0, 1) with no blocking pieces around it.
+     */
+    TEST_F(StrategyTest, TestValidMoveForWhiteSpider) {
+        // Retrieve spider1player1 already placed at (-1, 0, 1)
+        const std::vector<Hex> possibleMoves = spider1player1shared->getMoveStrategy().getPossibleMoves(board, *player1);
+
+        // Check that the White Spider has valid adjacent moves (expected: 3 adjacent hexes are free based on the image)
+        ASSERT_EQ(possibleMoves.size(), 2);
+    }
+
+    /**
+     * @test Verify that no moves are available for the White Spider if it does not belong to the player.
+     * @details This test ensures that the White Spider cannot move when another player owns the piece,
+     *          even if it is placed on the board.
+     */
+    TEST_F(StrategyTest, TestNoMoveWhenWhiteSpiderDoesNotBelongToPlayer) {
+        // Attempt to retrieve possible moves for player2, who does not own spider1player1
+        const std::vector<Hex> possibleMoves = spider1player1shared->getMoveStrategy().getPossibleMoves(board, *player2);
+
+        // Assert that no moves are available for a player who does not own the White Spider
+        ASSERT_EQ(possibleMoves.size(), 0);
+    }
+
+    /**
+     * @test Verify that no moves are available for the White Spider when surrounded by blocking pieces.
+     * @details This test simulates a scenario where the White Spider is completely surrounded by other
+     *          pieces, preventing any movement.
+     */
+    TEST_F(StrategyTest, TestNoMovesWhenWhiteSpiderIsBlocked) {
+        // Surround spider1player1 with blocking pieces
+        auto grasshopper2player1 = PieceFactory::createPiece(enums::PieceType::GRASSHOPPER);
+        auto ant2player1 = PieceFactory::createPiece(enums::PieceType::ANT);
+        auto ant3player1 = PieceFactory::createPiece(enums::PieceType::ANT);
+        auto beetle2player1 = PieceFactory::createPiece(enums::PieceType::BEETLE);
+
+        const std::shared_ptr<Piece> grasshopper2player1shared = std::move(grasshopper2player1);
+        const std::shared_ptr<Piece> ant2player1shared = std::move(ant2player1);
+        const std::shared_ptr<Piece> ant3player1shared = std::move(ant3player1);
+        const std::shared_ptr<Piece> beetle2player1shared = std::move(beetle2player1);
+
+        const Move move2(player1, grasshopper2player1shared, Hex(-2, 1, 1));
+        move2.execute(board);
+        const Move move3(player1, ant2player1shared, Hex(-2, 0, 2));
+        move3.execute(board);
+        const Move move4(player1, ant3player1shared, Hex(-1, -1, 2));
+        move4.execute(board);
+        const Move move5(player1, beetle2player1shared, Hex(0, -1, 1));
+        move5.execute(board);
+
+        // Retrieve possible moves for spider1player1
+        const std::vector<Hex> possibleMoves = spider1player1shared->getMoveStrategy().getPossibleMoves(board, *player1);
+
+        // Assert that no moves are available when surrounded by blocking pieces
+        ASSERT_EQ(possibleMoves.size(), 0);
+    }
+
 } // namespace hive::models::strategies
