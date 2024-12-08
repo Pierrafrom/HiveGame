@@ -15,11 +15,21 @@ namespace hive::models::strategies {
         std::vector<Hex> possibleMoves{};
 
         for (const auto &direction: enums::getAllDirections()) {
-            const bool occupied = board.isOccupied(board.neighbor(position, direction));
+            Hex neighbor{0, 0, 0}; // O,0,0 is a placeholder to create a hex object
+            try {
+                neighbor = board.neighbor(neighbor, direction);
+            } catch (const std::out_of_range &e) {
+                continue;
+            } catch (const std::exception &e) {
+                throw e;
+            }
+            const bool occupied = board.isOccupied(neighbor);
             const bool canSlice = board.canSliceBetween(position, direction);
-            const bool connected = isHiveConnectedAfterMove(board, position, board.neighbor(position, direction));
+            const bool connected = isHiveConnectedAfterMove(board, position, neighbor);
             if (!occupied && canSlice && connected) {
-                possibleMoves.push_back(board.neighbor(position, direction));
+
+                possibleMoves.push_back(neighbor);
+
             }
         }
 
