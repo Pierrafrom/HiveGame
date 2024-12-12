@@ -178,6 +178,8 @@ namespace hive::models {
          */
         bool canSliceBetween(const Hex &from, enums::Direction direction) const;
 
+        bool canSliceBetweenBis(const Hex &from, const enums::Direction direction) const;
+
         /**
          * @brief Clears the board, removing all pieces and hexes.
          */

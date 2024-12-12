@@ -211,6 +211,67 @@ namespace hive::models {
         }
     }
 
+    bool Board::canSliceBetweenBis(const Hex &from, const enums::Direction direction) const{
+        switch (direction) {
+            case enums::Direction::EAST: {
+                try {
+                    bool northEastOccupied = isOccupied(neighbor(from, enums::Direction::NORTH_EAST));
+                    bool southEastOccupied = isOccupied(neighbor(from, enums::Direction::SOUTH_EAST));
+                    return !(northEastOccupied && southEastOccupied);
+                } catch (const std::out_of_range &) {
+                    return true;  // Si un voisin n'existe pas, on retourne true
+                }
+            }
+            case enums::Direction::NORTH_EAST: {
+                try {
+                    bool northWestOccupied = isOccupied(neighbor(from, enums::Direction::NORTH_WEST));
+                    bool eastOccupied = isOccupied(neighbor(from, enums::Direction::EAST));
+                    return !(northWestOccupied && eastOccupied);
+                } catch (const std::out_of_range &) {
+                    return true;
+                }
+            }
+            case enums::Direction::NORTH_WEST: {
+                try {
+                    bool northEastOccupied = isOccupied(neighbor(from, enums::Direction::NORTH_EAST));
+                    bool westOccupied = isOccupied(neighbor(from, enums::Direction::WEST));
+                    return !(northEastOccupied && westOccupied);
+                } catch (const std::out_of_range &) {
+                    return true;
+                }
+            }
+            case enums::Direction::WEST: {
+                try {
+                    bool northWestOccupied = isOccupied(neighbor(from, enums::Direction::NORTH_WEST));
+                    bool southWestOccupied = isOccupied(neighbor(from, enums::Direction::SOUTH_WEST));
+                    return !(northWestOccupied && southWestOccupied);
+                } catch (const std::out_of_range &) {
+                    return true;
+                }
+            }
+            case enums::Direction::SOUTH_EAST: {
+                try {
+                    bool eastOccupied = isOccupied(neighbor(from, enums::Direction::EAST));
+                    bool southWestOccupied = isOccupied(neighbor(from, enums::Direction::SOUTH_WEST));
+                    return !(eastOccupied && southWestOccupied);
+                } catch (const std::out_of_range &) {
+                    return true;
+                }
+            }
+            case enums::Direction::SOUTH_WEST: {
+                try {
+                    bool westOccupied = isOccupied(neighbor(from, enums::Direction::WEST));
+                    bool southEastOccupied = isOccupied(neighbor(from, enums::Direction::SOUTH_EAST));
+                    return !(westOccupied && southEastOccupied);
+                } catch (const std::out_of_range &) {
+                    return true;
+                }
+            }
+            default:
+                throw std::invalid_argument("Invalid direction.");
+        }
+    }
+
 
     // Clears the board, removing all pieces and hexes
     void Board::clear() {

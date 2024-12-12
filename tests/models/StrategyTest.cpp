@@ -320,11 +320,59 @@ namespace hive::models::strategies {
         board.addPiece(board.neighbor(origin, enums::Direction::EAST), sharedSpider);
         board.addPiece(board.neighbor(origin, enums::Direction::SOUTH_EAST), sharedSpider);
 
+        std::vector<Hex> init = board.neighborsNotOccupied(board.neighbor(origin, enums::Direction::NORTH_WEST));
+
         // Obtient les mouvements possibles pour le beetle
         const std::vector<Hex> possibleMoves = sharedAnt->getMoveStrategy().getPossibleMoves(board, *player1);
 
         // Vérifie que le nombre de mouvements est correct
-        //ASSERT_EQ(possibleMoves.size(), 11);
+        ASSERT_EQ(possibleMoves.size(), 11);
+    }
+
+    TEST_F(StrategyTest, TestMoveSWhenAntCantPassTroughTheSpace) {
+        const Hex origin(0, 0, 0);
+
+        auto ant = PieceFactory::createPiece(enums::PieceType::ANT);
+        auto spider = PieceFactory::createPiece(enums::PieceType::SPIDER);
+
+        const std::shared_ptr sharedAnt = std::move(ant);
+        const std::shared_ptr sharedSpider = std::move(spider);
+
+        player1->addPiece(sharedAnt);
+        board.addPiece(origin, sharedAnt);
+
+        //Entour la fourmi avec des pièces de manière à la bloquer
+        board.addPiece(board.neighbor(origin, enums::Direction::NORTH_WEST), sharedSpider);
+        board.addPiece(board.neighbor(origin, enums::Direction::NORTH_EAST), sharedSpider);
+        board.addPiece(board.neighbor(origin, enums::Direction::SOUTH_WEST), sharedSpider);
+        board.addPiece(board.neighbor(origin, enums::Direction::SOUTH_EAST), sharedSpider);
+
+        const std::vector<Hex> possibleMoves = sharedAnt->getMoveStrategy().getPossibleMoves(board, *player1);
+
+        ASSERT_EQ(possibleMoves.size(), 0);
+
+    }
+
+    TEST_F(StrategyTest, TestMoveSWhenAntBreakTheHive) {
+        const Hex origin(0, 0, 0);
+
+        auto ant = PieceFactory::createPiece(enums::PieceType::ANT);
+        auto spider = PieceFactory::createPiece(enums::PieceType::SPIDER);
+
+        const std::shared_ptr sharedAnt = std::move(ant);
+        const std::shared_ptr sharedSpider = std::move(spider);
+
+        player1->addPiece(sharedAnt);
+        board.addPiece(origin, sharedAnt);
+
+        //Entour la fourmi avec des pièces de manière à la bloquer
+        board.addPiece(board.neighbor(origin, enums::Direction::NORTH_WEST), sharedSpider);
+        board.addPiece(board.neighbor(origin, enums::Direction::SOUTH_EAST), sharedSpider);
+
+        const std::vector<Hex> possibleMoves = sharedAnt->getMoveStrategy().getPossibleMoves(board, *player1);
+
+        ASSERT_EQ(possibleMoves.size(), 0);
+
     }
 
     //TODO test every strategy for every piece
