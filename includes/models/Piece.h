@@ -187,7 +187,6 @@ namespace hive::models {
          */
         [[nodiscard]] std::vector<std::shared_ptr<const Piece> > getNeighbors(const Board &board) const;
 
-
         /**
          * @brief Checks if the piece has an owner.
          * @return True if the piece has an owner, false otherwise.
@@ -198,6 +197,12 @@ namespace hive::models {
          * @brief Resets the position of the piece to an empty optional.
          */
         void resetPosition() { position.reset(); }
+
+        /**
+        * @brief Converts the Piece object to a string representation.
+        * @return A string representation of the Piece object.
+        */
+        [[nodiscard]] std::string toString() const;
     };
 } // namespace hive::models
 

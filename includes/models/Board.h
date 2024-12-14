@@ -179,6 +179,12 @@ namespace hive::models {
         bool canSliceBetween(const Hex &from, enums::Direction direction) const;
 
         /**
+        * @brief get all empty hexes on the board
+        * @return A vector of Hex objects representing empty hexes.
+        */
+        std::vector<Hex> allEmptyHexes() const;
+
+        /**
          * @brief Clears the board, removing all pieces and hexes.
          */
         void clear();

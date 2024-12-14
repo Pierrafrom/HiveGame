@@ -5,14 +5,9 @@
 #include <stack>
 #include <memory>
 
-#include "GameRules.h"
 #include "models/Board.h"
 #include "models/Player.h"
 #include "models/Move.h"
-
-//TODO: Create a test suite for the Game class
-//TODO: Implement the Game class
-//TODO: think about the possibility of singleton for this class
 
 namespace hive::models {
     /**
@@ -21,6 +16,7 @@ namespace hive::models {
      */
     struct GameStatus {
         bool isGameOver; /**< Indicates if the game has ended. */
+        bool isDraw; /**< Indicates if the game is a draw. */
         const Player *winner; /**< Pointer to the winning player, or nullptr if the game is a draw or ongoing. */
     };
 
@@ -36,8 +32,8 @@ namespace hive::models {
         std::shared_ptr<Board> board; /**< The game board, managed via a shared pointer. */
         std::array<std::shared_ptr<Player>, 2> players; /**< Array holding the two players. */
         size_t currentPlayerIndex; /**< Index of the current player (0 or 1). */
-        std::stack<std::unique_ptr<Move> > undoStack; /**< Stack for undo operations. */
-        std::stack<std::unique_ptr<Move> > redoStack; /**< Stack for redo operations. */
+        std::stack<std::unique_ptr<Move> > undoStack = {}; /**< Stack for undo operations. */
+        std::stack<std::unique_ptr<Move> > redoStack = {}; /**< Stack for redo operations. */
         size_t turnNumber; /**< Current turn number. */
 
         /**
@@ -97,10 +93,22 @@ namespace hive::models {
         [[nodiscard]] const Board &getBoard() const;
 
         /**
+         * @brief Gets the game board.
+         * @return A reference to the game board.
+         */
+        [[nodiscard]] Board &getBoard();
+
+        /**
          * @brief Gets the current player.
          * @return A constant reference to the current player.
          */
         [[nodiscard]] const Player &getCurrentPlayer() const;
+
+        /**
+         * @brief Gets the current player.
+         * @return A reference to the current player.
+         */
+        [[nodiscard]] Player &getCurrentPlayer();
 
         /**
          * @brief Gets the turn number.
@@ -114,6 +122,37 @@ namespace hive::models {
          * @return A constant reference to the requested player.
          */
         [[nodiscard]] const Player &getPlayer(size_t index) const;
+
+        /**
+         * @brief Gets the player by index.
+         * @param index The index of the player (0 or 1).
+         * @return A reference to the requested player.
+         */
+        [[nodiscard]] Player &getPlayer(size_t index);
+
+        /**
+         * @brief Gets the player corresponding to the given index, or the current player if no index is provided.
+         * @param index The index of the player (0 or 1). If not provided, the current player is returned.
+         * @return A shared pointer to the player.
+         */
+        std::shared_ptr<Player> getPlayerPtr(size_t index = std::numeric_limits<size_t>::max());
+
+        /**
+        * @brief Gets the undo stack.
+        * @return A constant reference to the undo stack.
+        * The undo stack contains the moves that have been executed and can be undone.
+        */
+        [[nodiscard]]
+
+        const std::stack<std::unique_ptr<Move> > &getUndoStack() const { return undoStack; }
+
+        /**
+        * @brief Gets the redo stack.
+        * @return A constant reference to the redo stack.
+        * The redo stack contains the moves that have been undone and can be redone.
+        * The redo stack is cleared after a new move is executed.
+        */
+        [[nodiscard]] const std::stack<std::unique_ptr<Move> > &getRedoStack() const { return redoStack; }
 
         /**************************************************************************************************************
          * Game Logic

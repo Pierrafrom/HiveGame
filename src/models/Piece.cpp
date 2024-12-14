@@ -107,10 +107,7 @@ namespace hive::models {
     }
 
     std::ostream &operator<<(std::ostream &os, const Piece &piece) {
-        os << "Piece(ID: " << piece.id
-                << ", Type: " << static_cast<int>(piece.type)
-                << ", Owner: " << (piece.owner.expired() ? "None" : std::to_string(piece.owner.lock()->getId()))
-                << ", Position: " << (piece.position ? piece.position->toString() : "None") << ")";
+        os << piece.toString();
         return os;
     }
 
@@ -133,5 +130,13 @@ namespace hive::models {
         }
 
         return neighbors;
+    }
+
+    std::string Piece::toString() const {
+        const std::string ownerStr = owner.expired() ? "None" : std::to_string(owner.lock()->getId());
+        return "Piece(ID: " + std::to_string(id) +
+               ", Type: " + std::to_string(static_cast<int>(type)) +
+               ", Owner: " + ownerStr +
+               ", Position: " + (position ? position->toString() : "None") + ")";
     }
 } // namespace hive::models
