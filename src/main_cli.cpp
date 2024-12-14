@@ -1,6 +1,10 @@
-#include <iostream>
+#include "controllers/cli/CLIController.h"
+#include "views/cli/CLIView.h"
+#include <memory>
 
-int main() {
-    std::cout << "Hello, World! This is the CLI version of HiveGame." << std::endl;
+auto main() -> int {
+    const auto view = std::make_shared<hive::views::cli::CLIView>();
+    const hive::controllers::cli::CLIController controller(view);
+    controller.run();
     return 0;
 }

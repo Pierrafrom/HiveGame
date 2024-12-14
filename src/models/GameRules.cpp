@@ -23,12 +23,8 @@ namespace hive::models {
     void GameRules::validateMove(const Move &move, const Board &board, const size_t turnNumber) {
         try {
             if (move.getType() == Move::MoveType::PLACE || move.getType() == Move::MoveType::MOVE) {
-                if (move.getPlayer() == nullptr) {
-                    throw std::invalid_argument("Player cannot be null for a move.");
-                }
-                if (move.getPiece() == nullptr) {
-                    throw std::invalid_argument("Piece cannot be null for a move.");
-                }
+                // We don't need to check if the player is null because it is checked in the Move constructor
+                // We don't need to check if the piece is null because it is checked in the Move constructor
                 if (isQueenPlacementRequired(*move.getPlayer(), turnNumber)) {
                     if (move.getPiece()->getType() != enums::PieceType::QUEEN_BEE &&
                         move.getType() == Move::MoveType::PLACE) {
@@ -49,7 +45,7 @@ namespace hive::models {
 
             throw std::runtime_error("Invalid move type.");
         } catch (const std::exception &e) {
-            throw std::runtime_error("Validation failed for move: " + move.toString() + ", Error: " + e.what());
+            throw std::runtime_error("Move validation failed: " + std::string(e.what()));
         }
     }
 
@@ -139,7 +135,7 @@ namespace hive::models {
 
         // check if the to hex is occupied and if the piece is not a beetle
         if (board.isOccupied(move.getTo())) {
-            if (const auto &piece = board.getTopPiece(move.getTo());
+            if (const auto &piece = board.getTopPiece(move.getFrom().value());
                 piece->getType() != enums::PieceType::BEETLE) {
                 throw std::invalid_argument("Target hex is already occupied.");
             }
@@ -156,25 +152,15 @@ namespace hive::models {
             throw std::invalid_argument("Target hex is already occupied.");
         }
 
-        // Validate that the piece can be placed (e.g., adjacency rules)
-        bool hasAdjacentPieces = false;
-        for (const auto &neighbor: board.neighbors(move.getTo())) {
-            if (board.isOccupied(neighbor)) {
-                hasAdjacentPieces = true;
-                break;
-            }
-        }
-
-        if (!hasAdjacentPieces) {
-            throw std::invalid_argument("Placement hex must be adjacent to existing pieces.");
-        }
-
-        // validate that the placement hex is not adjacent to an opponent's piece
-        for (const auto &neighbor: board.neighbors(move.getTo())) {
-            if (board.isOccupied(neighbor)) {
-                if (const auto &piece = board.getTopPiece(neighbor);
-                    piece->getOwner() != *move.getPlayer()) {
-                    throw std::invalid_argument("Placement hex must not be adjacent to an opponent's piece.");
+        if (board.pieceCount() > 1) {
+            // this rules is only valid after the first piece of each player is placed
+            // validate that the placement hex is not adjacent to an opponent's piece
+            for (const auto &neighbor: board.neighbors(move.getTo())) {
+                if (board.isOccupied(neighbor)) {
+                    if (const auto &piece = board.getTopPiece(neighbor);
+                        piece->getOwner() != *move.getPlayer()) {
+                        throw std::invalid_argument("Placement hex must not be adjacent to an opponent's piece.");
+                    }
                 }
             }
         }

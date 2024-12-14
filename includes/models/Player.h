@@ -102,7 +102,7 @@ namespace hive::models {
          * @param type Optional type to filter the pieces. If no type is provided, all pieces are returned.
          * @return A vector of shared pointers to the pieces owned by the player.
          */
-        [[nodiscard]] std::vector<std::shared_ptr<const Piece> > getPieces(
+        [[nodiscard]] std::vector<std::shared_ptr<Piece> > getPieces(
             std::optional<enums::PieceType> type = std::nullopt) const;
 
         /**************************************************************************************************

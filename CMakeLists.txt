@@ -8,6 +8,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # Include directories
 include_directories(includes)
 
+# Include mode-specific directories (CLI or GUI)
+if(ENABLE_GUI)
+    include_directories(includes/controllers/gui)
+    include_directories(includes/views/gui)
+else()
+    include_directories(includes/controllers/cli)
+    include_directories(includes/views/cli)
+endif()
+
 # Include user-specific configurations
 include(cmake/UserConfig.cmake OPTIONAL)
 
@@ -22,19 +31,32 @@ if(ENABLE_GUI)
     find_package(Qt6 REQUIRED COMPONENTS Core Widgets Gui)
 endif()
 
-# Add source files recursively, excluding main files
-file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
+# Add model sources
+file(GLOB_RECURSE MODEL_SOURCES CONFIGURE_DEPENDS
         ${CMAKE_SOURCE_DIR}/src/models/*.cpp
-        ${CMAKE_SOURCE_DIR}/src/controllers/*.cpp
-        ${CMAKE_SOURCE_DIR}/src/utils/*.cpp
 )
 
-# Add the appropriate main file based on the mode
+# Add controller and view sources based on the mode
 if(ENABLE_GUI)
-    list(APPEND SOURCES ${CMAKE_SOURCE_DIR}/src/main_gui.cpp)
+    file(GLOB_RECURSE CONTROLLER_SOURCES CONFIGURE_DEPENDS
+            ${CMAKE_SOURCE_DIR}/src/controllers/gui/*.cpp
+    )
+    file(GLOB_RECURSE VIEW_SOURCES CONFIGURE_DEPENDS
+            ${CMAKE_SOURCE_DIR}/src/views/gui/*.cpp
+    )
+    set(MAIN_SOURCE ${CMAKE_SOURCE_DIR}/src/main_gui.cpp)
 else()
-    list(APPEND SOURCES ${CMAKE_SOURCE_DIR}/src/main_cli.cpp)
+    file(GLOB_RECURSE CONTROLLER_SOURCES CONFIGURE_DEPENDS
+            ${CMAKE_SOURCE_DIR}/src/controllers/cli/*.cpp
+    )
+    file(GLOB_RECURSE VIEW_SOURCES CONFIGURE_DEPENDS
+            ${CMAKE_SOURCE_DIR}/src/views/cli/*.cpp
+    )
+    set(MAIN_SOURCE ${CMAKE_SOURCE_DIR}/src/main_cli.cpp)
 endif()
+
+# Combine all sources
+set(SOURCES ${MODEL_SOURCES} ${CONTROLLER_SOURCES} ${VIEW_SOURCES} ${MAIN_SOURCE})
 
 # Ensure that SOURCES is not empty
 if(SOURCES STREQUAL "")
@@ -43,6 +65,9 @@ endif()
 
 # Create the main executable
 add_executable(HiveGame ${SOURCES})
+
+# Include termcolor and nlohmann/json for colored output and JSON parsing
+target_include_directories(HiveGame PRIVATE ${CMAKE_SOURCE_DIR}/external/termcolor ${CMAKE_SOURCE_DIR}/external)
 
 # Link Qt libraries if in GUI mode
 if(ENABLE_GUI)
@@ -59,17 +84,15 @@ file(GLOB_RECURSE TEST_SOURCES CONFIGURE_DEPENDS
         ${CMAKE_SOURCE_DIR}/tests/*.cpp
 )
 
-# Include game sources in the test target
-list(APPEND TEST_SOURCES ${SOURCES})
-
-# Remove main files from test sources to avoid multiple definitions of main()
-list(REMOVE_ITEM TEST_SOURCES
-        ${CMAKE_SOURCE_DIR}/src/main_cli.cpp
-        ${CMAKE_SOURCE_DIR}/src/main_gui.cpp
-)
+# Include game sources in the test target (excluding main files)
+list(APPEND TEST_SOURCES ${MODEL_SOURCES} ${CONTROLLER_SOURCES} ${VIEW_SOURCES})
+list(REMOVE_ITEM TEST_SOURCES ${MAIN_SOURCE})
 
 # Create the test executable
 add_executable(HiveGameTests ${TEST_SOURCES})
+
+# Include termcolor and nlohmann/json for tests
+target_include_directories(HiveGameTests PRIVATE ${CMAKE_SOURCE_DIR}/external/termcolor ${CMAKE_SOURCE_DIR}/external)
 
 # Link Google Test and Qt libraries to the test executable
 target_link_libraries(HiveGameTests gtest gtest_main)

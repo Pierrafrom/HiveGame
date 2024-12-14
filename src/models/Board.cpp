@@ -211,6 +211,16 @@ namespace hive::models {
         }
     }
 
+    std::vector<Hex> Board::allEmptyHexes() const {
+        std::vector<Hex> emptyHexes;
+        for (const auto &[hex, stack]: board) {
+            if (stack.empty()) {
+                emptyHexes.push_back(hex);
+            }
+        }
+        return emptyHexes;
+    }
+    
     bool Board::canSliceBetweenBis(const Hex &from, const enums::Direction direction) const{
         switch (direction) {
             case enums::Direction::EAST: {
