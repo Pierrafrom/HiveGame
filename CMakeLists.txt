@@ -17,7 +17,6 @@ else()
     include_directories(includes/views/cli)
 endif()
 
-
 # Include user-specific configurations
 include(cmake/UserConfig.cmake OPTIONAL)
 
@@ -67,8 +66,8 @@ endif()
 # Create the main executable
 add_executable(HiveGame ${SOURCES})
 
-# Include termcolor for colored output
-target_include_directories(HiveGame PRIVATE ${CMAKE_SOURCE_DIR}/external/termcolor)
+# Include termcolor and nlohmann/json for colored output and JSON parsing
+target_include_directories(HiveGame PRIVATE ${CMAKE_SOURCE_DIR}/external/termcolor ${CMAKE_SOURCE_DIR}/external)
 
 # Link Qt libraries if in GUI mode
 if(ENABLE_GUI)
@@ -91,6 +90,9 @@ list(REMOVE_ITEM TEST_SOURCES ${MAIN_SOURCE})
 
 # Create the test executable
 add_executable(HiveGameTests ${TEST_SOURCES})
+
+# Include termcolor and nlohmann/json for tests
+target_include_directories(HiveGameTests PRIVATE ${CMAKE_SOURCE_DIR}/external/termcolor ${CMAKE_SOURCE_DIR}/external)
 
 # Link Google Test and Qt libraries to the test executable
 target_link_libraries(HiveGameTests gtest gtest_main)

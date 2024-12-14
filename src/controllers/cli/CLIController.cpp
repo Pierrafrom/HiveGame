@@ -2,7 +2,6 @@
 #include "models/Move.h"
 #include "models/PieceFactory.h"
 #include <stdexcept>
-#include <iostream>
 #include <models/GameRules.h>
 
 namespace hive::controllers::cli {
