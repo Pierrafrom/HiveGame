@@ -11,8 +11,8 @@ namespace hive::models {
         redoStack = {};
         turnNumber = 1;
         currentPlayerIndex = 0;
-        players[0] = std::make_shared<Player>(player1Name);
-        players[1] = std::make_shared<Player>(player2Name);
+        players[0] = std::make_shared<Player>(1, player1Name);
+        players[1] = std::make_shared<Player>(2, player2Name);
     }
 
     const Board &Game::getBoard() const {

@@ -37,13 +37,13 @@ namespace hive::models {
     }
 
     // Get the pieces owned by the player (optionally filtered by type)
-    std::vector<std::shared_ptr<const Piece> > Player::getPieces(const std::optional<enums::PieceType> type) const {
-        std::vector<std::shared_ptr<const Piece> > filteredPieces;
+    std::vector<std::shared_ptr<Piece> > Player::getPieces(const std::optional<enums::PieceType> type) const {
+        std::vector<std::shared_ptr<Piece> > filteredPieces;
 
         for (const auto &weakPiece: pieces) {
             if (auto piece = weakPiece.lock()) {
                 if (!type || piece->getType() == *type) {
-                    filteredPieces.push_back(std::const_pointer_cast<const Piece>(piece));
+                    filteredPieces.push_back(piece);
                 }
             }
         }
