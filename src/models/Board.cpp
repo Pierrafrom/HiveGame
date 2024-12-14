@@ -185,32 +185,6 @@ namespace hive::models {
         return neighborHex;
     }
 
-    // check if a slice can be made between two hexes
-    bool Board::canSliceBetween(const Hex &from, const enums::Direction direction) const {
-        switch (direction) {
-            case enums::Direction::EAST:
-                return !(isOccupied(neighbor(from, enums::Direction::NORTH_EAST)) &&
-                        isOccupied(neighbor(from, enums::Direction::SOUTH_EAST)));
-            case enums::Direction::NORTH_EAST:
-                return !(isOccupied(neighbor(from, enums::Direction::NORTH_WEST)) &&
-                        isOccupied(neighbor(from, enums::Direction::EAST)));
-            case enums::Direction::NORTH_WEST:
-                return !(isOccupied(neighbor(from, enums::Direction::NORTH_EAST)) &&
-                        isOccupied(neighbor(from, enums::Direction::WEST)));
-            case enums::Direction::WEST:
-                return !(isOccupied(neighbor(from, enums::Direction::NORTH_WEST)) &&
-                        isOccupied(neighbor(from, enums::Direction::SOUTH_WEST)));
-            case enums::Direction::SOUTH_EAST:
-                return !(isOccupied(neighbor(from, enums::Direction::EAST)) &&
-                        isOccupied(neighbor(from, enums::Direction::SOUTH_WEST)));
-            case enums::Direction::SOUTH_WEST:
-                return !(isOccupied(neighbor(from, enums::Direction::WEST)) &&
-                        isOccupied(neighbor(from, enums::Direction::SOUTH_EAST)));
-            default:
-                throw std::invalid_argument("Invalid direction.");
-        }
-    }
-
     std::vector<Hex> Board::allEmptyHexes() const {
         std::vector<Hex> emptyHexes;
         for (const auto &[hex, stack]: board) {
@@ -221,12 +195,12 @@ namespace hive::models {
         return emptyHexes;
     }
     
-    bool Board::canSliceBetweenBis(const Hex &from, const enums::Direction direction) const{
+    bool Board::canSliceBetween(const Hex &from, const enums::Direction direction) const{
         switch (direction) {
             case enums::Direction::EAST: {
                 try {
-                    bool northEastOccupied = isOccupied(neighbor(from, enums::Direction::NORTH_EAST));
-                    bool southEastOccupied = isOccupied(neighbor(from, enums::Direction::SOUTH_EAST));
+                    const bool northEastOccupied = isOccupied(neighbor(from, enums::Direction::NORTH_EAST));
+                    const bool southEastOccupied = isOccupied(neighbor(from, enums::Direction::SOUTH_EAST));
                     return !(northEastOccupied && southEastOccupied);
                 } catch (const std::out_of_range &) {
                     return true;  // Si un voisin n'existe pas, on retourne true
@@ -234,8 +208,8 @@ namespace hive::models {
             }
             case enums::Direction::NORTH_EAST: {
                 try {
-                    bool northWestOccupied = isOccupied(neighbor(from, enums::Direction::NORTH_WEST));
-                    bool eastOccupied = isOccupied(neighbor(from, enums::Direction::EAST));
+                    const bool northWestOccupied = isOccupied(neighbor(from, enums::Direction::NORTH_WEST));
+                    const bool eastOccupied = isOccupied(neighbor(from, enums::Direction::EAST));
                     return !(northWestOccupied && eastOccupied);
                 } catch (const std::out_of_range &) {
                     return true;
@@ -243,8 +217,8 @@ namespace hive::models {
             }
             case enums::Direction::NORTH_WEST: {
                 try {
-                    bool northEastOccupied = isOccupied(neighbor(from, enums::Direction::NORTH_EAST));
-                    bool westOccupied = isOccupied(neighbor(from, enums::Direction::WEST));
+                    const bool northEastOccupied = isOccupied(neighbor(from, enums::Direction::NORTH_EAST));
+                    const bool westOccupied = isOccupied(neighbor(from, enums::Direction::WEST));
                     return !(northEastOccupied && westOccupied);
                 } catch (const std::out_of_range &) {
                     return true;
@@ -252,8 +226,8 @@ namespace hive::models {
             }
             case enums::Direction::WEST: {
                 try {
-                    bool northWestOccupied = isOccupied(neighbor(from, enums::Direction::NORTH_WEST));
-                    bool southWestOccupied = isOccupied(neighbor(from, enums::Direction::SOUTH_WEST));
+                    const bool northWestOccupied = isOccupied(neighbor(from, enums::Direction::NORTH_WEST));
+                    const bool southWestOccupied = isOccupied(neighbor(from, enums::Direction::SOUTH_WEST));
                     return !(northWestOccupied && southWestOccupied);
                 } catch (const std::out_of_range &) {
                     return true;
@@ -261,8 +235,8 @@ namespace hive::models {
             }
             case enums::Direction::SOUTH_EAST: {
                 try {
-                    bool eastOccupied = isOccupied(neighbor(from, enums::Direction::EAST));
-                    bool southWestOccupied = isOccupied(neighbor(from, enums::Direction::SOUTH_WEST));
+                    const bool eastOccupied = isOccupied(neighbor(from, enums::Direction::EAST));
+                    const bool southWestOccupied = isOccupied(neighbor(from, enums::Direction::SOUTH_WEST));
                     return !(eastOccupied && southWestOccupied);
                 } catch (const std::out_of_range &) {
                     return true;
@@ -270,8 +244,8 @@ namespace hive::models {
             }
             case enums::Direction::SOUTH_WEST: {
                 try {
-                    bool westOccupied = isOccupied(neighbor(from, enums::Direction::WEST));
-                    bool southEastOccupied = isOccupied(neighbor(from, enums::Direction::SOUTH_EAST));
+                    const bool westOccupied = isOccupied(neighbor(from, enums::Direction::WEST));
+                    const bool southEastOccupied = isOccupied(neighbor(from, enums::Direction::SOUTH_EAST));
                     return !(westOccupied && southEastOccupied);
                 } catch (const std::out_of_range &) {
                     return true;

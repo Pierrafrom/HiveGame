@@ -32,7 +32,7 @@ namespace hive::models::strategies {
                 // Tentative d'obtenir le voisin
                 neighbor = board.neighbor(current_position, direction);
                 const bool occupied = board.isOccupied(neighbor);
-                const bool canSlice = board.canSliceBetweenBis(current_position, direction);
+                const bool canSlice = board.canSliceBetween(current_position, direction);
                 const bool connected = isHiveConnectedAfterMove(board, initiaPosition, neighbor);
 
                 //check if the hex is already in the list

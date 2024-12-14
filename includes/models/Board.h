@@ -178,8 +178,6 @@ namespace hive::models {
          */
         bool canSliceBetween(const Hex &from, enums::Direction direction) const;
 
-        bool canSliceBetweenBis(const Hex &from, const enums::Direction direction) const;
-
         /**
         * @brief get all empty hexes on the board
         * @return A vector of Hex objects representing empty hexes.
