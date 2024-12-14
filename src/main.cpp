@@ -1,7 +1,9 @@
 #include <iostream>
 #include <QApplication>
-#include "TestView.h"
+//#include "TestView.h"
 #include "views/BoardView.h"
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
 
 /*
 int main() {
@@ -52,7 +54,7 @@ int main() {
     return 0;
 }*/
 
-
+/*
 int main(int argc, char *argv[]) {
     std::cout << "Hello World!" << std::endl;
     QApplication app(argc, argv);
@@ -62,5 +64,18 @@ int main(int argc, char *argv[]) {
     board_view.show(); // Afficher la fenêtre
 
     // Exécuter l'application
+    return app.exec();
+}*/
+
+
+int main(int argc, char *argv[]) {
+    QGuiApplication app(argc, argv);
+
+    QQmlApplicationEngine engine;
+    engine.load(QUrl::fromLocalFile("resources/views.qml"));
+
+    if (engine.rootObjects().isEmpty())
+        return -1;
+
     return app.exec();
 }
