@@ -88,27 +88,73 @@ ApplicationWindow {
                 contentWidth: 2000
                 contentHeight: 2000
                 clip: true
+                interactive: true
+
+                // Empêcher le Flickable de réagir à la molette
+                WheelHandler {
+                    id: zoomWheelHandler
+                    acceptedDevices: PointerDevice.Mouse
+
+                    onWheel: (event) => {
+                        event.accepted = true; // Bloquer le comportement par défaut
+                        var scaleFactor = 0.1; // Facteur de zoom
+
+                        if (event.angleDelta.y > 0) {
+                            gridScale.xScale = Math.min(gridScale.xScale + scaleFactor, 3.0);
+                            gridScale.yScale = Math.min(gridScale.yScale + scaleFactor, 3.0);
+                        } else {
+                            gridScale.xScale = Math.max(gridScale.xScale - scaleFactor, 0.5);
+                            gridScale.yScale = Math.max(gridScale.yScale - scaleFactor, 0.5);
+                        }
+                    }
+                }
+
+                property int hexWidth: 80  // Largeur de l'hexagone
+                property int hexHeight: 70 // Hauteur effective de l'hexagone
+
+                // Centrer la vue initiale sur le milieu des 2000 hexagones
+                Component.onCompleted: {
+                    var index = 2000 /2 + 20 / 2; // Index de l'hexagone central
+                    var row = Math.floor(index / 20);
+                    var col = index % 20;
+
+                    var hexWidth = contentArea.hexWidth;
+                    var hexHeight = contentArea.hexHeight;
+
+                    var x = col * (hexWidth + hexWidth / 2) + ((row % 2) * (hexWidth + hexWidth / 2) / 2);
+                    var y = row * (hexHeight * 0.5);
+
+                    contentX = x - (width / 2);
+                    contentY = y - (height / 2);
+                }
 
                 Rectangle {
                     id: hexGrid
                     width: contentWidth
                     height: contentHeight
                     color: "transparent"
+                    transform: Scale {
+                        id: gridScale
+                        xScale: 1.0
+                        yScale: 1.0
+                        origin.x: contentArea.width / 2
+                        origin.y: contentArea.height / 2
+                    }
 
                     // Repeater pour générer la grille d'hexagones
                     Repeater {
                         id: hexRepeater
-                        model: 100 // Nombre total d'hexagones
+                        model: 2000 // Nombre total d'hexagones
 
                         delegate: Canvas {
                             id: hexagonCanvas
-                            width: 60 // Largeur de l'hexagone
-                            height: 52 // Hauteur effective de l'hexagone
+                            width: contentArea.hexWidth // Largeur de l'hexagone
+                            height: contentArea.hexHeight // Hauteur effective de l'hexagone
 
                             // Positionnement en quinconce
-                            x: (model.index % 10) * (width + 30) +
-                                ((Math.floor(model.index / 10) % 2) * (width + 30) / 2)
-                            y: Math.floor(model.index / 10) * (height * 0.5)
+                            x: (model.index % 20) * (width + contentArea.hexWidth / 2) +
+                                ((Math.floor(model.index / 20) % 2) * (width + contentArea.hexWidth / 2) / 2)
+                            y: Math.floor(model.index / 20) * (height * 0.5)
 
                             onPaint: {
                                 var ctx = getContext("2d");
