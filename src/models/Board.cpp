@@ -90,9 +90,16 @@ namespace hive::models {
     std::vector<Hex> Board::neighborsNotOccupied(const Hex &hex) const {
         std::vector<Hex> surrounding = neighbors(hex);
 
+        // Remove hexes that are occupied
         surrounding.erase(std::remove_if(surrounding.begin(), surrounding.end(), [this](const Hex &h) {
             return isOccupied(h);
         }), surrounding.end());
+
+        // Remove hexes that are not on the board
+        surrounding.erase(std::remove_if(surrounding.begin(), surrounding.end(), [this](const Hex &h) {
+        return !board.contains(h);
+        }), surrounding.end());
+
         return surrounding;
     }
 

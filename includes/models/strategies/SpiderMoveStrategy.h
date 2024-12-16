@@ -37,10 +37,11 @@ namespace hive::models::strategies {
 
          /**
         * @brief Recursively explores the reachable positions for the Spider.
+        * @param initialPosition The initial position of the Spider.
         * @param current The current position being explored.
         * @param
         */
-        void spiderExploration(const Hex &current, int depth, std::set<Hex> &visited, std::set<Hex> &reachable, const Board &board) const;
+        void spiderExploration(const Hex &initialPosition, const Hex &current, int depth, std::set<Hex> &visited, std::set<Hex> &reachable, const Board &board) const;
     };
 } // namespace hive::models::strategies
 
