@@ -1,8 +1,12 @@
 #include "models/strategies/PillbugMoveStrategy.h"
+#include <models/Board.h>
+#include <models/enums/Direction.h>
+#include <models/Player.h>
+#include <vector>
 
 namespace hive::models::strategies {
-    std::vector<Hex> PillbugMoveStrategy::getPossibleMoves(const Hex &position, const Board &board) const {
-        // TODO: Implement Pillbug movement and special lifting ability logic
+    std::vector<Hex> PillbugMoveStrategy::getPossibleMoves(const Board &board, const Player &player) const {
+        // TODO: Implement Mosquito movement logic by imitating adjacent pieces' movement abilities
         return {}; // PLACEHOLDER
     }
 } // namespace hive::models::strategies

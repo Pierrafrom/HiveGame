@@ -4,15 +4,17 @@
 #include <memory>
 #include "models/Hex.h"
 #include "models/Piece.h"
-#include "models/Player.h"  // Inclusion de la classe Player
+#include "models/Player.h"
+#include "models/Board.h"
 
 namespace hive::models {
     /**
      * @class Move
      * @brief Represents a move in the Hive game.
      *
-     * The Move class encapsulates the data required to execute and undo a move.
+     * The `Move` class encapsulates the data required to execute and undo a move.
      * A move can either be placing a new piece or moving an existing piece on the board.
+     * Objects of this class are immutable once created.
      */
     class Move {
     public:
@@ -29,37 +31,82 @@ namespace hive::models {
         };
 
     private:
-        MoveType type; /**< The type of move (PLACE or MOVE). */
-        Player *player; /**< Pointer to the player making the move. */
-        Piece *piece; /**< Pointer to the piece being placed or moved. */
-        Hex from; /**< The starting position (used for MOVE type only). */
-        Hex to; /**< The target position. */
+        const MoveType type; /**< The type of move (PLACE or MOVE). */
+        const std::weak_ptr<Player> player; /**< Weak reference to the player making the move. */
+        const std::weak_ptr<Piece> piece; /**< Weak reference to the piece being placed or moved. */
+        const std::optional<Hex> from; /**< The starting position (used for MOVE type only). */
+        const Hex to; /**< The target position. */
 
     public:
+        /**************************************************************************************************
+         * Constructors
+         *************************************************************************************************/
+
         /**
          * @brief Constructs a placement move.
-         * @param player The player making the move (must not be null).
-         * @param piece The piece to place (must not be null).
+         * @param player Shared pointer to the player making the move (must not be null).
+         * @param piece Shared pointer to the piece to place (must not be null).
          * @param to The target position for placing the piece.
          *
-         * Initializes a move of type PLACE, where a new piece is placed on the board
-         * at the specified position.
-         * @throws std::invalid_argument If the piece is null.
+         * @throws std::invalid_argument If `player` or `piece` is null.
          */
-        Move(Player *player, Piece *piece, const Hex &to);
+        Move(const std::shared_ptr<Player> &player,
+             const std::shared_ptr<Piece> &piece,
+             Hex to);
 
         /**
          * @brief Constructs a movement move.
-         * @param player The player making the move (must not be null).
-         * @param piece The piece to move (must not be null).
+         * @param player Shared pointer to the player making the move (must not be null).
+         * @param piece Shared pointer to the piece to move (must not be null).
          * @param from The starting position of the piece.
          * @param to The target position of the piece.
          *
-         * Initializes a move of type MOVE, where an existing piece is moved from a
-         * starting position to a target position.
-         * @throws std::invalid_argument If the piece is null.
+         * @throws std::invalid_argument If `player` or `piece` is null.
          */
-        Move(Player *player, Piece *piece, const Hex &from, const Hex &to);
+        Move(const std::shared_ptr<Player> &player,
+             const std::shared_ptr<Piece> &piece,
+             const Hex &from,
+             Hex to);
+
+        /**************************************************************************************************
+         * Getters
+         *************************************************************************************************/
+
+        /**
+         * @brief Retrieves the player who made the move.
+         * @return A shared pointer to the player.
+         */
+        [[nodiscard]] std::shared_ptr<Player> getPlayer() const;
+
+        /**
+         * @brief Retrieves the type of the move.
+         * @return The type of the move (either PLACE or MOVE).
+         */
+        [[nodiscard]] MoveType getType() const { return type; }
+
+        /**
+         * @brief Retrieves the piece involved in the move.
+         * @return A shared pointer to the piece.
+         */
+        [[nodiscard]] std::shared_ptr<Piece> getPiece() const;
+
+        /**
+         * @brief Retrieves the starting position of the piece.
+         * @return The starting position (optional).
+         *
+         * This is valid only for MOVE type moves. For PLACE moves, this will return `std::nullopt`.
+         */
+        [[nodiscard]] std::optional<Hex> getFrom() const { return from; }
+
+        /**
+         * @brief Retrieves the target position of the piece.
+         * @return The target position.
+         */
+        [[nodiscard]] const Hex &getTo() const { return to; }
+
+        /**************************************************************************************************
+         * Public Methods
+         *************************************************************************************************/
 
         /**
          * @brief Executes the move on the specified game board.
@@ -82,44 +129,22 @@ namespace hive::models {
         void undo(Board &board) const;
 
         /**
-         * @brief Retrieves the player who made the move.
-         * @return A pointer to the player.
+         * @brief Converts the Move object to a string representation.
+         * @return A string representation of the Move object.
          */
-        [[nodiscard]] const Player *getPlayer() const { return player; }
+        [[nodiscard]] std::string toString() const;
+
+        /**************************************************************************************************
+         * Operators
+         *************************************************************************************************/
 
         /**
-         * @brief Retrieves the type of the move.
-         * @return The type of the move (either PLACE or MOVE).
+         * @brief Overloads the stream insertion operator for the Move class.
+         * @param os The output stream.
+         * @param move The Move object to output.
+         * @return A reference to the output stream.
          */
-        [[nodiscard]] MoveType getType() const { return type; }
-
-        /**
-         * @brief Retrieves the piece involved in the move.
-         * @return A pointer to the piece.
-         */
-        [[nodiscard]] const Piece *getPiece() const { return piece; }
-
-        /**
-         * @brief Retrieves the starting position of the piece.
-         * @return The starting position.
-         *
-         * This method is only valid for MOVE type moves.
-         * @throws std::runtime_error If called for a PLACE move.
-         */
-        [[nodiscard]] const Hex &getFrom() const;
-
-        /**
-         * @brief Retrieves the target position of the piece.
-         * @return The target position.
-         */
-        [[nodiscard]] const Hex &getTo() const { return to; }
-
-        /**
-         * @brief Destructor.
-         *
-         * Ensures no resource leaks and safe cleanup of the Move instance.
-         */
-        ~Move() = default;
+        friend std::ostream &operator<<(std::ostream &os, const Move &move);
     };
 } // namespace hive::models
 

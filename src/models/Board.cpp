@@ -17,16 +17,25 @@ namespace hive::models {
     }
 
     /**************************************************************************************************
+     * Getters
+     *************************************************************************************************/
+
+    // Retrieves the top piece at a specific hex location
+    std::shared_ptr<Piece> Board::getTopPiece(const Hex &hex) const {
+        if (const auto it = board.find(hex); it != board.end() && !it->second.empty()) {
+            return it->second.top();
+        }
+        // No piece at this hex
+        return nullptr;
+    }
+
+    /**************************************************************************************************
      * Public methods
      *************************************************************************************************/
 
-    // Getter on the board map with read access only
-    const std::pmr::unordered_map<Hex, std::stack<Piece *> > &Board::getBoard() const {
-        return board;
-    }
 
     // Adds a piece to a specific hex location on the board
-    void Board::addPiece(const Hex &hex, Piece *piece) {
+    void Board::addPiece(const Hex &hex, const std::shared_ptr<Piece> &piece) {
         if (!piece) {
             throw std::invalid_argument("Piece cannot be null.");
         }
@@ -37,13 +46,15 @@ namespace hive::models {
         board[hex].push(piece);
         // Update the board by generating surrounding hexes
         generateSurroundingHexes(hex);
+        // update the position of the piece
+        piece->setPosition(hex);
     }
 
     // Removes and returns the top piece from a specific hex location
-    Piece *Board::unstackPiece(const Hex &hex) {
+    std::shared_ptr<Piece> Board::unstackPiece(const Hex &hex) {
         if (const auto it = board.find(hex); it != board.end() && !it->second.empty()) {
             // Remove the top piece from the stack
-            Piece *removedPiece = it->second.top();
+            std::shared_ptr<Piece> removedPiece = it->second.top();
             it->second.pop();
 
             // If the stack is now empty, update the board by freeing surrounding hexes
@@ -62,26 +73,34 @@ namespace hive::models {
         return it != board.end() && !it->second.empty();
     }
 
-    // Retrieves the top piece at a specific hex location
-    Piece *Board::getTopPiece(const Hex &hex) const {
-        if (const auto it = board.find(hex); it != board.end() && !it->second.empty()) {
-            return it->second.top();
-        }
-        // No piece at this hex
-        return nullptr;
-    }
-
     // Retrieves all hexes surrounding a specific hex location
-    std::vector<Hex> Board::getNeighborHexes(const Hex &hex) const {
+    std::vector<Hex> Board::neighbors(const Hex &hex) const {
         std::vector<Hex> neighbors;
         neighbors.reserve(6); // Reserve space for six neighbors
 
         for (const auto &direction: enums::getAllDirections()) {
-            auto [dx, dy, dz] = enums::getDirectionOffset(direction);
+            auto [dx, dy, dz] = getDirectionOffset(direction);
             Hex neighbor(hex.getX() + dx, hex.getY() + dy, hex.getZ() + dz);
             neighbors.push_back(neighbor);
         }
         return neighbors;
+    }
+
+    // keep only non-occupied hexes
+    std::vector<Hex> Board::neighborsNotOccupied(const Hex &hex) const {
+        std::vector<Hex> surrounding = neighbors(hex);
+
+        // Remove hexes that are occupied
+        surrounding.erase(std::remove_if(surrounding.begin(), surrounding.end(), [this](const Hex &h) {
+            return isOccupied(h);
+        }), surrounding.end());
+
+        // Remove hexes that are not on the board
+        surrounding.erase(std::remove_if(surrounding.begin(), surrounding.end(), [this](const Hex &h) {
+        return !board.contains(h);
+        }), surrounding.end());
+
+        return surrounding;
     }
 
     // Gets the total number of pieces on the board
@@ -116,7 +135,7 @@ namespace hive::models {
             queue.pop();
 
             // Check all neighbors of the current hex
-            for (const auto &neighbor: getNeighborHexes(current)) {
+            for (const auto &neighbor: neighbors(current)) {
                 if (isOccupied(neighbor) && !visited.contains(neighbor)) {
                     queue.push(neighbor);
                     visited.insert(neighbor);
@@ -139,7 +158,7 @@ namespace hive::models {
     // Moves a piece from one hex to another
     void Board::movePiece(const Hex &from, const Hex &to) {
         // Retrieve the top piece from the 'from' hex
-        Piece *movedPiece = this->getTopPiece(from);
+        const std::shared_ptr<Piece> movedPiece = this->getTopPiece(from);
         if (!movedPiece) {
             throw std::runtime_error("Cannot move a piece from an empty hex.");
         }
@@ -153,32 +172,107 @@ namespace hive::models {
         unstackPiece(from);
     }
 
+    // Get an Hex in a specified direction
+    Hex Board::neighbor(const Hex &hex, const enums::Direction direction) const {
+        // Get the direction offset
+        auto [dx, dy, dz] = getDirectionOffset(direction);
+
+        // Compute the neighboring hex
+        Hex neighborHex = {
+            static_cast<std::int8_t>(hex.getX() + dx),
+            static_cast<std::int8_t>(hex.getY() + dy),
+            static_cast<std::int8_t>(hex.getZ() + dz)
+        };
+
+        // Check if the neighboring hex exists in the board
+        if (!board.contains(neighborHex)) {
+            throw std::out_of_range("Neighbor in the specified direction does not exist.");
+        }
+
+        return neighborHex;
+    }
+
+    std::vector<Hex> Board::allEmptyHexes() const {
+        std::vector<Hex> emptyHexes;
+        for (const auto &[hex, stack]: board) {
+            if (stack.empty()) {
+                emptyHexes.push_back(hex);
+            }
+        }
+        return emptyHexes;
+    }
+    
+    bool Board::canSliceBetween(const Hex &from, const enums::Direction direction) const{
+        switch (direction) {
+            case enums::Direction::EAST: {
+                try {
+                    const bool northEastOccupied = isOccupied(neighbor(from, enums::Direction::NORTH_EAST));
+                    const bool southEastOccupied = isOccupied(neighbor(from, enums::Direction::SOUTH_EAST));
+                    return !(northEastOccupied && southEastOccupied);
+                } catch (const std::out_of_range &) {
+                    return true;  // Si un voisin n'existe pas, on retourne true
+                }
+            }
+            case enums::Direction::NORTH_EAST: {
+                try {
+                    const bool northWestOccupied = isOccupied(neighbor(from, enums::Direction::NORTH_WEST));
+                    const bool eastOccupied = isOccupied(neighbor(from, enums::Direction::EAST));
+                    return !(northWestOccupied && eastOccupied);
+                } catch (const std::out_of_range &) {
+                    return true;
+                }
+            }
+            case enums::Direction::NORTH_WEST: {
+                try {
+                    const bool northEastOccupied = isOccupied(neighbor(from, enums::Direction::NORTH_EAST));
+                    const bool westOccupied = isOccupied(neighbor(from, enums::Direction::WEST));
+                    return !(northEastOccupied && westOccupied);
+                } catch (const std::out_of_range &) {
+                    return true;
+                }
+            }
+            case enums::Direction::WEST: {
+                try {
+                    const bool northWestOccupied = isOccupied(neighbor(from, enums::Direction::NORTH_WEST));
+                    const bool southWestOccupied = isOccupied(neighbor(from, enums::Direction::SOUTH_WEST));
+                    return !(northWestOccupied && southWestOccupied);
+                } catch (const std::out_of_range &) {
+                    return true;
+                }
+            }
+            case enums::Direction::SOUTH_EAST: {
+                try {
+                    const bool eastOccupied = isOccupied(neighbor(from, enums::Direction::EAST));
+                    const bool southWestOccupied = isOccupied(neighbor(from, enums::Direction::SOUTH_WEST));
+                    return !(eastOccupied && southWestOccupied);
+                } catch (const std::out_of_range &) {
+                    return true;
+                }
+            }
+            case enums::Direction::SOUTH_WEST: {
+                try {
+                    const bool westOccupied = isOccupied(neighbor(from, enums::Direction::WEST));
+                    const bool southEastOccupied = isOccupied(neighbor(from, enums::Direction::SOUTH_EAST));
+                    return !(westOccupied && southEastOccupied);
+                } catch (const std::out_of_range &) {
+                    return true;
+                }
+            }
+            default:
+                throw std::invalid_argument("Invalid direction.");
+        }
+    }
+
+
     // Clears the board, removing all pieces and hexes
     void Board::clear() {
         board.clear();
         board[Hex(0, 0, 0)];
     }
 
-    // Retrieves the position of a piece on the board
-    Hex Board::getPiecePosition(const Piece *piece) const {
-        if (!piece) {
-            throw std::invalid_argument("Piece pointer cannot be null.");
-        }
-
-        // Iterate through the map to find the piece
-        for (const auto &[hex, stack]: board) {
-            // Check each piece in the stack
-            std::stack<Piece *> tempStack = stack; // Create a copy to iterate safely
-            while (!tempStack.empty()) {
-                if (tempStack.top() == piece) {
-                    return hex; // Return the hex if the piece is found
-                }
-                tempStack.pop();
-            }
-        }
-
-        throw std::runtime_error("Piece not found on the board.");
-    }
+    /**************************************************************************************************
+     * Operators
+     *************************************************************************************************/
 
     // Overloads the stream insertion operator for Board
     std::ostream &operator<<(std::ostream &os, const Board &board) {
@@ -202,7 +296,7 @@ namespace hive::models {
     // Generates hexes surrounding a given hex location
     void Board::generateSurroundingHexes(const Hex &hex) {
         for (const auto &direction: enums::getAllDirections()) {
-            auto [dx, dy, dz] = enums::getDirectionOffset(direction);
+            auto [dx, dy, dz] = getDirectionOffset(direction);
 
             // If the neighbor hex doesn't exist in the board, create it with an empty stack
             if (Hex neighbor(hex.getX() + dx, hex.getY() + dy, hex.getZ() + dz); !board.contains(neighbor)) {
@@ -214,7 +308,7 @@ namespace hive::models {
     // Frees hexes surrounding a given hex location if no longer needed
     void Board::freeSurroundingHexes(const Hex &hex) {
         for (const auto &direction: enums::getAllDirections()) {
-            auto [dx, dy, dz] = enums::getDirectionOffset(direction);
+            auto [dx, dy, dz] = getDirectionOffset(direction);
             Hex neighbor(hex.getX() + dx, hex.getY() + dy, hex.getZ() + dz);
 
             if (auto it = board.find(neighbor); it != board.end() && it->second.empty()) {
@@ -229,7 +323,7 @@ namespace hive::models {
     // Checks if a hex location has non-empty neighboring hexes
     bool Board::hasNonEmptyNeighbors(const Hex &hex) const {
         for (const auto &direction: enums::getAllDirections()) {
-            auto [dx, dy, dz] = enums::getDirectionOffset(direction);
+            auto [dx, dy, dz] = getDirectionOffset(direction);
             Hex neighbor(hex.getX() + dx, hex.getY() + dy, hex.getZ() + dz);
 
             if (auto it = board.find(neighbor); it != board.end() && !it->second.empty()) {

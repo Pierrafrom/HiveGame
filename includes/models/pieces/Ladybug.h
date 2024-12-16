@@ -15,22 +15,63 @@ namespace hive::models::pieces {
      */
     class Ladybug final : public Piece {
     public:
+        /**************************************************************************************************
+         * Constructors
+         *************************************************************************************************/
+
         /**
-         * @brief Constructor for the Ladybug piece with an optional specified ID.
+         * @brief Constructs a Ladybug piece with an optional specified ID, owner, and position.
          * @param id Optional unique identifier for the piece. If not provided, an auto-incremented ID is assigned.
+         * @param owner Shared pointer to the owning player (default is nullptr).
+         * @param position Optional initial position of the piece on the board (default is std::nullopt).
          *
          * This constructor initializes a Ladybug piece, assigning a `LadybugMoveStrategy` for its unique movement.
          */
-        explicit Ladybug(const size_t id = pieceNextId++) : Piece(id, enums::PieceType::LADYBUG,
-                                                       std::make_unique<strategies::LadybugMoveStrategy>()) {
+        explicit Ladybug(const size_t id = pieceNextId++,
+                         const std::shared_ptr<Player> &owner = nullptr,
+                         const std::optional<Hex> &position = std::nullopt)
+            : Piece(id,
+                    enums::PieceType::LADYBUG,
+                    std::make_unique<strategies::LadybugMoveStrategy>(this),
+                    owner,
+                    position) {
         }
 
+        /**************************************************************************************************
+         * Destructor
+         *************************************************************************************************/
+
         /**
-         * @brief Destructor for the Ladybug piece.
+         * @brief Default destructor for the Ladybug piece.
          *
-         * The destructor is defaulted as no special cleanup is necessary.
+         * Ensures proper cleanup of resources specific to the Ladybug piece. Declared as `override`
+         * to enforce polymorphic deletion for derived classes.
          */
         ~Ladybug() override = default;
+
+        /**************************************************************************************************
+         * Other constructors and operators
+         *************************************************************************************************/
+
+        /**
+         * @brief Delete copy constructor.
+         */
+        Ladybug(const Ladybug &) = delete;
+
+        /**
+         * @brief Delete copy assignment operator.
+         */
+        Ladybug &operator=(const Ladybug &) = delete;
+
+        /**
+         * @brief Default move constructor.
+         */
+        Ladybug(Ladybug &&) noexcept = default;
+
+        /**
+         * @brief Default move assignment operator.
+         */
+        Ladybug &operator=(Ladybug &&) noexcept = default;
     };
 } // namespace hive::models::pieces
 

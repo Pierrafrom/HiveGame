@@ -1,6 +1,10 @@
 # Fichiers de build
 /build/
 /cmake-build-debug/
+/out/
+
+# Configuration de CMake
+/cmake/UserConfig.cmake
 
 # Fichiers générés par CMake
 CMakeFiles/
@@ -48,6 +52,8 @@ Makefile
 .idea/
 .vscode/
 *.iml
+/.vs/
+/.vs/
 
 # CTest
 Testing/

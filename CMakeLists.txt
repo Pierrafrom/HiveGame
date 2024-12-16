@@ -5,49 +5,100 @@ project(HiveGame)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Add the include directory
+# Include directories
 include_directories(includes)
 
-# Add source files for the main executable
-file(GLOB_RECURSE SOURCES
-        src/models/*.cpp
-        src/controllers/*.cpp
-        src/utils/*.cpp
-        src/main.cpp
+# Include mode-specific directories (CLI or GUI)
+if(ENABLE_GUI)
+    include_directories(includes/controllers/gui)
+    include_directories(includes/views/gui)
+else()
+    include_directories(includes/controllers/cli)
+    include_directories(includes/views/cli)
+endif()
+
+# Include user-specific configurations
+include(cmake/UserConfig.cmake OPTIONAL)
+
+# Check if QT_DIR is set for Qt mode
+if(ENABLE_GUI AND NOT DEFINED QT_DIR)
+    message(FATAL_ERROR "QT_DIR is not defined. Please set it in 'cmake/UserConfig.cmake'.")
+endif()
+
+# Find Qt if GUI is enabled
+if(ENABLE_GUI)
+    set(CMAKE_PREFIX_PATH ${QT_DIR})
+    find_package(Qt6 REQUIRED COMPONENTS Core Widgets Gui)
+endif()
+
+# Add model sources
+file(GLOB_RECURSE MODEL_SOURCES CONFIGURE_DEPENDS
+        ${CMAKE_SOURCE_DIR}/src/models/*.cpp
 )
 
-# Add header files (for IDEs, mainly)
-file(GLOB_RECURSE HEADERS
-        includes/models/*.h
-        includes/controllers/*.h
-        includes/utils/*.h
-        includes/config/*.h
-)
+# Add controller and view sources based on the mode
+if(ENABLE_GUI)
+    file(GLOB_RECURSE CONTROLLER_SOURCES CONFIGURE_DEPENDS
+            ${CMAKE_SOURCE_DIR}/src/controllers/gui/*.cpp
+    )
+    file(GLOB_RECURSE VIEW_SOURCES CONFIGURE_DEPENDS
+            ${CMAKE_SOURCE_DIR}/src/views/gui/*.cpp
+    )
+    set(MAIN_SOURCE ${CMAKE_SOURCE_DIR}/src/main_gui.cpp)
+else()
+    file(GLOB_RECURSE CONTROLLER_SOURCES CONFIGURE_DEPENDS
+            ${CMAKE_SOURCE_DIR}/src/controllers/cli/*.cpp
+    )
+    file(GLOB_RECURSE VIEW_SOURCES CONFIGURE_DEPENDS
+            ${CMAKE_SOURCE_DIR}/src/views/cli/*.cpp
+    )
+    set(MAIN_SOURCE ${CMAKE_SOURCE_DIR}/src/main_cli.cpp)
+endif()
+
+# Combine all sources
+set(SOURCES ${MODEL_SOURCES} ${CONTROLLER_SOURCES} ${VIEW_SOURCES} ${MAIN_SOURCE})
+
+# Ensure that SOURCES is not empty
+if(SOURCES STREQUAL "")
+    message(FATAL_ERROR "No source files found. Ensure your src directory has the required files.")
+endif()
 
 # Create the main executable
 add_executable(HiveGame ${SOURCES})
+
+# Include termcolor and nlohmann/json for colored output and JSON parsing
+target_include_directories(HiveGame PRIVATE ${CMAKE_SOURCE_DIR}/external/termcolor ${CMAKE_SOURCE_DIR}/external)
+
+# Link Qt libraries if in GUI mode
+if(ENABLE_GUI)
+    target_link_libraries(HiveGame Qt6::Core Qt6::Widgets Qt6::Gui)
+endif()
 
 # Add Google Test
 add_subdirectory(external/googletest)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
-# Define the test sources without src/main.cpp
-file(GLOB_RECURSE TEST_SOURCES
-        tests/models/*.cpp
-        tests/main.cpp
-        src/models/*.cpp
-        src/controllers/*.cpp
-        src/utils/*.cpp
+# Define test sources
+file(GLOB_RECURSE TEST_SOURCES CONFIGURE_DEPENDS
+        ${CMAKE_SOURCE_DIR}/tests/models/*.cpp
+        ${CMAKE_SOURCE_DIR}/tests/*.cpp
 )
 
-# Remove src/main.cpp from TEST_SOURCES to avoid multiple main definitions
-list(REMOVE_ITEM TEST_SOURCES ${CMAKE_SOURCE_DIR}/src/main.cpp)
+# Include game sources in the test target (excluding main files)
+list(APPEND TEST_SOURCES ${MODEL_SOURCES} ${CONTROLLER_SOURCES} ${VIEW_SOURCES})
+list(REMOVE_ITEM TEST_SOURCES ${MAIN_SOURCE})
 
 # Create the test executable
 add_executable(HiveGameTests ${TEST_SOURCES})
 
-# Link Google Test to the test executable
+# Include termcolor and nlohmann/json for tests
+target_include_directories(HiveGameTests PRIVATE ${CMAKE_SOURCE_DIR}/external/termcolor ${CMAKE_SOURCE_DIR}/external)
+
+# Link Google Test and Qt libraries to the test executable
 target_link_libraries(HiveGameTests gtest gtest_main)
+if(ENABLE_GUI)
+    target_link_libraries(HiveGameTests Qt6::Core Qt6::Widgets Qt6::Gui)
+endif()
 
 # Enable CTest for test discovery and running
 enable_testing()

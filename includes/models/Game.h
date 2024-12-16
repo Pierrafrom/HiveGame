@@ -4,131 +4,250 @@
 #include <array>
 #include <stack>
 #include <memory>
+
 #include "models/Board.h"
 #include "models/Player.h"
 #include "models/Move.h"
-#include "models/GameRules.h"
-
-//TODO: Create a test suite for the Game class
-//TODO: Implement the Game class
-//TODO: think about the possibility of singleton for this class
 
 namespace hive::models {
     /**
-     * @class Game
-     * @brief Manages the state of a Hive game, including players, board, and game logic.
-     *
-     * The Game class is responsible for the main game loop, turn management, executing moves,
-     * undo/redo functionality, and applying game rules.
+     * @struct GameStatus
+     * @brief Represents the status of the game.
      */
-    class Game {
-        Board board; /**< The game board */
-        std::array<Player, 2> players; /**< Array holding the two players */
-        size_t currentPlayerIndex; /**< Index of the current player (0 or 1) */
-        GameRules rules; /**< Game rules manager */
-        std::stack<std::unique_ptr<Move> > undoStack; /**< Stack for undo operations */
-        std::stack<std::unique_ptr<Move> > redoStack; /**< Stack for redo operations */
-        size_t turnNumber; /**< Current turn number */
+    struct GameStatus {
+        bool isGameOver; /**< Indicates if the game has ended. */
+        bool isDraw; /**< Indicates if the game is a draw. */
+        const Player *winner; /**< Pointer to the winning player, or nullptr if the game is a draw or ongoing. */
+    };
 
-    public:
+    /**
+      * @class Game
+      * @brief Singleton class managing the state of a Hive game.
+      *
+      * The Game class is responsible for the main game loop, turn management, executing moves,
+      * undo/redo functionality, and applying game rules. As a singleton, it ensures only one
+      * instance exists globally.
+      */
+    class Game {
+        std::shared_ptr<Board> board; /**< The game board, managed via a shared pointer. */
+        std::array<std::shared_ptr<Player>, 2> players; /**< Array holding the two players. */
+        size_t currentPlayerIndex; /**< Index of the current player (0 or 1). */
+        std::stack<std::unique_ptr<Move> > undoStack = {}; /**< Stack for undo operations. */
+        std::stack<std::unique_ptr<Move> > redoStack = {}; /**< Stack for redo operations. */
+        size_t turnNumber; /**< Current turn number. */
+
         /**
-         * @brief Constructs a new game with two players.
-         * @param player1 The first player.
-         * @param player2 The second player.
-         *
-         * Initializes the game state with two players, setting the turn number to 1
-         * and setting the first player as the current player.
+         * @brief Private constructor to enforce singleton pattern.
+         * Initializes default player names.
          */
-        Game(const Player &player1, const Player &player2)
-            : players{player1, player2}, currentPlayerIndex(0), turnNumber(1) {
+        Game()
+            : board(std::make_shared<Board>()),
+              players{std::make_shared<Player>("Player 1"), std::make_shared<Player>("Player 2")},
+              currentPlayerIndex(0),
+              turnNumber(1) {
         }
 
         /**
-         * @brief Executes a move for the current player.
-         * @param move The move to be executed.
-         * @return True if the move was successfully executed, otherwise false.
-         *
-         * Executes the specified move according to the game rules and updates
-         * the board state. If successful, the move is added to the undo stack.
+         * @brief Private destructor.
          */
-        bool executeMove(const Move &move);
+        ~Game() = default;
+
+    public:
+        /**************************************************************************************************************
+        * Singleton Access
+        *************************************************************************************************************/
 
         /**
-         * @brief Undoes the last move.
-         * @return True if the undo operation was successful, otherwise false.
-         *
-         * Restores the previous game state by removing the last move.
-         * The move is added to the redo stack for potential re-execution.
+         * @brief Retrieves the single instance of the Game class.
+         * @return A reference to the singleton instance of Game.
          */
-        bool undo();
+        static Game &getInstance() {
+            static Game instance;
+            return instance;
+        }
 
         /**
-         * @brief Redoes the last undone move.
-         * @return True if the redo operation was successful, otherwise false.
-         *
-         * Re-executes the last move that was undone, updating the game state
-         * and transferring the move back to the undo stack.
-         */
-        bool redo();
+        * @brief Resets the game with new player names.
+        * @param player1Name The name of the first player.
+        * @param player2Name The name of the second player.
+        */
+        void resetGame(const std::string &player1Name = "Player 1", const std::string &player2Name = "Player 2");
+
+        /**************************************************************************************************************
+        * Deleted Copy and Move Operations
+        *************************************************************************************************************/
+
+        Game(const Game &) = delete; // Copy constructor
+        Game &operator=(const Game &) = delete; // Copy assignment
+        Game(Game &&) = delete; // Move constructor
+        Game &operator=(Game &&) = delete; // Move assignment
+
+        /**************************************************************************************************************
+        * Getters
+        *************************************************************************************************************/
 
         /**
-         * @brief Checks if the game is over.
-         * @return True if the game has ended, otherwise false.
-         *
-         * Uses the game rules to determine if a win or draw condition has been met.
+         * @brief Gets the game board.
+         * @return A constant reference to the game board.
          */
-        bool isGameOver() const;
+        [[nodiscard]] const Board &getBoard() const;
+
+        /**
+         * @brief Gets the game board.
+         * @return A reference to the game board.
+         */
+        [[nodiscard]] Board &getBoard();
 
         /**
          * @brief Gets the current player.
-         * @return Reference to the current player.
-         *
-         * Returns a reference to the player whose turn it is.
+         * @return A constant reference to the current player.
          */
-        Player &getCurrentPlayer() { return players[currentPlayerIndex]; }
+        [[nodiscard]] const Player &getCurrentPlayer() const;
 
         /**
-         * @brief Advances to the next turn.
-         *
-         * Switches to the other player and increments the turn number.
+         * @brief Gets the current player.
+         * @return A reference to the current player.
          */
-        void nextTurn() {
-            currentPlayerIndex = (currentPlayerIndex + 1) % 2;
-            ++turnNumber;
-        }
+        [[nodiscard]] Player &getCurrentPlayer();
 
         /**
-         * @brief Saves the current game state to a file.
-         * @param filename The name of the file where the game state will be saved.
-         * @return True if the game state was saved successfully, otherwise false.
-         *
-         * Serializes the game state, including board, players, and turn information,
-         * into the specified file.
-         */
-        bool saveGame(const std::string &filename) const;
-
-        /**
-         * @brief Loads a game state from a file.
-         * @param filename The name of the file to load from.
-         * @return True if the game state was loaded successfully, otherwise false.
-         *
-         * Restores the game state from the specified file, allowing a previously saved
-         * game to be resumed.
-         */
-        bool loadGame(const std::string &filename);
-
-        /**
-         * @brief Gets the current turn number.
+         * @brief Gets the turn number.
          * @return The current turn number.
          */
-        size_t getTurnNumber() const { return turnNumber; }
+        [[nodiscard]] size_t getTurnNumber() const { return turnNumber; }
 
         /**
-         * @brief Destructor.
-         *
-         * Default destructor, as no specific cleanup is required.
+         * @brief Gets the player by index.
+         * @param index The index of the player (0 or 1).
+         * @return A constant reference to the requested player.
          */
-        ~Game() = default;
+        [[nodiscard]] const Player &getPlayer(size_t index) const;
+
+        /**
+         * @brief Gets the player by index.
+         * @param index The index of the player (0 or 1).
+         * @return A reference to the requested player.
+         */
+        [[nodiscard]] Player &getPlayer(size_t index);
+
+        /**
+         * @brief Gets the player corresponding to the given index, or the current player if no index is provided.
+         * @param index The index of the player (0 or 1). If not provided, the current player is returned.
+         * @return A shared pointer to the player.
+         */
+        std::shared_ptr<Player> getPlayerPtr(size_t index = std::numeric_limits<size_t>::max());
+
+        /**
+        * @brief Gets the undo stack.
+        * @return A constant reference to the undo stack.
+        * The undo stack contains the moves that have been executed and can be undone.
+        */
+        [[nodiscard]]
+
+        const std::stack<std::unique_ptr<Move> > &getUndoStack() const { return undoStack; }
+
+        /**
+        * @brief Gets the redo stack.
+        * @return A constant reference to the redo stack.
+        * The redo stack contains the moves that have been undone and can be redone.
+        * The redo stack is cleared after a new move is executed.
+        */
+        [[nodiscard]] const std::stack<std::unique_ptr<Move> > &getRedoStack() const { return redoStack; }
+
+        /**************************************************************************************************************
+         * Game Logic
+         *************************************************************************************************************/
+
+        /**
+         * @brief Gets the current game status.
+         * @return A `GameStatus` structure indicating if the game is over and the winner.
+         */
+        [[nodiscard]] GameStatus getGameStatus() const;
+
+        /**
+         * @brief Executes a move for the current player.
+         *
+         * This method validates the move against the game rules, executes it on the game board,
+         * updates the undo and redo stacks, and advances the game to the next turn if the move is valid.
+         * If the move is invalid, an exception is thrown.
+         *
+         * @param move The move to be executed.
+         * @throw std::runtime_error If the move is invalid or violates game rules.
+         *
+         * The following operations are performed:
+         * - The move is validated using `GameRules::validateMove`.
+         * - If valid, the move is executed on the board using `Move::execute`.
+         * - The move is pushed onto the undo stack.
+         * - The redo stack is cleared after a new move.
+         * - The turn is advanced to the next player.
+         */
+        void executeMove(const Move &move);
+
+        /**
+         * @brief Undoes the last move made in the game.
+         *
+         * This method reverses the most recent move performed in the game. The undone move
+         * is transferred from the undo stack to the redo stack. The game state, including
+         * the board, current player, and turn number, is updated accordingly.
+         *
+         * @throw std::runtime_error If the undo stack is empty or the undo operation fails.
+         *
+         * Steps performed:
+         * - Retrieves and removes the last move from the undo stack.
+         * - Calls `Move::undo` to reverse the move on the board.
+         * - Pushes the move onto the redo stack.
+         * - Updates the current player and decrements the turn number.
+         */
+        void undo();
+
+        /**
+          * @brief Redoes the last undone move in the game.
+          *
+          * This method re-applies the most recently undone move. The redone move
+          * is transferred from the redo stack back to the undo stack. The game state,
+          * including the board, current player, and turn number, is updated accordingly.
+          *
+          * @throw std::runtime_error If the redo stack is empty or the redo operation fails.
+          *
+          * Steps performed:
+          * - Retrieves and removes the last move from the redo stack.
+          * - Calls `Move::execute` to reapply the move on the board.
+          * - Pushes the move onto the undo stack.
+          * - Advances the game to the next turn.
+          */
+        void redo();
+
+        /**
+         * @brief Advances the game to the next turn.
+         *
+         * This method increments the turn number and switches the current player to the next player.
+         */
+        void nextTurn();
+
+        /**
+         * @brief Converts the current state of the game to a string.
+         *
+         * Provides a detailed representation of the game state, including:
+         * - Turn number.
+         * - Current player.
+         * - Board state.
+         * - Game status (ongoing, draw, or winner).
+         * - Player information.
+         *
+         * @return A string describing the current game state.
+         */
+        [[nodiscard]] std::string toString() const;
+
+        /**
+         * @brief Overloads the stream insertion operator for the Game class.
+         *
+         * Outputs a human-readable string representation of the game state.
+         *
+         * @param os The output stream.
+         * @param game The Game object to output.
+         * @return A reference to the output stream.
+         */
+        friend std::ostream &operator<<(std::ostream &os, const Game &game);
     };
 } // namespace hive::models
 
