@@ -20003,13 +20003,13 @@ class basic_json // NOLINT(cppcoreguidelines-special-member-functions,hicpp-spec
     */
     union json_value
     {
-        /// object (stored with pointer to save storage)
+        /// object (stored with pointer to data storage)
         object_t* object;
-        /// array (stored with pointer to save storage)
+        /// array (stored with pointer to data storage)
         array_t* array;
-        /// string (stored with pointer to save storage)
+        /// string (stored with pointer to data storage)
         string_t* string;
-        /// binary (stored with pointer to save storage)
+        /// binary (stored with pointer to data storage)
         binary_t* binary;
         /// boolean
         boolean_t boolean;

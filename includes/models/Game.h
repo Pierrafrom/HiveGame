@@ -20,6 +20,7 @@ namespace hive::models {
         const Player *winner; /**< Pointer to the winning player, or nullptr if the game is a draw or ongoing. */
     };
 
+
     /**
       * @class Game
       * @brief Singleton class managing the state of a Hive game.
@@ -32,9 +33,10 @@ namespace hive::models {
         std::shared_ptr<Board> board; /**< The game board, managed via a shared pointer. */
         std::array<std::shared_ptr<Player>, 2> players; /**< Array holding the two players. */
         size_t currentPlayerIndex; /**< Index of the current player (0 or 1). */
-        std::stack<std::unique_ptr<Move> > undoStack = {}; /**< Stack for undo operations. */
-        std::stack<std::unique_ptr<Move> > redoStack = {}; /**< Stack for redo operations. */
+        std::stack<std::shared_ptr<Move> > undoStack = {}; /**< Stack for undo operations. */
+        std::stack<std::shared_ptr<Move> > redoStack = {}; /**< Stack for redo operations. */
         size_t turnNumber; /**< Current turn number. */
+
 
         /**
          * @brief Private constructor to enforce singleton pattern.
@@ -144,7 +146,9 @@ namespace hive::models {
         */
         [[nodiscard]]
 
-        const std::stack<std::unique_ptr<Move> > &getUndoStack() const { return undoStack; }
+        const std::stack<std::shared_ptr<Move> > &getUndoStack() const { return undoStack; }
+        std::stack<std::shared_ptr<Move>> &getUndoStack() { return undoStack; } //Ajout pour utiliser la méthode non constante dans Serializer
+
 
         /**
         * @brief Gets the redo stack.
@@ -152,7 +156,8 @@ namespace hive::models {
         * The redo stack contains the moves that have been undone and can be redone.
         * The redo stack is cleared after a new move is executed.
         */
-        [[nodiscard]] const std::stack<std::unique_ptr<Move> > &getRedoStack() const { return redoStack; }
+        [[nodiscard]] const std::stack<std::shared_ptr<Move> > &getRedoStack() const { return redoStack; }
+        std::stack<std::shared_ptr<Move>> &getRedoStack() { return redoStack; } //Ajout pour utiliser la méthode non constante dans Serializer
 
         /**************************************************************************************************************
          * Game Logic
