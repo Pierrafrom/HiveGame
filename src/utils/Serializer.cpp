@@ -189,8 +189,6 @@ namespace hive::utils {
                 }
             };
 
-            std::cout << "Recréer undoStack" << std::endl;
-
             // 5. Recréer undoStack
             auto &undoStack = game.getUndoStack();
             while (!undoStack.empty()) undoStack.pop();
@@ -198,16 +196,12 @@ namespace hive::utils {
                 undoStack.push(deserializeMove(jsonMove));
             }
 
-            std::cout << "Recréer RedoStack" << std::endl;
-
             // 6. Recréer redoStack
             auto &redoStack = game.getRedoStack();
             while (!redoStack.empty()) redoStack.pop();
             for (const auto &jsonMove : jsonGame["redoStack"]) {
                 redoStack.push(deserializeMove(jsonMove));
             }
-
-            std::cout << "Rejouer les Mouvement" << std::endl;
 
             // 7. Rejouer les mouvements du undoStack pour reconstruire l'état du plateau
             auto undoStackCopy = game.getUndoStack();
@@ -218,32 +212,12 @@ namespace hive::utils {
                 undoStackCopy.pop();
             }
 
-            int i = 1;
-
-            for (const auto &move : movesToReplay){
-
-                std::cout << "Voici le "<<i<<"ème move a effectuer : " << *move << std::endl;
-                std::cout << "Voici le type du mouvement à rejouer : " << static_cast<int>(move->getType()) << std::endl;
-                std::cout << "On cherche à placer la piece sur l'hexagone : " << move->getTo() << std::endl;
-                std::cout << "Cest le move du joueur : " << *move->getPlayer() << std::endl<<std::endl<<std::endl;
-                std::cout << "Voici la pièce en question : " << *move->getPiece() << std::endl<<std::endl<<std::endl;
-
-                std::cout << "Elle appartient au joueur : " << move->getPiece()->getOwner() << std::endl<<std::endl<<std::endl;
-
-                i++;
-
-            }
-
 
             for (const auto &move : movesToReplay) {
                 try {
-                    std::cout << "Voici le type du mouvement rejoué : " << static_cast<int>(move->getType()) << std::endl;
-                    std::cout << "On cherche à placer la piece sur l'hexagone : " << move->getTo() << std::endl;
                     move->execute(game.getBoard());
                     game.nextTurn();
-                    std::cout << "Un coup a été joué !" << game <<std::endl;
                 } catch (const std::exception &e) {
-                    std::cerr << "Error replaying move: " << e.what() << std::endl;
                     return false;
                 }
             }
