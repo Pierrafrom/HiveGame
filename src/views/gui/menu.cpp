@@ -9,11 +9,12 @@
 #include "models/Board.h"
 #include "models/Player.h"
 #include "../src/controllers/gui/playerinputdialog.h"
+#include "../src/controllers/gui/gamewindow.h"
 
 Menu::Menu(QWidget *parent) : QWidget(parent)
 {
     // Créer les widgets
-    QLabel *title = new QLabel("Jeu de Plateau");
+    QLabel *title = new QLabel("Hive game");
     title->setAlignment(Qt::AlignCenter);
     title->setStyleSheet("font-size: 24px; font-weight: bold;");
 
@@ -51,8 +52,17 @@ void Menu::onStartTwoPlayerGame()
         hive::models::Game &game = hive::models::Game::getInstance();
         game.initializeGame2players(player1Name.toStdString(), player2Name.toStdString());
 
-        QMessageBox::information(this, "Jeu lancé",
-            QString("Partie lancée avec %1 et %2").arg(QString::fromStdString(game.getPlayer(0).getName()), QString::fromStdString(game.getPlayer(1).getName())));
+        // show in the log the names of the players
+        std::cout << "Player 1: " << game.getPlayer(0).getName() << std::endl;
+        std::cout << "Player 2: " << game.getPlayer(1).getName() << std::endl;
+
+
+        GameWindow *gameWindow = new GameWindow();
+        gameWindow->setPlayerNames(player1Name, player2Name);
+        gameWindow->show();
+
+        // Fermer la fenêtre du menu principal
+        this->close();
     }
 }
 
