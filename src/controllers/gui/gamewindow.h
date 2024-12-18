@@ -2,16 +2,38 @@
 #define GAMEWINDOW_H
 
 #include <QMainWindow>
+#include <QGraphicsView>
 #include <QLabel>
+#include <QPushButton>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QGraphicsScene>
+#include "models/Board.h"
 
 class GameWindow : public QMainWindow {
     Q_OBJECT
 
 public:
-    explicit GameWindow(QWidget *parent = nullptr);
+    explicit GameWindow(hive::models::Board *board, QWidget *parent = nullptr);
+    ~GameWindow() override = default;
 
     void setPlayerNames(const QString &player1, const QString &player2);
+
+    private slots:
+        void onUndoClicked();
+    void onRedoClicked();
+    void onSaveClicked();
+
+private:
+    QLabel *playerInfoLabel;
+    QLabel *turnLabel;
+    QGraphicsView *gameBoardView;
+    QGraphicsScene *scene;
+    QVBoxLayout *sideMenuLayout;
+    hive::models::Board *board; // Référence au Board
+
+    void setupUI();           // Initialiser l'interface
+    void displayBoard();      // Afficher les hexagones existants
 };
 
 #endif // GAMEWINDOW_H

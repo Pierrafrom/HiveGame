@@ -99,6 +99,10 @@ namespace hive::models {
          * Public methods
          *************************************************************************************************/
 
+        const std::pmr::unordered_map<Hex, std::stack<std::shared_ptr<Piece>>> &getAllHexes() const {
+            return board;
+        }
+
         /**
          * @brief Adds a piece to a specific hex location on the board.
          * @param hex The hex location where the piece will be added.

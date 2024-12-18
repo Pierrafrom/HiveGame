@@ -4,6 +4,8 @@
 #include "views/BoardView.h"
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include "../src/controllers/gui/gamewindow.h"
+#include "models/Hex.h"
 
 /*
 int main() {
@@ -69,13 +71,15 @@ int main(int argc, char *argv[]) {
 
 
 int main(int argc, char *argv[]) {
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
 
-    QQmlApplicationEngine engine;
-    engine.load(QUrl::fromLocalFile("resources/views.qml"));
+    hive::models::Board board;
+    board.addPiece(Hex(0, 0, 0), std::make_shared<Piece>("Queen"));
+    board.addPiece(Hex(1, -1, 0), std::make_shared<Piece>("Beetle"));
 
-    if (engine.rootObjects().isEmpty())
-        return -1;
+    GameWindow window(&board);
+    window.setPlayerNames("Alice", "Bob");
+    window.show();
 
     return app.exec();
 }

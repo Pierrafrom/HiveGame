@@ -2,11 +2,13 @@
 #define MENU_H
 
 #include <QWidget>
+#include <models/Board.h>
 
 class Menu : public QWidget
 {
     Q_OBJECT
-
+private:
+    hive::models::Board gameBoard;
 public:
     explicit Menu(QWidget *parent = nullptr);
 

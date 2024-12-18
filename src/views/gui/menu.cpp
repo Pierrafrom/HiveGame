@@ -10,6 +10,8 @@
 #include "models/Player.h"
 #include "../src/controllers/gui/playerinputdialog.h"
 #include "../src/controllers/gui/gamewindow.h"
+#include <models/PieceFactory.h>
+
 
 Menu::Menu(QWidget *parent) : QWidget(parent)
 {
@@ -42,26 +44,27 @@ Menu::Menu(QWidget *parent) : QWidget(parent)
 
 void Menu::onStartTwoPlayerGame()
 {
-    // Créer et afficher la boîte de dialogue
     PlayerInputDialog inputDialog(this);
     if (inputDialog.exec() == QDialog::Accepted) {
         QString player1Name = inputDialog.getPlayer1Name();
         QString player2Name = inputDialog.getPlayer2Name();
 
-        // Accéder à l'instance Singleton et initialiser le jeu
-        hive::models::Game &game = hive::models::Game::getInstance();
-        game.initializeGame2players(player1Name.toStdString(), player2Name.toStdString());
+        const hive::models::Hex origin(0, 0, 0);
+        auto queen1 = hive::models::PieceFactory::createPiece(hive::models::enums::PieceType::QUEEN_BEE);
+        auto spider1 = hive::models::PieceFactory::createPiece(hive::models::enums::PieceType::SPIDER);
 
-        // show in the log the names of the players
-        std::cout << "Player 1: " << game.getPlayer(0).getName() << std::endl;
-        std::cout << "Player 2: " << game.getPlayer(1).getName() << std::endl;
+        const std::shared_ptr sharedQueen1 = std::move(queen1);
+        const std::shared_ptr sharedSpider1 = std::move(spider1);
 
+        gameBoard.addPiece(origin, sharedQueen1);
+        gameBoard.addPiece(gameBoard.neighbor(origin, hive::models::enums::Direction::NORTH_EAST), sharedSpider1);
 
-        GameWindow *gameWindow = new GameWindow();
+        // Créer et afficher la fenêtre de jeu
+        GameWindow *gameWindow = new GameWindow(&gameBoard);
         gameWindow->setPlayerNames(player1Name, player2Name);
         gameWindow->show();
 
-        // Fermer la fenêtre du menu principal
+        // Fermer la fenêtre actuelle du menu
         this->close();
     }
 }
