@@ -8,9 +8,10 @@
 #include "../src/controllers/gui/HexGraphicsItem.h"
 // include piece
 #include <models/Piece.h>
+#define hexSize 50
 
-GameWindow::GameWindow(hive::models::Board *board, QWidget *parent)
-    : QMainWindow(parent), board(board) {
+GameWindow::GameWindow(hive::models::Board *board, hive::models::Game *game, QWidget *parent)
+    : QMainWindow(parent), board(board), game(game) {
     setupUI();
     displayBoard();
 }
@@ -72,8 +73,6 @@ void GameWindow::setupUI() {
 
 void GameWindow::displayBoard() {
     scene->clear(); // Nettoyer la scène
-
-    const int hexSize = 50; // Taille des hexagones
     const double sqrt3 = sqrt(3);
 
     // Parcourir les hexagones existants dans la table de hachage
@@ -98,10 +97,47 @@ void GameWindow::displayBoard() {
         // Connecter le signal de clic au traitement
         connect(hexItem, &HexGraphicsItem::hexClicked, this, [=](const hive::models::Hex &clickedHex) {
             qDebug() << "Hexagone cliqué à (" << clickedHex.getX() << ", " << clickedHex.getY() << ", " << clickedHex.getZ() << ")";
+            auto piece = board->getTopPiece(clickedHex);
+            if (piece) {
+                displayPossibleMoves(*piece); // Afficher les déplacements possibles
+            }
         });
+
 
         scene->addItem(hexItem);
     }
+}
+
+void GameWindow::displayPossibleMoves(const hive::models::Piece &piece) {
+    // Nettoyer les déplacements précédemment affichés
+    clearPossibleMoves();
+
+    // Récupérer le joueur courant (ajustez en fonction de votre logique de jeu)
+    const auto &currentPlayer = game->getCurrentPlayer();
+
+    // Récupérer les déplacements possibles via la stratégie de mouvement
+    auto possibleMoves = piece.getMoveStrategy().getPossibleMoves(*board, currentPlayer);
+
+    // Mettre en surbrillance chaque déplacement possible
+    for (const auto &hex : possibleMoves) {
+        int x = hex.getX() * (hexSize * 1.5);
+        int y = (hex.getY() - hex.getZ()) * (hexSize * sqrt(3) / 2);
+
+        // Ajouter une ellipse pour marquer les déplacements possibles
+        auto highlight = scene->addEllipse(-hexSize / 2, -hexSize / 2, hexSize, hexSize,
+                                           QPen(Qt::NoPen), QBrush(Qt::green, Qt::Dense4Pattern));
+        highlight->setPos(x, y);
+
+        moveHighlights.push_back(highlight); // Suivre les éléments ajoutés
+    }
+}
+
+void GameWindow::clearPossibleMoves() {
+    for (auto *highlight : moveHighlights) {
+        scene->removeItem(highlight);
+        delete highlight;
+    }
+    moveHighlights.clear();
 }
 
 void GameWindow::onUndoClicked() {

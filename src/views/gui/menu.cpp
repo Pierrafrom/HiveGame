@@ -42,17 +42,30 @@ Menu::Menu(QWidget *parent) : QWidget(parent)
     connect(btnQuit, &QPushButton::clicked, this, &Menu::onQuitGame);
 }
 
-void Menu::onStartTwoPlayerGame()
-{
+void Menu::onStartTwoPlayerGame() {
     PlayerInputDialog inputDialog(this);
     if (inputDialog.exec() == QDialog::Accepted) {
         QString player1Name = inputDialog.getPlayer1Name();
         QString player2Name = inputDialog.getPlayer2Name();
 
-        const hive::models::Hex origin(0, 0, 0);
-        auto queen1 = hive::models::PieceFactory::createPiece(hive::models::enums::PieceType::QUEEN_BEE);
-        auto spider1 = hive::models::PieceFactory::createPiece(hive::models::enums::PieceType::SPIDER);
+        // Récupérer l'instance de jeu et initialiser les joueurs
+        auto &game = hive::models::Game::getInstance();
+        game.resetGame(player1Name.toStdString(), player2Name.toStdString());
 
+        // Récupérer les joueurs
+        auto player1 = game.getPlayerPtr(0); // Joueur 1
+        auto player2 = game.getPlayerPtr(1); // Joueur 2
+
+        // Créer les pièces avec leurs propriétaires
+        const hive::models::Hex origin(0, 0, 0);
+
+        auto queen1 = hive::models::PieceFactory::createPiece(hive::models::enums::PieceType::QUEEN_BEE);
+        queen1->setOwner(player1); // Attribuer le joueur 1 à la pièce
+
+        auto spider1 = hive::models::PieceFactory::createPiece(hive::models::enums::PieceType::SPIDER);
+        spider1->setOwner(player2); // Attribuer le joueur 2 à la pièce
+
+        // Ajouter les pièces au plateau
         const std::shared_ptr sharedQueen1 = std::move(queen1);
         const std::shared_ptr sharedSpider1 = std::move(spider1);
 
@@ -60,7 +73,7 @@ void Menu::onStartTwoPlayerGame()
         gameBoard.addPiece(gameBoard.neighbor(origin, hive::models::enums::Direction::NORTH_EAST), sharedSpider1);
 
         // Créer et afficher la fenêtre de jeu
-        GameWindow *gameWindow = new GameWindow(&gameBoard);
+        GameWindow *gameWindow = new GameWindow(&gameBoard, &game);
         gameWindow->setPlayerNames(player1Name, player2Name);
         gameWindow->show();
 
@@ -68,6 +81,7 @@ void Menu::onStartTwoPlayerGame()
         this->close();
     }
 }
+
 
 
 void Menu::onStartSinglePlayerGame()
