@@ -203,6 +203,11 @@ namespace hive::models {
         * @return A string representation of the Piece object.
         */
         [[nodiscard]] std::string toString() const;
+
+        // TODO
+        // [[nodiscard]] std::string getTypeName() const {
+        //     return enums::toString(type);
+        // }
     };
 } // namespace hive::models
 

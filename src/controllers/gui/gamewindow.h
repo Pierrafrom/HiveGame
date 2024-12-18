@@ -36,10 +36,19 @@ private:
     QVBoxLayout *sideMenuLayout;
     hive::models::Board *board; // Référence au Board
     std::vector<QGraphicsEllipseItem *> moveHighlights; // Éléments graphiques pour les déplacements possibles
+    QLabel *player1Label; // Label dynamique pour le joueur 1
+    QLabel *player2Label; // Label dynamique pour le joueur 2
+    int currentTurn;  // Tour actuel
+
+    std::shared_ptr<hive::models::Piece> selectedPiece; // Pièce actuellement sélectionnée
+    std::vector<hive::models::Hex> validMoves;
 
 
     void setupUI();           // Initialiser l'interface
     void displayBoard();      // Afficher les hexagones existants
+    void movePiece(const hive::models::Hex &to);
+    void getTurn();
+    void nextTurn();
 };
 
 #endif // GAMEWINDOW_H

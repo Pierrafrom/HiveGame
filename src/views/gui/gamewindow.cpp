@@ -57,9 +57,9 @@ void GameWindow::setupUI() {
     QWidget *sideMenu = new QWidget(this);
     sideMenuLayout = new QVBoxLayout(sideMenu);
 
-    // Ajouter les noms des joueurs dans le menu latéral
-    QLabel *player1Label = new QLabel("Joueur 1 : Alice", this);
-    QLabel *player2Label = new QLabel("Joueur 2 : Bob", this);
+    // Ajouter les noms des joueurs dans le menu latéral (dynamique)
+    player1Label = new QLabel(this);
+    player2Label = new QLabel(this);
     sideMenuLayout->addWidget(player1Label);
     sideMenuLayout->addWidget(player2Label);
     sideMenuLayout->addStretch();
@@ -94,14 +94,40 @@ void GameWindow::displayBoard() {
         hexItem->setBrush(stack.empty() ? Qt::lightGray : Qt::yellow); // Couleur en fonction de l'état
         hexItem->setPen(QPen(Qt::black));
 
+        if (!stack.empty()) {
+            auto piece = stack.top();
+            hexItem->setBrush(piece->getOwner().getId() == 1 ? Qt::blue : Qt::red);
+        }
+
+
         // Connecter le signal de clic au traitement
         connect(hexItem, &HexGraphicsItem::hexClicked, this, [=](const hive::models::Hex &clickedHex) {
-            qDebug() << "Hexagone cliqué à (" << clickedHex.getX() << ", " << clickedHex.getY() << ", " << clickedHex.getZ() << ")";
-            auto piece = board->getTopPiece(clickedHex);
-            if (piece) {
-                displayPossibleMoves(*piece); // Afficher les déplacements possibles
-            }
-        });
+         // Récupérer la pièce sur l'hexagone cliqué
+         auto clickedPiece = board->getTopPiece(clickedHex);
+
+         // Cas 1 : Désélectionner la pièce si elle est déjà sélectionnée
+         if (selectedPiece && selectedPiece == clickedPiece) {
+             qDebug() << "Deselecting piece at (" << clickedHex.getX() << ", " << clickedHex.getY() << ", " << clickedHex.getZ() << ")";
+             selectedPiece.reset();
+             clearPossibleMoves(); // Effacer les déplacements affichés
+             return;
+         }
+
+         // Cas 2 : Sélectionner une nouvelle pièce
+         if (clickedPiece) {
+             selectedPiece = clickedPiece;
+             qDebug() << "Selected piece at (" << clickedHex.getX() << ", " << clickedHex.getY() << ", " << clickedHex.getZ() << ")";
+             displayPossibleMoves(*selectedPiece); // Afficher les déplacements valides
+             return;
+         }
+
+         // Cas 3 : Déplacer la pièce si une destination valide est cliquée
+         if (selectedPiece) {
+             movePiece(clickedHex);
+             nextTurn();
+         }
+     });
+
 
 
         scene->addItem(hexItem);
@@ -109,28 +135,26 @@ void GameWindow::displayBoard() {
 }
 
 void GameWindow::displayPossibleMoves(const hive::models::Piece &piece) {
-    // Nettoyer les déplacements précédemment affichés
-    clearPossibleMoves();
+    clearPossibleMoves(); // Nettoyer les surbrillances précédentes
 
-    // Récupérer le joueur courant (ajustez en fonction de votre logique de jeu)
-    const auto &currentPlayer = game->getCurrentPlayer();
+    // Récupérer les déplacements valides
+    validMoves = piece.getMoveStrategy().getPossibleMoves(*board, game->getCurrentPlayer());
 
-    // Récupérer les déplacements possibles via la stratégie de mouvement
-    auto possibleMoves = piece.getMoveStrategy().getPossibleMoves(*board, currentPlayer);
-
-    // Mettre en surbrillance chaque déplacement possible
-    for (const auto &hex : possibleMoves) {
+    // Afficher les déplacements valides
+    for (const auto &hex : validMoves) {
         int x = hex.getX() * (hexSize * 1.5);
         int y = (hex.getY() - hex.getZ()) * (hexSize * sqrt(3) / 2);
 
-        // Ajouter une ellipse pour marquer les déplacements possibles
+        // Ajouter une ellipse pour surligner l'hexagone
         auto highlight = scene->addEllipse(-hexSize / 2, -hexSize / 2, hexSize, hexSize,
                                            QPen(Qt::NoPen), QBrush(Qt::green, Qt::Dense4Pattern));
         highlight->setPos(x, y);
 
-        moveHighlights.push_back(highlight); // Suivre les éléments ajoutés
+        moveHighlights.push_back(highlight);
     }
 }
+
+
 
 void GameWindow::clearPossibleMoves() {
     for (auto *highlight : moveHighlights) {
@@ -139,6 +163,40 @@ void GameWindow::clearPossibleMoves() {
     }
     moveHighlights.clear();
 }
+
+
+void GameWindow::movePiece(const hive::models::Hex &to) {
+    if (!selectedPiece) {
+        qDebug() << "No piece selected.";
+        return;
+    }
+
+    if (std::find(validMoves.begin(), validMoves.end(), to) == validMoves.end()) {
+        qDebug() << "Invalid move.";
+        return;
+    }
+
+    const auto from = selectedPiece->getPosition();
+    if (!from) {
+        qDebug() << "Selected piece has no position.";
+        return;
+    }
+
+    try {
+        board->movePiece(*from, to);         // Déplacer la pièce
+        qDebug() << "Moved piece from (" << from->getX() << ", " << from->getY() << ", " << from->getZ() << ")"
+                 << " to (" << to.getX() << ", " << to.getY() << ", " << to.getZ() << ")";
+    } catch (const std::exception &e) {
+        qDebug() << "Error moving piece: " << e.what();
+    }
+
+    selectedPiece.reset();
+    validMoves.clear();
+    clearPossibleMoves();
+    displayBoard();
+}
+
+
 
 void GameWindow::onUndoClicked() {
     qDebug() << "Undo clicked";
@@ -154,9 +212,18 @@ void GameWindow::onSaveClicked() {
 }
 
 void GameWindow::setPlayerNames(const QString &player1, const QString &player2) {
-    // Remplissage dynamique des labels de joueurs
-    QLabel *player1Label = new QLabel(QString("Joueur 1 : %1").arg(player1), this);
-    QLabel *player2Label = new QLabel(QString("Joueur 2 : %1").arg(player2), this);
-    sideMenuLayout->addWidget(player1Label);
-    sideMenuLayout->addWidget(player2Label);
+    if (game) {
+        player1Label->setText("Joueur 1 : " + QString::fromStdString(game->getPlayer(0).getName()));
+        player2Label->setText("Joueur 2 : " + QString::fromStdString(game->getPlayer(1).getName()));
+    }
+}
+
+void GameWindow::getTurn() {
+    int currentTurn = game->getTurnNumber();
+    turnLabel->setText("Tour : " + QString::number(currentTurn));
+}
+
+void GameWindow::nextTurn() {
+    game->nextTurn();
+    getTurn();
 }
