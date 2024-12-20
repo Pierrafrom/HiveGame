@@ -135,7 +135,7 @@ namespace hive::models {
     std::string Piece::toString() const {
         const std::string ownerStr = owner.expired() ? "None" : std::to_string(owner.lock()->getId());
         return "Piece(ID: " + std::to_string(id) +
-               ", Type: " + std::to_string(static_cast<int>(type)) +
+               ", Type: " + enums::toString(type) +
                ", Owner: " + ownerStr +
                ", Position: " + (position ? position->toString() : "None") + ")";
     }
