@@ -169,6 +169,7 @@ namespace hive::models {
         // Remove the piece from the 'from' hex
         // We have to remove the piece after adding it to the new hex to avoid freeing the surrounding hexes
         // before the piece is added to the new hex and raise an exception when trying to add the piece
+
         unstackPiece(from);
     }
 

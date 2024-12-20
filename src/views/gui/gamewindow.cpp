@@ -31,10 +31,10 @@ void GameWindow::setupUI() {
     // Espacement
     topLayout->addStretch();
 
-    // Boutons Undo, Redo et Save
-    QPushButton *undoButton = new QPushButton("Undo");
-    QPushButton *redoButton = new QPushButton("Redo");
-    QPushButton *saveButton = new QPushButton("Save");
+    // Boutons Undo, Redo et Save avec 'this' comme parent
+    QPushButton *undoButton = new QPushButton("Undo", this);
+    QPushButton *redoButton = new QPushButton("Redo", this);
+    QPushButton *saveButton = new QPushButton("Save", this);
 
     connect(undoButton, &QPushButton::clicked, this, &GameWindow::onUndoClicked);
     connect(redoButton, &QPushButton::clicked, this, &GameWindow::onRedoClicked);
@@ -69,7 +69,12 @@ void GameWindow::setupUI() {
     mainLayout->addLayout(topLayout);        // Bandeau supérieur
     mainLayout->addLayout(mainContentLayout); // Zone principale
     setCentralWidget(centralWidget);
+
+    // Initialisation du tour
+    currentTurn = 1;
 }
+
+
 
 void GameWindow::displayBoard() {
     scene->clear(); // Nettoyer la scène
@@ -99,36 +104,33 @@ void GameWindow::displayBoard() {
             hexItem->setBrush(piece->getOwner().getId() == 1 ? Qt::blue : Qt::red);
         }
 
-
         // Connecter le signal de clic au traitement
         connect(hexItem, &HexGraphicsItem::hexClicked, this, [=](const hive::models::Hex &clickedHex) {
-         // Récupérer la pièce sur l'hexagone cliqué
-         auto clickedPiece = board->getTopPiece(clickedHex);
+            // Récupérer la pièce sur l'hexagone cliqué
+            auto clickedPiece = board->getTopPiece(clickedHex);
 
-         // Cas 1 : Désélectionner la pièce si elle est déjà sélectionnée
-         if (selectedPiece && selectedPiece == clickedPiece) {
-             qDebug() << "Deselecting piece at (" << clickedHex.getX() << ", " << clickedHex.getY() << ", " << clickedHex.getZ() << ")";
-             selectedPiece.reset();
-             clearPossibleMoves(); // Effacer les déplacements affichés
-             return;
-         }
+            // Cas 1 : Désélectionner la pièce si elle est déjà sélectionnée
+            if (selectedPiece && clickedPiece == selectedPiece) {
+                qDebug() << "Deselecting piece at (" << clickedHex.getX() << ", " << clickedHex.getY() << ", " << clickedHex.getZ() << ")";
+                selectedPiece.reset();
+                clearPossibleMoves(); // Effacer les déplacements affichés
+                return;
+            }
 
-         // Cas 2 : Sélectionner une nouvelle pièce
-         if (clickedPiece) {
-             selectedPiece = clickedPiece;
-             qDebug() << "Selected piece at (" << clickedHex.getX() << ", " << clickedHex.getY() << ", " << clickedHex.getZ() << ")";
-             displayPossibleMoves(*selectedPiece); // Afficher les déplacements valides
-             return;
-         }
+            // Cas 2 : Sélectionner une nouvelle pièce
+            if (clickedPiece) {
+                selectedPiece = clickedPiece;
+                qDebug() << "Selected piece at (" << clickedHex.getX() << ", " << clickedHex.getY() << ", " << clickedHex.getZ() << ")";
+                displayPossibleMoves(*selectedPiece); // Afficher les déplacements valides
+                return;
+            }
 
-         // Cas 3 : Déplacer la pièce si une destination valide est cliquée
-         if (selectedPiece) {
-             movePiece(clickedHex);
-             nextTurn();
-         }
-     });
-
-
+            // Cas 3 : Déplacer la pièce si une destination valide est cliquée
+            if (selectedPiece) {
+                movePiece(clickedHex);
+                nextTurn();
+            }
+        });
 
         scene->addItem(hexItem);
     }
@@ -184,12 +186,14 @@ void GameWindow::movePiece(const hive::models::Hex &to) {
 
     try {
         board->movePiece(*from, to);         // Déplacer la pièce
+        selectedPiece->setPosition(to);     // Mettre à jour la position de la pièce
         qDebug() << "Moved piece from (" << from->getX() << ", " << from->getY() << ", " << from->getZ() << ")"
                  << " to (" << to.getX() << ", " << to.getY() << ", " << to.getZ() << ")";
     } catch (const std::exception &e) {
         qDebug() << "Error moving piece: " << e.what();
     }
 
+    // Réinitialiser la sélection
     selectedPiece.reset();
     validMoves.clear();
     clearPossibleMoves();
@@ -219,7 +223,7 @@ void GameWindow::setPlayerNames(const QString &player1, const QString &player2) 
 }
 
 void GameWindow::getTurn() {
-    int currentTurn = game->getTurnNumber();
+    size_t currentTurn = game->getTurnNumber();
     turnLabel->setText("Tour : " + QString::number(currentTurn));
 }
 
