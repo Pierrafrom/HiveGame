@@ -33,7 +33,7 @@ namespace hive::models::strategies {
                 neighbor = board.neighbor(current_position, direction);
                 const bool occupied = board.isOccupied(neighbor);
                 const bool canSlice = board.canSliceBetween(current_position, direction);
-                const bool connected = isHiveConnectedAfterMove(board, initiaPosition, neighbor);
+                //const bool connected = isHiveConnectedAfterMove(board, initiaPosition, neighbor);
 
                 //check if the hex is already in the list
                 bool doublon = false;
@@ -44,7 +44,7 @@ namespace hive::models::strategies {
                     }
                 }
 
-                if (!occupied && canSlice && connected && !doublon) {
+                if (!occupied && canSlice && !doublon) {
                     possibleMoves.push_back(board.neighbor(current_position, direction));
                     newPositions.push_back(board.neighbor(current_position, direction));
                 }

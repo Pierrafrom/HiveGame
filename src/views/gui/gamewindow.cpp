@@ -17,6 +17,7 @@ GameWindow::GameWindow(hive::models::Board *board, hive::models::Game *game, QWi
 }
 
 void GameWindow::setupUI() {
+    //TODO there is leaky need to be fix
     // Configuration générale
     QWidget *centralWidget = new QWidget(this);
     QVBoxLayout *mainLayout = new QVBoxLayout(centralWidget);
