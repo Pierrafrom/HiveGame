@@ -33,6 +33,7 @@ namespace hive::models::strategies {
                 neighbor = board.neighbor(current_position, direction);
                 const bool occupied = board.isOccupied(neighbor);
                 const bool canSlice = board.canSliceBetween(current_position, direction);
+                // TODO : uncomment when the function will not make the program crash
                 //const bool connected = isHiveConnectedAfterMove(board, initiaPosition, neighbor);
 
                 //check if the hex is already in the list
