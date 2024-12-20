@@ -65,20 +65,20 @@ void Menu::onStartTwoPlayerGame() {
         queen1->setOwner(player1); // Attribuer le joueur 1 à la pièce
         ant1->setOwner(player1); // Attribuer le joueur 1 à la pièce
 
-        auto queen2 = hive::models::PieceFactory::createPiece(hive::models::enums::PieceType::QUEEN_BEE);
-        queen2->setOwner(player2); // Attribuer le joueur 2 à la pièce
+        auto grasshoper1 = hive::models::PieceFactory::createPiece(hive::models::enums::PieceType::GRASSHOPPER);
+        grasshoper1->setOwner(player2); // Attribuer le joueur 2 à la pièce
 
         // Ajouter les pièces au plateau
         const std::shared_ptr sharedQueen1 = std::move(queen1);
-        const std::shared_ptr sharedQueen2 = std::move(queen2);
+        const std::shared_ptr sharedgrasshoper1 = std::move(grasshoper1);
         const std::shared_ptr sharedAnt1 = std::move(ant1);
 
         gameBoard.addPiece(origin, sharedQueen1);
-        gameBoard.addPiece(gameBoard.neighbor(origin, hive::models::enums::Direction::NORTH_EAST), sharedQueen2);
+        gameBoard.addPiece(gameBoard.neighbor(origin, hive::models::enums::Direction::NORTH_EAST), sharedgrasshoper1);
         gameBoard.addPiece(gameBoard.neighbor(origin, hive::models::enums::Direction::WEST), sharedAnt1);
 
         // Créer et afficher la fenêtre de jeu
-        GameWindow *gameWindow = new GameWindow(&gameBoard, &game);
+        GameWindow *gameWindow = new GameWindow(&game);
         gameWindow->setPlayerNames(player1Name, player2Name);
         gameWindow->show();
 

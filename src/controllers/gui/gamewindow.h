@@ -15,7 +15,7 @@ class GameWindow : public QMainWindow {
     Q_OBJECT
 
 public:
-    explicit GameWindow(hive::models::Board *board, hive::models::Game *game, QWidget *parent = nullptr);
+    explicit GameWindow(hive::models::Game *game, QWidget *parent = nullptr);
     ~GameWindow() override = default;
 
     void setPlayerNames(const QString &player1, const QString &player2);
@@ -34,7 +34,6 @@ private:
     QGraphicsView *gameBoardView;
     QGraphicsScene *scene;
     QVBoxLayout *sideMenuLayout;
-    hive::models::Board *board; // Référence au Board
     std::vector<QGraphicsEllipseItem *> moveHighlights; // Éléments graphiques pour les déplacements possibles
     QLabel *player1Label; // Label dynamique pour le joueur 1
     QLabel *player2Label; // Label dynamique pour le joueur 2
@@ -45,6 +44,12 @@ private:
 
 
     void setupUI();           // Initialiser l'interface
+    void selectPiece(const hive::models::Hex &hex);
+
+    void updateValidMoves();
+
+    void unselectPiece();
+
     void displayBoard();      // Afficher les hexagones existants
     void movePiece(const hive::models::Hex &to);
     void getTurn();

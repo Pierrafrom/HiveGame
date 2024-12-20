@@ -7,11 +7,12 @@
 #include <models/Board.h>
 #include "../src/controllers/gui/HexGraphicsItem.h"
 // include piece
+#include <models/GameRules.h>
 #include <models/Piece.h>
 #define hexSize 50
 
-GameWindow::GameWindow(hive::models::Board *board, hive::models::Game *game, QWidget *parent)
-    : QMainWindow(parent), board(board), game(game) {
+GameWindow::GameWindow(hive::models::Game *game, QWidget *parent)
+    : QMainWindow(parent), game(game) {
     setupUI();
     displayBoard();
 }
@@ -67,7 +68,7 @@ void GameWindow::setupUI() {
 
     mainContentLayout->addWidget(sideMenu);
 
-    mainLayout->addLayout(topLayout);        // Bandeau supérieur
+    mainLayout->addLayout(topLayout); // Bandeau supérieur
     mainLayout->addLayout(mainContentLayout); // Zone principale
     setCentralWidget(centralWidget);
 
@@ -75,14 +76,111 @@ void GameWindow::setupUI() {
     currentTurn = 1;
 }
 
+void GameWindow::displayPossibleMoves(const hive::models::Piece &piece) {
+    if (!piece.getPosition()) {
+        qDebug() << "Piece has no position.";
+        return;
+    }
+    for (const auto &hex: validMoves) {
+        int x = hex.getX() * (hexSize * 1.5);
+        int y = (hex.getY() - hex.getZ()) * (hexSize * sqrt(3) / 2);
 
+        // Ajouter une ellipse pour surligner l'hexagone
+        auto highlight = scene->addEllipse(-hexSize / 2, -hexSize / 2, hexSize, hexSize,
+                                           QPen(Qt::NoPen), QBrush(Qt::green, Qt::Dense4Pattern));
+        highlight->setPos(x, y);
+
+        moveHighlights.push_back(highlight);
+    }
+}
+
+void GameWindow::clearPossibleMoves() {
+    for (auto *highlight: moveHighlights) {
+        scene->removeItem(highlight);
+        delete highlight;
+    }
+    moveHighlights.clear();
+    validMoves.clear();
+}
+
+void GameWindow::updateValidMoves() {
+    clearPossibleMoves();
+    if (selectedPiece) {
+        if (!selectedPiece->getPosition()) {
+            qDebug() << "Piece has no position.";
+            return;
+        }
+        validMoves = selectedPiece->getMoveStrategy().getPossibleMoves(game->getBoard(), game->getCurrentPlayer());
+        for (const hive::models::Hex hex: validMoves) {
+            hive::models::Move testMove(game->getPlayerPtr(), selectedPiece, selectedPiece->getPosition().value(), hex);
+            qDebug() << "Testing move: " << testMove.toString();
+            qDebug() << "current board state: " << game->getBoard().toString();
+            try {
+                hive::models::GameRules::validateMove(testMove, game->getBoard(), game->getTurnNumber());
+            } catch (const std::exception &e) {
+                // log de l'exception
+                qDebug() << e.what();
+                validMoves.erase(std::remove(validMoves.begin(), validMoves.end(), hex), validMoves.end());
+            }
+        }
+
+        displayPossibleMoves(*selectedPiece);
+    }
+}
+
+void GameWindow::unselectPiece() {
+    selectedPiece.reset();
+    updateValidMoves();
+}
+
+void GameWindow::selectPiece(const hive::models::Hex &hex) {
+    auto piece = game->getBoard().getTopPiece(hex);
+    if (piece != nullptr) {
+        if (piece->getOwner().getId() == game->getCurrentPlayer().getId()) {
+            if (selectedPiece == piece) {
+                qDebug() << "Deselecting";
+                selectedPiece.reset();
+                updateValidMoves();
+            } else {
+                updateValidMoves();
+                selectedPiece = piece;
+                updateValidMoves();
+            }
+        }
+    }
+}
+
+void GameWindow::movePiece(const hive::models::Hex &to) {
+    if (!selectedPiece) {
+        qDebug() << "No piece selected.";
+        return;
+    }
+
+    if (std::find(validMoves.begin(), validMoves.end(), to) == validMoves.end()) {
+        qDebug() << "Invalid move.";
+        return;
+    }
+
+    const auto from = selectedPiece->getPosition();
+    if (!from) {
+        qDebug() << "Selected piece has no position.";
+        return;
+    }
+
+    // Exécuter le mouvement
+    const hive::models::Move move(game->getPlayerPtr(), selectedPiece, from.value(), to);
+    game->executeMove(move);
+    unselectPiece();
+    displayBoard();
+
+}
 
 void GameWindow::displayBoard() {
     scene->clear(); // Nettoyer la scène
     const double sqrt3 = sqrt(3);
 
     // Parcourir les hexagones existants dans la table de hachage
-    for (const auto &[hex, stack] : board->getAllHexes()) {
+    for (const auto &[hex, stack]: game->getBoard().getAllHexes()) {
         // Calculer la position des hexagones en quinconce
         int x = hex.getX() * (hexSize * 1.5);
         int y = (hex.getY() - hex.getZ()) * (hexSize * sqrt3 / 2);
@@ -106,68 +204,25 @@ void GameWindow::displayBoard() {
         }
 
         // Connecter le signal de clic au traitement
-        connect(hexItem, &HexGraphicsItem::hexClicked, this, [=](const hive::models::Hex &clickedHex) {
-            // Récupérer la pièce sur l'hexagone cliqué
-            auto clickedPiece = board->getTopPiece(clickedHex);
+        connect(hexItem, &HexGraphicsItem::hexClicked, this, [=](const hive::models::Hex clickedHex) {
 
-            // Cas 1 : Désélectionner la pièce si elle est déjà sélectionnée
-            if (selectedPiece && clickedPiece == selectedPiece) {
-                qDebug() << "Deselecting piece at (" << clickedHex.getX() << ", " << clickedHex.getY() << ", " << clickedHex.getZ() << ")";
-                selectedPiece.reset();
-                clearPossibleMoves(); // Effacer les déplacements affichés
-                return;
-            }
-
-            // Cas 2 : Sélectionner une nouvelle pièce
-            if (clickedPiece) {
-                selectedPiece = clickedPiece;
-                qDebug() << "Selected piece at (" << clickedHex.getX() << ", " << clickedHex.getY() << ", " << clickedHex.getZ() << ")";
-                displayPossibleMoves(*selectedPiece); // Afficher les déplacements valides
-                return;
-            }
-
-            // Cas 3 : Déplacer la pièce si une destination valide est cliquée
-            if (selectedPiece) {
+            if (std::find(validMoves.begin(), validMoves.end(), clickedHex) != validMoves.end()) {
+                // on déplace la pièce
+                updateValidMoves();
                 movePiece(clickedHex);
-                nextTurn();
+            } else {
+                selectPiece(clickedHex);
+                for (const auto &hex: validMoves) {
+                    qDebug() << hex.toString();
+                }
             }
         });
-
         scene->addItem(hexItem);
     }
 }
 
-void GameWindow::displayPossibleMoves(const hive::models::Piece &piece) {
-    clearPossibleMoves(); // Nettoyer les surbrillances précédentes
 
-    // Récupérer les déplacements valides
-    validMoves = piece.getMoveStrategy().getPossibleMoves(*board, game->getCurrentPlayer());
-
-    // Afficher les déplacements valides
-    for (const auto &hex : validMoves) {
-        int x = hex.getX() * (hexSize * 1.5);
-        int y = (hex.getY() - hex.getZ()) * (hexSize * sqrt(3) / 2);
-
-        // Ajouter une ellipse pour surligner l'hexagone
-        auto highlight = scene->addEllipse(-hexSize / 2, -hexSize / 2, hexSize, hexSize,
-                                           QPen(Qt::NoPen), QBrush(Qt::green, Qt::Dense4Pattern));
-        highlight->setPos(x, y);
-
-        moveHighlights.push_back(highlight);
-    }
-}
-
-
-
-void GameWindow::clearPossibleMoves() {
-    for (auto *highlight : moveHighlights) {
-        scene->removeItem(highlight);
-        delete highlight;
-    }
-    moveHighlights.clear();
-}
-
-
+/*
 void GameWindow::movePiece(const hive::models::Hex &to) {
     if (!selectedPiece) {
         qDebug() << "No piece selected.";
@@ -186,12 +241,16 @@ void GameWindow::movePiece(const hive::models::Hex &to) {
     }
 
     try {
-        board->movePiece(*from, to);         // Déplacer la pièce
-        selectedPiece->setPosition(to);     // Mettre à jour la position de la pièce
-        qDebug() << "Moved piece from (" << from->getX() << ", " << from->getY() << ", " << from->getZ() << ")"
-                 << " to (" << to.getX() << ", " << to.getY() << ", " << to.getZ() << ")";
+        // récupérer le joueur actuel
+        const auto &player = game->getCurrentPlayer();
+
+        // récupérer le pt actuel joueur actuel
+        const auto playerPtr = game->getPlayerPtr();
+
+        // récuère la position de la pièce choisie
+        const hive::models::Hex fromHex = selectedPiece->getPosition().value();
     } catch (const std::exception &e) {
-        qDebug() << "Error moving piece: " << e.what();
+        qDebug() << "Invalid move: " << e.what();
     }
 
     // Réinitialiser la sélection
@@ -200,8 +259,7 @@ void GameWindow::movePiece(const hive::models::Hex &to) {
     clearPossibleMoves();
     displayBoard();
 }
-
-
+*/
 
 void GameWindow::onUndoClicked() {
     qDebug() << "Undo clicked";

@@ -1,6 +1,7 @@
 #include "models/Board.h"
 #include "models/enums/Direction.h"
 #include <queue>
+#include <sstream>
 #include <unordered_set>
 
 
@@ -275,18 +276,25 @@ namespace hive::models {
      * Operators
      *************************************************************************************************/
 
+    // toString method for Board
+    std::string Board::toString() const {
+        std::ostringstream oss;
+        oss << "Board state:\n";
+        for (const auto &[hex, stack]: board) {
+            oss << hex << ": ";
+            if (stack.empty()) {
+                oss << "Empty";
+            } else {
+                oss << "Stack size " << stack.size();
+            }
+            oss << '\n';
+        }
+        return oss.str();
+    }
+
     // Overloads the stream insertion operator for Board
     std::ostream &operator<<(std::ostream &os, const Board &board) {
-        os << "Board state:\n";
-        for (const auto &[hex, stack]: board.board) {
-            os << hex << ": ";
-            if (stack.empty()) {
-                os << "Empty";
-            } else {
-                os << "Stack size " << stack.size();
-            }
-            os << '\n';
-        }
+        os << board.toString();
         return os;
     }
 
