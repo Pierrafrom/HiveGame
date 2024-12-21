@@ -22,6 +22,24 @@ namespace hive::models::strategies {
         return possibleMoves;
     }
 
+    std::vector<Hex> AntMoveStrategy::getPossibleMoves(const Board &board, const Player &player, const Hex &hex) const {
+
+        if (!validatePieceOwnership(player)) {
+            return {};
+        }
+
+        //get the current position of the piece
+        const Hex position = hex;
+
+        //initialisation de vector -> un vector vide
+        std::vector<Hex> possibleMoves{};
+
+        // Start the exploration from the current position
+        antExploration(position, possibleMoves, board, position);
+
+        return possibleMoves;
+    }
+
     //Fonction qui ajoute les hexagones sur lesquels on peut se déplacer depuis une position au vecteur possibleMoves et qui les retourne
     std::vector<Hex> AntMoveStrategy::addPossibleMove(const Hex &current_position, std::vector<Hex> &possibleMoves, const Board &board, const Hex &initiaPosition) const {
         std::vector<Hex> newPositions{}; // initialisation du vecteur contenant les nouvelles positions ajoutées à : vide

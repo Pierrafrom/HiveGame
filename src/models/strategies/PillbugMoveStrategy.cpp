@@ -9,4 +9,9 @@ namespace hive::models::strategies {
         // TODO: Implement Mosquito movement logic by imitating adjacent pieces' movement abilities
         return {}; // PLACEHOLDER
     }
+
+    std::vector<Hex> PillbugMoveStrategy::getPossibleMoves(const Board &board, const Player &player, const Hex &hex) const {
+        // TODO: Implement Mosquito movement logic by imitating adjacent pieces' movement abilities
+        return {}; // PLACEHOLDER
+    }
 } // namespace hive::models::strategies

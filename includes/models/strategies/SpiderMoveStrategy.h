@@ -34,6 +34,7 @@ namespace hive::models::strategies {
          * The Spider must move exactly three spaces, following the sliding rule.
          */
         [[nodiscard]] std::vector<Hex> getPossibleMoves(const Board &board, const Player &player) const override;
+        [[nodiscard]] std::vector<Hex> getPossibleMoves(const Board &board, const Player &player, const Hex &hex) const override;
 
          /**
         * @brief Recursively explores the reachable positions for the Spider.

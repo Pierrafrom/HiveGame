@@ -23,4 +23,25 @@ namespace hive::models::strategies {
         return possibleMoves;
 
     }
+
+    std::vector<Hex> BeetleMoveStrategy::getPossibleMoves(const Board &board, const Player &player, const Hex &hex) const {
+
+        if (!validatePieceOwnership(player)) {
+            return {};
+        }
+
+        const Hex position = hex;
+
+        std::vector<Hex> possibleMoves{};
+
+        for (const auto &direction: enums::getAllDirections()) {
+            const bool connected = isHiveConnectedAfterMove(board, position, board.neighbor(position, direction));
+            if (connected) {
+                possibleMoves.push_back(board.neighbor(position, direction));
+            }
+        }
+
+        return possibleMoves;
+
+    }
 } // namespace hive::models::strategies
