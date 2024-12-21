@@ -35,6 +35,7 @@ namespace hive::models::strategies {
          * The Queen Bee can move only one space at a time to adjacent cells.
          */
         [[nodiscard]] std::vector<Hex> getPossibleMoves(const Board &board, const Player &player) const override;
+        [[nodiscard]] std::vector<Hex> getPossibleMoves(const Board &board, const Player &player, const Hex &hex) const override;
     };
 } // namespace hive::models::strategies
 

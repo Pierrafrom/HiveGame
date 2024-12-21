@@ -35,6 +35,7 @@ namespace hive::models::strategies {
          * The Grasshopper can jump in a straight line over adjacent pieces, landing on the first empty space beyond them.
          */
         [[nodiscard]] std::vector<Hex> getPossibleMoves(const Board &board, const Player &player) const override;
+        [[nodiscard]] std::vector<Hex> getPossibleMoves(const Board &board, const Player &player, const Hex &hex) const override;
     };
 } // namespace hive::models::strategies
 

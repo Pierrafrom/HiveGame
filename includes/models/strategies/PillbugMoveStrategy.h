@@ -37,6 +37,7 @@ namespace hive::models::strategies {
          * subject to specific game rules.
          */
         [[nodiscard]] std::vector<Hex> getPossibleMoves(const Board &board, const Player &player) const override;
+        [[nodiscard]] std::vector<Hex> getPossibleMoves(const Board &board, const Player &player, const Hex &hex) const override;
     };
 } // namespace hive::models::strategies
 

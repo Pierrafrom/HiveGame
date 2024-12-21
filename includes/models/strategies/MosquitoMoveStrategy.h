@@ -36,6 +36,7 @@ namespace hive::models::strategies {
          * The Mosquito can move according to the movement abilities of any adjacent piece.
          */
         [[nodiscard]] std::vector<Hex> getPossibleMoves(const Board &board, const Player &player) const override;
+        [[nodiscard]] std::vector<Hex> getPossibleMoves(const Board &board, const Player &player, const Hex &hex) const override;
     };
 } // namespace hive::models::strategies
 

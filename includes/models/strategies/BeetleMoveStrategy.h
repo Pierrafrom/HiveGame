@@ -37,6 +37,7 @@ namespace hive::models::strategies {
          * allowing it to climb and block them.
          */
         [[nodiscard]] std::vector<Hex> getPossibleMoves(const Board &board, const Player &player) const override;
+        [[nodiscard]] std::vector<Hex> getPossibleMoves(const Board &board, const Player &player, const Hex &hex) const override;
     };
 } // namespace hive::models::strategies
 

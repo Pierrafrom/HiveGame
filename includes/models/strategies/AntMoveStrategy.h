@@ -40,6 +40,7 @@ namespace hive::models::strategies {
          * the sliding rule that keeps it adjacent to other pieces.
          */
         [[nodiscard]] std::vector<Hex> getPossibleMoves(const Board &board, const Player &player) const override;
+        [[nodiscard]] std::vector<Hex> getPossibleMoves(const Board &board, const Player &player, const Hex &hex) const override;
 
         std::vector<Hex> addPossibleMove(const Hex &current_position, std::vector<Hex> &possibleMoves, const Board &board, const Hex &initiaPosition) const;
 
