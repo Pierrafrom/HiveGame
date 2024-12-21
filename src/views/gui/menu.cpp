@@ -56,30 +56,11 @@ void Menu::onStartTwoPlayerGame() {
         auto player1 = game.getPlayerPtr(0); // Joueur 1
         auto player2 = game.getPlayerPtr(1); // Joueur 2
 
-        // Créer les pièces avec leurs propriétaires
-        const hive::models::Hex origin(0, 0, 0);
-
-        auto queen1 = hive::models::PieceFactory::createPiece(hive::models::enums::PieceType::QUEEN_BEE);
-        auto ant1 = hive::models::PieceFactory::createPiece(hive::models::enums::PieceType::ANT);
-
-        queen1->setOwner(player1); // Attribuer le joueur 1 à la pièce
-        ant1->setOwner(player1); // Attribuer le joueur 1 à la pièce
-
-        auto grasshoper1 = hive::models::PieceFactory::createPiece(hive::models::enums::PieceType::GRASSHOPPER);
-        grasshoper1->setOwner(player2); // Attribuer le joueur 2 à la pièce
-
-        // Ajouter les pièces au plateau
-        const std::shared_ptr sharedQueen1 = std::move(queen1);
-        const std::shared_ptr sharedgrasshoper1 = std::move(grasshoper1);
-        const std::shared_ptr sharedAnt1 = std::move(ant1);
-
-        gameBoard.addPiece(origin, sharedQueen1);
-        gameBoard.addPiece(gameBoard.neighbor(origin, hive::models::enums::Direction::NORTH_EAST), sharedgrasshoper1);
-        gameBoard.addPiece(gameBoard.neighbor(origin, hive::models::enums::Direction::WEST), sharedAnt1);
 
         // Créer et afficher la fenêtre de jeu
         GameWindow *gameWindow = new GameWindow(&game);
         gameWindow->setPlayerNames(player1Name, player2Name);
+        gameWindow->createDefautConfig();
         gameWindow->show();
 
         // Fermer la fenêtre actuelle du menu

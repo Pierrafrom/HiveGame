@@ -5,7 +5,7 @@
 
 namespace hive::models::strategies {
     // Check if the hive is still connected after moving a piece
-    bool MoveStrategy::isHiveConnectedAfterMove(Board board, const Hex &from, const Hex &to) {
+    bool MoveStrategy::isHiveConnectedAfterMove(Board board, Hex from, Hex to) {
         board.movePiece(from, to);
         return board.areAllPiecesConnected();
     }

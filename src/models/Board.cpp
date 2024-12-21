@@ -36,7 +36,7 @@ namespace hive::models {
 
 
     // Adds a piece to a specific hex location on the board
-    void Board::addPiece(const Hex &hex, const std::shared_ptr<Piece> &piece) {
+    void Board::addPiece(Hex hex, std::shared_ptr<Piece> piece) {
         if (!piece) {
             throw std::invalid_argument("Piece cannot be null.");
         }
@@ -52,7 +52,7 @@ namespace hive::models {
     }
 
     // Removes and returns the top piece from a specific hex location
-    std::shared_ptr<Piece> Board::unstackPiece(const Hex &hex) {
+    std::shared_ptr<Piece> Board::unstackPiece(Hex hex) {
         if (const auto it = board.find(hex); it != board.end() && !it->second.empty()) {
             // Remove the top piece from the stack
             std::shared_ptr<Piece> removedPiece = it->second.top();
@@ -157,7 +157,7 @@ namespace hive::models {
     }
 
     // Moves a piece from one hex to another
-    void Board::movePiece(const Hex &from, const Hex &to) {
+    void Board::movePiece(Hex from, Hex to) {
         // Retrieve the top piece from the 'from' hex
         const std::shared_ptr<Piece> movedPiece = this->getTopPiece(from);
         if (!movedPiece) {

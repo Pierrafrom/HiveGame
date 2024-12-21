@@ -34,10 +34,11 @@ void GameWindow::setupUI() {
     topLayout->addStretch();
 
     // Boutons Undo, Redo et Save avec 'this' comme parent
-    QPushButton *undoButton = new QPushButton("Undo", this);
-    QPushButton *redoButton = new QPushButton("Redo", this);
+    undoButton = new QPushButton("Undo", this);
+    redoButton = new QPushButton("Redo", this);
     QPushButton *saveButton = new QPushButton("Save", this);
 
+    // Connecter les signaux aux slots
     connect(undoButton, &QPushButton::clicked, this, &GameWindow::onUndoClicked);
     connect(redoButton, &QPushButton::clicked, this, &GameWindow::onRedoClicked);
     connect(saveButton, &QPushButton::clicked, this, &GameWindow::onSaveClicked);
@@ -74,6 +75,7 @@ void GameWindow::setupUI() {
 
     // Initialisation du tour
     currentTurn = 1;
+    updateUndoRedoButtons();
 }
 
 void GameWindow::displayPossibleMoves(const hive::models::Piece &piece) {
@@ -114,7 +116,6 @@ void GameWindow::updateValidMoves() {
         for (const hive::models::Hex hex: validMoves) {
             hive::models::Move testMove(game->getPlayerPtr(), selectedPiece, selectedPiece->getPosition().value(), hex);
             qDebug() << "Testing move: " << testMove.toString();
-            qDebug() << "current board state: " << game->getBoard().toString();
             try {
                 hive::models::GameRules::validateMove(testMove, game->getBoard(), game->getTurnNumber());
             } catch (const std::exception &e) {
@@ -172,7 +173,8 @@ void GameWindow::movePiece(const hive::models::Hex &to) {
     game->executeMove(move);
     unselectPiece();
     displayBoard();
-
+    getTurn();
+    updateUndoRedoButtons();
 }
 
 void GameWindow::displayBoard() {
@@ -221,49 +223,24 @@ void GameWindow::displayBoard() {
     }
 }
 
-
-/*
-void GameWindow::movePiece(const hive::models::Hex &to) {
-    if (!selectedPiece) {
-        qDebug() << "No piece selected.";
-        return;
-    }
-
-    if (std::find(validMoves.begin(), validMoves.end(), to) == validMoves.end()) {
-        qDebug() << "Invalid move.";
-        return;
-    }
-
-    const auto from = selectedPiece->getPosition();
-    if (!from) {
-        qDebug() << "Selected piece has no position.";
-        return;
-    }
-
-    try {
-        // récupérer le joueur actuel
-        const auto &player = game->getCurrentPlayer();
-
-        // récupérer le pt actuel joueur actuel
-        const auto playerPtr = game->getPlayerPtr();
-
-        // récuère la position de la pièce choisie
-        const hive::models::Hex fromHex = selectedPiece->getPosition().value();
-    } catch (const std::exception &e) {
-        qDebug() << "Invalid move: " << e.what();
-    }
-
-    // Réinitialiser la sélection
-    selectedPiece.reset();
-    validMoves.clear();
-    clearPossibleMoves();
-    displayBoard();
-}
-*/
-
 void GameWindow::onUndoClicked() {
     qDebug() << "Undo clicked";
-    turnLabel->setText("Tour : " + QString::number(1)); // Exemple basique
+    try {
+        game->undo();
+        displayBoard();
+        getTurn();
+        updateUndoRedoButtons();
+    } catch (const std::exception &e) {
+        // log de l'exception
+        qDebug() << e.what();
+    }
+}
+
+void GameWindow::updateUndoRedoButtons() {
+    if (undoButton && redoButton && game) {
+        undoButton->setEnabled(!game->getUndoStack().empty());
+        redoButton->setEnabled(!game->getRedoStack().empty());
+    }
 }
 
 void GameWindow::onRedoClicked() {
@@ -284,9 +261,4 @@ void GameWindow::setPlayerNames(const QString &player1, const QString &player2) 
 void GameWindow::getTurn() {
     size_t currentTurn = game->getTurnNumber();
     turnLabel->setText("Tour : " + QString::number(currentTurn));
-}
-
-void GameWindow::nextTurn() {
-    game->nextTurn();
-    getTurn();
 }

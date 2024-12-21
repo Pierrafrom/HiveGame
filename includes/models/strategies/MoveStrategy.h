@@ -30,7 +30,7 @@ namespace hive::models::strategies {
         * @param to The destination position of the piece.
         * @return True if the hive remains connected after moving the piece, false otherwise.
         */
-        static bool isHiveConnectedAfterMove(Board board, const Hex &from, const Hex &to);
+        static bool isHiveConnectedAfterMove(Board board, Hex from, Hex to);
 
     public:
         /**************************************************************************************************

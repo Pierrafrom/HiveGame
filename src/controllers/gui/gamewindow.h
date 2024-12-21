@@ -8,6 +8,8 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGraphicsScene>
+#include <models/PieceFactory.h>
+
 #include "models/Board.h"
 #include "models/Game.h"
 
@@ -20,6 +22,23 @@ public:
 
     void setPlayerNames(const QString &player1, const QString &player2);
 
+    void createDefautConfig() {
+        const hive::models::Hex origin(0, 0, 0);
+        auto queen1 = hive::models::PieceFactory::createPiece(hive::models::enums::PieceType::QUEEN_BEE);
+        auto queen2 = hive::models::PieceFactory::createPiece(hive::models::enums::PieceType::QUEEN_BEE);
+
+        queen1->setOwner(game->getPlayerPtr(0));
+        queen2->setOwner(game->getPlayerPtr(1));
+
+        const std::shared_ptr sharedQueen1 = std::move(queen1);
+        const std::shared_ptr sharedQueen2 = std::move(queen2);
+
+        game->getBoard().addPiece(origin, sharedQueen1);
+        game->getBoard().addPiece(hive::models::Hex(1, -1, 0), sharedQueen2);
+
+        displayBoard();
+    }
+
     private slots:
     void onUndoClicked();
     void onRedoClicked();
@@ -29,6 +48,8 @@ public:
 
 private:
     hive::models::Game *game; // Référence au jeu
+    QPushButton *undoButton;
+    QPushButton *redoButton;
     QLabel *playerInfoLabel;
     QLabel *turnLabel;
     QGraphicsView *gameBoardView;
@@ -54,6 +75,9 @@ private:
     void movePiece(const hive::models::Hex &to);
     void getTurn();
     void nextTurn();
+
+    void updateUndoRedoButtons();
 };
+
 
 #endif // GAMEWINDOW_H
