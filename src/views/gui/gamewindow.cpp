@@ -171,6 +171,7 @@ void GameWindow::movePiece(const hive::models::Hex &to) {
     // Exécuter le mouvement
     const hive::models::Move move(game->getPlayerPtr(), selectedPiece, from.value(), to);
     game->executeMove(move);
+
     unselectPiece();
     displayBoard();
     getTurn();
@@ -203,6 +204,16 @@ void GameWindow::displayBoard() {
         if (!stack.empty()) {
             auto piece = stack.top();
             hexItem->setBrush(piece->getOwner().getId() == 1 ? Qt::blue : Qt::red);
+
+            // Ajouter du texte pour la pièce
+            QGraphicsTextItem *textItem = new QGraphicsTextItem(QString::fromStdString(toString(piece->getType())), hexItem);
+            QFont font;
+            font.setBold(true);
+            font.setPointSize(10); // Taille de la police
+            textItem->setFont(font);
+            textItem->setDefaultTextColor(Qt::white); // Couleur du texte pour la lisibilité
+            QRectF textRect = textItem->boundingRect();
+            textItem->setPos(-textRect.width() / 2, -textRect.height() / 2);
         }
 
         // Connecter le signal de clic au traitement
