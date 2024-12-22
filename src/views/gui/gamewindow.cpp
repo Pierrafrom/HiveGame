@@ -31,11 +31,16 @@ void GameWindow::createDefautConfig() {
     std::shared_ptr<hive::models::Piece> sharedQueen1(std::move(queen1));
     std::shared_ptr<hive::models::Piece> sharedQueen2(std::move(queen2));
 
+    game->getPlayerPtr(0)->addPiece(sharedQueen1);
+    game->getPlayerPtr(1)->addPiece(sharedQueen2);
+
+
     game->getBoard().addPiece({0, 0, 0}, sharedQueen1);
     game->getBoard().addPiece({1, -1, 0}, sharedQueen2);
 
     // Enfin, réaffichez le plateau
     displayBoard();
+    updatePieceCreationButtons();
 }
 
 void GameWindow::setupUI() {
@@ -253,6 +258,8 @@ void GameWindow::displayBoard() {
                     hive::models::Move testMove(game->getPlayerPtr(), selectedPiece, clickedHex);
                     try {
                         hive::models::GameRules::validateMove(testMove, game->getBoard(), game->getTurnNumber());
+                        game->getPlayerPtr()->addPiece(selectedPiece);
+                        qDebug() << "id du joeur" << game->getCurrentPlayer().getId();
                         game->executeMove(testMove);
                         unselectPiece();
                         QTimer::singleShot(0, this, &GameWindow::displayBoard);
@@ -366,7 +373,7 @@ QGroupBox* GameWindow::createPieceCreationGroupBox(int playerIndex) {
     }
 
     // Vérifier si c'est le tour de ce joueur
-    bool isThisPlayerTurn = playerIndex + 1 == game->getCurrentPlayer().getId();
+    bool isThisPlayerTurn = (playerIndex + 1 == game->getCurrentPlayer().getId());
 
     // On désactive entièrement la groupBox si ce n'est pas son tour
     // (y compris tous les boutons).
@@ -389,10 +396,12 @@ QGroupBox* GameWindow::createPieceCreationGroupBox(int playerIndex) {
     };
 
     for (auto &&[ptype, name] : pieceTypes) {
-        int alreadyOwned = (int) playerPtr->getPieceCount(ptype);
+        size_t alreadyOwned = playerPtr->getPieceCount(ptype);
         int maxCount    = maxPiecesForType(ptype);
         int left        = maxCount - alreadyOwned;
         if (left < 0) left = 0;
+
+        qDebug() << "already own" << alreadyOwned;
 
         QString btnText = QString("%1 (%2/%3)").arg(name).arg(alreadyOwned).arg(maxCount);
         auto btn = new QPushButton(btnText, this);
@@ -441,6 +450,7 @@ void GameWindow::onCreatePieceButtonClicked(int playerIndex, hive::models::enums
 
     // 2) Assigner propriétaire
     auto playerPtr = game->getPlayerPtr(playerIndex);
+
     pieceShared->setOwner(playerPtr);
 
     // 3) Trouver position

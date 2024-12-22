@@ -176,6 +176,7 @@ namespace hive::models {
          * @return A reference to the output stream.
          */
         friend std::ostream &operator<<(std::ostream &os, const Player &player);
+
     };
 } // namespace hive::models
 
