@@ -267,7 +267,11 @@ void GameWindow::displayBoard() {
                     movePiece(clickedHex);
                 }
             } else {
-                selectPiece(clickedHex);
+                if (selectedPiece == nullptr) {
+                    selectPiece(clickedHex);
+                } else if (!isSelectedPieceOnBoard()) {
+                    qDebug() << "veuillez d'abord poser la piece selectionée";
+                }
             }
         });
         scene->addItem(hexItem);
