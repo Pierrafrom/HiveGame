@@ -61,7 +61,7 @@ void GameWindow::setupUI() {
     // Boutons Undo, Redo et Save avec 'this' comme parent
     undoButton = new QPushButton("Undo", this);
     redoButton = new QPushButton("Redo", this);
-    QPushButton *saveButton = new QPushButton("Save", this);
+    saveButton = new QPushButton("Save", this);
 
     // Connecter les signaux aux slots
     connect(undoButton, &QPushButton::clicked, this, &GameWindow::onUndoClicked);
@@ -261,6 +261,7 @@ void GameWindow::displayBoard() {
                         hive::models::GameRules::validateMove(testMove, game->getBoard(), game->getTurnNumber());
                         game->getPlayerPtr()->addPiece(selectedPiece);
                         qDebug() << "id du joeur" << game->getCurrentPlayer().getId();
+                        enableAllButtons();
                         game->executeMove(testMove);
                         unselectPiece();
                         QTimer::singleShot(0, this, &GameWindow::displayBoard);
@@ -451,8 +452,10 @@ void GameWindow::onCreatePieceButtonClicked(int playerIndex, hive::models::enums
 
     // 2) Assigner propriétaire
     auto playerPtr = game->getPlayerPtr(playerIndex);
-
     pieceShared->setOwner(playerPtr);
+
+
+
 
     // 3) Trouver position
     auto &board = game->getBoard();
@@ -462,6 +465,8 @@ void GameWindow::onCreatePieceButtonClicked(int playerIndex, hive::models::enums
     // reset validPlacementPositions
     clearPossibleMoves();
     selectedPiece = pieceShared;
+
+    disableAllButtons();
 
     // Mettre à jour les mouvements possibles
     for (const auto &hex: board.allEmptyHexes()) {
@@ -481,9 +486,33 @@ void GameWindow::onCreatePieceButtonClicked(int playerIndex, hive::models::enums
 
         // Ajouter une ellipse pour surligner l'hexagone
         auto highlight = scene->addEllipse(-hexSize / 2, -hexSize / 2, hexSize, hexSize,
-                                           QPen(Qt::NoPen), QBrush(Qt::green, Qt::Dense4Pattern));
+                                           QPen(Qt::NoPen), QBrush(Qt::magenta, Qt::Dense4Pattern));
         highlight->setPos(x, y);
 
         moveHighlights.push_back(highlight);
     }
+}
+
+void GameWindow::disableAllButtons()
+{
+    undoButton->setEnabled(false);
+    redoButton->setEnabled(false);
+    saveButton->setEnabled(false);
+
+
+    for (int i = 0; i < sideMenuLayout->count(); i++) {
+        QLayoutItem *child = sideMenuLayout->itemAt(i);
+        if (auto widget = child->widget()) {
+            widget->setEnabled(false);
+        }
+    }
+}
+
+void GameWindow::enableAllButtons()
+{
+    undoButton->setEnabled(true);
+    redoButton->setEnabled(true);
+    saveButton->setEnabled(true);
+
+    updatePieceCreationButtons();
 }

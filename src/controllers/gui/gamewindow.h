@@ -41,6 +41,7 @@ private:
     hive::models::Game *game;
     QPushButton *undoButton;
     QPushButton *redoButton;
+    QPushButton *saveButton;
     QLabel *playerInfoLabel;
     QLabel *turnLabel;
     QGraphicsView *gameBoardView;
@@ -71,6 +72,8 @@ private:
     void nextTurn();
     void updateUndoRedoButtons();
 
+    void disableAllButtons();
+    void enableAllButtons();
 
     // Ajout
     QGroupBox* createPieceCreationGroupBox(int playerIndex);
