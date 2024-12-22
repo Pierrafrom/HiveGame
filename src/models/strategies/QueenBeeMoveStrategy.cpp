@@ -26,8 +26,8 @@ namespace hive::models::strategies {
             const bool occupied = board.isOccupied(neighbor);
             const bool canSlice = board.canSliceBetween(position, direction);
             // TODO : uncomment when the function will not make the program crash
-            //const bool connected = isHiveConnectedAfterMove(board, position, neighbor);
-            if (!occupied && canSlice) {
+            const bool connected = isHiveConnectedAfterMove(board, position, neighbor);
+            if (!occupied && canSlice && connected) {
 
                 possibleMoves.push_back(neighbor);
 

@@ -251,6 +251,7 @@ void GameWindow::displayBoard() {
 
         // Connecter le signal de clic au traitement
         connect(hexItem, &HexGraphicsItem::hexClicked, this, [this](hive::models::Hex clickedHex) {
+            qDebug() << "Hex clicked: " << clickedHex.toString();
             if (std::find(validMoves.begin(), validMoves.end(), clickedHex) != validMoves.end()) {
                 // if selectedPiece is not on the board, it means we are in the piece creation phase
                 if (!isSelectedPieceOnBoard()) {
@@ -274,10 +275,10 @@ void GameWindow::displayBoard() {
                     movePiece(clickedHex);
                 }
             } else {
-                if (selectedPiece == nullptr) {
-                    selectPiece(clickedHex);
-                } else if (!isSelectedPieceOnBoard()) {
+                if (selectedPiece && !isSelectedPieceOnBoard()) {
                     qDebug() << "veuillez d'abord poser la piece selectionée";
+                } else {
+                    selectPiece(clickedHex);
                 }
             }
         });

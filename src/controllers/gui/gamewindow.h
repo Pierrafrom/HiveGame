@@ -71,6 +71,7 @@ private:
     void nextTurn();
     void updateUndoRedoButtons();
 
+
     // Ajout
     QGroupBox* createPieceCreationGroupBox(int playerIndex);
     void updatePieceCreationButtons();
