@@ -36,6 +36,11 @@ file(GLOB_RECURSE MODEL_SOURCES CONFIGURE_DEPENDS
         ${CMAKE_SOURCE_DIR}/src/models/*.cpp
 )
 
+# Add utils sources
+file(GLOB_RECURSE UTILS_SOURCES CONFIGURE_DEPENDS
+        ${CMAKE_SOURCE_DIR}/src/utils/*.cpp
+)
+
 # Add controller and view sources based on the mode
 if(ENABLE_GUI)
     file(GLOB_RECURSE CONTROLLER_SOURCES CONFIGURE_DEPENDS
@@ -56,7 +61,7 @@ else()
 endif()
 
 # Combine all sources
-set(SOURCES ${MODEL_SOURCES} ${CONTROLLER_SOURCES} ${VIEW_SOURCES} ${MAIN_SOURCE})
+set(SOURCES ${MODEL_SOURCES} ${CONTROLLER_SOURCES} ${VIEW_SOURCES} ${UTILS_SOURCES} ${MAIN_SOURCE})
 
 # Ensure that SOURCES is not empty
 if(SOURCES STREQUAL "")
@@ -80,7 +85,6 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 # Define test sources
 file(GLOB_RECURSE TEST_SOURCES CONFIGURE_DEPENDS
-        ${CMAKE_SOURCE_DIR}/tests/models/*.cpp
         ${CMAKE_SOURCE_DIR}/tests/*.cpp
 )
 
