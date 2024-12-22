@@ -19,6 +19,25 @@ GameWindow::GameWindow(hive::models::Game *game, QWidget *parent)
     // displayBoard(); comment to don't create board twice
 }
 
+void GameWindow::createDefautConfig() {
+    const hive::models::Hex origin(0, 0, 0);
+
+    auto queen1 = hive::models::PieceFactory::createPiece(hive::models::enums::PieceType::QUEEN_BEE);
+    auto queen2 = hive::models::PieceFactory::createPiece(hive::models::enums::PieceType::QUEEN_BEE);
+
+    queen1->setOwner(game->getPlayerPtr(0));
+    queen2->setOwner(game->getPlayerPtr(1));
+
+    std::shared_ptr<hive::models::Piece> sharedQueen1(std::move(queen1));
+    std::shared_ptr<hive::models::Piece> sharedQueen2(std::move(queen2));
+
+    game->getBoard().addPiece({0, 0, 0}, sharedQueen1);
+    game->getBoard().addPiece({1, -1, 0}, sharedQueen2);
+
+    // Enfin, réaffichez le plateau
+    displayBoard();
+}
+
 void GameWindow::setupUI() {
     // Configuration générale
     QWidget *centralWidget = new QWidget(this);
@@ -77,6 +96,9 @@ void GameWindow::setupUI() {
     // Initialisation du tour
     currentTurn = 1;
     updateUndoRedoButtons();
+
+    // On ajoute l'appel
+    updatePieceCreationButtons();
 }
 
 void GameWindow::displayPossibleMoves(const hive::models::Piece &piece) {
@@ -179,6 +201,7 @@ void GameWindow::movePiece(const hive::models::Hex &to) {
     QTimer::singleShot(0, this, &GameWindow::displayBoard);
     getTurn();
     updateUndoRedoButtons();
+    updatePieceCreationButtons();
     qDebug() << "fin de deplacement";
 }
 
@@ -222,19 +245,42 @@ void GameWindow::displayBoard() {
         }
 
         // Connecter le signal de clic au traitement
-        connect(hexItem, &HexGraphicsItem::hexClicked, this, [=](hive::models::Hex clickedHex) {
-
+        connect(hexItem, &HexGraphicsItem::hexClicked, this, [this](hive::models::Hex clickedHex) {
             if (std::find(validMoves.begin(), validMoves.end(), clickedHex) != validMoves.end()) {
-                movePiece(clickedHex);
+                // if selectedPiece is not on the board, it means we are in the piece creation phase
+                if (!isSelectedPieceOnBoard()) {
+                    qDebug() << "Piece placement from creation";
+                    hive::models::Move testMove(game->getPlayerPtr(), selectedPiece, clickedHex);
+                    try {
+                        hive::models::GameRules::validateMove(testMove, game->getBoard(), game->getTurnNumber());
+                        game->executeMove(testMove);
+                        unselectPiece();
+                        QTimer::singleShot(0, this, &GameWindow::displayBoard);
+                        getTurn();
+                        updateUndoRedoButtons();
+                        updatePieceCreationButtons();
+                    } catch (const std::exception &e) {
+                        // log de l'exception
+                        qDebug() << e.what();
+                    }
+                } else {
+                    movePiece(clickedHex);
+                }
             } else {
                 selectPiece(clickedHex);
             }
         });
-        qDebug() << "avant scene add item";
         scene->addItem(hexItem);
-        qDebug() << "apres scene add item";
     }
-        qDebug() << "t'as capté";
+}
+// function to check if the selected piece is on the board
+bool GameWindow::isSelectedPieceOnBoard() const {
+    for (const auto &[hex, stack] : game->getBoard().getAllHexes()) {
+        if (!stack.empty() && stack.top() == selectedPiece) {
+            return true;
+        }
+    }
+    return false;
 }
 
 void GameWindow::onUndoClicked() {
@@ -244,6 +290,7 @@ void GameWindow::onUndoClicked() {
         displayBoard();
         getTurn();
         updateUndoRedoButtons();
+        updatePieceCreationButtons();
     } catch (const std::exception &e) {
         // log de l'exception
         qDebug() << e.what();
@@ -259,6 +306,16 @@ void GameWindow::updateUndoRedoButtons() {
 
 void GameWindow::onRedoClicked() {
     qDebug() << "Redo clicked";
+    try {
+        game->redo();
+        displayBoard();
+        getTurn();
+        updateUndoRedoButtons();
+        updatePieceCreationButtons();
+    } catch (const std::exception &e) {
+        // log de l'exception
+        qDebug() << e.what();
+    }
 }
 
 void GameWindow::onSaveClicked() {
@@ -275,4 +332,143 @@ void GameWindow::setPlayerNames(const QString &player1, const QString &player2) 
 void GameWindow::getTurn() {
     size_t currentTurn = game->getTurnNumber();
     turnLabel->setText("Tour : " + QString::number(currentTurn));
+}
+
+// 1) Définir la fonction maxPiecesForType
+static int maxPiecesForType(hive::models::enums::PieceType type) {
+    using PT = hive::models::enums::PieceType;
+    switch(type) {
+        case PT::QUEEN_BEE:    return 1;
+        case PT::ANT:          return 3;
+        case PT::BEETLE:       return 2;
+        case PT::GRASSHOPPER:  return 3;
+        case PT::LADYBUG:      return 1;
+        case PT::MOSQUITO:     return 1;
+        case PT::SPIDER:       return 2;
+        case PT::PILLBUG:      return 1;
+        default: return 5;
+    }
+}
+
+QGroupBox* GameWindow::createPieceCreationGroupBox(int playerIndex) {
+    auto groupBox = new QGroupBox("Joueur 1: " + QString::fromStdString(game->getPlayer(playerIndex).getName()), this);
+    auto layout = new QVBoxLayout(groupBox);
+    groupBox->setLayout(layout);
+
+    auto playerPtr = game->getPlayerPtr(playerIndex);
+    if (!playerPtr) {
+        groupBox->setEnabled(false);
+        return groupBox;
+    }
+
+    // Vérifier si c'est le tour de ce joueur
+    bool isThisPlayerTurn = playerIndex + 1 == game->getCurrentPlayer().getId();
+
+    // On désactive entièrement la groupBox si ce n'est pas son tour
+    // (y compris tous les boutons).
+    if (!isThisPlayerTurn) {
+        groupBox->setEnabled(false);
+    } else {
+        groupBox->setEnabled(true);
+    }
+
+    // Types de pièces
+    static const std::vector<std::pair<hive::models::enums::PieceType, QString>> pieceTypes = {
+        { hive::models::enums::PieceType::QUEEN_BEE,   "Queen Bee"    },
+        { hive::models::enums::PieceType::ANT,         "Ant"          },
+        { hive::models::enums::PieceType::BEETLE,      "Beetle"       },
+        { hive::models::enums::PieceType::GRASSHOPPER, "Grasshopper"  },
+        { hive::models::enums::PieceType::LADYBUG,     "Ladybug"      },
+        { hive::models::enums::PieceType::MOSQUITO,    "Mosquito"     },
+        { hive::models::enums::PieceType::SPIDER,      "Spider"       },
+        { hive::models::enums::PieceType::PILLBUG,     "Pillbug"      }
+    };
+
+    for (auto &&[ptype, name] : pieceTypes) {
+        int alreadyOwned = (int) playerPtr->getPieceCount(ptype);
+        int maxCount    = maxPiecesForType(ptype);
+        int left        = maxCount - alreadyOwned;
+        if (left < 0) left = 0;
+
+        QString btnText = QString("%1 (%2/%3)").arg(name).arg(alreadyOwned).arg(maxCount);
+        auto btn = new QPushButton(btnText, this);
+        // Désactiver si le joueur a déjà atteint la limite
+        bool canCreate = (left > 0);
+        btn->setEnabled( isThisPlayerTurn && canCreate );
+
+        connect(btn, &QPushButton::clicked, this, [this, playerIndex, ptype] {
+            onCreatePieceButtonClicked(playerIndex, ptype);
+        });
+
+        layout->addWidget(btn);
+    }
+
+    return groupBox;
+}
+
+// 3) Mettre à jour / recréer les groupBox dans le side menu
+void GameWindow::updatePieceCreationButtons() {
+    // on enlève tout du sideMenuLayout
+    QLayoutItem *child;
+    while ((child = sideMenuLayout->takeAt(0)) != nullptr) {
+        if (child->widget()) {
+            child->widget()->deleteLater();
+        }
+        delete child;
+    }
+
+    // On réajoute nos 2 groupBox
+    QGroupBox *p1Box = createPieceCreationGroupBox(0);
+    QGroupBox *p2Box = createPieceCreationGroupBox(1);
+    sideMenuLayout->addWidget(p1Box);
+    sideMenuLayout->addWidget(p2Box);
+
+    // On peut remettre un stretch
+    sideMenuLayout->addStretch();
+}
+
+// 4) Slot pour créer la pièce
+void GameWindow::onCreatePieceButtonClicked(int playerIndex, hive::models::enums::PieceType type) {
+    qDebug() << "Création d'une pièce" << (int)type << "pour le joueur" << playerIndex+1;
+
+    // 1) Créer la pièce
+    auto pieceUnique = hive::models::PieceFactory::createPiece(type);
+    auto pieceShared = std::shared_ptr<hive::models::Piece>(pieceUnique.release());
+
+    // 2) Assigner propriétaire
+    auto playerPtr = game->getPlayerPtr(playerIndex);
+    pieceShared->setOwner(playerPtr);
+
+    // 3) Trouver position
+    auto &board = game->getBoard();
+    auto emptyHexes = board.allEmptyHexes();
+    bool placed = false;
+
+    // reset validPlacementPositions
+    clearPossibleMoves();
+    selectedPiece = pieceShared;
+
+    // Mettre à jour les mouvements possibles
+    for (const auto &hex: board.allEmptyHexes()) {
+        hive::models::Move testMove(game->getPlayerPtr(), pieceShared, hex);
+        try {
+            hive::models::GameRules::validateMove(testMove, board, game->getTurnNumber());
+            validMoves.push_back(hex);
+        } catch (const std::exception &) {
+            // Ignorer les positions invalides
+        }
+    }
+
+    // Afficher les mouvements possibles
+    for (const auto &hex: validMoves) {
+        int x = hex.getX() * (hexSize * 1.5);
+        int y = (hex.getY() - hex.getZ()) * (hexSize * sqrt(3) / 2);
+
+        // Ajouter une ellipse pour surligner l'hexagone
+        auto highlight = scene->addEllipse(-hexSize / 2, -hexSize / 2, hexSize, hexSize,
+                                           QPen(Qt::NoPen), QBrush(Qt::green, Qt::Dense4Pattern));
+        highlight->setPos(x, y);
+
+        moveHighlights.push_back(highlight);
+    }
 }
