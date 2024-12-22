@@ -22,6 +22,7 @@ public:
 
     void setPlayerNames(const QString &player1, const QString &player2);
 
+    // Petit helper pour créer une config par défaut
     void createDefautConfig() {
         const hive::models::Hex origin(0, 0, 0);
         auto queen1 = hive::models::PieceFactory::createPiece(hive::models::enums::PieceType::QUEEN_BEE);
@@ -33,21 +34,21 @@ public:
         const std::shared_ptr sharedQueen1 = std::move(queen1);
         const std::shared_ptr sharedQueen2 = std::move(queen2);
 
-        game->getBoard().addPiece(origin, sharedQueen1);
+        game->getBoard().addPiece(hive::models::Hex(0, 0, 0), sharedQueen1);
         game->getBoard().addPiece(hive::models::Hex(1, -1, 0), sharedQueen2);
 
         displayBoard();
     }
 
-    private slots:
+private slots:
     void onUndoClicked();
     void onRedoClicked();
     void onSaveClicked();
     void displayPossibleMoves(const hive::models::Piece &piece);
-    void clearPossibleMoves(); // Nettoie les déplacements affichés
+    void clearPossibleMoves();
 
 private:
-    hive::models::Game *game; // Référence au jeu
+    hive::models::Game *game;
     QPushButton *undoButton;
     QPushButton *redoButton;
     QLabel *playerInfoLabel;
@@ -55,29 +56,27 @@ private:
     QGraphicsView *gameBoardView;
     QGraphicsScene *scene;
     QVBoxLayout *sideMenuLayout;
-    std::vector<QGraphicsEllipseItem *> moveHighlights; // Éléments graphiques pour les déplacements possibles
-    QLabel *player1Label; // Label dynamique pour le joueur 1
-    QLabel *player2Label; // Label dynamique pour le joueur 2
-    int currentTurn;  // Tour actuel
 
-    std::shared_ptr<hive::models::Piece> selectedPiece; // Pièce actuellement sélectionnée
+    // Pour l'affichage du plateau
+    std::vector<QGraphicsEllipseItem *> moveHighlights;
+    QLabel *player1Label;
+    QLabel *player2Label;
+    int currentTurn;
+
+    // Gestion des déplacements
+    std::shared_ptr<hive::models::Piece> selectedPiece;
     std::vector<hive::models::Hex> validMoves;
 
-
-    void setupUI();           // Initialiser l'interface
+    // Méthodes internes
+    void setupUI();
     void selectPiece(const hive::models::Hex &hex);
-
     void updateValidMoves();
-
     void unselectPiece();
-
-    void displayBoard();      // Afficher les hexagones existants
+    void displayBoard();
     void movePiece(const hive::models::Hex &to);
     void getTurn();
     void nextTurn();
-
     void updateUndoRedoButtons();
 };
-
 
 #endif // GAMEWINDOW_H

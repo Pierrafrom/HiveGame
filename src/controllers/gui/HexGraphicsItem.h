@@ -7,18 +7,18 @@
 
 class HexGraphicsItem : public QObject, public QGraphicsPolygonItem {
     Q_OBJECT
-
 public:
     explicit HexGraphicsItem(const hive::models::Hex &hex, QGraphicsItem *parent = nullptr);
 
     signals:
-        void hexClicked(const hive::models::Hex &hex); // Signal émis lorsqu'un hexagone est cliqué
+        void hexClicked(const hive::models::Hex &hex);
 
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
 
 private:
-    hive::models::Hex hex; // Coordonnées associées
+    hive::models::Hex hexCoord;
 };
+
 
 #endif // HEXGRAPHICSITEM_H

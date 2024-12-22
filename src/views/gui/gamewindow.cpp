@@ -14,11 +14,10 @@
 GameWindow::GameWindow(hive::models::Game *game, QWidget *parent)
     : QMainWindow(parent), game(game) {
     setupUI();
-    displayBoard();
+    // displayBoard(); comment to don't create board twice
 }
 
 void GameWindow::setupUI() {
-    //TODO there is leaky need to be fix
     // Configuration générale
     QWidget *centralWidget = new QWidget(this);
     QVBoxLayout *mainLayout = new QVBoxLayout(centralWidget);
@@ -113,15 +112,16 @@ void GameWindow::updateValidMoves() {
             return;
         }
         validMoves = selectedPiece->getMoveStrategy().getPossibleMoves(game->getBoard(), game->getCurrentPlayer());
-        for (const hive::models::Hex hex: validMoves) {
-            hive::models::Move testMove(game->getPlayerPtr(), selectedPiece, selectedPiece->getPosition().value(), hex);
+        for (auto it = validMoves.begin(); it != validMoves.end(); ) {
+            hive::models::Move testMove(game->getPlayerPtr(), selectedPiece, selectedPiece->getPosition().value(), *it);
             qDebug() << "Testing move: " << testMove.toString();
             try {
                 hive::models::GameRules::validateMove(testMove, game->getBoard(), game->getTurnNumber());
+                ++it;
             } catch (const std::exception &e) {
                 // log de l'exception
                 qDebug() << e.what();
-                validMoves.erase(std::remove(validMoves.begin(), validMoves.end(), hex), validMoves.end());
+                it = validMoves.erase(it);
             }
         }
 
@@ -143,7 +143,7 @@ void GameWindow::selectPiece(const hive::models::Hex &hex) {
                 selectedPiece.reset();
                 updateValidMoves();
             } else {
-                updateValidMoves();
+                clearPossibleMoves();
                 selectedPiece = piece;
                 updateValidMoves();
             }
@@ -152,6 +152,7 @@ void GameWindow::selectPiece(const hive::models::Hex &hex) {
 }
 
 void GameWindow::movePiece(const hive::models::Hex &to) {
+    qDebug() << "debut de deplacement";
     if (!selectedPiece) {
         qDebug() << "No piece selected.";
         return;
@@ -173,12 +174,14 @@ void GameWindow::movePiece(const hive::models::Hex &to) {
     game->executeMove(move);
 
     unselectPiece();
-    displayBoard();
+    //displayBoard();
     getTurn();
     updateUndoRedoButtons();
+    qDebug() << "fin de deplacement";
 }
 
 void GameWindow::displayBoard() {
+    qDebug() << "display board";
     scene->clear(); // Nettoyer la scène
     const double sqrt3 = sqrt(3);
 
@@ -221,17 +224,17 @@ void GameWindow::displayBoard() {
 
             if (std::find(validMoves.begin(), validMoves.end(), clickedHex) != validMoves.end()) {
                 // on déplace la pièce
-                updateValidMoves();
+                //updateValidMoves();
                 movePiece(clickedHex);
             } else {
                 selectPiece(clickedHex);
-                for (const auto &hex: validMoves) {
-                    qDebug() << hex.toString();
-                }
             }
         });
+        qDebug() << "avant scene add item";
         scene->addItem(hexItem);
+        qDebug() << "apres scene add item";
     }
+        qDebug() << "t'as capté";
 }
 
 void GameWindow::onUndoClicked() {
