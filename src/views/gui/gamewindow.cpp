@@ -9,6 +9,8 @@
 // include piece
 #include <models/GameRules.h>
 #include <models/Piece.h>
+#include <models/Move.h>
+#include <QTimer>
 #define hexSize 50
 
 GameWindow::GameWindow(hive::models::Game *game, QWidget *parent)
@@ -174,7 +176,7 @@ void GameWindow::movePiece(const hive::models::Hex &to) {
     game->executeMove(move);
 
     unselectPiece();
-    //displayBoard();
+    QTimer::singleShot(0, this, &GameWindow::displayBoard);
     getTurn();
     updateUndoRedoButtons();
     qDebug() << "fin de deplacement";
@@ -220,11 +222,9 @@ void GameWindow::displayBoard() {
         }
 
         // Connecter le signal de clic au traitement
-        connect(hexItem, &HexGraphicsItem::hexClicked, this, [=](const hive::models::Hex clickedHex) {
+        connect(hexItem, &HexGraphicsItem::hexClicked, this, [=](hive::models::Hex clickedHex) {
 
             if (std::find(validMoves.begin(), validMoves.end(), clickedHex) != validMoves.end()) {
-                // on déplace la pièce
-                //updateValidMoves();
                 movePiece(clickedHex);
             } else {
                 selectPiece(clickedHex);

@@ -3,7 +3,8 @@
 
 
 HexGraphicsItem::HexGraphicsItem(const hive::models::Hex &hex, QGraphicsItem *parent)
-    : QObject(), QGraphicsPolygonItem(parent), hexCoord(hex) {}
+    : QObject(), QGraphicsPolygonItem(parent), hexCoord(hex)
+{}
 
 void HexGraphicsItem::mousePressEvent(QGraphicsSceneMouseEvent *event) {
     emit hexClicked(hexCoord);
