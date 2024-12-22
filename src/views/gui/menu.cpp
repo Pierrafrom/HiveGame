@@ -11,6 +11,7 @@
 #include "../src/controllers/gui/playerinputdialog.h"
 #include "../src/controllers/gui/gamewindow.h"
 #include <models/PieceFactory.h>
+#include "utils/Serializer.h"
 
 
 Menu::Menu(QWidget *parent) : QWidget(parent)
@@ -49,7 +50,7 @@ void Menu::onStartTwoPlayerGame() {
         QString player2Name = inputDialog.getPlayer2Name();
 
         // Récupérer l'instance de jeu et initialiser les joueurs
-        auto &game = hive::models::Game::getInstance();
+        hive::models::Game &game = hive::models::Game::getInstance();
         game.resetGame(player1Name.toStdString(), player2Name.toStdString());
 
         // Récupérer les joueurs
@@ -77,8 +78,52 @@ void Menu::onStartSinglePlayerGame()
 
 void Menu::onImportGame()
 {
-    emit importGame(); // Signal pour importer une partie
+    // Ouvre une boîte de dialogue pour sélectionner un fichier .json
+    QString fileName = QFileDialog::getOpenFileName(
+        this,
+        "Importer une partie",
+        "",
+        "Fichiers JSON (*.json)"
+    );
+
+    if (!fileName.isEmpty()) {
+        // Récupère l'instance unique de Game
+        hive::models::Game &game = hive::models::Game::getInstance();
+
+        // Récupère l'instance du Serializer
+        hive::utils::Serializer &serialiser = hive::utils::Serializer::getInstance();
+
+        // Appelle la fonction de chargement
+        bool success = hive::utils::Serializer::loadGame(game, fileName.toStdString());
+        qDebug() << fileName.toStdString();
+
+        // Vérifie si le chargement a réussi
+        if (success) {
+            QMessageBox::information(
+                this,
+                "Import réussi",
+                "La partie a été importée avec succès !"
+            );
+
+            // Crée la fenêtre de jeu avec la partie chargée
+            GameWindow *gameWindow = new GameWindow(&game);
+            // Si besoin, vous pouvez définir les noms des joueurs, etc.
+            // gameWindow->setPlayerNames(...);
+
+            gameWindow->show();
+
+            // Ferme la fenêtre du menu si vous le souhaitez
+            this->close();
+        } else {
+            QMessageBox::warning(
+                this,
+                "Échec de l'import",
+                "Impossible de charger le fichier de sauvegarde."
+            );
+        }
+    }
 }
+
 
 void Menu::onQuitGame()
 {

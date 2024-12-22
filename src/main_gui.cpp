@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
     });
 
     QObject::connect(&menu, &Menu::importGame, []() {
-        QString fileName = QFileDialog::getOpenFileName(nullptr, "Importer une partie", "", "Fichiers de sauvegarde (*.sav)");
+        QString fileName = QFileDialog::getOpenFileName(nullptr, "Importer une partie", "", "Fichiers de sauvegarde (*.json)");
         if (!fileName.isEmpty()) {
             QMessageBox::information(nullptr, "Importer une partie", "Partie importée : " + fileName);
             // Ajoutez la logique pour charger la partie depuis le fichier ici

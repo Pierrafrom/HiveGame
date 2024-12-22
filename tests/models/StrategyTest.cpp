@@ -406,5 +406,71 @@ x
 
     }
 
+    TEST_F(StrategyTest, TestMosquitoMoveLikeOthers) {
+        const Hex origin(0,0,0);
+
+        auto mosquito = PieceFactory::createPiece(enums::PieceType::MOSQUITO);
+        auto ant = PieceFactory::createPiece(enums::PieceType::ANT);
+        auto beetle = PieceFactory::createPiece(enums::PieceType::BEETLE);
+        auto queenBee = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+
+        const std::shared_ptr sharedBeetle = std::move(beetle);
+        const std::shared_ptr sharedMosquito = std::move(mosquito);
+        const std::shared_ptr sharedAnt = std::move(ant);
+        const std::shared_ptr sharedQueenBee = std::move(queenBee);
+
+        player1->addPiece(sharedBeetle);
+        player1->addPiece(sharedMosquito);
+        player1->addPiece(sharedAnt);
+        player1->addPiece(sharedQueenBee);
+
+        board.addPiece(origin, sharedMosquito);
+
+        board.addPiece(board.neighbor(origin, enums::Direction::NORTH_WEST), sharedQueenBee);
+        board.addPiece(board.neighbor(origin, enums::Direction::NORTH_EAST), sharedAnt);
+        board.addPiece(board.neighbor(origin, enums::Direction::EAST), sharedBeetle);
+
+        // Obtient les mouvements possibles pour le beetle
+        const std::vector<Hex> possibleMoves = sharedMosquito->getMoveStrategy().getPossibleMoves(board, *player1);
+        // Vérifie que le nombre de mouvements est correct
+        ASSERT_EQ(possibleMoves.size(), 12);
+    }
+
+    TEST_F(StrategyTest, TestMosquitoMoveLikeBeetle) {
+        const Hex origin(0,0,0);
+
+        auto mosquito = PieceFactory::createPiece(enums::PieceType::MOSQUITO);
+        auto ant = PieceFactory::createPiece(enums::PieceType::ANT);
+        auto beetle = PieceFactory::createPiece(enums::PieceType::BEETLE);
+        auto queenBee = PieceFactory::createPiece(enums::PieceType::QUEEN_BEE);
+
+        const std::shared_ptr sharedBeetle = std::move(beetle);
+        const std::shared_ptr sharedMosquito = std::move(mosquito);
+        const std::shared_ptr sharedAnt = std::move(ant);
+        const std::shared_ptr sharedQueenBee = std::move(queenBee);
+
+        player1->addPiece(sharedBeetle);
+        player1->addPiece(sharedMosquito);
+        player1->addPiece(sharedAnt);
+        player1->addPiece(sharedQueenBee);
+
+
+        board.addPiece(origin, sharedQueenBee);
+
+        //Le moustique est en haut d'une pile
+        board.addPiece(origin, sharedMosquito);
+
+        // Entoure la Ant partillement
+
+        board.addPiece(board.neighbor(origin, enums::Direction::NORTH_EAST), sharedAnt);
+        board.addPiece(board.neighbor(origin, enums::Direction::EAST), sharedBeetle);
+
+        // Obtient les mouvements possibles pour le beetle
+        const std::vector<Hex> possibleMoves = sharedMosquito->getMoveStrategy().getPossibleMoves(board, *player1);
+        // Vérifie que le nombre de mouvements est correct
+        ASSERT_EQ(possibleMoves.size(), 6);
+    }
+
+
     //TODO test every strategy for every piece
 } // namespace hive::models::strategies

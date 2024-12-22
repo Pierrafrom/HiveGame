@@ -887,7 +887,7 @@ namespace termcolor
             HANDLE hTerminal = INVALID_HANDLE_VALUE;
             hTerminal = get_terminal_handle(stream);
 
-            // save default terminal attributes if it unsaved
+            // data default terminal attributes if it unsaved
             if (!defaultAttributes)
             {
                 CONSOLE_SCREEN_BUFFER_INFO info;

@@ -68,6 +68,7 @@ namespace hive::models::strategies {
          * specific movement logic for each type of piece.
          */
         [[nodiscard]] virtual std::vector<Hex> getPossibleMoves(const Board &board, const Player &player) const = 0;
+        [[nodiscard]] virtual std::vector<Hex> getPossibleMoves(const Board &board, const Player &player, const Hex &hex) const = 0;
 
         /**
         * @brief Checks if the piece has a valid position.

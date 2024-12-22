@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16) # Qt6 nécessite souvent une version plus récente
+cmake_minimum_required(VERSION 3.10)
 project(HiveGame)
 
 # Set the C++ standard
@@ -11,6 +11,7 @@ option(ENABLE_GUI "Enable GUI mode" ON)
 # Include directories
 include_directories(includes)
 
+# Include mode-specific directories (CLI or GUI)
 if(ENABLE_GUI)
     include_directories(includes/controllers/gui)
     include_directories(includes/views/gui)
@@ -38,6 +39,11 @@ file(GLOB_RECURSE MODEL_SOURCES CONFIGURE_DEPENDS
         ${CMAKE_SOURCE_DIR}/src/models/*.cpp
 )
 
+# Add utils sources
+file(GLOB_RECURSE UTILS_SOURCES CONFIGURE_DEPENDS
+        ${CMAKE_SOURCE_DIR}/src/utils/*.cpp
+)
+
 # Add controller and view sources based on the mode
 if(ENABLE_GUI)
     file(GLOB_RECURSE CONTROLLER_SOURCES CONFIGURE_DEPENDS
@@ -57,8 +63,8 @@ else()
     set(MAIN_SOURCE ${CMAKE_SOURCE_DIR}/src/main_cli.cpp)
 endif()
 
-# Gather all sources
-set(SOURCES ${MODEL_SOURCES} ${CONTROLLER_SOURCES} ${VIEW_SOURCES} ${MAIN_SOURCE})
+# Combine all sources
+set(SOURCES ${MODEL_SOURCES} ${CONTROLLER_SOURCES} ${VIEW_SOURCES} ${UTILS_SOURCES} ${MAIN_SOURCE})
 
 # Process headers with Q_OBJECT
 if(ENABLE_GUI)

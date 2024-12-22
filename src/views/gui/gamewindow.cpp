@@ -11,6 +11,7 @@
 #include <models/Piece.h>
 #include <models/Move.h>
 #include <QTimer>
+#include "utils/Serializer.h"
 #define hexSize 50
 
 GameWindow::GameWindow(hive::models::Game *game, QWidget *parent)
@@ -333,6 +334,8 @@ void GameWindow::onRedoClicked() {
 
 void GameWindow::onSaveClicked() {
     qDebug() << "Save clicked";
+    hive::utils::Serializer & serialiser = hive::utils::Serializer::getInstance();
+    hive::utils::Serializer::saveGame(*game, "data/game_save.json");
 }
 
 void GameWindow::setPlayerNames(const QString &player1, const QString &player2) {
