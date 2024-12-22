@@ -351,7 +351,7 @@ static int maxPiecesForType(hive::models::enums::PieceType type) {
 }
 
 QGroupBox* GameWindow::createPieceCreationGroupBox(int playerIndex) {
-    auto groupBox = new QGroupBox("Joueur 1: " + QString::fromStdString(game->getPlayer(playerIndex).getName()), this);
+    auto groupBox = new QGroupBox("Joueur : " + QString::fromStdString(game->getPlayer(playerIndex).getName()), this);
     auto layout = new QVBoxLayout(groupBox);
     groupBox->setLayout(layout);
 
