@@ -187,4 +187,8 @@ namespace hive::models {
         os << game.toString();
         return os;
     }
+
+    void Game::initializeGame2players(const std::string &player1Name, const std::string &player2Name) {
+        resetGame(player1Name, player2Name);
+    }
 } // namespace hive::models

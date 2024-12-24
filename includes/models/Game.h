@@ -48,6 +48,11 @@ namespace hive::models {
               currentPlayerIndex(0),
               turnNumber(1) {
         }
+        Game(const std::string &player1Name, const std::string &player2Name) : board(std::make_shared<Board>()),
+          players{std::make_shared<Player>(player1Name), std::make_shared<Player>(player2Name)},
+          currentPlayerIndex(0),
+          turnNumber(1) {
+        }
 
         /**
          * @brief Private destructor.
@@ -253,6 +258,18 @@ namespace hive::models {
          * @return A reference to the output stream.
          */
         friend std::ostream &operator<<(std::ostream &os, const Game &game);
+
+        /**
+         * @brief Initializes the game with custom player names.
+         *
+         * This function resets the game board, players, and turn number.
+         * It effectively starts a new game.
+         *
+         * @param player1Name The name of the first player.
+         * @param player2Name The name of the second player.
+         */
+        void initializeGame2players(const std::string &player1Name, const std::string &player2Name);
+
     };
 } // namespace hive::models
 

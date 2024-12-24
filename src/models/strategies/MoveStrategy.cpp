@@ -5,9 +5,23 @@
 
 namespace hive::models::strategies {
     // Check if the hive is still connected after moving a piece
-    bool MoveStrategy::isHiveConnectedAfterMove(Board board, const Hex &from, const Hex &to) {
+    bool MoveStrategy::isHiveConnectedAfterMove(Board board, Hex from, Hex to) {
+        // 1) Récupérer la pièce
+        auto movedPiece = board.getTopPiece(from);
+        if (!movedPiece) {
+            return false; // pas de pièce => pas de move
+        }
+
+        // 2) Move la pièce sur le vrai board
         board.movePiece(from, to);
-        return board.areAllPiecesConnected();
+
+        bool connected = board.areAllPiecesConnected();
+
+        // 3) Revenir en arrière
+        //    => movePiece(to, from), ou unstackPiece(to) + addPiece(from, movedPiece)
+        board.movePiece(to, from); // Si vous avez un code movePiece similaire
+
+        return connected;
     }
 
     // Retrieves the piece that uses this movement strategy

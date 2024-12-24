@@ -1,6 +1,7 @@
 #include "models/Board.h"
 #include "models/enums/Direction.h"
 #include <queue>
+#include <sstream>
 #include <unordered_set>
 
 
@@ -35,7 +36,7 @@ namespace hive::models {
 
 
     // Adds a piece to a specific hex location on the board
-    void Board::addPiece(const Hex &hex, const std::shared_ptr<Piece> &piece) {
+    void Board::addPiece(Hex hex, std::shared_ptr<Piece> piece) {
         if (!piece) {
             throw std::invalid_argument("Piece cannot be null.");
         }
@@ -51,7 +52,7 @@ namespace hive::models {
     }
 
     // Removes and returns the top piece from a specific hex location
-    std::shared_ptr<Piece> Board::unstackPiece(const Hex &hex) {
+    std::shared_ptr<Piece> Board::unstackPiece(Hex hex) {
         if (const auto it = board.find(hex); it != board.end() && !it->second.empty()) {
             // Remove the top piece from the stack
             std::shared_ptr<Piece> removedPiece = it->second.top();
@@ -156,7 +157,7 @@ namespace hive::models {
     }
 
     // Moves a piece from one hex to another
-    void Board::movePiece(const Hex &from, const Hex &to) {
+    void Board::movePiece(Hex from, Hex to) {
         // Retrieve the top piece from the 'from' hex
         const std::shared_ptr<Piece> movedPiece = this->getTopPiece(from);
         if (!movedPiece) {
@@ -169,6 +170,7 @@ namespace hive::models {
         // Remove the piece from the 'from' hex
         // We have to remove the piece after adding it to the new hex to avoid freeing the surrounding hexes
         // before the piece is added to the new hex and raise an exception when trying to add the piece
+
         unstackPiece(from);
     }
 
@@ -274,18 +276,25 @@ namespace hive::models {
      * Operators
      *************************************************************************************************/
 
+    // toString method for Board
+    std::string Board::toString() const {
+        std::ostringstream oss;
+        oss << "Board state:\n";
+        for (const auto &[hex, stack]: board) {
+            oss << hex << ": ";
+            if (stack.empty()) {
+                oss << "Empty";
+            } else {
+                oss << "Stack size " << stack.size();
+            }
+            oss << '\n';
+        }
+        return oss.str();
+    }
+
     // Overloads the stream insertion operator for Board
     std::ostream &operator<<(std::ostream &os, const Board &board) {
-        os << "Board state:\n";
-        for (const auto &[hex, stack]: board.board) {
-            os << hex << ": ";
-            if (stack.empty()) {
-                os << "Empty";
-            } else {
-                os << "Stack size " << stack.size();
-            }
-            os << '\n';
-        }
+        os << board.toString();
         return os;
     }
 

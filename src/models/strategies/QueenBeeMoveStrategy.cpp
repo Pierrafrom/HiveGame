@@ -17,7 +17,7 @@ namespace hive::models::strategies {
         for (const auto &direction: enums::getAllDirections()) {
             Hex neighbor{0, 0, 0}; // O,0,0 is a placeholder to create a hex object
             try {
-                neighbor = board.neighbor(neighbor, direction);
+                neighbor = board.neighbor(position, direction);
             } catch (const std::out_of_range &e) {
                 continue;
             } catch (const std::exception &e) {
@@ -25,6 +25,7 @@ namespace hive::models::strategies {
             }
             const bool occupied = board.isOccupied(neighbor);
             const bool canSlice = board.canSliceBetween(position, direction);
+            // TODO : uncomment when the function will not make the program crash
             const bool connected = isHiveConnectedAfterMove(board, position, neighbor);
             if (!occupied && canSlice && connected) {
 

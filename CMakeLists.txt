@@ -5,6 +5,9 @@ project(HiveGame)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+# Define GUI mode option
+option(ENABLE_GUI "Enable GUI mode" ON)
+
 # Include directories
 include_directories(includes)
 
@@ -28,7 +31,7 @@ endif()
 # Find Qt if GUI is enabled
 if(ENABLE_GUI)
     set(CMAKE_PREFIX_PATH ${QT_DIR})
-    find_package(Qt6 REQUIRED COMPONENTS Core Widgets Gui)
+    find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
 endif()
 
 # Add model sources
@@ -63,28 +66,42 @@ endif()
 # Combine all sources
 set(SOURCES ${MODEL_SOURCES} ${CONTROLLER_SOURCES} ${VIEW_SOURCES} ${UTILS_SOURCES} ${MAIN_SOURCE})
 
+# Process headers with Q_OBJECT
+if(ENABLE_GUI)
+    file(GLOB_RECURSE HEADERS CONFIGURE_DEPENDS
+            ${CMAKE_SOURCE_DIR}/src/views/gui/*.h
+            ${CMAKE_SOURCE_DIR}/src/controllers/gui/*.h
+    )
+    qt6_wrap_cpp(MOC_SOURCES ${HEADERS}) # Generate moc files for headers containing Q_OBJECT
+endif()
+
 # Ensure that SOURCES is not empty
 if(SOURCES STREQUAL "")
     message(FATAL_ERROR "No source files found. Ensure your src directory has the required files.")
 endif()
 
 # Create the main executable
-add_executable(HiveGame ${SOURCES})
+add_executable(HiveGame ${SOURCES} ${MOC_SOURCES})
 
 # Include termcolor and nlohmann/json for colored output and JSON parsing
 target_include_directories(HiveGame PRIVATE ${CMAKE_SOURCE_DIR}/external/termcolor ${CMAKE_SOURCE_DIR}/external)
 
 # Link Qt libraries if in GUI mode
 if(ENABLE_GUI)
-    target_link_libraries(HiveGame Qt6::Core Qt6::Widgets Qt6::Gui)
+    target_link_libraries(HiveGame Qt6::Core Qt6::Gui Qt6::Widgets)
 endif()
 
 # Add Google Test
-add_subdirectory(external/googletest)
-include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+if(EXISTS ${CMAKE_SOURCE_DIR}/external/googletest)
+    add_subdirectory(external/googletest)
+    include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+else()
+    message(FATAL_ERROR "GoogleTest not found in 'external/googletest'. Please add it.")
+endif()
 
 # Define test sources
 file(GLOB_RECURSE TEST_SOURCES CONFIGURE_DEPENDS
+        ${CMAKE_SOURCE_DIR}/tests/models/*.cpp
         ${CMAKE_SOURCE_DIR}/tests/*.cpp
 )
 
@@ -101,7 +118,7 @@ target_include_directories(HiveGameTests PRIVATE ${CMAKE_SOURCE_DIR}/external/te
 # Link Google Test and Qt libraries to the test executable
 target_link_libraries(HiveGameTests gtest gtest_main)
 if(ENABLE_GUI)
-    target_link_libraries(HiveGameTests Qt6::Core Qt6::Widgets Qt6::Gui)
+    target_link_libraries(HiveGameTests Qt6::Core Qt6::Gui Qt6::Widgets)
 endif()
 
 # Enable CTest for test discovery and running

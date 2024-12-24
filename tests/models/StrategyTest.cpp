@@ -17,7 +17,7 @@ namespace hive::models::strategies {
             player1 = std::make_shared<Player>("Player1");
             player2 = std::make_shared<Player>("Player2");
         }
-
+x
         //teardown
         void TearDown() override {
             board.clear();

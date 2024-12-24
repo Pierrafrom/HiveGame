@@ -99,13 +99,17 @@ namespace hive::models {
          * Public methods
          *************************************************************************************************/
 
+        const std::pmr::unordered_map<Hex, std::stack<std::shared_ptr<Piece>>> &getAllHexes() const {
+            return board;
+        }
+
         /**
          * @brief Adds a piece to a specific hex location on the board.
          * @param hex The hex location where the piece will be added.
          * @param piece Shared pointer to the Piece object to add.
          * @throws std::invalid_argument If the provided piece is null.
          */
-        void addPiece(const Hex &hex, const std::shared_ptr<Piece> &piece);
+        void addPiece(Hex hex, std::shared_ptr<Piece> piece);
 
         /**
          * @brief Removes and returns the top piece from a specific hex location.
@@ -113,7 +117,7 @@ namespace hive::models {
          * @return A shared pointer to the Piece that was removed.
          * @throws std::runtime_error If the hex is empty or the piece is not found.
          */
-        std::shared_ptr<Piece> unstackPiece(const Hex &hex);
+        std::shared_ptr<Piece> unstackPiece(Hex hex);
 
         /**
          * @brief Checks if a hex location is occupied by any pieces.
@@ -157,7 +161,7 @@ namespace hive::models {
          * @param to The target hex location for the piece.
          * @throws std::runtime_error If the source hex is empty or the move is invalid.
          */
-        void movePiece(const Hex &from, const Hex &to);
+        void movePiece(Hex from, Hex to);
 
         /**
          * @brief Retrieves the neighboring hex in the given direction.
@@ -188,6 +192,8 @@ namespace hive::models {
          * @brief Clears the board, removing all pieces and hexes.
          */
         void clear();
+
+        std::string toString() const;
 
         /**************************************************************************************************
          * Operators

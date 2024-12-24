@@ -172,21 +172,21 @@ namespace hive::models {
 
         switch (type) {
             case enums::PieceType::QUEEN_BEE:
-                return pieceCount < config::constants::MAX_PIECES.at(enums::PieceType::QUEEN_BEE);
+                return pieceCount <= config::constants::MAX_PIECES.at(enums::PieceType::QUEEN_BEE);
             case enums::PieceType::ANT:
-                return pieceCount < config::constants::MAX_PIECES.at(enums::PieceType::ANT);
+                return pieceCount <= config::constants::MAX_PIECES.at(enums::PieceType::ANT);
             case enums::PieceType::BEETLE:
-                return pieceCount < config::constants::MAX_PIECES.at(enums::PieceType::BEETLE);
+                return pieceCount <= config::constants::MAX_PIECES.at(enums::PieceType::BEETLE);
             case enums::PieceType::LADYBUG:
-                return pieceCount < config::constants::MAX_PIECES.at(enums::PieceType::LADYBUG);
+                return pieceCount <= config::constants::MAX_PIECES.at(enums::PieceType::LADYBUG);
             case enums::PieceType::MOSQUITO:
-                return pieceCount < config::constants::MAX_PIECES.at(enums::PieceType::MOSQUITO);
+                return pieceCount <= config::constants::MAX_PIECES.at(enums::PieceType::MOSQUITO);
             case enums::PieceType::SPIDER:
-                return pieceCount < config::constants::MAX_PIECES.at(enums::PieceType::SPIDER);
+                return pieceCount <= config::constants::MAX_PIECES.at(enums::PieceType::SPIDER);
             case enums::PieceType::PILLBUG:
-                return pieceCount < config::constants::MAX_PIECES.at(enums::PieceType::PILLBUG);
+                return pieceCount <= config::constants::MAX_PIECES.at(enums::PieceType::PILLBUG);
             case enums::PieceType::GRASSHOPPER:
-                return pieceCount < config::constants::MAX_PIECES.at(enums::PieceType::GRASSHOPPER);
+                return pieceCount <= config::constants::MAX_PIECES.at(enums::PieceType::GRASSHOPPER);
             default:
                 throw std::runtime_error("Unknown piece type.");
         }
@@ -194,7 +194,7 @@ namespace hive::models {
 
     // Check if the player has to place the queen bee
     bool GameRules::isQueenPlacementRequired(const Player &player, const size_t turnNumber) {
-        if (turnNumber == config::constants::MAX_TURN_BEFORE_QUEEN_PLACEMENT) {
+        if (turnNumber >= config::constants::MAX_TURN_BEFORE_QUEEN_PLACEMENT) {
             return player.getPieceCount(enums::PieceType::QUEEN_BEE) == 0;
         }
         return false;
