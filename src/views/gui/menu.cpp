@@ -107,8 +107,6 @@ void Menu::onImportGame()
 
             // Crée la fenêtre de jeu avec la partie chargée
             GameWindow *gameWindow = new GameWindow(&game);
-            // Si besoin, vous pouvez définir les noms des joueurs, etc.
-            // gameWindow->setPlayerNames(...);
 
             gameWindow->show();
 

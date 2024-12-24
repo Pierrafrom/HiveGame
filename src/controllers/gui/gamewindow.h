@@ -47,6 +47,7 @@ private:
     QGraphicsView *gameBoardView;
     QGraphicsScene *scene;
     QVBoxLayout *sideMenuLayout;
+    bool hexSelectable;
 
     std::vector<QGraphicsEllipseItem *> moveHighlights;
     QLabel *player1Label;
@@ -58,6 +59,8 @@ private:
 
     void setupUI();
     void selectPiece(const hive::models::Hex &hex);
+
+    void placePiece(const hive::models::Hex &to);
 
     void selectPiece(const hive::models::Piece *piece);
 
@@ -75,9 +78,16 @@ private:
     void disableAllButtons();
     void enableAllButtons();
 
+    void checkEndGame();
+
+    void disabledHexSelectable(bool &hexSelectable);
+
+    void enableHexSelectable(bool &hexSelectable);
+
     // Ajout
     QGroupBox* createPieceCreationGroupBox(int playerIndex);
     void updatePieceCreationButtons();
+
 };
 
 

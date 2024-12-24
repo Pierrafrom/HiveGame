@@ -194,7 +194,7 @@ namespace hive::models {
 
     // Check if the player has to place the queen bee
     bool GameRules::isQueenPlacementRequired(const Player &player, const size_t turnNumber) {
-        if (turnNumber == config::constants::MAX_TURN_BEFORE_QUEEN_PLACEMENT) {
+        if (turnNumber >= config::constants::MAX_TURN_BEFORE_QUEEN_PLACEMENT) {
             return player.getPieceCount(enums::PieceType::QUEEN_BEE) == 0;
         }
         return false;

@@ -7,6 +7,7 @@
 #include <models/Board.h>
 #include "../src/controllers/gui/HexGraphicsItem.h"
 // include piece
+#include <QMessageBox>
 #include <models/GameRules.h>
 #include <models/Piece.h>
 #include <models/Move.h>
@@ -17,27 +18,26 @@
 GameWindow::GameWindow(hive::models::Game *game, QWidget *parent)
     : QMainWindow(parent), game(game) {
     setupUI();
-    // displayBoard(); comment to don't create board twice
+    enableHexSelectable(hexSelectable);
 }
 
 void GameWindow::createDefautConfig() {
-    const hive::models::Hex origin(0, 0, 0);
 
-    auto queen1 = hive::models::PieceFactory::createPiece(hive::models::enums::PieceType::QUEEN_BEE);
-    auto queen2 = hive::models::PieceFactory::createPiece(hive::models::enums::PieceType::QUEEN_BEE);
-
-    queen1->setOwner(game->getPlayerPtr(0));
-    queen2->setOwner(game->getPlayerPtr(1));
-
-    std::shared_ptr<hive::models::Piece> sharedQueen1(std::move(queen1));
-    std::shared_ptr<hive::models::Piece> sharedQueen2(std::move(queen2));
-
-    game->getPlayerPtr(0)->addPiece(sharedQueen1);
-    game->getPlayerPtr(1)->addPiece(sharedQueen2);
-
-
-    game->getBoard().addPiece({0, 0, 0}, sharedQueen1);
-    game->getBoard().addPiece({1, -1, 0}, sharedQueen2);
+    // auto queen1 = hive::models::PieceFactory::createPiece(hive::models::enums::PieceType::QUEEN_BEE);
+    // auto queen2 = hive::models::PieceFactory::createPiece(hive::models::enums::PieceType::QUEEN_BEE);
+    //
+    // queen1->setOwner(game->getPlayerPtr(0));
+    // queen2->setOwner(game->getPlayerPtr(1));
+    //
+    // std::shared_ptr<hive::models::Piece> sharedQueen1(std::move(queen1));
+    // std::shared_ptr<hive::models::Piece> sharedQueen2(std::move(queen2));
+    //
+    // game->getPlayerPtr(0)->addPiece(sharedQueen1);
+    // game->getPlayerPtr(1)->addPiece(sharedQueen2);
+    //
+    //
+    // game->getBoard().addPiece({0, 0, 0}, sharedQueen1);
+    // game->getBoard().addPiece({1, -1, 0}, sharedQueen2);
 
     // Enfin, réaffichez le plateau
     displayBoard();
@@ -181,6 +181,28 @@ void GameWindow::selectPiece(const hive::models::Hex &hex) {
     }
 }
 
+void GameWindow::placePiece(const hive::models::Hex &to) {
+    qDebug() << "Piece placement from creation";
+    hive::models::Move testMove(game->getPlayerPtr(), selectedPiece, to);
+    try {
+        hive::models::GameRules::validateMove(testMove, game->getBoard(), game->getTurnNumber());
+        game->getPlayerPtr()->addPiece(selectedPiece);
+        qDebug() << "id du joeur" << game->getCurrentPlayer().getId();
+        enableAllButtons();
+        game->executeMove(testMove);
+        unselectPiece();
+        QTimer::singleShot(0, this, &GameWindow::displayBoard);
+        getTurn();
+        updateUndoRedoButtons();
+        enableHexSelectable(hexSelectable);
+        updatePieceCreationButtons();
+        checkEndGame();
+    } catch (const std::exception &e) {
+        // log de l'exception
+        qDebug() << e.what();
+    }
+}
+
 void GameWindow::movePiece(const hive::models::Hex &to) {
     qDebug() << "debut de deplacement";
     if (!selectedPiece) {
@@ -208,11 +230,11 @@ void GameWindow::movePiece(const hive::models::Hex &to) {
     getTurn();
     updateUndoRedoButtons();
     updatePieceCreationButtons();
+    checkEndGame();
     qDebug() << "fin de deplacement";
 }
 
 void GameWindow::displayBoard() {
-    qDebug() << "display board";
     scene->clear(); // Nettoyer la scène
     const double sqrt3 = sqrt(3);
 
@@ -250,36 +272,43 @@ void GameWindow::displayBoard() {
             textItem->setPos(-textRect.width() / 2, -textRect.height() / 2);
         }
 
+        // Vérifier si la reine doit être placée
+        if (hive::models::GameRules::isQueenPlacementRequired(game->getCurrentPlayer(), game->getTurnNumber())) {
+            qDebug() << "Queen bee placement is required.";
+            disabledHexSelectable(hexSelectable); // <-- désactive le clic hex ?
+
+            // Désactiver tous les boutons sauf Queen Bee
+            for (int i = 0; i < sideMenuLayout->count(); i++) {
+                QLayoutItem *child = sideMenuLayout->itemAt(i);
+                if (auto groupBox = dynamic_cast<QGroupBox*>(child->widget())) {
+                    // On récupère tous les QPushButton de ce groupBox
+                    QList<QPushButton*> allButtons = groupBox->findChildren<QPushButton*>();
+                    for (auto *btn : allButtons) {
+                        if (btn->objectName() != "Queen BeeButton") {
+                            btn->setEnabled(false);
+                        } else {
+                            btn->setEnabled(true);
+                        }
+                    }
+                }
+            }
+        }
+
         // Connecter le signal de clic au traitement
         connect(hexItem, &HexGraphicsItem::hexClicked, this, [this](hive::models::Hex clickedHex) {
             qDebug() << "Hex clicked: " << clickedHex.toString();
+            // Vérifier si l'hexagone cliqué est dans les mouvements valides
             if (std::find(validMoves.begin(), validMoves.end(), clickedHex) != validMoves.end()) {
                 // if selectedPiece is not on the board, it means we are in the piece creation phase
                 if (!isSelectedPieceOnBoard()) {
-                    qDebug() << "Piece placement from creation";
-                    hive::models::Move testMove(game->getPlayerPtr(), selectedPiece, clickedHex);
-                    try {
-                        hive::models::GameRules::validateMove(testMove, game->getBoard(), game->getTurnNumber());
-                        game->getPlayerPtr()->addPiece(selectedPiece);
-                        qDebug() << "id du joeur" << game->getCurrentPlayer().getId();
-                        enableAllButtons();
-                        game->executeMove(testMove);
-                        unselectPiece();
-                        QTimer::singleShot(0, this, &GameWindow::displayBoard);
-                        getTurn();
-                        updateUndoRedoButtons();
-                        updatePieceCreationButtons();
-                    } catch (const std::exception &e) {
-                        // log de l'exception
-                        qDebug() << e.what();
-                    }
+                    placePiece(clickedHex);
                 } else {
                     movePiece(clickedHex);
                 }
             } else {
                 if (selectedPiece && !isSelectedPieceOnBoard()) {
                     qDebug() << "veuillez d'abord poser la piece selectionée";
-                } else {
+                } else if (hexSelectable) {
                     selectPiece(clickedHex);
                 }
             }
@@ -406,10 +435,9 @@ QGroupBox* GameWindow::createPieceCreationGroupBox(int playerIndex) {
         int left        = maxCount - alreadyOwned;
         if (left < 0) left = 0;
 
-        qDebug() << "already own" << alreadyOwned;
-
         QString btnText = QString("%1 (%2/%3)").arg(name).arg(alreadyOwned).arg(maxCount);
         auto btn = new QPushButton(btnText, this);
+        btn->setObjectName(name + "Button");
         // Désactiver si le joueur a déjà atteint la limite
         bool canCreate = (left > 0);
         btn->setEnabled( isThisPlayerTurn && canCreate );
@@ -456,9 +484,6 @@ void GameWindow::onCreatePieceButtonClicked(int playerIndex, hive::models::enums
     // 2) Assigner propriétaire
     auto playerPtr = game->getPlayerPtr(playerIndex);
     pieceShared->setOwner(playerPtr);
-
-
-
 
     // 3) Trouver position
     auto &board = game->getBoard();
@@ -519,3 +544,26 @@ void GameWindow::enableAllButtons()
 
     updatePieceCreationButtons();
 }
+
+void GameWindow::checkEndGame() {
+    if (const auto [isGameOver, isDraw, winner] = game->getGameStatus(); isGameOver) {
+        disableAllButtons();
+        disabledHexSelectable(hexSelectable);
+        if (isDraw) {
+            qDebug() << "La partie est terminee : match nul !";
+        } else {
+            qDebug() << "La partie est terminee, le gagnant est : " + winner->getName();
+        }
+    }
+}
+
+void GameWindow::disabledHexSelectable(bool &hexSelectable)
+{
+    hexSelectable = false;
+}
+
+void GameWindow::enableHexSelectable(bool &hexSelectable)
+{
+    hexSelectable = true;
+}
+

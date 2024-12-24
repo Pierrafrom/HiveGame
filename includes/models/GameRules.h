@@ -57,6 +57,7 @@ namespace hive::models {
          */
         [[nodiscard]] static bool canAddPiece(const Player &player, enums::PieceType type);
 
+    public:
         /**
          * @brief Enforces the rule that the queen must be placed by the fourth turn.
          * @param player The player to check.
@@ -65,7 +66,7 @@ namespace hive::models {
          */
         [[nodiscard]] static bool isQueenPlacementRequired(const Player &player, size_t turnNumber);
 
-    public:
+
         /**
          * @brief Retrieves the singleton instance of GameRules.
          * @return A reference to the single instance of GameRules.
