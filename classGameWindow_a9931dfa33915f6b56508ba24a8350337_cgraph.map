@@ -1,0 +1,15 @@
+<map id="GameWindow::onSaveClicked" name="GameWindow::onSaveClicked">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,77,220,102"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1utils_1_1Serializer.html#aec52fa68d78d232118eb5c3a440379df" title="Returns the singleton instance of the Serializer class." alt="" coords="268,37,423,77"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="205,74,254,67,255,72,206,79"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1utils_1_1Serializer.html#a257aca9f5c1f02150ae7aa18446865b0" title="Saves the current game state to a file." alt="" coords="268,101,423,141"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="206,99,255,106,254,112,205,105"/>
+<area shape="rect" id="Node000004" href="$classhive_1_1models_1_1Player.html#a34550c540f2ced691b6b0746089bb1c4" title="Retrieves the player&#39;s unique identifier." alt="" coords="471,5,625,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="397,99,421,87,469,55,482,49,484,53,472,60,424,92,399,104"/>
+<area shape="rect" id="Node000005" href="$classhive_1_1models_1_1Game.html#a56a9152901e8cafc9a4525c60ba7568d" title="Gets the player by index." alt="" coords="471,69,625,109"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="422,107,457,101,458,106,423,112"/>
+<area shape="rect" id="Node000006" href="$classhive_1_1models_1_1Game.html#aa0eb571c5102f2f04afc77d7318476a8" title="Gets the redo stack." alt="" coords="471,133,625,173"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="423,131,458,136,457,142,422,136"/>
+<area shape="rect" id="Node000007" href="$classhive_1_1models_1_1Game.html#aa1857cf3fb038d3924801ac414e16ae6" title="Gets the undo stack." alt="" coords="471,197,625,237"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="385,139,472,183,486,189,484,194,470,188,383,144"/>
+</map>

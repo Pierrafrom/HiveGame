@@ -1,0 +1,8 @@
+<map id="hive::models::strategies::AntMoveStrategy::antExploration" name="hive::models::strategies::AntMoveStrategy::antExploration">
+<area shape="rect" id="Node000001" title=" " alt="" coords="321,37,567,77"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="496,26,478,19,444,16,414,18,396,23,390,29,393,36,388,38,385,28,394,18,413,13,444,11,479,13,498,21"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1strategies_1_1AntMoveStrategy.html#a82a3955dc6b49af1c5da17e38b164e35" title="Calculates the possible moves for the Ant piece." alt="" coords="5,5,273,45"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="307,46,274,42,274,37,308,40"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1models_1_1strategies_1_1AntMoveStrategy.html#a41d99f5ba0ecb4a35010b436dcc0b680" title=" " alt="" coords="5,69,273,109"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="308,74,274,78,274,73,307,69"/>
+</map>

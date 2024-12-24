@@ -1,0 +1,23 @@
+<map id="hive::models::Game::resetGame" name="hive::models::Game::resetGame">
+<area shape="rect" id="Node000001" title="Resets the game with new player names." alt="" coords="708,152,861,192"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1Game.html#a5ebfc8fb3ab1e80a02fc26b9a34ed41f" title="Initializes the game with custom player names." alt="" coords="479,5,660,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="753,144,710,105,659,66,623,48,626,43,661,62,714,101,757,141"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1utils_1_1Serializer.html#aacb397dc8b6469f10d261f8f66b1cb38" title="Loads a game state from a file." alt="" coords="492,152,647,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="694,175,647,175,647,169,694,169"/>
+<area shape="rect" id="Node000005" href="$classhive_1_1controllers_1_1cli_1_1CLIController.html#a477d6c1bf15f3024dde28b75d642753c" title=" " alt="" coords="5,96,164,136"/>
+<area shape="poly" id="edge11_Node000001_Node000005" title=" " alt="" coords="698,151,659,143,535,120,437,110,339,108,212,111,164,113,164,108,212,105,339,102,438,104,536,115,661,137,699,146"/>
+<area shape="rect" id="Node000008" href="$classMenu.html#ad623fdc5e77ed481a1611abfdf3c3129" title=" " alt="" coords="212,249,431,274"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="697,198,661,207,529,232,410,251,409,246,528,227,659,201,696,193"/>
+<area shape="rect" id="Node000009" href="$classhive_1_1controllers_1_1cli_1_1CLIController.html#af90a649a6748372a139ad3fd0957dadb" title=" " alt="" coords="490,284,649,324"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="744,202,661,256,609,286,606,282,659,251,741,198"/>
+<area shape="rect" id="Node000004" href="$classhive_1_1controllers_1_1cli_1_1CLIController.html#a433affa887a3f911ff615224e5b28b7b" title=" " alt="" coords="249,121,394,175"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="478,166,394,158,395,152,479,161"/>
+<area shape="rect" id="Node000006" href="$classMenu.html#a39dfdaa3104de72e7ac6800258facdee" title=" " alt="" coords="239,199,403,225"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="479,189,401,202,400,197,478,184"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="235,139,164,129,165,124,236,134"/>
+<area shape="rect" id="Node000007" href="$classMenu.html#a81e517b62384dc184425757e6dba87d3" title=" " alt="" coords="33,223,136,249"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="226,224,136,234,136,228,225,219"/>
+<area shape="poly" id="edge8_Node000008_Node000007" title=" " alt="" coords="198,251,136,244,137,239,199,246"/>
+<area shape="rect" id="Node000010" href="$main__cli_8cpp.html#a7114aa2dd6837734db57667a298dfcc4" title=" " alt="" coords="294,298,349,323"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="476,309,349,313,349,307,476,304"/>
+</map>

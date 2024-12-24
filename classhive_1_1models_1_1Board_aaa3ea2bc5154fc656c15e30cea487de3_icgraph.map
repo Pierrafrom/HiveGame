@@ -1,0 +1,10 @@
+<map id="hive::models::Board::neighborsNotOccupied" name="hive::models::Board::neighborsNotOccupied">
+<area shape="rect" id="Node000001" title="Retrieves all hexes surrounding a specific hex location that are available." alt="" coords="671,37,848,77"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1strategies_1_1SpiderMoveStrategy.html#ac18634300b493661ce8b86d6431bee58" title="Recursively explores the reachable positions for the Spider." alt="" coords="340,37,623,77"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="657,60,623,60,623,55,657,55"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="529,26,512,19,481,16,454,18,438,23,432,29,435,36,430,38,427,28,435,18,453,13,481,11,513,13,531,21"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1models_1_1strategies_1_1SpiderMoveStrategy.html#a36c03d48c53daa99e5b6c5dcd1045e52" title="Calculates the possible moves for the Spider piece." alt="" coords="5,5,292,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="326,45,292,42,293,36,326,40"/>
+<area shape="rect" id="Node000004" href="$classhive_1_1models_1_1strategies_1_1SpiderMoveStrategy.html#a7bf42d7c9c3effd582ea0b38745be80d" title=" " alt="" coords="5,69,292,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="326,75,293,78,292,73,326,70"/>
+</map>

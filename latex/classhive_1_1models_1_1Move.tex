@@ -1,0 +1,417 @@
+\doxysection{hive\+::models\+::Move Class Reference}
+\hypertarget{classhive_1_1models_1_1Move}{}\label{classhive_1_1models_1_1Move}\index{hive::models::Move@{hive::models::Move}}
+
+
+Represents a move in the Hive game.  
+
+
+
+
+{\ttfamily \#include $<$Move.\+h$>$}
+
+
+
+Collaboration diagram for hive\+::models\+::Move\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classhive_1_1models_1_1Move__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{classhive_1_1models_1_1Move_afc8b77a5c8e60ce71efa03ec4ea9c0ee}{Move\+Type}} \{ \mbox{\hyperlink{classhive_1_1models_1_1Move_afc8b77a5c8e60ce71efa03ec4ea9c0eea8c756b7e3daff6db3808a377b05a148f}{PLACE}}
+, \mbox{\hyperlink{classhive_1_1models_1_1Move_afc8b77a5c8e60ce71efa03ec4ea9c0eeaf7f93635f8e193a924ae4a691bb66b8f}{MOVE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Represents the type of move. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhive_1_1models_1_1Move_a1c10750fa1f93c13d2a28f3439f747e5}{Move}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} $>$ \&\mbox{\hyperlink{classhive_1_1models_1_1Move_a3de251b7f312addc59e05350b97b3305}{player}}, const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ \&\mbox{\hyperlink{classhive_1_1models_1_1Move_ad246d87a5b6f9c64debe1f0c7aa47e02}{piece}}, \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \mbox{\hyperlink{classhive_1_1models_1_1Move_aab49f27f9d71c4df88313798d6b2b066}{to}})
+\begin{DoxyCompactList}\small\item\em Constructs a placement move. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhive_1_1models_1_1Move_a55320dba2b1b9fb82398229790e15926}{Move}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} $>$ \&\mbox{\hyperlink{classhive_1_1models_1_1Move_a3de251b7f312addc59e05350b97b3305}{player}}, const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ \&\mbox{\hyperlink{classhive_1_1models_1_1Move_ad246d87a5b6f9c64debe1f0c7aa47e02}{piece}}, const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&\mbox{\hyperlink{classhive_1_1models_1_1Move_abbe2a46d3fb9ecda621c34f20338ba50}{from}}, \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \mbox{\hyperlink{classhive_1_1models_1_1Move_aab49f27f9d71c4df88313798d6b2b066}{to}})
+\begin{DoxyCompactList}\small\item\em Constructs a movement move. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} $>$ \mbox{\hyperlink{classhive_1_1models_1_1Move_a049a2f8ca126c3304852c182de9cb574}{get\+Player}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the player who made the move. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhive_1_1models_1_1Move_afc8b77a5c8e60ce71efa03ec4ea9c0ee}{Move\+Type}} \mbox{\hyperlink{classhive_1_1models_1_1Move_ac7e11d589ea05e87aad566e3ae31692f}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the type of the move. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ \mbox{\hyperlink{classhive_1_1models_1_1Move_ac5abd320c5ed007fe9d62b4c46ebb7cc}{get\+Piece}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the piece involved in the move. \end{DoxyCompactList}\item 
+std\+::optional$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} $>$ \mbox{\hyperlink{classhive_1_1models_1_1Move_a45c99c5cf9be5c5f1fab0b13bae554b8}{get\+From}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the starting position of the piece. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \& \mbox{\hyperlink{classhive_1_1models_1_1Move_accb38544e44b75c7e512d40372ac7831}{get\+To}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the target position of the piece. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classhive_1_1models_1_1Move_ac96a1f192d6f14594b7ab1a0d048855a}{execute}} (\mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&board) const
+\begin{DoxyCompactList}\small\item\em Executes the move on the specified game board. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classhive_1_1models_1_1Move_a0ee33acafca8c73d6e100b7fbe28747c}{undo}} (\mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&board) const
+\begin{DoxyCompactList}\small\item\em Undoes the move on the specified game board. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classhive_1_1models_1_1Move_a9f7d7c15e5e42d0a5144dcdce43bc5c8}{to\+String}} () const
+\begin{DoxyCompactList}\small\item\em Converts the \doxylink{classhive_1_1models_1_1Move}{Move} object to a string representation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{classhive_1_1models_1_1Move_afc8b77a5c8e60ce71efa03ec4ea9c0ee}{Move\+Type}} \mbox{\hyperlink{classhive_1_1models_1_1Move_a3e92ee3cf1bc5b560c92bd0e5042010b}{type}}
+\item 
+const std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} $>$ \mbox{\hyperlink{classhive_1_1models_1_1Move_a3de251b7f312addc59e05350b97b3305}{player}}
+\item 
+const std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ \mbox{\hyperlink{classhive_1_1models_1_1Move_ad246d87a5b6f9c64debe1f0c7aa47e02}{piece}}
+\item 
+const std\+::optional$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} $>$ \mbox{\hyperlink{classhive_1_1models_1_1Move_abbe2a46d3fb9ecda621c34f20338ba50}{from}}
+\item 
+const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \mbox{\hyperlink{classhive_1_1models_1_1Move_aab49f27f9d71c4df88313798d6b2b066}{to}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{classhive_1_1models_1_1Move_a72317566849f53db8af92bbf38903102}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classhive_1_1models_1_1Move}{Move}} \&move)
+\begin{DoxyCompactList}\small\item\em Overloads the stream insertion operator for the \doxylink{classhive_1_1models_1_1Move}{Move} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a move in the Hive game. 
+
+The {\ttfamily \doxylink{classhive_1_1models_1_1Move}{Move}} class encapsulates the data required to execute and undo a move. A move can either be placing a new piece or moving an existing piece on the board. Objects of this class are immutable once created. 
+
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{classhive_1_1models_1_1Move_afc8b77a5c8e60ce71efa03ec4ea9c0ee}\label{classhive_1_1models_1_1Move_afc8b77a5c8e60ce71efa03ec4ea9c0ee} 
+\index{hive::models::Move@{hive::models::Move}!MoveType@{MoveType}}
+\index{MoveType@{MoveType}!hive::models::Move@{hive::models::Move}}
+\doxysubsubsection{\texorpdfstring{MoveType}{MoveType}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{classhive_1_1models_1_1Move_afc8b77a5c8e60ce71efa03ec4ea9c0ee}{hive\+::models\+::\+Move\+::\+Move\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Represents the type of move. 
+
+
+\begin{DoxyItemize}
+\item PLACE\+: Indicates the placement of a new piece on the board.
+\item MOVE\+: Indicates the movement of an existing piece from one hex to another. 
+\end{DoxyItemize}\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PLACE@{PLACE}!hive::models::Move@{hive::models::Move}}\index{hive::models::Move@{hive::models::Move}!PLACE@{PLACE}}}\Hypertarget{classhive_1_1models_1_1Move_afc8b77a5c8e60ce71efa03ec4ea9c0eea8c756b7e3daff6db3808a377b05a148f}\label{classhive_1_1models_1_1Move_afc8b77a5c8e60ce71efa03ec4ea9c0eea8c756b7e3daff6db3808a377b05a148f} 
+PLACE&Represents a move where a piece is placed. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOVE@{MOVE}!hive::models::Move@{hive::models::Move}}\index{hive::models::Move@{hive::models::Move}!MOVE@{MOVE}}}\Hypertarget{classhive_1_1models_1_1Move_afc8b77a5c8e60ce71efa03ec4ea9c0eeaf7f93635f8e193a924ae4a691bb66b8f}\label{classhive_1_1models_1_1Move_afc8b77a5c8e60ce71efa03ec4ea9c0eeaf7f93635f8e193a924ae4a691bb66b8f} 
+MOVE&Represents a move where a piece is moved. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classhive_1_1models_1_1Move_a1c10750fa1f93c13d2a28f3439f747e5}\label{classhive_1_1models_1_1Move_a1c10750fa1f93c13d2a28f3439f747e5} 
+\index{hive::models::Move@{hive::models::Move}!Move@{Move}}
+\index{Move@{Move}!hive::models::Move@{hive::models::Move}}
+\doxysubsubsection{\texorpdfstring{Move()}{Move()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily hive\+::models\+::\+Move\+::\+Move (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} $>$ \&}]{player,  }\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ \&}]{piece,  }\item[{\mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}}]{to }\end{DoxyParamCaption})}
+
+
+
+Constructs a placement move. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Shared pointer to the player making the move (must not be null). \\
+\hline
+{\em piece} & Shared pointer to the piece to place (must not be null). \\
+\hline
+{\em to} & The target position for placing the piece.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & If {\ttfamily player} or {\ttfamily piece} is null. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classhive_1_1models_1_1Move_a55320dba2b1b9fb82398229790e15926}\label{classhive_1_1models_1_1Move_a55320dba2b1b9fb82398229790e15926} 
+\index{hive::models::Move@{hive::models::Move}!Move@{Move}}
+\index{Move@{Move}!hive::models::Move@{hive::models::Move}}
+\doxysubsubsection{\texorpdfstring{Move()}{Move()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily hive\+::models\+::\+Move\+::\+Move (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} $>$ \&}]{player,  }\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ \&}]{piece,  }\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&}]{from,  }\item[{\mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}}]{to }\end{DoxyParamCaption})}
+
+
+
+Constructs a movement move. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & Shared pointer to the player making the move (must not be null). \\
+\hline
+{\em piece} & Shared pointer to the piece to move (must not be null). \\
+\hline
+{\em from} & The starting position of the piece. \\
+\hline
+{\em to} & The target position of the piece.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & If {\ttfamily player} or {\ttfamily piece} is null. \\
+\hline
+\end{DoxyExceptions}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classhive_1_1models_1_1Move_ac96a1f192d6f14594b7ab1a0d048855a}\label{classhive_1_1models_1_1Move_ac96a1f192d6f14594b7ab1a0d048855a} 
+\index{hive::models::Move@{hive::models::Move}!execute@{execute}}
+\index{execute@{execute}!hive::models::Move@{hive::models::Move}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily void hive\+::models\+::\+Move\+::execute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&}]{board }\end{DoxyParamCaption}) const}
+
+
+
+Executes the move on the specified game board. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em board} & The game board on which to execute the move.\\
+\hline
+\end{DoxyParams}
+Executes the move by placing the piece on the target hex for a PLACE move, or moving the piece from the starting position to the target position for a MOVE move. 
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & If the move type is invalid. \\
+\hline
+\end{DoxyExceptions}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Move_ac96a1f192d6f14594b7ab1a0d048855a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Move_ac96a1f192d6f14594b7ab1a0d048855a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Move_a45c99c5cf9be5c5f1fab0b13bae554b8}\label{classhive_1_1models_1_1Move_a45c99c5cf9be5c5f1fab0b13bae554b8} 
+\index{hive::models::Move@{hive::models::Move}!getFrom@{getFrom}}
+\index{getFrom@{getFrom}!hive::models::Move@{hive::models::Move}}
+\doxysubsubsection{\texorpdfstring{getFrom()}{getFrom()}}
+{\footnotesize\ttfamily std\+::optional$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} $>$ hive\+::models\+::\+Move\+::get\+From (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves the starting position of the piece. 
+
+\begin{DoxyReturn}{Returns}
+The starting position (optional).
+\end{DoxyReturn}
+This is valid only for MOVE type moves. For PLACE moves, this will return {\ttfamily std\+::nullopt}. Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Move_a45c99c5cf9be5c5f1fab0b13bae554b8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Move_ac5abd320c5ed007fe9d62b4c46ebb7cc}\label{classhive_1_1models_1_1Move_ac5abd320c5ed007fe9d62b4c46ebb7cc} 
+\index{hive::models::Move@{hive::models::Move}!getPiece@{getPiece}}
+\index{getPiece@{getPiece}!hive::models::Move@{hive::models::Move}}
+\doxysubsubsection{\texorpdfstring{getPiece()}{getPiece()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ hive\+::models\+::\+Move\+::get\+Piece (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the piece involved in the move. 
+
+\begin{DoxyReturn}{Returns}
+A shared pointer to the piece. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Move_ac5abd320c5ed007fe9d62b4c46ebb7cc_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Move_a049a2f8ca126c3304852c182de9cb574}\label{classhive_1_1models_1_1Move_a049a2f8ca126c3304852c182de9cb574} 
+\index{hive::models::Move@{hive::models::Move}!getPlayer@{getPlayer}}
+\index{getPlayer@{getPlayer}!hive::models::Move@{hive::models::Move}}
+\doxysubsubsection{\texorpdfstring{getPlayer()}{getPlayer()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} $>$ hive\+::models\+::\+Move\+::get\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the player who made the move. 
+
+\begin{DoxyReturn}{Returns}
+A shared pointer to the player. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Move_a049a2f8ca126c3304852c182de9cb574_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Move_accb38544e44b75c7e512d40372ac7831}\label{classhive_1_1models_1_1Move_accb38544e44b75c7e512d40372ac7831} 
+\index{hive::models::Move@{hive::models::Move}!getTo@{getTo}}
+\index{getTo@{getTo}!hive::models::Move@{hive::models::Move}}
+\doxysubsubsection{\texorpdfstring{getTo()}{getTo()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \& hive\+::models\+::\+Move\+::get\+To (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves the target position of the piece. 
+
+\begin{DoxyReturn}{Returns}
+The target position. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Move_accb38544e44b75c7e512d40372ac7831_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Move_ac7e11d589ea05e87aad566e3ae31692f}\label{classhive_1_1models_1_1Move_ac7e11d589ea05e87aad566e3ae31692f} 
+\index{hive::models::Move@{hive::models::Move}!getType@{getType}}
+\index{getType@{getType}!hive::models::Move@{hive::models::Move}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhive_1_1models_1_1Move_afc8b77a5c8e60ce71efa03ec4ea9c0ee}{Move\+Type}} hive\+::models\+::\+Move\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves the type of the move. 
+
+\begin{DoxyReturn}{Returns}
+The type of the move (either PLACE or MOVE). 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Move_ac7e11d589ea05e87aad566e3ae31692f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Move_a9f7d7c15e5e42d0a5144dcdce43bc5c8}\label{classhive_1_1models_1_1Move_a9f7d7c15e5e42d0a5144dcdce43bc5c8} 
+\index{hive::models::Move@{hive::models::Move}!toString@{toString}}
+\index{toString@{toString}!hive::models::Move@{hive::models::Move}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily std\+::string hive\+::models\+::\+Move\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Converts the \doxylink{classhive_1_1models_1_1Move}{Move} object to a string representation. 
+
+\begin{DoxyReturn}{Returns}
+A string representation of the \doxylink{classhive_1_1models_1_1Move}{Move} object. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{classhive_1_1models_1_1Move_a9f7d7c15e5e42d0a5144dcdce43bc5c8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Move_a9f7d7c15e5e42d0a5144dcdce43bc5c8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Move_a0ee33acafca8c73d6e100b7fbe28747c}\label{classhive_1_1models_1_1Move_a0ee33acafca8c73d6e100b7fbe28747c} 
+\index{hive::models::Move@{hive::models::Move}!undo@{undo}}
+\index{undo@{undo}!hive::models::Move@{hive::models::Move}}
+\doxysubsubsection{\texorpdfstring{undo()}{undo()}}
+{\footnotesize\ttfamily void hive\+::models\+::\+Move\+::undo (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&}]{board }\end{DoxyParamCaption}) const}
+
+
+
+Undoes the move on the specified game board. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em board} & The game board on which to undo the move.\\
+\hline
+\end{DoxyParams}
+Reverts the move by removing the piece from the target hex for a PLACE move, or moving the piece back to the starting position for a MOVE move. 
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & If the move type is invalid. \\
+\hline
+\end{DoxyExceptions}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Move_a0ee33acafca8c73d6e100b7fbe28747c_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classhive_1_1models_1_1Move_a72317566849f53db8af92bbf38903102}\label{classhive_1_1models_1_1Move_a72317566849f53db8af92bbf38903102} 
+\index{hive::models::Move@{hive::models::Move}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!hive::models::Move@{hive::models::Move}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Move}{Move}} \&}]{move }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Overloads the stream insertion operator for the \doxylink{classhive_1_1models_1_1Move}{Move} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream. \\
+\hline
+{\em move} & The \doxylink{classhive_1_1models_1_1Move}{Move} object to output. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the output stream. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classhive_1_1models_1_1Move_abbe2a46d3fb9ecda621c34f20338ba50}\label{classhive_1_1models_1_1Move_abbe2a46d3fb9ecda621c34f20338ba50} 
+\index{hive::models::Move@{hive::models::Move}!from@{from}}
+\index{from@{from}!hive::models::Move@{hive::models::Move}}
+\doxysubsubsection{\texorpdfstring{from}{from}}
+{\footnotesize\ttfamily const std\+::optional$<$\mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}$>$ hive\+::models\+::\+Move\+::from\hspace{0.3cm}{\ttfamily [private]}}
+
+The starting position (used for MOVE type only). \Hypertarget{classhive_1_1models_1_1Move_ad246d87a5b6f9c64debe1f0c7aa47e02}\label{classhive_1_1models_1_1Move_ad246d87a5b6f9c64debe1f0c7aa47e02} 
+\index{hive::models::Move@{hive::models::Move}!piece@{piece}}
+\index{piece@{piece}!hive::models::Move@{hive::models::Move}}
+\doxysubsubsection{\texorpdfstring{piece}{piece}}
+{\footnotesize\ttfamily const std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}}$>$ hive\+::models\+::\+Move\+::piece\hspace{0.3cm}{\ttfamily [private]}}
+
+Weak reference to the piece being placed or moved. \Hypertarget{classhive_1_1models_1_1Move_a3de251b7f312addc59e05350b97b3305}\label{classhive_1_1models_1_1Move_a3de251b7f312addc59e05350b97b3305} 
+\index{hive::models::Move@{hive::models::Move}!player@{player}}
+\index{player@{player}!hive::models::Move@{hive::models::Move}}
+\doxysubsubsection{\texorpdfstring{player}{player}}
+{\footnotesize\ttfamily const std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}}$>$ hive\+::models\+::\+Move\+::player\hspace{0.3cm}{\ttfamily [private]}}
+
+Weak reference to the player making the move. \Hypertarget{classhive_1_1models_1_1Move_aab49f27f9d71c4df88313798d6b2b066}\label{classhive_1_1models_1_1Move_aab49f27f9d71c4df88313798d6b2b066} 
+\index{hive::models::Move@{hive::models::Move}!to@{to}}
+\index{to@{to}!hive::models::Move@{hive::models::Move}}
+\doxysubsubsection{\texorpdfstring{to}{to}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} hive\+::models\+::\+Move\+::to\hspace{0.3cm}{\ttfamily [private]}}
+
+The target position. \Hypertarget{classhive_1_1models_1_1Move_a3e92ee3cf1bc5b560c92bd0e5042010b}\label{classhive_1_1models_1_1Move_a3e92ee3cf1bc5b560c92bd0e5042010b} 
+\index{hive::models::Move@{hive::models::Move}!type@{type}}
+\index{type@{type}!hive::models::Move@{hive::models::Move}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classhive_1_1models_1_1Move_afc8b77a5c8e60ce71efa03ec4ea9c0ee}{Move\+Type}} hive\+::models\+::\+Move\+::type\hspace{0.3cm}{\ttfamily [private]}}
+
+The type of move (PLACE or MOVE). 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+includes/models/\mbox{\hyperlink{Move_8h}{Move.\+h}}\item 
+src/models/\mbox{\hyperlink{Move_8cpp}{Move.\+cpp}}\end{DoxyCompactItemize}

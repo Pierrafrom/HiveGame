@@ -1,0 +1,19 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classhive_1_1models_1_1Piece.html" title="Base class representing a generic game piece in the Hive game." alt="" coords="5,223,155,248"/>
+<area shape="rect" id="Node000001" href="$classhive_1_1models_1_1pieces_1_1Ant.html" title="Represents an Ant piece in the Hive game." alt="" coords="203,5,389,31"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="88,208,104,171,128,126,161,80,201,41,224,29,227,33,204,45,165,84,133,128,109,173,93,210"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1pieces_1_1Beetle.html" title="Represents a Beetle piece in the Hive game." alt="" coords="218,55,374,95"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="96,210,140,158,169,130,201,105,224,93,226,98,204,110,173,134,144,161,100,213"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1models_1_1pieces_1_1Grasshopper.html" title="Represents a Grasshopper piece in the Hive game." alt="" coords="218,119,374,159"/>
+<area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="114,214,202,169,232,157,234,162,204,174,116,218"/>
+<area shape="rect" id="Node000004" href="$classhive_1_1models_1_1pieces_1_1Ladybug.html" title="Represents a Ladybug piece in the Hive game." alt="" coords="218,183,374,223"/>
+<area shape="poly" id="edge4_Node000000_Node000004" title=" " alt="" coords="168,220,217,212,218,217,169,225"/>
+<area shape="rect" id="Node000005" href="$classhive_1_1models_1_1pieces_1_1Mosquito.html" title="Represents a Mosquito piece in the Hive game." alt="" coords="218,247,374,287"/>
+<area shape="poly" id="edge5_Node000000_Node000005" title=" " alt="" coords="169,246,218,253,217,258,168,251"/>
+<area shape="rect" id="Node000006" href="$classhive_1_1models_1_1pieces_1_1Pillbug.html" title="Represents a Pillbug piece in the Hive game." alt="" coords="218,311,374,351"/>
+<area shape="poly" id="edge6_Node000000_Node000006" title=" " alt="" coords="116,252,204,297,234,309,232,314,202,302,114,257"/>
+<area shape="rect" id="Node000007" href="$classhive_1_1models_1_1pieces_1_1QueenBee.html" title="Represents a Queen Bee piece in the Hive game." alt="" coords="218,375,374,415"/>
+<area shape="poly" id="edge7_Node000000_Node000007" title=" " alt="" coords="100,257,144,309,173,337,204,361,226,373,224,378,201,366,169,341,140,313,96,261"/>
+<area shape="rect" id="Node000008" href="$classhive_1_1models_1_1pieces_1_1Spider.html" title="Represents a Spider piece in the Hive game." alt="" coords="218,439,374,479"/>
+<area shape="poly" id="edge8_Node000000_Node000008" title=" " alt="" coords="93,260,110,297,134,341,165,386,204,425,223,437,220,441,201,429,161,390,129,344,105,299,88,262"/>
+</map>

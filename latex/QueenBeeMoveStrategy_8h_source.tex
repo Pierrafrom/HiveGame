@@ -1,0 +1,27 @@
+\doxysection{Queen\+Bee\+Move\+Strategy.\+h}
+\hypertarget{QueenBeeMoveStrategy_8h_source}{}\label{QueenBeeMoveStrategy_8h_source}\index{includes/models/strategies/QueenBeeMoveStrategy.h@{includes/models/strategies/QueenBeeMoveStrategy.h}}
+\mbox{\hyperlink{QueenBeeMoveStrategy_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ QUEEN\_BEE\_MOVE\_STRATEGY\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ QUEEN\_BEE\_MOVE\_STRATEGY\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{Player_8h}{models/Player.h}}>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{MoveStrategy_8h}{models/strategies/MoveStrategy.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehive_1_1models_1_1strategies}{hive::models::strategies}}\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1QueenBeeMoveStrategy}{QueenBeeMoveStrategy}}\ final\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy}{MoveStrategy}}\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1QueenBeeMoveStrategy_a3ceaafe2231cef6cee480e56d8512ced}{QueenBeeMoveStrategy}}(\mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}}\ *p)\ :\ \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy}{MoveStrategy}}(p)\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1QueenBeeMoveStrategy_ae71514cbcb1654c17aec540ad8dc341e}{\string~QueenBeeMoveStrategy}}()\ \textcolor{keyword}{override}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::vector<Hex>\ \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1QueenBeeMoveStrategy_a0656765f8e292093cc118333b1ef5406}{getPossibleMoves}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}}\ \&board,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}}\ \&player)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::vector<Hex>\ \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1QueenBeeMoveStrategy_a0656765f8e292093cc118333b1ef5406}{getPossibleMoves}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}}\ \&board,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}}\ \&player,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}\ \&hex)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00039\ \ \ \ \ \};}
+\DoxyCodeLine{00040\ \}\ \textcolor{comment}{//\ namespace\ hive::models::strategies}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ QUEEN\_BEE\_MOVE\_STRATEGY\_H}}
+
+\end{DoxyCode}

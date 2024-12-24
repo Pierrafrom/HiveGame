@@ -1,0 +1,32 @@
+\doxysection{Ant\+Move\+Strategy.\+h}
+\hypertarget{AntMoveStrategy_8h_source}{}\label{AntMoveStrategy_8h_source}\index{includes/models/strategies/AntMoveStrategy.h@{includes/models/strategies/AntMoveStrategy.h}}
+\mbox{\hyperlink{AntMoveStrategy_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ANT\_MOVE\_STRATEGY\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ANT\_MOVE\_STRATEGY\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{Player_8h}{models/Player.h}}>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{MoveStrategy_8h}{models/strategies/MoveStrategy.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehive_1_1models_1_1strategies}{hive::models::strategies}}\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1AntMoveStrategy}{AntMoveStrategy}}\ final\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy}{MoveStrategy}}\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1AntMoveStrategy_ac6325545edfd355bda8c7ae1955ca572}{AntMoveStrategy}}(\mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}}\ *p)\ :\ \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy}{MoveStrategy}}(p)\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1AntMoveStrategy_ad63a98ff51a43e961b43cbab3ea10748}{\string~AntMoveStrategy}}()\ \textcolor{keyword}{override}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::vector<Hex>\ \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1AntMoveStrategy_a82a3955dc6b49af1c5da17e38b164e35}{getPossibleMoves}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}}\ \&board,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}}\ \&player)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::vector<Hex>\ \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1AntMoveStrategy_a82a3955dc6b49af1c5da17e38b164e35}{getPossibleMoves}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}}\ \&board,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}}\ \&player,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}\ \&hex)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ std::vector<Hex>\ \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1AntMoveStrategy_af6efa7b9ea8cd6dca7f60b35e5783944}{addPossibleMove}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}\ \&current\_position,\ std::vector<Hex>\ \&possibleMoves,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}}\ \&board,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}\ \&initiaPosition)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1AntMoveStrategy_acdb64768cc476b8aa095c5a231a11da3}{antExploration}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}\ \&current\_position,\ std::vector<Hex>\ \&possibleMoves,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}}\ \&board,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}\ \&initiaPosition)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \};}
+\DoxyCodeLine{00050\ \}\ \textcolor{comment}{//\ namespace\ hive::models::strategies}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ANT\_MOVE\_STRATEGY\_H}}
+
+\end{DoxyCode}

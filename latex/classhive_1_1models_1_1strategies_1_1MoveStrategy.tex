@@ -1,0 +1,257 @@
+\doxysection{hive\+::models\+::strategies\+::Move\+Strategy Class Reference}
+\hypertarget{classhive_1_1models_1_1strategies_1_1MoveStrategy}{}\label{classhive_1_1models_1_1strategies_1_1MoveStrategy}\index{hive::models::strategies::MoveStrategy@{hive::models::strategies::MoveStrategy}}
+
+
+Abstract class defining the movement strategy for game pieces.  
+
+
+
+
+{\ttfamily \#include $<$Move\+Strategy.\+h$>$}
+
+
+
+Inheritance diagram for hive\+::models\+::strategies\+::Move\+Strategy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1strategies_1_1MoveStrategy__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for hive\+::models\+::strategies\+::Move\+Strategy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classhive_1_1models_1_1strategies_1_1MoveStrategy__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_a6c1ea6b9dc9bf0525ee14bdec6c0de23}{Move\+Strategy}} (\mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classhive_1_1models_1_1strategies_1_1MoveStrategy}{Move\+Strategy} object for a specific piece. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_a909f881318d52a3ebe7a0c6d3e73c330}{\texorpdfstring{$\sim$}{\string~}\+Move\+Strategy}} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} $>$ \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_aef5b0faabe9daa411d8dbde88ef25dd4}{get\+Possible\+Moves}} (const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&board, const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&player) const =0
+\begin{DoxyCompactList}\small\item\em Calculates the possible moves for a piece from a given position. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} $>$ \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_ab6489149b0085b30f378d58b086eef73}{get\+Possible\+Moves}} (const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&board, const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&player, const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&hex) const =0
+\item 
+bool \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_a48d7628901dc82afd773c744d41b2390}{has\+Piece}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the piece has a valid position. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} \& \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_abe1dc9f8e24c3d3fca4ea5d5c24e1745}{get\+Piece}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the piece that uses this movement strategy. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_a0e587377152ffd4de231007eff521164}{validate\+Piece\+Ownership}} (const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&player) const
+\begin{DoxyCompactList}\small\item\em Validates the ownership of the piece by the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_a2abbb7650b46a878c5edd2590b19c372}{is\+Hive\+Connected\+After\+Move}} (\mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} board, \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} from, \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} to)
+\begin{DoxyCompactList}\small\item\em Checks if a hive is connected after moving a piece. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_ad1ed492c91ea22eba2933911a976e05b}{piece}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract class defining the movement strategy for game pieces. 
+
+This class provides an interface to calculate the possible moves for a piece based on its current position and the state of the game board. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classhive_1_1models_1_1strategies_1_1MoveStrategy_a6c1ea6b9dc9bf0525ee14bdec6c0de23}\label{classhive_1_1models_1_1strategies_1_1MoveStrategy_a6c1ea6b9dc9bf0525ee14bdec6c0de23} 
+\index{hive::models::strategies::MoveStrategy@{hive::models::strategies::MoveStrategy}!MoveStrategy@{MoveStrategy}}
+\index{MoveStrategy@{MoveStrategy}!hive::models::strategies::MoveStrategy@{hive::models::strategies::MoveStrategy}}
+\doxysubsubsection{\texorpdfstring{MoveStrategy()}{MoveStrategy()}}
+{\footnotesize\ttfamily hive\+::models\+::strategies\+::\+Move\+Strategy\+::\+Move\+Strategy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} \texorpdfstring{$\ast$}{*}}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructs a \doxylink{classhive_1_1models_1_1strategies_1_1MoveStrategy}{Move\+Strategy} object for a specific piece. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Pointer to the piece that uses this movement strategy. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classhive_1_1models_1_1strategies_1_1MoveStrategy_a909f881318d52a3ebe7a0c6d3e73c330}\label{classhive_1_1models_1_1strategies_1_1MoveStrategy_a909f881318d52a3ebe7a0c6d3e73c330} 
+\index{hive::models::strategies::MoveStrategy@{hive::models::strategies::MoveStrategy}!````~MoveStrategy@{\texorpdfstring{$\sim$}{\string~}MoveStrategy}}
+\index{````~MoveStrategy@{\texorpdfstring{$\sim$}{\string~}MoveStrategy}!hive::models::strategies::MoveStrategy@{hive::models::strategies::MoveStrategy}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}MoveStrategy()}{\string~MoveStrategy()}}
+{\footnotesize\ttfamily virtual hive\+::models\+::strategies\+::\+Move\+Strategy\+::\texorpdfstring{$\sim$}{\string~}\+Move\+Strategy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+Virtual destructor. 
+
+Ensures that derived classes can override the destructor and clean up any resources if necessary. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classhive_1_1models_1_1strategies_1_1MoveStrategy_abe1dc9f8e24c3d3fca4ea5d5c24e1745}\label{classhive_1_1models_1_1strategies_1_1MoveStrategy_abe1dc9f8e24c3d3fca4ea5d5c24e1745} 
+\index{hive::models::strategies::MoveStrategy@{hive::models::strategies::MoveStrategy}!getPiece@{getPiece}}
+\index{getPiece@{getPiece}!hive::models::strategies::MoveStrategy@{hive::models::strategies::MoveStrategy}}
+\doxysubsubsection{\texorpdfstring{getPiece()}{getPiece()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} \& hive\+::models\+::strategies\+::\+Move\+Strategy\+::get\+Piece (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the piece that uses this movement strategy. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the piece object. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1strategies_1_1MoveStrategy_abe1dc9f8e24c3d3fca4ea5d5c24e1745_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1strategies_1_1MoveStrategy_aef5b0faabe9daa411d8dbde88ef25dd4}\label{classhive_1_1models_1_1strategies_1_1MoveStrategy_aef5b0faabe9daa411d8dbde88ef25dd4} 
+\index{hive::models::strategies::MoveStrategy@{hive::models::strategies::MoveStrategy}!getPossibleMoves@{getPossibleMoves}}
+\index{getPossibleMoves@{getPossibleMoves}!hive::models::strategies::MoveStrategy@{hive::models::strategies::MoveStrategy}}
+\doxysubsubsection{\texorpdfstring{getPossibleMoves()}{getPossibleMoves()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual std\+::vector$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} $>$ hive\+::models\+::strategies\+::\+Move\+Strategy\+::get\+Possible\+Moves (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&}]{board,  }\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&}]{player }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Calculates the possible moves for a piece from a given position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em board} & The current state of the game board. \\
+\hline
+{\em player} & The player that owns the piece. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of {\ttfamily \doxylink{classhive_1_1models_1_1Hex}{Hex}} objects representing reachable positions.
+\end{DoxyReturn}
+This pure virtual method must be overridden by derived classes to provide specific movement logic for each type of piece. 
+
+Implemented in \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1AntMoveStrategy_a82a3955dc6b49af1c5da17e38b164e35}{hive\+::models\+::strategies\+::\+Ant\+Move\+Strategy}}, \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1BeetleMoveStrategy_a1e1954b6c9ddc027a7abc85c7fb219dc}{hive\+::models\+::strategies\+::\+Beetle\+Move\+Strategy}}, \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1GrasshopperMoveStrategy_a679d2feeb20e063e76d5f4b299a46d6e}{hive\+::models\+::strategies\+::\+Grasshopper\+Move\+Strategy}}, \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1LadybugMoveStrategy_a9ca982977fce04fe9aff547ccb317ad3}{hive\+::models\+::strategies\+::\+Ladybug\+Move\+Strategy}}, \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy_a6510b5c2c51cb50ff4a75f91ccc8f60d}{hive\+::models\+::strategies\+::\+Mosquito\+Move\+Strategy}}, \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1PillbugMoveStrategy_a643d1a3e869bc51358ecaa10e8039f01}{hive\+::models\+::strategies\+::\+Pillbug\+Move\+Strategy}}, \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1QueenBeeMoveStrategy_a0656765f8e292093cc118333b1ef5406}{hive\+::models\+::strategies\+::\+Queen\+Bee\+Move\+Strategy}}, and \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1SpiderMoveStrategy_a36c03d48c53daa99e5b6c5dcd1045e52}{hive\+::models\+::strategies\+::\+Spider\+Move\+Strategy}}.
+
+\Hypertarget{classhive_1_1models_1_1strategies_1_1MoveStrategy_ab6489149b0085b30f378d58b086eef73}\label{classhive_1_1models_1_1strategies_1_1MoveStrategy_ab6489149b0085b30f378d58b086eef73} 
+\index{hive::models::strategies::MoveStrategy@{hive::models::strategies::MoveStrategy}!getPossibleMoves@{getPossibleMoves}}
+\index{getPossibleMoves@{getPossibleMoves}!hive::models::strategies::MoveStrategy@{hive::models::strategies::MoveStrategy}}
+\doxysubsubsection{\texorpdfstring{getPossibleMoves()}{getPossibleMoves()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual std\+::vector$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} $>$ hive\+::models\+::strategies\+::\+Move\+Strategy\+::get\+Possible\+Moves (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&}]{board,  }\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&}]{player,  }\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&}]{hex }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1AntMoveStrategy_a41d99f5ba0ecb4a35010b436dcc0b680}{hive\+::models\+::strategies\+::\+Ant\+Move\+Strategy}}, \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1BeetleMoveStrategy_ae42f95f6edd8b0a671d0b6c3857e021a}{hive\+::models\+::strategies\+::\+Beetle\+Move\+Strategy}}, \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1GrasshopperMoveStrategy_a51559cbf42bfebfb29e9f2bda8ff6585}{hive\+::models\+::strategies\+::\+Grasshopper\+Move\+Strategy}}, \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1LadybugMoveStrategy_a9cd57bea230ab52f8faede355abd0d79}{hive\+::models\+::strategies\+::\+Ladybug\+Move\+Strategy}}, \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy_a82597f40b5a0084fca477a7ece185d48}{hive\+::models\+::strategies\+::\+Mosquito\+Move\+Strategy}}, \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1PillbugMoveStrategy_a5515b3137a0a53dc7d25e7990815090b}{hive\+::models\+::strategies\+::\+Pillbug\+Move\+Strategy}}, \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1QueenBeeMoveStrategy_ab257e6c639f8d8015bdfc3bb66be15b4}{hive\+::models\+::strategies\+::\+Queen\+Bee\+Move\+Strategy}}, and \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1SpiderMoveStrategy_a7bf42d7c9c3effd582ea0b38745be80d}{hive\+::models\+::strategies\+::\+Spider\+Move\+Strategy}}.
+
+\Hypertarget{classhive_1_1models_1_1strategies_1_1MoveStrategy_a48d7628901dc82afd773c744d41b2390}\label{classhive_1_1models_1_1strategies_1_1MoveStrategy_a48d7628901dc82afd773c744d41b2390} 
+\index{hive::models::strategies::MoveStrategy@{hive::models::strategies::MoveStrategy}!hasPiece@{hasPiece}}
+\index{hasPiece@{hasPiece}!hive::models::strategies::MoveStrategy@{hive::models::strategies::MoveStrategy}}
+\doxysubsubsection{\texorpdfstring{hasPiece()}{hasPiece()}}
+{\footnotesize\ttfamily bool hive\+::models\+::strategies\+::\+Move\+Strategy\+::has\+Piece (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if the piece has a valid position. 
+
+\begin{DoxyReturn}{Returns}
+True if the piece has a valid position, false otherwise. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1strategies_1_1MoveStrategy_a48d7628901dc82afd773c744d41b2390_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1strategies_1_1MoveStrategy_a2abbb7650b46a878c5edd2590b19c372}\label{classhive_1_1models_1_1strategies_1_1MoveStrategy_a2abbb7650b46a878c5edd2590b19c372} 
+\index{hive::models::strategies::MoveStrategy@{hive::models::strategies::MoveStrategy}!isHiveConnectedAfterMove@{isHiveConnectedAfterMove}}
+\index{isHiveConnectedAfterMove@{isHiveConnectedAfterMove}!hive::models::strategies::MoveStrategy@{hive::models::strategies::MoveStrategy}}
+\doxysubsubsection{\texorpdfstring{isHiveConnectedAfterMove()}{isHiveConnectedAfterMove()}}
+{\footnotesize\ttfamily bool hive\+::models\+::strategies\+::\+Move\+Strategy\+::is\+Hive\+Connected\+After\+Move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}}}]{board,  }\item[{\mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}}]{from,  }\item[{\mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}}]{to }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Checks if a hive is connected after moving a piece. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em board} & A copy of the game board. \\
+\hline
+{\em from} & The original position of the piece. \\
+\hline
+{\em to} & The destination position of the piece. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the hive remains connected after moving the piece, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1strategies_1_1MoveStrategy_a2abbb7650b46a878c5edd2590b19c372_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1strategies_1_1MoveStrategy_a2abbb7650b46a878c5edd2590b19c372_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1strategies_1_1MoveStrategy_a0e587377152ffd4de231007eff521164}\label{classhive_1_1models_1_1strategies_1_1MoveStrategy_a0e587377152ffd4de231007eff521164} 
+\index{hive::models::strategies::MoveStrategy@{hive::models::strategies::MoveStrategy}!validatePieceOwnership@{validatePieceOwnership}}
+\index{validatePieceOwnership@{validatePieceOwnership}!hive::models::strategies::MoveStrategy@{hive::models::strategies::MoveStrategy}}
+\doxysubsubsection{\texorpdfstring{validatePieceOwnership()}{validatePieceOwnership()}}
+{\footnotesize\ttfamily bool hive\+::models\+::strategies\+::\+Move\+Strategy\+::validate\+Piece\+Ownership (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&}]{player }\end{DoxyParamCaption}) const}
+
+
+
+Validates the ownership of the piece by the player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player to validate ownership against. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the player owns the piece, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1strategies_1_1MoveStrategy_a0e587377152ffd4de231007eff521164_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1strategies_1_1MoveStrategy_a0e587377152ffd4de231007eff521164_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classhive_1_1models_1_1strategies_1_1MoveStrategy_ad1ed492c91ea22eba2933911a976e05b}\label{classhive_1_1models_1_1strategies_1_1MoveStrategy_ad1ed492c91ea22eba2933911a976e05b} 
+\index{hive::models::strategies::MoveStrategy@{hive::models::strategies::MoveStrategy}!piece@{piece}}
+\index{piece@{piece}!hive::models::strategies::MoveStrategy@{hive::models::strategies::MoveStrategy}}
+\doxysubsubsection{\texorpdfstring{piece}{piece}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}}\texorpdfstring{$\ast$}{*} hive\+::models\+::strategies\+::\+Move\+Strategy\+::piece\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+includes/models/strategies/\mbox{\hyperlink{MoveStrategy_8h}{Move\+Strategy.\+h}}\item 
+src/models/strategies/\mbox{\hyperlink{MoveStrategy_8cpp}{Move\+Strategy.\+cpp}}\end{DoxyCompactItemize}

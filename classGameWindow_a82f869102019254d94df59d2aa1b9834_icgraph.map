@@ -1,0 +1,30 @@
+<map id="GameWindow::updateUndoRedoButtons" name="GameWindow::updateUndoRedoButtons">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1289,77,1521,117"/>
+<area shape="rect" id="Node000002" href="$classGameWindow.html#a56419355dbf68fa9e8240bf4f630352e" title=" " alt="" coords="1049,137,1241,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1295,122,1208,140,1207,135,1293,117"/>
+<area shape="rect" id="Node000007" href="$classGameWindow.html#a3d2d2afbc20fe6f9c494556bfbf39d5b" title=" " alt="" coords="531,83,747,108"/>
+<area shape="poly" id="edge14_Node000001_Node000007" title=" " alt="" coords="1276,99,748,98,748,93,1276,94"/>
+<area shape="rect" id="Node000008" href="$classGameWindow.html#a5b3bcfd2cd2b6f07f0be351f114119db" title=" " alt="" coords="288,33,459,59"/>
+<area shape="poly" id="edge17_Node000001_Node000008" title=" " alt="" coords="1328,75,1241,55,1043,25,887,10,731,10,531,23,439,36,438,31,530,18,731,5,887,5,1043,20,1242,50,1329,70"/>
+<area shape="rect" id="Node000010" href="$classGameWindow.html#a3f8581191baa90b0e963a80102c87be7" title=" " alt="" coords="531,33,748,59"/>
+<area shape="poly" id="edge15_Node000001_Node000010" title=" " alt="" coords="1275,84,1241,81,975,63,748,52,748,47,975,58,1242,75,1276,78"/>
+<area shape="rect" id="Node000011" href="$classGameWindow.html#a379160a41f8d7e154cde54cec0c13393" title=" " alt="" coords="544,197,735,223"/>
+<area shape="poly" id="edge16_Node000001_Node000011" title=" " alt="" coords="1361,126,1306,155,1242,178,1175,193,1106,204,968,217,840,221,735,218,735,213,840,215,968,212,1105,199,1174,188,1241,173,1304,150,1359,121"/>
+<area shape="rect" id="Node000003" href="$classGameWindow.html#ada8c32048b32506944bd7f10bca9d232" title=" " alt="" coords="796,137,1001,163"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1036,162,1001,162,1002,156,1036,156"/>
+<area shape="poly" id="edge6_Node000003_Node000002" title=" " alt="" coords="1015,138,1049,139,1049,144,1015,144"/>
+<area shape="rect" id="Node000004" href="$classGameWindow.html#ac53fea4b030b13de4f300ee04ced1c89" title=" " alt="" coords="537,133,742,173"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="783,154,742,154,742,149,783,148"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="824,137,700,111,701,105,825,132"/>
+<area shape="poly" id="edge10_Node000003_Node000010" title=" " alt="" coords="865,132,811,102,747,72,710,61,712,56,749,67,813,97,868,128"/>
+<area shape="poly" id="edge12_Node000003_Node000011" title=" " alt="" coords="856,169,733,200,732,195,855,164"/>
+<area shape="rect" id="Node000005" href="$classMenu.html#ad623fdc5e77ed481a1611abfdf3c3129" title=" " alt="" coords="264,140,483,165"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="523,155,483,155,483,150,523,150"/>
+<area shape="rect" id="Node000006" href="$classMenu.html#a81e517b62384dc184425757e6dba87d3" title=" " alt="" coords="59,140,162,165"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="250,155,162,155,162,150,250,150"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="557,83,442,61,443,56,557,78"/>
+<area shape="rect" id="Node000009" href="$classGameWindow.html#aba82e451e3ca31cb27b36faefeee8d6c" title=" " alt="" coords="5,33,216,59"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="274,49,216,49,216,43,274,43"/>
+<area shape="poly" id="edge11_Node000010_Node000008" title=" " alt="" coords="517,49,459,49,459,43,517,43"/>
+<area shape="poly" id="edge13_Node000011_Node000003" title=" " alt="" coords="682,191,805,160,806,165,683,196"/>
+</map>

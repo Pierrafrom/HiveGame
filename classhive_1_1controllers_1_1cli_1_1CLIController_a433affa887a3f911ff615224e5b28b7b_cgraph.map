@@ -1,0 +1,19 @@
+<map id="hive::controllers::cli::CLIController::loadGameFromFile" name="hive::controllers::cli::CLIController::loadGameFromFile">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,190,151,245"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1utils_1_1Serializer.html#aacb397dc8b6469f10d261f8f66b1cb38" title="Loads a game state from a file." alt="" coords="199,197,353,237"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,215,185,215,185,220,151,220"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1models_1_1PieceFactory.html#a133ee6c09d84b532db748416c3aaa8d0" title="Creates a piece based on the specified type with optional attributes." alt="" coords="401,5,597,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="286,196,329,127,362,89,400,55,409,49,412,54,403,59,365,92,334,130,290,198"/>
+<area shape="rect" id="Node000004" href="$classhive_1_1models_1_1Game.html#a1e2f52e7a24485701b82cbddccd21912" title="Gets the game board." alt="" coords="423,69,576,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="297,195,342,157,400,119,414,112,416,117,403,124,346,161,300,199"/>
+<area shape="rect" id="Node000005" href="$classhive_1_1models_1_1Game.html#adffa668dd4483fdaf21acfa4fac42f14" title="Gets the player corresponding to the given index, or the current player if no index is provided." alt="" coords="423,133,576,173"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="346,195,415,175,417,180,347,200"/>
+<area shape="rect" id="Node000006" href="$classhive_1_1models_1_1Game.html#aa0eb571c5102f2f04afc77d7318476a8" title="Gets the redo stack." alt="" coords="423,197,576,237"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="354,215,409,215,409,220,354,220"/>
+<area shape="rect" id="Node000007" href="$classhive_1_1models_1_1Game.html#aa1857cf3fb038d3924801ac414e16ae6" title="Gets the undo stack." alt="" coords="423,261,576,301"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="347,235,417,255,415,260,346,240"/>
+<area shape="rect" id="Node000008" href="$classhive_1_1models_1_1Game.html#ad4fd3a64a7ac1539477ce269ddfc4dd0" title="Advances the game to the next turn." alt="" coords="423,325,576,365"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="300,235,346,273,403,311,416,318,414,322,400,316,342,278,297,240"/>
+<area shape="rect" id="Node000009" href="$classhive_1_1models_1_1Game.html#a345f1f4de5f02c0b0d275df74bc6f782" title="Resets the game with new player names." alt="" coords="423,389,576,429"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="290,236,334,304,365,342,403,375,412,381,409,385,400,379,362,346,329,308,286,239"/>
+</map>

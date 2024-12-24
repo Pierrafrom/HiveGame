@@ -1,0 +1,19 @@
+<map id="hive::models::Board::neighborsNotOccupied" name="hive::models::Board::neighborsNotOccupied">
+<area shape="rect" id="Node000001" title="Retrieves all hexes surrounding a specific hex location that are available." alt="" coords="5,113,183,153"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1Board.html#a5d547cf394c28d4801fb6e6cfe4eb5e9" title="Retrieves all hexes surrounding a specific hex location." alt="" coords="231,113,383,153"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="183,131,217,131,217,136,183,136"/>
+<area shape="poly" id="edge10_Node000002_Node000002" title=" " alt="" coords="268,114,266,104,272,95,286,89,307,87,330,90,343,97,341,102,329,95,307,92,287,94,276,99,271,105,274,112"/>
+<area shape="rect" id="Node000003" href="$namespacehive_1_1models_1_1enums.html#a43af89b8a126e31344db8c8cafc8cf3f" title="Retrieves all possible directions in an array." alt="" coords="431,5,589,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="341,111,429,62,453,49,456,54,432,66,344,115"/>
+<area shape="rect" id="Node000004" href="$classhive_1_1models_1_1Hex.html#a94e250128565af8fbae3c988af319bbf" title="Retrieves the x&#45;coordinate of the hex cell." alt="" coords="637,86,816,111"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="383,124,623,104,624,110,383,130"/>
+<area shape="rect" id="Node000005" href="$classhive_1_1models_1_1Hex.html#a18c77d5b702f072962352f4d84ccca4d" title="Retrieves the y&#45;coordinate of the hex cell." alt="" coords="638,151,815,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="383,136,624,154,624,159,383,142"/>
+<area shape="rect" id="Node000006" href="$classhive_1_1models_1_1Hex.html#a6fb2c3680c7bddfddaeff4e356650552" title="Retrieves the z&#45;coordinate of the hex cell." alt="" coords="637,205,816,230"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="329,152,373,189,401,207,431,220,487,233,544,237,599,235,649,229,650,235,600,240,544,242,486,238,430,225,399,212,370,193,326,156"/>
+<area shape="rect" id="Node000007" href="$classhive_1_1models_1_1Board.html#adb2633e6c0842bf0ed582c81015e7cb4" title="Retrieves the neighboring hex in the given direction." alt="" coords="434,171,586,211"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="379,151,426,164,425,169,377,156"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="557,168,682,114,684,119,559,173"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="586,179,624,174,625,179,587,184"/>
+<area shape="poly" id="edge9_Node000007_Node000006" title=" " alt="" coords="587,197,624,202,624,207,586,203"/>
+</map>

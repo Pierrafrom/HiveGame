@@ -1,0 +1,7 @@
+<map id="hive::models::strategies::BeetleMoveStrategy" name="hive::models::strategies::BeetleMoveStrategy">
+<area shape="rect" id="Node000001" title="Movement strategy for the Beetle piece in the Hive game." alt="" coords="22,723,205,863"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1strategies_1_1MoveStrategy.html" title="Abstract class defining the movement strategy for game pieces." alt="" coords="5,453,221,673"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,687,116,722,111,722,111,687"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1models_1_1Piece.html" title="Base class representing a generic game piece in the Hive game." alt="" coords="38,5,189,391"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="116,391,116,436,111,436,111,391"/>
+</map>

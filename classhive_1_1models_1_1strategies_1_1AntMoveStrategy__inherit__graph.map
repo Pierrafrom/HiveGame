@@ -1,0 +1,5 @@
+<map id="hive::models::strategies::AntMoveStrategy" name="hive::models::strategies::AntMoveStrategy">
+<area shape="rect" id="Node000001" title="Movement strategy for the Ant piece in the Hive game." alt="" coords="28,273,199,453"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1strategies_1_1MoveStrategy.html" title="Abstract class defining the movement strategy for game pieces." alt="" coords="5,5,221,225"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,239,116,273,111,273,111,239"/>
+</map>

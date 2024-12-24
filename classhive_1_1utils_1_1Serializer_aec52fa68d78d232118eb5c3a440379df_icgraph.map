@@ -1,0 +1,13 @@
+<map id="hive::utils::Serializer::getInstance" name="hive::utils::Serializer::getInstance">
+<area shape="rect" id="Node000001" title="Returns the singleton instance of the Serializer class." alt="" coords="745,23,900,63"/>
+<area shape="rect" id="Node000002" href="$classMenu.html#a39dfdaa3104de72e7ac6800258facdee" title=" " alt="" coords="508,5,672,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="731,36,672,30,673,24,732,31"/>
+<area shape="rect" id="Node000004" href="$classGameWindow.html#a9931dfa33915f6b56508ba24a8350337" title=" " alt="" coords="483,55,697,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="732,55,698,59,697,54,731,50"/>
+<area shape="rect" id="Node000003" href="$classMenu.html#a81e517b62384dc184425757e6dba87d3" title=" " alt="" coords="298,5,401,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="494,21,401,21,401,15,494,15"/>
+<area shape="rect" id="Node000005" href="$classGameWindow.html#a5b3bcfd2cd2b6f07f0be351f114119db" title=" " alt="" coords="264,55,435,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="469,70,435,70,435,65,469,65"/>
+<area shape="rect" id="Node000006" href="$classGameWindow.html#aba82e451e3ca31cb27b36faefeee8d6c" title=" " alt="" coords="5,55,216,80"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="250,70,216,70,216,65,250,65"/>
+</map>

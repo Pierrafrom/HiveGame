@@ -1,0 +1,451 @@
+\doxysection{hive\+::models\+::Player Class Reference}
+\hypertarget{classhive_1_1models_1_1Player}{}\label{classhive_1_1models_1_1Player}\index{hive::models::Player@{hive::models::Player}}
+
+
+Represents a player in the Hive game.  
+
+
+
+
+{\ttfamily \#include $<$Player.\+h$>$}
+
+
+
+Inheritance diagram for hive\+::models\+::Player\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{classhive_1_1models_1_1Player__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for hive\+::models\+::Player\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{classhive_1_1models_1_1Player__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhive_1_1models_1_1Player_a3bf430dff8db5650036104f974e5d3e8}{Player}} (size\+\_\+t \mbox{\hyperlink{classhive_1_1models_1_1Player_af54cdc9d89188fb04c4b1f977de2b685}{id}}=\mbox{\hyperlink{classhive_1_1models_1_1Player_a5f0481603674b0d90294f90f2201c42b}{player\+Next\+Id}}++, std\+::string \mbox{\hyperlink{classhive_1_1models_1_1Player_af451ffc6de593cace1dc0a8b0bb2f32d}{name}}="{}"{})
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classhive_1_1models_1_1Player}{Player} with a unique identifier and optional name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhive_1_1models_1_1Player_ac37602aeb178a81932b3ab4a586b8278}{Player}} (std\+::string \mbox{\hyperlink{classhive_1_1models_1_1Player_af451ffc6de593cace1dc0a8b0bb2f32d}{name}})
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classhive_1_1models_1_1Player}{Player} with a unique identifier and a name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhive_1_1models_1_1Player_a1ef463e94753900e311f4737b14410b4}{\texorpdfstring{$\sim$}{\string~}\+Player}} ()=default
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhive_1_1models_1_1Player_ad92675df96f3ed18d60e5921c581e3fa}{Player}} (const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Delete copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \& \mbox{\hyperlink{classhive_1_1models_1_1Player_ab6d84480033391ad02aeebec48ff7a76}{operator=}} (const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Delete copy assignment operator. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhive_1_1models_1_1Player_adea329edf5b898510dd57c513edf7880}{Player}} (\mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&\&) noexcept=default
+\begin{DoxyCompactList}\small\item\em Default move constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \& \mbox{\hyperlink{classhive_1_1models_1_1Player_a20cf950fce6a8a0681dd403d8c024b0a}{operator=}} (\mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&\&) noexcept=default
+\begin{DoxyCompactList}\small\item\em Default move assignment operator. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classhive_1_1models_1_1Player_a34550c540f2ced691b6b0746089bb1c4}{get\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the player\textquotesingle{}s unique identifier. \end{DoxyCompactList}\item 
+const std\+::string \& \mbox{\hyperlink{classhive_1_1models_1_1Player_a1894963211584b2646e971845080c345}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the player\textquotesingle{}s name. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classhive_1_1models_1_1Player_a60cbac742776f742e55b07f131801fc1}{get\+Piece\+Count}} (std\+::optional$<$ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{enums\+::\+Piece\+Type}} $>$ type=std\+::nullopt) const
+\begin{DoxyCompactList}\small\item\em Retrieves the total number of pieces owned by the player. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ $>$ \mbox{\hyperlink{classhive_1_1models_1_1Player_ad487d70f04c24d45664ad7bd90b29726}{get\+Pieces}} (std\+::optional$<$ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{enums\+::\+Piece\+Type}} $>$ type=std\+::nullopt) const
+\begin{DoxyCompactList}\small\item\em Retrieves pieces owned by the player. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classhive_1_1models_1_1Player_a78c673996a094cc05227abbd7adca263}{set\+Name}} (const std\+::string \&new\+Name)
+\begin{DoxyCompactList}\small\item\em Sets the player\textquotesingle{}s name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classhive_1_1models_1_1Player_a12ad34d510a5820fdc318d976db9843d}{add\+Piece}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ \&piece)
+\begin{DoxyCompactList}\small\item\em Adds a piece to the player\textquotesingle{}s collection. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classhive_1_1models_1_1Player_a1329695588ec253da33bffcb12943099}{owns\+Piece}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ \&piece) const
+\begin{DoxyCompactList}\small\item\em Checks if the player owns a specific piece. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classhive_1_1models_1_1Player_af04a365ed862ca9e06742019ef185ba4}{remove\+Piece}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ \&piece)
+\begin{DoxyCompactList}\small\item\em Removes a piece from the player\textquotesingle{}s collection. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classhive_1_1models_1_1Player_a057008ba8455badcb40ca9ff09a2dd00}{to\+String}} () const
+\begin{DoxyCompactList}\small\item\em Converts the \doxylink{classhive_1_1models_1_1Player}{Player} object to a string representation. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classhive_1_1models_1_1Player_a44580d95a600029d04fb8b98cbf4a0eb}{operator==}} (const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&other) const
+\begin{DoxyCompactList}\small\item\em Equality operator for comparing two \doxylink{classhive_1_1models_1_1Player}{Player} objects. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classhive_1_1models_1_1Player_ad0bc300886145ea07b727e8818a41f61}{operator!=}} (const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&other) const
+\begin{DoxyCompactList}\small\item\em Inequality operator for comparing two \doxylink{classhive_1_1models_1_1Player}{Player} objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classhive_1_1models_1_1Player_a1048bffc0a51dc6cf1060bc986b9a4e7}{reset\+Player\+Next\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Resets the player\+Next\+Id counter to 1. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{classhive_1_1models_1_1Player_af54cdc9d89188fb04c4b1f977de2b685}{id}}
+\item 
+std\+::string \mbox{\hyperlink{classhive_1_1models_1_1Player_af451ffc6de593cace1dc0a8b0bb2f32d}{name}}
+\item 
+std\+::vector$<$ std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ $>$ \mbox{\hyperlink{classhive_1_1models_1_1Player_a2c9e473718ca8c76d3df34a8729e918a}{pieces}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static size\+\_\+t \mbox{\hyperlink{classhive_1_1models_1_1Player_a5f0481603674b0d90294f90f2201c42b}{player\+Next\+Id}} = 1
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{classhive_1_1models_1_1Player_a24fe0eb7b3d2fe988df201c5974b6382}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&player)
+\begin{DoxyCompactList}\small\item\em Overloads the stream insertion operator for the \doxylink{classhive_1_1models_1_1Player}{Player} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a player in the Hive game. 
+
+The \doxylink{classhive_1_1models_1_1Player}{Player} class manages the pieces owned by the player, tracks their count, and provides interactions with the game logic. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classhive_1_1models_1_1Player_a3bf430dff8db5650036104f974e5d3e8}\label{classhive_1_1models_1_1Player_a3bf430dff8db5650036104f974e5d3e8} 
+\index{hive::models::Player@{hive::models::Player}!Player@{Player}}
+\index{Player@{Player}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily hive\+::models\+::\+Player\+::\+Player (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{id = {\ttfamily \mbox{\hyperlink{classhive_1_1models_1_1Player_a5f0481603674b0d90294f90f2201c42b}{player\+Next\+Id}}++},  }\item[{std\+::string}]{name = {\ttfamily "{}"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs a \doxylink{classhive_1_1models_1_1Player}{Player} with a unique identifier and optional name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Unique identifier for the player. Defaults to auto-\/incremented ID. \\
+\hline
+{\em name} & Name of the player. Defaults to an empty string. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classhive_1_1models_1_1Player_ac37602aeb178a81932b3ab4a586b8278}\label{classhive_1_1models_1_1Player_ac37602aeb178a81932b3ab4a586b8278} 
+\index{hive::models::Player@{hive::models::Player}!Player@{Player}}
+\index{Player@{Player}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily hive\+::models\+::\+Player\+::\+Player (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructs a \doxylink{classhive_1_1models_1_1Player}{Player} with a unique identifier and a name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the player. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classhive_1_1models_1_1Player_a1ef463e94753900e311f4737b14410b4}\label{classhive_1_1models_1_1Player_a1ef463e94753900e311f4737b14410b4} 
+\index{hive::models::Player@{hive::models::Player}!````~Player@{\texorpdfstring{$\sim$}{\string~}Player}}
+\index{````~Player@{\texorpdfstring{$\sim$}{\string~}Player}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Player()}{\string~Player()}}
+{\footnotesize\ttfamily hive\+::models\+::\+Player\+::\texorpdfstring{$\sim$}{\string~}\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Destructor. 
+
+\Hypertarget{classhive_1_1models_1_1Player_ad92675df96f3ed18d60e5921c581e3fa}\label{classhive_1_1models_1_1Player_ad92675df96f3ed18d60e5921c581e3fa} 
+\index{hive::models::Player@{hive::models::Player}!Player@{Player}}
+\index{Player@{Player}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily hive\+::models\+::\+Player\+::\+Player (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Delete copy constructor. 
+
+\Hypertarget{classhive_1_1models_1_1Player_adea329edf5b898510dd57c513edf7880}\label{classhive_1_1models_1_1Player_adea329edf5b898510dd57c513edf7880} 
+\index{hive::models::Player@{hive::models::Player}!Player@{Player}}
+\index{Player@{Player}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily hive\+::models\+::\+Player\+::\+Player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}, {\ttfamily [noexcept]}}
+
+
+
+Default move constructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classhive_1_1models_1_1Player_a12ad34d510a5820fdc318d976db9843d}\label{classhive_1_1models_1_1Player_a12ad34d510a5820fdc318d976db9843d} 
+\index{hive::models::Player@{hive::models::Player}!addPiece@{addPiece}}
+\index{addPiece@{addPiece}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{addPiece()}{addPiece()}}
+{\footnotesize\ttfamily void hive\+::models\+::\+Player\+::add\+Piece (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ \&}]{piece }\end{DoxyParamCaption})}
+
+
+
+Adds a piece to the player\textquotesingle{}s collection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em piece} & Shared pointer to the piece to add. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classhive_1_1models_1_1Player_a34550c540f2ced691b6b0746089bb1c4}\label{classhive_1_1models_1_1Player_a34550c540f2ced691b6b0746089bb1c4} 
+\index{hive::models::Player@{hive::models::Player}!getId@{getId}}
+\index{getId@{getId}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily size\+\_\+t hive\+::models\+::\+Player\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves the player\textquotesingle{}s unique identifier. 
+
+\begin{DoxyReturn}{Returns}
+The player\textquotesingle{}s identifier. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Player_a34550c540f2ced691b6b0746089bb1c4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Player_a1894963211584b2646e971845080c345}\label{classhive_1_1models_1_1Player_a1894963211584b2646e971845080c345} 
+\index{hive::models::Player@{hive::models::Player}!getName@{getName}}
+\index{getName@{getName}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily const std\+::string \& hive\+::models\+::\+Player\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves the player\textquotesingle{}s name. 
+
+\begin{DoxyReturn}{Returns}
+The player\textquotesingle{}s name. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Player_a1894963211584b2646e971845080c345_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Player_a60cbac742776f742e55b07f131801fc1}\label{classhive_1_1models_1_1Player_a60cbac742776f742e55b07f131801fc1} 
+\index{hive::models::Player@{hive::models::Player}!getPieceCount@{getPieceCount}}
+\index{getPieceCount@{getPieceCount}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{getPieceCount()}{getPieceCount()}}
+{\footnotesize\ttfamily size\+\_\+t hive\+::models\+::\+Player\+::get\+Piece\+Count (\begin{DoxyParamCaption}\item[{std\+::optional$<$ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{enums\+::\+Piece\+Type}} $>$}]{type = {\ttfamily std\+:\+:nullopt} }\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the total number of pieces owned by the player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Optional type to filter the count. Defaults to {\ttfamily std\+::nullopt} for all types. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The total count of pieces of the specified type, or all pieces if no type is provided. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Player_a60cbac742776f742e55b07f131801fc1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Player_ad487d70f04c24d45664ad7bd90b29726}\label{classhive_1_1models_1_1Player_ad487d70f04c24d45664ad7bd90b29726} 
+\index{hive::models::Player@{hive::models::Player}!getPieces@{getPieces}}
+\index{getPieces@{getPieces}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{getPieces()}{getPieces()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ $>$ hive\+::models\+::\+Player\+::get\+Pieces (\begin{DoxyParamCaption}\item[{std\+::optional$<$ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{enums\+::\+Piece\+Type}} $>$}]{type = {\ttfamily std\+:\+:nullopt} }\end{DoxyParamCaption}) const}
+
+
+
+Retrieves pieces owned by the player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Optional type to filter the pieces. If no type is provided, all pieces are returned. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of shared pointers to the pieces owned by the player. 
+\end{DoxyReturn}
+\Hypertarget{classhive_1_1models_1_1Player_ad0bc300886145ea07b727e8818a41f61}\label{classhive_1_1models_1_1Player_ad0bc300886145ea07b727e8818a41f61} 
+\index{hive::models::Player@{hive::models::Player}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool hive\+::models\+::\+Player\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inequality operator for comparing two \doxylink{classhive_1_1models_1_1Player}{Player} objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The other \doxylink{classhive_1_1models_1_1Player}{Player} object to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the two players are considered different, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{classhive_1_1models_1_1Player_ab6d84480033391ad02aeebec48ff7a76}\label{classhive_1_1models_1_1Player_ab6d84480033391ad02aeebec48ff7a76} 
+\index{hive::models::Player@{hive::models::Player}!operator=@{operator=}}
+\index{operator=@{operator=}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \& hive\+::models\+::\+Player\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Delete copy assignment operator. 
+
+\Hypertarget{classhive_1_1models_1_1Player_a20cf950fce6a8a0681dd403d8c024b0a}\label{classhive_1_1models_1_1Player_a20cf950fce6a8a0681dd403d8c024b0a} 
+\index{hive::models::Player@{hive::models::Player}!operator=@{operator=}}
+\index{operator=@{operator=}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \& hive\+::models\+::\+Player\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}, {\ttfamily [noexcept]}}
+
+
+
+Default move assignment operator. 
+
+\Hypertarget{classhive_1_1models_1_1Player_a44580d95a600029d04fb8b98cbf4a0eb}\label{classhive_1_1models_1_1Player_a44580d95a600029d04fb8b98cbf4a0eb} 
+\index{hive::models::Player@{hive::models::Player}!operator==@{operator==}}
+\index{operator==@{operator==}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool hive\+::models\+::\+Player\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Equality operator for comparing two \doxylink{classhive_1_1models_1_1Player}{Player} objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The other \doxylink{classhive_1_1models_1_1Player}{Player} object to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the two players are considered equal, false otherwise.
+\end{DoxyReturn}
+Players are considered equal if they have the same ID. \Hypertarget{classhive_1_1models_1_1Player_a1329695588ec253da33bffcb12943099}\label{classhive_1_1models_1_1Player_a1329695588ec253da33bffcb12943099} 
+\index{hive::models::Player@{hive::models::Player}!ownsPiece@{ownsPiece}}
+\index{ownsPiece@{ownsPiece}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{ownsPiece()}{ownsPiece()}}
+{\footnotesize\ttfamily bool hive\+::models\+::\+Player\+::owns\+Piece (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ \&}]{piece }\end{DoxyParamCaption}) const}
+
+
+
+Checks if the player owns a specific piece. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em piece} & Shared pointer to the piece to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the player owns the piece, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{classhive_1_1models_1_1Player_af04a365ed862ca9e06742019ef185ba4}\label{classhive_1_1models_1_1Player_af04a365ed862ca9e06742019ef185ba4} 
+\index{hive::models::Player@{hive::models::Player}!removePiece@{removePiece}}
+\index{removePiece@{removePiece}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{removePiece()}{removePiece()}}
+{\footnotesize\ttfamily void hive\+::models\+::\+Player\+::remove\+Piece (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ \&}]{piece }\end{DoxyParamCaption})}
+
+
+
+Removes a piece from the player\textquotesingle{}s collection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em piece} & Shared pointer to the piece to remove. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classhive_1_1models_1_1Player_a1048bffc0a51dc6cf1060bc986b9a4e7}\label{classhive_1_1models_1_1Player_a1048bffc0a51dc6cf1060bc986b9a4e7} 
+\index{hive::models::Player@{hive::models::Player}!resetPlayerNextId@{resetPlayerNextId}}
+\index{resetPlayerNextId@{resetPlayerNextId}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{resetPlayerNextId()}{resetPlayerNextId()}}
+{\footnotesize\ttfamily static void hive\+::models\+::\+Player\+::reset\+Player\+Next\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Resets the player\+Next\+Id counter to 1. 
+
+\Hypertarget{classhive_1_1models_1_1Player_a78c673996a094cc05227abbd7adca263}\label{classhive_1_1models_1_1Player_a78c673996a094cc05227abbd7adca263} 
+\index{hive::models::Player@{hive::models::Player}!setName@{setName}}
+\index{setName@{setName}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily void hive\+::models\+::\+Player\+::set\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{new\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the player\textquotesingle{}s name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Name} & The new name to assign to the player. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classhive_1_1models_1_1Player_a057008ba8455badcb40ca9ff09a2dd00}\label{classhive_1_1models_1_1Player_a057008ba8455badcb40ca9ff09a2dd00} 
+\index{hive::models::Player@{hive::models::Player}!toString@{toString}}
+\index{toString@{toString}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily std\+::string hive\+::models\+::\+Player\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Converts the \doxylink{classhive_1_1models_1_1Player}{Player} object to a string representation. 
+
+\begin{DoxyReturn}{Returns}
+A string representation of the \doxylink{classhive_1_1models_1_1Player}{Player} object. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classhive_1_1models_1_1Player_a24fe0eb7b3d2fe988df201c5974b6382}\label{classhive_1_1models_1_1Player_a24fe0eb7b3d2fe988df201c5974b6382} 
+\index{hive::models::Player@{hive::models::Player}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&}]{player }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Overloads the stream insertion operator for the \doxylink{classhive_1_1models_1_1Player}{Player} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream. \\
+\hline
+{\em player} & The \doxylink{classhive_1_1models_1_1Player}{Player} object to output. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the output stream. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classhive_1_1models_1_1Player_af54cdc9d89188fb04c4b1f977de2b685}\label{classhive_1_1models_1_1Player_af54cdc9d89188fb04c4b1f977de2b685} 
+\index{hive::models::Player@{hive::models::Player}!id@{id}}
+\index{id@{id}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily size\+\_\+t hive\+::models\+::\+Player\+::id\hspace{0.3cm}{\ttfamily [private]}}
+
+Unique identifier for the player \Hypertarget{classhive_1_1models_1_1Player_af451ffc6de593cace1dc0a8b0bb2f32d}\label{classhive_1_1models_1_1Player_af451ffc6de593cace1dc0a8b0bb2f32d} 
+\index{hive::models::Player@{hive::models::Player}!name@{name}}
+\index{name@{name}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily std\+::string hive\+::models\+::\+Player\+::name\hspace{0.3cm}{\ttfamily [private]}}
+
+Name of the player \Hypertarget{classhive_1_1models_1_1Player_a2c9e473718ca8c76d3df34a8729e918a}\label{classhive_1_1models_1_1Player_a2c9e473718ca8c76d3df34a8729e918a} 
+\index{hive::models::Player@{hive::models::Player}!pieces@{pieces}}
+\index{pieces@{pieces}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{pieces}{pieces}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::weak\+\_\+ptr$<$\mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}}$>$ $>$ hive\+::models\+::\+Player\+::pieces\hspace{0.3cm}{\ttfamily [private]}}
+
+Weak references to the pieces owned \Hypertarget{classhive_1_1models_1_1Player_a5f0481603674b0d90294f90f2201c42b}\label{classhive_1_1models_1_1Player_a5f0481603674b0d90294f90f2201c42b} 
+\index{hive::models::Player@{hive::models::Player}!playerNextId@{playerNextId}}
+\index{playerNextId@{playerNextId}!hive::models::Player@{hive::models::Player}}
+\doxysubsubsection{\texorpdfstring{playerNextId}{playerNextId}}
+{\footnotesize\ttfamily size\+\_\+t hive\+::models\+::\+Player\+::player\+Next\+Id = 1\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Static counter for unique player IDs 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+includes/models/\mbox{\hyperlink{Player_8h}{Player.\+h}}\item 
+src/models/\mbox{\hyperlink{Player_8cpp}{Player.\+cpp}}\end{DoxyCompactItemize}

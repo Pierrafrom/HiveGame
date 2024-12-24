@@ -1,0 +1,7 @@
+<map id="GameWindow::isSelectedPieceOnBoard" name="GameWindow::isSelectedPieceOnBoard">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,37,228,77"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1Board.html#a5669e40b94ac6706545ee6c3e26ba2c1" title=" " alt="" coords="277,5,429,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="228,40,262,35,263,40,229,45"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1models_1_1Game.html#a1e2f52e7a24485701b82cbddccd21912" title="Gets the game board." alt="" coords="276,69,429,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="229,70,263,74,262,80,228,75"/>
+</map>

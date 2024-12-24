@@ -1,0 +1,5 @@
+<map id="hive::models::Game::initializeGame2players" name="hive::models::Game::initializeGame2players">
+<area shape="rect" id="Node000001" title="Initializes the game with custom player names." alt="" coords="5,5,187,45"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1Game.html#a345f1f4de5f02c0b0d275df74bc6f782" title="Resets the game with new player names." alt="" coords="235,5,388,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="187,23,221,23,221,28,187,28"/>
+</map>

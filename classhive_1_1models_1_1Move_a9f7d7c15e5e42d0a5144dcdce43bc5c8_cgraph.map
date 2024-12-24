@@ -1,0 +1,5 @@
+<map id="hive::models::Move::toString" name="hive::models::Move::toString">
+<area shape="rect" id="Node000001" title="Converts the Move object to a string representation." alt="" coords="5,5,156,45"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1Hex.html#ae556b0a9493cc62ed4654eebfb4895f7" title="Converts the Hex object to a string representation." alt="" coords="204,5,352,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="156,23,190,23,190,28,156,28"/>
+</map>

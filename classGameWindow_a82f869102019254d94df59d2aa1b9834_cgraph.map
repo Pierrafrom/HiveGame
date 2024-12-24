@@ -1,0 +1,7 @@
+<map id="GameWindow::updateUndoRedoButtons" name="GameWindow::updateUndoRedoButtons">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,37,237,77"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1Game.html#aa0eb571c5102f2f04afc77d7318476a8" title="Gets the redo stack." alt="" coords="285,5,439,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,39,271,35,272,40,238,45"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1models_1_1Game.html#aa1857cf3fb038d3924801ac414e16ae6" title="Gets the undo stack." alt="" coords="285,69,439,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="238,70,272,75,271,80,237,75"/>
+</map>

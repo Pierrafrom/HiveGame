@@ -1,0 +1,679 @@
+\doxysection{hive\+::models\+::Board Class Reference}
+\hypertarget{classhive_1_1models_1_1Board}{}\label{classhive_1_1models_1_1Board}\index{hive::models::Board@{hive::models::Board}}
+
+
+Represents the game board for the Hive game.  
+
+
+
+
+{\ttfamily \#include $<$Board.\+h$>$}
+
+
+
+Collaboration diagram for hive\+::models\+::Board\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{classhive_1_1models_1_1Board__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhive_1_1models_1_1Board_acda55c5180ec88e3f6adba6d293e3994}{Board}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classhive_1_1models_1_1Board}{Board} and initializes it with an empty hex at (0, 0, 0). \end{DoxyCompactList}\item 
+const std\+::pmr\+::unordered\+\_\+map$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}, std\+::stack$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ $>$ $>$ \& \mbox{\hyperlink{classhive_1_1models_1_1Board_a3f6817faace7fffc2f7dfdd63cf4b78e}{get\+Board}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the board map with read access only. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ \mbox{\hyperlink{classhive_1_1models_1_1Board_a46282da1d7c235347de43646fa4e5dd9}{get\+Top\+Piece}} (const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&hex) const
+\begin{DoxyCompactList}\small\item\em Retrieves the top piece at a specific hex location. \end{DoxyCompactList}\item 
+const std\+::pmr\+::unordered\+\_\+map$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}, std\+::stack$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ $>$ $>$ \& \mbox{\hyperlink{classhive_1_1models_1_1Board_a5669e40b94ac6706545ee6c3e26ba2c1}{get\+All\+Hexes}} () const
+\item 
+void \mbox{\hyperlink{classhive_1_1models_1_1Board_ae7d0b98a5b8a14b47e25212b96a9c495}{add\+Piece}} (\mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} hex, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ piece)
+\begin{DoxyCompactList}\small\item\em Adds a piece to a specific hex location on the board. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ \mbox{\hyperlink{classhive_1_1models_1_1Board_af229727fd9d164d530230ca7c7a33f05}{unstack\+Piece}} (\mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} hex)
+\begin{DoxyCompactList}\small\item\em Removes and returns the top piece from a specific hex location. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classhive_1_1models_1_1Board_a73e7cb8c98d471ff351ce0baafb48d03}{is\+Occupied}} (const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&hex) const
+\begin{DoxyCompactList}\small\item\em Checks if a hex location is occupied by any pieces. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} $>$ \mbox{\hyperlink{classhive_1_1models_1_1Board_a5d547cf394c28d4801fb6e6cfe4eb5e9}{neighbors}} (const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&hex) const
+\begin{DoxyCompactList}\small\item\em Retrieves all hexes surrounding a specific hex location. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} $>$ \mbox{\hyperlink{classhive_1_1models_1_1Board_aaa3ea2bc5154fc656c15e30cea487de3}{neighbors\+Not\+Occupied}} (const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&hex) const
+\begin{DoxyCompactList}\small\item\em Retrieves all hexes surrounding a specific hex location that are available. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classhive_1_1models_1_1Board_afab2afbd4b7466185c8937755928f364}{piece\+Count}} () const
+\begin{DoxyCompactList}\small\item\em Gets the total number of pieces on the board. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classhive_1_1models_1_1Board_af6d61726e1d7de39fccb01402c5856ec}{are\+All\+Pieces\+Connected}} () const
+\begin{DoxyCompactList}\small\item\em Checks if all pieces on the board are connected. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classhive_1_1models_1_1Board_a5cd2ab2ff3df63549605371f8b0d2aa0}{move\+Piece}} (\mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} from, \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} to)
+\begin{DoxyCompactList}\small\item\em Moves a piece from one hex to another. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \mbox{\hyperlink{classhive_1_1models_1_1Board_adb2633e6c0842bf0ed582c81015e7cb4}{neighbor}} (const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&hex, \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513db}{enums\+::\+Direction}} direction) const
+\begin{DoxyCompactList}\small\item\em Retrieves the neighboring hex in the given direction. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classhive_1_1models_1_1Board_a1871d90def91959c79a9d39840bd9723}{can\+Slice\+Between}} (const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&from, \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513db}{enums\+::\+Direction}} direction) const
+\begin{DoxyCompactList}\small\item\em Checks if a slice can be made between two hexes. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} $>$ \mbox{\hyperlink{classhive_1_1models_1_1Board_a992551fd769327ba8eca5b2eaef48576}{all\+Empty\+Hexes}} () const
+\begin{DoxyCompactList}\small\item\em get all empty hexes on the board \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classhive_1_1models_1_1Board_af6f7cd4c9a2ccc8bed94a7c06921ee27}{clear}} ()
+\begin{DoxyCompactList}\small\item\em Clears the board, removing all pieces and hexes. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classhive_1_1models_1_1Board_ad9d75449bb01ae74fb1a9d9ba1d4c7f1}{to\+String}} () const
+\item 
+\mbox{\hyperlink{classhive_1_1models_1_1Board_a7f2d6bd1c30330e1c7b2a564fc729a5f}{\texorpdfstring{$\sim$}{\string~}\+Board}} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classhive_1_1models_1_1Board_a663c09a5e9ed6333ecb0c706464b6159}{generate\+Surrounding\+Hexes}} (const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&hex)
+\begin{DoxyCompactList}\small\item\em Generates hexes surrounding a given hex location. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classhive_1_1models_1_1Board_ab5ae023f0e876fc73f405c97abfb8ac0}{free\+Surrounding\+Hexes}} (const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&hex)
+\begin{DoxyCompactList}\small\item\em Frees hexes surrounding a given hex location if no longer needed. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classhive_1_1models_1_1Board_a462b8c1ef8af1ee4db256136c3dd20d7}{has\+Non\+Empty\+Neighbors}} (const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&hex) const
+\begin{DoxyCompactList}\small\item\em Checks if a hex location has non-\/empty neighboring hexes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::pmr\+::unordered\+\_\+map$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}, std\+::stack$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ $>$ $>$ \mbox{\hyperlink{classhive_1_1models_1_1Board_a41a92da849af08e5c294b3af17e99d4b}{board}} \{std\+::pmr\+::get\+\_\+default\+\_\+resource()\}
+\begin{DoxyCompactList}\small\item\em The board is represented as a map of hex locations to a stack of pieces. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{classhive_1_1models_1_1Board_ab371c3ae6aa377e0cbd3da03862935a3}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&\mbox{\hyperlink{classhive_1_1models_1_1Board_a41a92da849af08e5c294b3af17e99d4b}{board}})
+\begin{DoxyCompactList}\small\item\em Overloads the stream insertion operator for \doxylink{classhive_1_1models_1_1Board}{Board}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the game board for the Hive game. 
+
+The \doxylink{classhive_1_1models_1_1Board}{Board} class manages the hexagonal grid on which the Hive game is played. It handles the placement and removal of pieces, as well as the dynamic creation and deletion of hexes (cells) as the game progresses. The board ensures that there is always a single ring of empty hexes surrounding the cluster of pieces. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classhive_1_1models_1_1Board_acda55c5180ec88e3f6adba6d293e3994}\label{classhive_1_1models_1_1Board_acda55c5180ec88e3f6adba6d293e3994} 
+\index{hive::models::Board@{hive::models::Board}!Board@{Board}}
+\index{Board@{Board}!hive::models::Board@{hive::models::Board}}
+\doxysubsubsection{\texorpdfstring{Board()}{Board()}}
+{\footnotesize\ttfamily hive\+::models\+::\+Board\+::\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{classhive_1_1models_1_1Board}{Board} and initializes it with an empty hex at (0, 0, 0). 
+
+\Hypertarget{classhive_1_1models_1_1Board_a7f2d6bd1c30330e1c7b2a564fc729a5f}\label{classhive_1_1models_1_1Board_a7f2d6bd1c30330e1c7b2a564fc729a5f} 
+\index{hive::models::Board@{hive::models::Board}!````~Board@{\texorpdfstring{$\sim$}{\string~}Board}}
+\index{````~Board@{\texorpdfstring{$\sim$}{\string~}Board}!hive::models::Board@{hive::models::Board}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Board()}{\string~Board()}}
+{\footnotesize\ttfamily hive\+::models\+::\+Board\+::\texorpdfstring{$\sim$}{\string~}\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classhive_1_1models_1_1Board_ae7d0b98a5b8a14b47e25212b96a9c495}\label{classhive_1_1models_1_1Board_ae7d0b98a5b8a14b47e25212b96a9c495} 
+\index{hive::models::Board@{hive::models::Board}!addPiece@{addPiece}}
+\index{addPiece@{addPiece}!hive::models::Board@{hive::models::Board}}
+\doxysubsubsection{\texorpdfstring{addPiece()}{addPiece()}}
+{\footnotesize\ttfamily void hive\+::models\+::\+Board\+::add\+Piece (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}}]{hex,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$}]{piece }\end{DoxyParamCaption})}
+
+
+
+Adds a piece to a specific hex location on the board. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hex} & The hex location where the piece will be added. \\
+\hline
+{\em piece} & Shared pointer to the \doxylink{classhive_1_1models_1_1Piece}{Piece} object to add. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & If the provided piece is null. \\
+\hline
+\end{DoxyExceptions}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_ae7d0b98a5b8a14b47e25212b96a9c495_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_ae7d0b98a5b8a14b47e25212b96a9c495_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Board_a992551fd769327ba8eca5b2eaef48576}\label{classhive_1_1models_1_1Board_a992551fd769327ba8eca5b2eaef48576} 
+\index{hive::models::Board@{hive::models::Board}!allEmptyHexes@{allEmptyHexes}}
+\index{allEmptyHexes@{allEmptyHexes}!hive::models::Board@{hive::models::Board}}
+\doxysubsubsection{\texorpdfstring{allEmptyHexes()}{allEmptyHexes()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} $>$ hive\+::models\+::\+Board\+::all\+Empty\+Hexes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get all empty hexes on the board 
+
+\begin{DoxyReturn}{Returns}
+A vector of \doxylink{classhive_1_1models_1_1Hex}{Hex} objects representing empty hexes. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_a992551fd769327ba8eca5b2eaef48576_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Board_af6d61726e1d7de39fccb01402c5856ec}\label{classhive_1_1models_1_1Board_af6d61726e1d7de39fccb01402c5856ec} 
+\index{hive::models::Board@{hive::models::Board}!areAllPiecesConnected@{areAllPiecesConnected}}
+\index{areAllPiecesConnected@{areAllPiecesConnected}!hive::models::Board@{hive::models::Board}}
+\doxysubsubsection{\texorpdfstring{areAllPiecesConnected()}{areAllPiecesConnected()}}
+{\footnotesize\ttfamily bool hive\+::models\+::\+Board\+::are\+All\+Pieces\+Connected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Checks if all pieces on the board are connected. 
+
+\begin{DoxyReturn}{Returns}
+True if all pieces form a single connected cluster; otherwise, false. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_af6d61726e1d7de39fccb01402c5856ec_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_af6d61726e1d7de39fccb01402c5856ec_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Board_a1871d90def91959c79a9d39840bd9723}\label{classhive_1_1models_1_1Board_a1871d90def91959c79a9d39840bd9723} 
+\index{hive::models::Board@{hive::models::Board}!canSliceBetween@{canSliceBetween}}
+\index{canSliceBetween@{canSliceBetween}!hive::models::Board@{hive::models::Board}}
+\doxysubsubsection{\texorpdfstring{canSliceBetween()}{canSliceBetween()}}
+{\footnotesize\ttfamily bool hive\+::models\+::\+Board\+::can\+Slice\+Between (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&}]{from,  }\item[{\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513db}{enums\+::\+Direction}}}]{direction }\end{DoxyParamCaption}) const}
+
+
+
+Checks if a slice can be made between two hexes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em from} & The starting hex. \\
+\hline
+{\em direction} & The direction\\
+\hline
+\end{DoxyParams}
+A slice can be made between two hexes if there is a piece on the starting hex and the neighboring hex in the specified direction is empty. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_a1871d90def91959c79a9d39840bd9723_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_a1871d90def91959c79a9d39840bd9723_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Board_af6f7cd4c9a2ccc8bed94a7c06921ee27}\label{classhive_1_1models_1_1Board_af6f7cd4c9a2ccc8bed94a7c06921ee27} 
+\index{hive::models::Board@{hive::models::Board}!clear@{clear}}
+\index{clear@{clear}!hive::models::Board@{hive::models::Board}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void hive\+::models\+::\+Board\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clears the board, removing all pieces and hexes. 
+
+\Hypertarget{classhive_1_1models_1_1Board_ab5ae023f0e876fc73f405c97abfb8ac0}\label{classhive_1_1models_1_1Board_ab5ae023f0e876fc73f405c97abfb8ac0} 
+\index{hive::models::Board@{hive::models::Board}!freeSurroundingHexes@{freeSurroundingHexes}}
+\index{freeSurroundingHexes@{freeSurroundingHexes}!hive::models::Board@{hive::models::Board}}
+\doxysubsubsection{\texorpdfstring{freeSurroundingHexes()}{freeSurroundingHexes()}}
+{\footnotesize\ttfamily void hive\+::models\+::\+Board\+::free\+Surrounding\+Hexes (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&}]{hex }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Frees hexes surrounding a given hex location if no longer needed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hex} & The hex location around which to free neighboring hexes.\\
+\hline
+\end{DoxyParams}
+Removes empty neighboring hexes if they have no non-\/empty neighbors. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_ab5ae023f0e876fc73f405c97abfb8ac0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_ab5ae023f0e876fc73f405c97abfb8ac0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Board_a663c09a5e9ed6333ecb0c706464b6159}\label{classhive_1_1models_1_1Board_a663c09a5e9ed6333ecb0c706464b6159} 
+\index{hive::models::Board@{hive::models::Board}!generateSurroundingHexes@{generateSurroundingHexes}}
+\index{generateSurroundingHexes@{generateSurroundingHexes}!hive::models::Board@{hive::models::Board}}
+\doxysubsubsection{\texorpdfstring{generateSurroundingHexes()}{generateSurroundingHexes()}}
+{\footnotesize\ttfamily void hive\+::models\+::\+Board\+::generate\+Surrounding\+Hexes (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&}]{hex }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Generates hexes surrounding a given hex location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hex} & The hex location around which to generate neighboring hexes.\\
+\hline
+\end{DoxyParams}
+Ensures there is always one ring of empty hexes surrounding the cluster of pieces. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_a663c09a5e9ed6333ecb0c706464b6159_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_a663c09a5e9ed6333ecb0c706464b6159_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Board_a5669e40b94ac6706545ee6c3e26ba2c1}\label{classhive_1_1models_1_1Board_a5669e40b94ac6706545ee6c3e26ba2c1} 
+\index{hive::models::Board@{hive::models::Board}!getAllHexes@{getAllHexes}}
+\index{getAllHexes@{getAllHexes}!hive::models::Board@{hive::models::Board}}
+\doxysubsubsection{\texorpdfstring{getAllHexes()}{getAllHexes()}}
+{\footnotesize\ttfamily const std\+::pmr\+::unordered\+\_\+map$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}, std\+::stack$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ $>$ $>$ \& hive\+::models\+::\+Board\+::get\+All\+Hexes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_a5669e40b94ac6706545ee6c3e26ba2c1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Board_a3f6817faace7fffc2f7dfdd63cf4b78e}\label{classhive_1_1models_1_1Board_a3f6817faace7fffc2f7dfdd63cf4b78e} 
+\index{hive::models::Board@{hive::models::Board}!getBoard@{getBoard}}
+\index{getBoard@{getBoard}!hive::models::Board@{hive::models::Board}}
+\doxysubsubsection{\texorpdfstring{getBoard()}{getBoard()}}
+{\footnotesize\ttfamily const std\+::pmr\+::unordered\+\_\+map$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}, std\+::stack$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ $>$ $>$ \& hive\+::models\+::\+Board\+::get\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves the board map with read access only. 
+
+\begin{DoxyReturn}{Returns}
+A const reference to the board map.
+\end{DoxyReturn}
+Provides read-\/only access to the board map, allowing external classes to retrieve the current state of the board without modifying it. Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_a3f6817faace7fffc2f7dfdd63cf4b78e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Board_a46282da1d7c235347de43646fa4e5dd9}\label{classhive_1_1models_1_1Board_a46282da1d7c235347de43646fa4e5dd9} 
+\index{hive::models::Board@{hive::models::Board}!getTopPiece@{getTopPiece}}
+\index{getTopPiece@{getTopPiece}!hive::models::Board@{hive::models::Board}}
+\doxysubsubsection{\texorpdfstring{getTopPiece()}{getTopPiece()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ hive\+::models\+::\+Board\+::get\+Top\+Piece (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&}]{hex }\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the top piece at a specific hex location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hex} & The hex location to inspect. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A shared pointer to the top \doxylink{classhive_1_1models_1_1Piece}{Piece} at the hex, or nullptr if none. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_a46282da1d7c235347de43646fa4e5dd9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Board_a462b8c1ef8af1ee4db256136c3dd20d7}\label{classhive_1_1models_1_1Board_a462b8c1ef8af1ee4db256136c3dd20d7} 
+\index{hive::models::Board@{hive::models::Board}!hasNonEmptyNeighbors@{hasNonEmptyNeighbors}}
+\index{hasNonEmptyNeighbors@{hasNonEmptyNeighbors}!hive::models::Board@{hive::models::Board}}
+\doxysubsubsection{\texorpdfstring{hasNonEmptyNeighbors()}{hasNonEmptyNeighbors()}}
+{\footnotesize\ttfamily bool hive\+::models\+::\+Board\+::has\+Non\+Empty\+Neighbors (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&}]{hex }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Checks if a hex location has non-\/empty neighboring hexes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hex} & The hex location to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if at least one neighboring hex contains a piece; otherwise, false. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_a462b8c1ef8af1ee4db256136c3dd20d7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_a462b8c1ef8af1ee4db256136c3dd20d7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Board_a73e7cb8c98d471ff351ce0baafb48d03}\label{classhive_1_1models_1_1Board_a73e7cb8c98d471ff351ce0baafb48d03} 
+\index{hive::models::Board@{hive::models::Board}!isOccupied@{isOccupied}}
+\index{isOccupied@{isOccupied}!hive::models::Board@{hive::models::Board}}
+\doxysubsubsection{\texorpdfstring{isOccupied()}{isOccupied()}}
+{\footnotesize\ttfamily bool hive\+::models\+::\+Board\+::is\+Occupied (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&}]{hex }\end{DoxyParamCaption}) const}
+
+
+
+Checks if a hex location is occupied by any pieces. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hex} & The hex location to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the hex has at least one piece; otherwise, false. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_a73e7cb8c98d471ff351ce0baafb48d03_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Board_a5cd2ab2ff3df63549605371f8b0d2aa0}\label{classhive_1_1models_1_1Board_a5cd2ab2ff3df63549605371f8b0d2aa0} 
+\index{hive::models::Board@{hive::models::Board}!movePiece@{movePiece}}
+\index{movePiece@{movePiece}!hive::models::Board@{hive::models::Board}}
+\doxysubsubsection{\texorpdfstring{movePiece()}{movePiece()}}
+{\footnotesize\ttfamily void hive\+::models\+::\+Board\+::move\+Piece (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}}]{from,  }\item[{\mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}}]{to }\end{DoxyParamCaption})}
+
+
+
+Moves a piece from one hex to another. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em from} & The hex location of the piece to move. \\
+\hline
+{\em to} & The target hex location for the piece. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & If the source hex is empty or the move is invalid. \\
+\hline
+\end{DoxyExceptions}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_a5cd2ab2ff3df63549605371f8b0d2aa0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_a5cd2ab2ff3df63549605371f8b0d2aa0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Board_adb2633e6c0842bf0ed582c81015e7cb4}\label{classhive_1_1models_1_1Board_adb2633e6c0842bf0ed582c81015e7cb4} 
+\index{hive::models::Board@{hive::models::Board}!neighbor@{neighbor}}
+\index{neighbor@{neighbor}!hive::models::Board@{hive::models::Board}}
+\doxysubsubsection{\texorpdfstring{neighbor()}{neighbor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} hive\+::models\+::\+Board\+::neighbor (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&}]{hex,  }\item[{\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513db}{enums\+::\+Direction}}}]{direction }\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the neighboring hex in the given direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hex} & The starting hex. \\
+\hline
+{\em direction} & The direction to move towards. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The neighboring hex in the specified direction. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & If the neighboring hex does not exist on the board. \\
+\hline
+\end{DoxyExceptions}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_adb2633e6c0842bf0ed582c81015e7cb4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_adb2633e6c0842bf0ed582c81015e7cb4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Board_a5d547cf394c28d4801fb6e6cfe4eb5e9}\label{classhive_1_1models_1_1Board_a5d547cf394c28d4801fb6e6cfe4eb5e9} 
+\index{hive::models::Board@{hive::models::Board}!neighbors@{neighbors}}
+\index{neighbors@{neighbors}!hive::models::Board@{hive::models::Board}}
+\doxysubsubsection{\texorpdfstring{neighbors()}{neighbors()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} $>$ hive\+::models\+::\+Board\+::neighbors (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&}]{hex }\end{DoxyParamCaption}) const}
+
+
+
+Retrieves all hexes surrounding a specific hex location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hex} & The hex location for which to get neighbors. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of \doxylink{classhive_1_1models_1_1Hex}{Hex} objects representing neighboring hexes. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_a5d547cf394c28d4801fb6e6cfe4eb5e9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_a5d547cf394c28d4801fb6e6cfe4eb5e9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Board_aaa3ea2bc5154fc656c15e30cea487de3}\label{classhive_1_1models_1_1Board_aaa3ea2bc5154fc656c15e30cea487de3} 
+\index{hive::models::Board@{hive::models::Board}!neighborsNotOccupied@{neighborsNotOccupied}}
+\index{neighborsNotOccupied@{neighborsNotOccupied}!hive::models::Board@{hive::models::Board}}
+\doxysubsubsection{\texorpdfstring{neighborsNotOccupied()}{neighborsNotOccupied()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} $>$ hive\+::models\+::\+Board\+::neighbors\+Not\+Occupied (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&}]{hex }\end{DoxyParamCaption}) const}
+
+
+
+Retrieves all hexes surrounding a specific hex location that are available. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hex} & The hex location for which to get neighbors. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of \doxylink{classhive_1_1models_1_1Hex}{Hex} objects representing neighboring hexes.
+\end{DoxyReturn}
+Uses the Direction enum and get\+Direction\+Offset to calculate neighboring hexes. This method returns only unoccupied neighboring hexes. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_aaa3ea2bc5154fc656c15e30cea487de3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_aaa3ea2bc5154fc656c15e30cea487de3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Board_afab2afbd4b7466185c8937755928f364}\label{classhive_1_1models_1_1Board_afab2afbd4b7466185c8937755928f364} 
+\index{hive::models::Board@{hive::models::Board}!pieceCount@{pieceCount}}
+\index{pieceCount@{pieceCount}!hive::models::Board@{hive::models::Board}}
+\doxysubsubsection{\texorpdfstring{pieceCount()}{pieceCount()}}
+{\footnotesize\ttfamily size\+\_\+t hive\+::models\+::\+Board\+::piece\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the total number of pieces on the board. 
+
+\begin{DoxyReturn}{Returns}
+The total count of pieces present on the board. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_afab2afbd4b7466185c8937755928f364_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1Board_ad9d75449bb01ae74fb1a9d9ba1d4c7f1}\label{classhive_1_1models_1_1Board_ad9d75449bb01ae74fb1a9d9ba1d4c7f1} 
+\index{hive::models::Board@{hive::models::Board}!toString@{toString}}
+\index{toString@{toString}!hive::models::Board@{hive::models::Board}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily std\+::string hive\+::models\+::\+Board\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\Hypertarget{classhive_1_1models_1_1Board_af229727fd9d164d530230ca7c7a33f05}\label{classhive_1_1models_1_1Board_af229727fd9d164d530230ca7c7a33f05} 
+\index{hive::models::Board@{hive::models::Board}!unstackPiece@{unstackPiece}}
+\index{unstackPiece@{unstackPiece}!hive::models::Board@{hive::models::Board}}
+\doxysubsubsection{\texorpdfstring{unstackPiece()}{unstackPiece()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ hive\+::models\+::\+Board\+::unstack\+Piece (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}}]{hex }\end{DoxyParamCaption})}
+
+
+
+Removes and returns the top piece from a specific hex location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hex} & The hex location from which to remove the piece. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A shared pointer to the \doxylink{classhive_1_1models_1_1Piece}{Piece} that was removed. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & If the hex is empty or the piece is not found. \\
+\hline
+\end{DoxyExceptions}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_af229727fd9d164d530230ca7c7a33f05_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1Board_af229727fd9d164d530230ca7c7a33f05_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classhive_1_1models_1_1Board_ab371c3ae6aa377e0cbd3da03862935a3}\label{classhive_1_1models_1_1Board_ab371c3ae6aa377e0cbd3da03862935a3} 
+\index{hive::models::Board@{hive::models::Board}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!hive::models::Board@{hive::models::Board}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&}]{board }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Overloads the stream insertion operator for \doxylink{classhive_1_1models_1_1Board}{Board}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream. \\
+\hline
+{\em board} & The \doxylink{classhive_1_1models_1_1Board}{Board} object to output. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the output stream. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classhive_1_1models_1_1Board_a41a92da849af08e5c294b3af17e99d4b}\label{classhive_1_1models_1_1Board_a41a92da849af08e5c294b3af17e99d4b} 
+\index{hive::models::Board@{hive::models::Board}!board@{board}}
+\index{board@{board}!hive::models::Board@{hive::models::Board}}
+\doxysubsubsection{\texorpdfstring{board}{board}}
+{\footnotesize\ttfamily std\+::pmr\+::unordered\+\_\+map$<$\mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}, std\+::stack$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}}$>$ $>$ $>$ hive\+::models\+::\+Board\+::board \{std\+::pmr\+::get\+\_\+default\+\_\+resource()\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The board is represented as a map of hex locations to a stack of pieces. 
+
+Each \doxylink{classhive_1_1models_1_1Hex}{Hex} key corresponds to a stack of {\ttfamily std\+::shared\+\_\+ptr\texorpdfstring{$<$}{<}\doxylink{classhive_1_1models_1_1Piece}{Piece}\texorpdfstring{$>$}{>}}, representing the pieces stacked at that hex location. The ownership of the \doxylink{classhive_1_1models_1_1Piece}{Piece} objects is shared between the \doxylink{classhive_1_1models_1_1Board}{Board} and the \doxylink{classhive_1_1models_1_1Player}{Player} class. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+includes/models/\mbox{\hyperlink{Board_8h}{Board.\+h}}\item 
+src/models/\mbox{\hyperlink{Board_8cpp}{Board.\+cpp}}\end{DoxyCompactItemize}

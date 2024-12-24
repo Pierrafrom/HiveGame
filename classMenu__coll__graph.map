@@ -1,0 +1,7 @@
+<map id="Menu" name="Menu">
+<area shape="rect" id="Node000001" title=" " alt="" coords="21,393,226,539"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,135,76,201"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="56,213,106,392,101,394,51,215"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1models_1_1Board.html" title="Represents the game board for the Hive game." alt="" coords="100,5,315,331"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="164,332,151,378,146,377,159,330"/>
+</map>

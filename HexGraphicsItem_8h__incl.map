@@ -1,0 +1,15 @@
+<map id="src/controllers/gui/HexGraphicsItem.h" name="src/controllers/gui/HexGraphicsItem.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="162,5,313,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,176,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="203,48,126,89,123,84,201,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="200,93,275,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="240,46,240,79,235,79,235,46"/>
+<area shape="rect" id="Node000004" href="$Hex_8h.html" title=" " alt="" coords="299,93,411,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="267,43,328,84,325,88,264,48"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="220,167,287,192"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="340,121,283,161,280,156,337,116"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="311,167,398,192"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="357,119,357,153,352,153,352,119"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="422,167,498,192"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="373,116,433,157,430,161,370,121"/>
+</map>

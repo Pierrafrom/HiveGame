@@ -1,0 +1,5 @@
+<map id="hive::controllers::cli::CLIController::undoMove" name="hive::controllers::cli::CLIController::undoMove">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,143,60"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1Game.html#ab3ab935e2ab685df1433e842cb1b29af" title="Undoes the last move made in the game." alt="" coords="191,13,344,53"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,30,176,30,176,35,143,35"/>
+</map>

@@ -1,0 +1,25 @@
+<map id="hive::models::Game::getGameStatus" name="hive::models::Game::getGameStatus">
+<area shape="rect" id="Node000001" title="Gets the current game status." alt="" coords="5,37,159,77"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1Game.html#a56a9152901e8cafc9a4525c60ba7568d" title="Gets the player by index." alt="" coords="225,5,378,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="159,44,211,36,211,41,160,49"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1models_1_1GameRules.html#abd49c7a464b050d6d8396a97e381537f" title="Checks the victory conditions in the game." alt="" coords="207,69,396,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="160,66,193,71,193,76,159,71"/>
+<area shape="rect" id="Node000004" href="$classhive_1_1models_1_1Board.html#a73e7cb8c98d471ff351ce0baafb48d03" title="Checks if a hex location is occupied by any pieces." alt="" coords="444,25,596,65"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="396,68,430,61,431,66,397,73"/>
+<area shape="rect" id="Node000005" href="$classhive_1_1models_1_1Board.html#a5d547cf394c28d4801fb6e6cfe4eb5e9" title="Retrieves all hexes surrounding a specific hex location." alt="" coords="444,113,596,153"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="397,106,431,113,430,118,396,111"/>
+<area shape="poly" id="edge13_Node000005_Node000005" title=" " alt="" coords="482,114,480,104,486,95,499,89,520,87,544,90,557,97,554,102,542,95,520,92,501,94,489,99,485,105,487,112"/>
+<area shape="rect" id="Node000006" href="$namespacehive_1_1models_1_1enums.html#a43af89b8a126e31344db8c8cafc8cf3f" title="Retrieves all possible directions in an array." alt="" coords="644,5,803,45"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="555,111,643,62,667,49,669,54,645,66,557,115"/>
+<area shape="rect" id="Node000007" href="$classhive_1_1models_1_1Hex.html#a94e250128565af8fbae3c988af319bbf" title="Retrieves the x&#45;coordinate of the hex cell." alt="" coords="851,86,1029,111"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="596,124,837,104,837,110,597,130"/>
+<area shape="rect" id="Node000008" href="$classhive_1_1models_1_1Hex.html#a18c77d5b702f072962352f4d84ccca4d" title="Retrieves the y&#45;coordinate of the hex cell." alt="" coords="851,151,1029,177"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="597,136,838,154,837,159,596,142"/>
+<area shape="rect" id="Node000009" href="$classhive_1_1models_1_1Hex.html#a6fb2c3680c7bddfddaeff4e356650552" title="Retrieves the z&#45;coordinate of the hex cell." alt="" coords="851,205,1029,230"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="542,152,587,189,615,207,645,220,700,233,757,237,813,235,862,229,863,235,813,240,757,242,699,238,643,225,612,212,584,193,539,156"/>
+<area shape="rect" id="Node000010" href="$classhive_1_1models_1_1Board.html#adb2633e6c0842bf0ed582c81015e7cb4" title="Retrieves the neighboring hex in the given direction." alt="" coords="647,171,799,211"/>
+<area shape="poly" id="edge9_Node000005_Node000010" title=" " alt="" coords="592,151,640,164,638,169,591,156"/>
+<area shape="poly" id="edge10_Node000010_Node000007" title=" " alt="" coords="771,168,895,114,898,119,773,173"/>
+<area shape="poly" id="edge11_Node000010_Node000008" title=" " alt="" coords="799,179,837,174,838,179,800,184"/>
+<area shape="poly" id="edge12_Node000010_Node000009" title=" " alt="" coords="800,197,838,202,837,207,799,203"/>
+</map>

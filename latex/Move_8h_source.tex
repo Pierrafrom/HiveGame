@@ -1,0 +1,76 @@
+\doxysection{Move.\+h}
+\hypertarget{Move_8h_source}{}\label{Move_8h_source}\index{includes/models/Move.h@{includes/models/Move.h}}
+\mbox{\hyperlink{Move_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MOVE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MOVE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Hex_8h}{models/Hex.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Piece_8h}{models/Piece.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Player_8h}{models/Player.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Board_8h}{models/Board.h}}"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehive_1_1models}{hive::models}}\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classhive_1_1models_1_1Move}{Move}}\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{classhive_1_1models_1_1Move_afc8b77a5c8e60ce71efa03ec4ea9c0ee}{MoveType}}\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1Move_afc8b77a5c8e60ce71efa03ec4ea9c0eea8c756b7e3daff6db3808a377b05a148f}{PLACE}},\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1Move_afc8b77a5c8e60ce71efa03ec4ea9c0eeaf7f93635f8e193a924ae4a691bb66b8f}{MOVE}}\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Move_afc8b77a5c8e60ce71efa03ec4ea9c0ee}{MoveType}}\ \mbox{\hyperlink{classhive_1_1models_1_1Move_a3e92ee3cf1bc5b560c92bd0e5042010b}{type}};\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::weak\_ptr<Player>\ \mbox{\hyperlink{classhive_1_1models_1_1Move_a3de251b7f312addc59e05350b97b3305}{player}};\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::weak\_ptr<Piece>\ \mbox{\hyperlink{classhive_1_1models_1_1Move_ad246d87a5b6f9c64debe1f0c7aa47e02}{piece}};\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<Hex>\ \mbox{\hyperlink{classhive_1_1models_1_1Move_abbe2a46d3fb9ecda621c34f20338ba50}{from}};\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}\ \mbox{\hyperlink{classhive_1_1models_1_1Move_aab49f27f9d71c4df88313798d6b2b066}{to}};\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ \ \ \ \ \ \ \ /**************************************************************************************************}}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Constructors}}
+\DoxyCodeLine{00043\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *************************************************************************************************/}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1Move}{Move}}(\textcolor{keyword}{const}\ std::shared\_ptr<Player>\ \&\mbox{\hyperlink{classhive_1_1models_1_1Move_a3de251b7f312addc59e05350b97b3305}{player}},}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::shared\_ptr<Piece>\ \&\mbox{\hyperlink{classhive_1_1models_1_1Move_ad246d87a5b6f9c64debe1f0c7aa47e02}{piece}},}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}\ \mbox{\hyperlink{classhive_1_1models_1_1Move_aab49f27f9d71c4df88313798d6b2b066}{to}});}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1Move}{Move}}(\textcolor{keyword}{const}\ std::shared\_ptr<Player>\ \&\mbox{\hyperlink{classhive_1_1models_1_1Move_a3de251b7f312addc59e05350b97b3305}{player}},}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::shared\_ptr<Piece>\ \&\mbox{\hyperlink{classhive_1_1models_1_1Move_ad246d87a5b6f9c64debe1f0c7aa47e02}{piece}},}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}\ \&\mbox{\hyperlink{classhive_1_1models_1_1Move_abbe2a46d3fb9ecda621c34f20338ba50}{from}},}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}\ \mbox{\hyperlink{classhive_1_1models_1_1Move_aab49f27f9d71c4df88313798d6b2b066}{to}});}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{comment}{\ \ \ \ \ \ \ \ /**************************************************************************************************}}
+\DoxyCodeLine{00072\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Getters}}
+\DoxyCodeLine{00073\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *************************************************************************************************/}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::shared\_ptr<Player>\ \mbox{\hyperlink{classhive_1_1models_1_1Move_a049a2f8ca126c3304852c182de9cb574}{getPlayer}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{classhive_1_1models_1_1Move_afc8b77a5c8e60ce71efa03ec4ea9c0ee}{MoveType}}\ \mbox{\hyperlink{classhive_1_1models_1_1Move_ac7e11d589ea05e87aad566e3ae31692f}{getType}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classhive_1_1models_1_1Move_a3e92ee3cf1bc5b560c92bd0e5042010b}{type}};\ \}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::shared\_ptr<Piece>\ \mbox{\hyperlink{classhive_1_1models_1_1Move_ac5abd320c5ed007fe9d62b4c46ebb7cc}{getPiece}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::optional<Hex>\ \mbox{\hyperlink{classhive_1_1models_1_1Move_a45c99c5cf9be5c5f1fab0b13bae554b8}{getFrom}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classhive_1_1models_1_1Move_abbe2a46d3fb9ecda621c34f20338ba50}{from}};\ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}\ \&\mbox{\hyperlink{classhive_1_1models_1_1Move_accb38544e44b75c7e512d40372ac7831}{getTo}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classhive_1_1models_1_1Move_aab49f27f9d71c4df88313798d6b2b066}{to}};\ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \textcolor{comment}{\ \ \ \ \ \ \ \ /**************************************************************************************************}}
+\DoxyCodeLine{00108\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Public\ Methods}}
+\DoxyCodeLine{00109\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *************************************************************************************************/}}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhive_1_1models_1_1Move_ac96a1f192d6f14594b7ab1a0d048855a}{execute}}(\mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}}\ \&board)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhive_1_1models_1_1Move_a0ee33acafca8c73d6e100b7fbe28747c}{undo}}(\mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}}\ \&board)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::string\ \mbox{\hyperlink{classhive_1_1models_1_1Move_a9f7d7c15e5e42d0a5144dcdce43bc5c8}{toString}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \textcolor{comment}{\ \ \ \ \ \ \ \ /**************************************************************************************************}}
+\DoxyCodeLine{00138\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Operators}}
+\DoxyCodeLine{00139\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *************************************************************************************************/}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\ \&\mbox{\hyperlink{classhive_1_1models_1_1Move_a72317566849f53db8af92bbf38903102}{operator<<}}(std::ostream\ \&os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Move}{Move}}\ \&move);}
+\DoxyCodeLine{00148\ \ \ \ \ \};}
+\DoxyCodeLine{00149\ \}\ \textcolor{comment}{//\ namespace\ hive::models}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MOVE\_H}}
+
+\end{DoxyCode}

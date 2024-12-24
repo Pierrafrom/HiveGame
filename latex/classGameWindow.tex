@@ -1,0 +1,789 @@
+\doxysection{Game\+Window Class Reference}
+\hypertarget{classGameWindow}{}\label{classGameWindow}\index{GameWindow@{GameWindow}}
+
+
+{\ttfamily \#include $<$gamewindow.\+h$>$}
+
+
+
+Inheritance diagram for Game\+Window\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classGameWindow__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Game\+Window\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classGameWindow__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGameWindow_aba82e451e3ca31cb27b36faefeee8d6c}{Game\+Window}} (\mbox{\hyperlink{classhive_1_1models_1_1Game}{hive\+::models\+::\+Game}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classGameWindow_a7a6523e5ae7c327cf8879fbab1273c25}{game}}, QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\item 
+\mbox{\hyperlink{classGameWindow_a030c53102a1f6a3e7c09fb77037be6df}{\texorpdfstring{$\sim$}{\string~}\+Game\+Window}} () override=default
+\item 
+void \mbox{\hyperlink{classGameWindow_a8eaadb2df45add29f0e2efec02c89f36}{set\+Player\+Names}} (const QString \&player1, const QString \&player2)
+\item 
+void \mbox{\hyperlink{classGameWindow_ac53fea4b030b13de4f300ee04ced1c89}{create\+Defaut\+Config}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classGameWindow_a3f8581191baa90b0e963a80102c87be7}{on\+Undo\+Clicked}} ()
+\item 
+void \mbox{\hyperlink{classGameWindow_a3d2d2afbc20fe6f9c494556bfbf39d5b}{on\+Redo\+Clicked}} ()
+\item 
+void \mbox{\hyperlink{classGameWindow_a9931dfa33915f6b56508ba24a8350337}{on\+Save\+Clicked}} ()
+\item 
+void \mbox{\hyperlink{classGameWindow_a93ff3e0ddd8764b27f9f6e8204e8fc96}{display\+Possible\+Moves}} (const \mbox{\hyperlink{classhive_1_1models_1_1Piece}{hive\+::models\+::\+Piece}} \&piece)
+\item 
+void \mbox{\hyperlink{classGameWindow_a8f2df7320d0645d4cac1ecd8056eec67}{clear\+Possible\+Moves}} ()
+\item 
+void \mbox{\hyperlink{classGameWindow_ad53954b7070a2f98fc8e4335e8ddeeed}{on\+Create\+Piece\+Button\+Clicked}} (int player\+Index, \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{hive\+::models\+::enums\+::\+Piece\+Type}} type)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classGameWindow_a5b3bcfd2cd2b6f07f0be351f114119db}{setup\+UI}} ()
+\item 
+void \mbox{\hyperlink{classGameWindow_aa43f3cf42f2971b92ad2f9873412f422}{select\+Piece}} (const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{hive\+::models\+::\+Hex}} \&hex)
+\item 
+void \mbox{\hyperlink{classGameWindow_a379160a41f8d7e154cde54cec0c13393}{place\+Piece}} (const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{hive\+::models\+::\+Hex}} \&to)
+\item 
+void \mbox{\hyperlink{classGameWindow_a411e974b2ef679b602ff4bf5bcfa5075}{select\+Piece}} (const \mbox{\hyperlink{classhive_1_1models_1_1Piece}{hive\+::models\+::\+Piece}} \texorpdfstring{$\ast$}{*}piece)
+\item 
+void \mbox{\hyperlink{classGameWindow_a58e3b3ba09f1304cf4ff22a797146482}{update\+Valid\+Moves}} ()
+\item 
+void \mbox{\hyperlink{classGameWindow_adb55bf4d481961522203420bd111df94}{unselect\+Piece}} ()
+\item 
+void \mbox{\hyperlink{classGameWindow_ada8c32048b32506944bd7f10bca9d232}{display\+Board}} ()
+\item 
+bool \mbox{\hyperlink{classGameWindow_ab2254bf2ba50defd19b185975d1190a2}{is\+Selected\+Piece\+On\+Board}} () const
+\item 
+void \mbox{\hyperlink{classGameWindow_a56419355dbf68fa9e8240bf4f630352e}{move\+Piece}} (const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{hive\+::models\+::\+Hex}} \&to)
+\item 
+void \mbox{\hyperlink{classGameWindow_aae660a7017d283899ff9dd1dd9b36808}{get\+Turn}} ()
+\item 
+void \mbox{\hyperlink{classGameWindow_a88f74eb991291011565e8ea3fa76f41f}{next\+Turn}} ()
+\item 
+void \mbox{\hyperlink{classGameWindow_a82f869102019254d94df59d2aa1b9834}{update\+Undo\+Redo\+Buttons}} ()
+\item 
+void \mbox{\hyperlink{classGameWindow_ae76cb74446680796df31dc284b998646}{disable\+All\+Buttons}} ()
+\item 
+void \mbox{\hyperlink{classGameWindow_a5674a14afc834df5cbf11c7d3a52d8d2}{enable\+All\+Buttons}} ()
+\item 
+void \mbox{\hyperlink{classGameWindow_abe00ba2567f80c89dbafc5ca36589d35}{check\+End\+Game}} ()
+\item 
+void \mbox{\hyperlink{classGameWindow_a9895ce34a0d9bec1cdc4ef2efff5a5fd}{disabled\+Hex\+Selectable}} (bool \&\mbox{\hyperlink{classGameWindow_a99ce7787411f8346f1e2971e11bcbd9e}{hex\+Selectable}})
+\item 
+void \mbox{\hyperlink{classGameWindow_ae926409e78666b8c290d84a71e9b2b0e}{enable\+Hex\+Selectable}} (bool \&\mbox{\hyperlink{classGameWindow_a99ce7787411f8346f1e2971e11bcbd9e}{hex\+Selectable}})
+\item 
+QGroup\+Box \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameWindow_ab2f97f7781012c179cbb1b1454eb5294}{create\+Piece\+Creation\+Group\+Box}} (int player\+Index)
+\item 
+void \mbox{\hyperlink{classGameWindow_a06b02213154df24f36631be44bbaa27f}{update\+Piece\+Creation\+Buttons}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhive_1_1models_1_1Game}{hive\+::models\+::\+Game}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameWindow_a7a6523e5ae7c327cf8879fbab1273c25}{game}}
+\item 
+QPush\+Button \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameWindow_a0bb80aadf29ec39810c170560afa3db0}{undo\+Button}}
+\item 
+QPush\+Button \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameWindow_a585559d3cb59ca46fc4b7ac832efdd8a}{redo\+Button}}
+\item 
+QPush\+Button \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameWindow_af2f7a6de928c412af7adb5610aa83b97}{save\+Button}}
+\item 
+QLabel \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameWindow_abba9d8225c6b614c87659577f036ae51}{player\+Info\+Label}}
+\item 
+QLabel \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameWindow_abcab64d2ffb176878b3da5cd4f051532}{turn\+Label}}
+\item 
+QGraphics\+View \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameWindow_a36ba137180b10221e5e9e539c5efd090}{game\+Board\+View}}
+\item 
+QGraphics\+Scene \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameWindow_a30e66f8824cf672da87f29b28a5598a9}{scene}}
+\item 
+QVBox\+Layout \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameWindow_ad4ae6af49a62a815c5a13c5f8b9b3122}{side\+Menu\+Layout}}
+\item 
+bool \mbox{\hyperlink{classGameWindow_a99ce7787411f8346f1e2971e11bcbd9e}{hex\+Selectable}}
+\item 
+std\+::vector$<$ QGraphics\+Ellipse\+Item \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classGameWindow_af10fbfaf2912318178f3be119657805b}{move\+Highlights}}
+\item 
+QLabel \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameWindow_aa16c2d223b137764325144f8e5005fab}{player1\+Label}}
+\item 
+QLabel \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classGameWindow_a429e7fb7e39cf0f5e6276267f3e0a020}{player2\+Label}}
+\item 
+int \mbox{\hyperlink{classGameWindow_abb758927b957dfd6f51b4aa0287dbe86}{current\+Turn}}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{hive\+::models\+::\+Piece}} $>$ \mbox{\hyperlink{classGameWindow_a495016a0da068f810ea1f4d1cdee1d0d}{selected\+Piece}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{hive\+::models\+::\+Hex}} $>$ \mbox{\hyperlink{classGameWindow_a14e713ad393414cad7ed02cc04746782}{valid\+Moves}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGameWindow_aba82e451e3ca31cb27b36faefeee8d6c}\label{classGameWindow_aba82e451e3ca31cb27b36faefeee8d6c} 
+\index{GameWindow@{GameWindow}!GameWindow@{GameWindow}}
+\index{GameWindow@{GameWindow}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{GameWindow()}{GameWindow()}}
+{\footnotesize\ttfamily Game\+Window\+::\+Game\+Window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhive_1_1models_1_1Game}{hive\+::models\+::\+Game}} \texorpdfstring{$\ast$}{*}}]{game,  }\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_aba82e451e3ca31cb27b36faefeee8d6c_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_a030c53102a1f6a3e7c09fb77037be6df}\label{classGameWindow_a030c53102a1f6a3e7c09fb77037be6df} 
+\index{GameWindow@{GameWindow}!````~GameWindow@{\texorpdfstring{$\sim$}{\string~}GameWindow}}
+\index{````~GameWindow@{\texorpdfstring{$\sim$}{\string~}GameWindow}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}GameWindow()}{\string~GameWindow()}}
+{\footnotesize\ttfamily Game\+Window\+::\texorpdfstring{$\sim$}{\string~}\+Game\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGameWindow_abe00ba2567f80c89dbafc5ca36589d35}\label{classGameWindow_abe00ba2567f80c89dbafc5ca36589d35} 
+\index{GameWindow@{GameWindow}!checkEndGame@{checkEndGame}}
+\index{checkEndGame@{checkEndGame}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{checkEndGame()}{checkEndGame()}}
+{\footnotesize\ttfamily void Game\+Window\+::check\+End\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_abe00ba2567f80c89dbafc5ca36589d35_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_abe00ba2567f80c89dbafc5ca36589d35_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_a8f2df7320d0645d4cac1ecd8056eec67}\label{classGameWindow_a8f2df7320d0645d4cac1ecd8056eec67} 
+\index{GameWindow@{GameWindow}!clearPossibleMoves@{clearPossibleMoves}}
+\index{clearPossibleMoves@{clearPossibleMoves}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{clearPossibleMoves}{clearPossibleMoves}}
+{\footnotesize\ttfamily void Game\+Window\+::clear\+Possible\+Moves (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a8f2df7320d0645d4cac1ecd8056eec67_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_ac53fea4b030b13de4f300ee04ced1c89}\label{classGameWindow_ac53fea4b030b13de4f300ee04ced1c89} 
+\index{GameWindow@{GameWindow}!createDefautConfig@{createDefautConfig}}
+\index{createDefautConfig@{createDefautConfig}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{createDefautConfig()}{createDefautConfig()}}
+{\footnotesize\ttfamily void Game\+Window\+::create\+Defaut\+Config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_ac53fea4b030b13de4f300ee04ced1c89_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_ac53fea4b030b13de4f300ee04ced1c89_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_ab2f97f7781012c179cbb1b1454eb5294}\label{classGameWindow_ab2f97f7781012c179cbb1b1454eb5294} 
+\index{GameWindow@{GameWindow}!createPieceCreationGroupBox@{createPieceCreationGroupBox}}
+\index{createPieceCreationGroupBox@{createPieceCreationGroupBox}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{createPieceCreationGroupBox()}{createPieceCreationGroupBox()}}
+{\footnotesize\ttfamily QGroup\+Box \texorpdfstring{$\ast$}{*} Game\+Window\+::create\+Piece\+Creation\+Group\+Box (\begin{DoxyParamCaption}\item[{int}]{player\+Index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_ab2f97f7781012c179cbb1b1454eb5294_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_ab2f97f7781012c179cbb1b1454eb5294_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_ae76cb74446680796df31dc284b998646}\label{classGameWindow_ae76cb74446680796df31dc284b998646} 
+\index{GameWindow@{GameWindow}!disableAllButtons@{disableAllButtons}}
+\index{disableAllButtons@{disableAllButtons}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{disableAllButtons()}{disableAllButtons()}}
+{\footnotesize\ttfamily void Game\+Window\+::disable\+All\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_ae76cb74446680796df31dc284b998646_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_a9895ce34a0d9bec1cdc4ef2efff5a5fd}\label{classGameWindow_a9895ce34a0d9bec1cdc4ef2efff5a5fd} 
+\index{GameWindow@{GameWindow}!disabledHexSelectable@{disabledHexSelectable}}
+\index{disabledHexSelectable@{disabledHexSelectable}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{disabledHexSelectable()}{disabledHexSelectable()}}
+{\footnotesize\ttfamily void Game\+Window\+::disabled\+Hex\+Selectable (\begin{DoxyParamCaption}\item[{bool \&}]{hex\+Selectable }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a9895ce34a0d9bec1cdc4ef2efff5a5fd_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_ada8c32048b32506944bd7f10bca9d232}\label{classGameWindow_ada8c32048b32506944bd7f10bca9d232} 
+\index{GameWindow@{GameWindow}!displayBoard@{displayBoard}}
+\index{displayBoard@{displayBoard}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{displayBoard()}{displayBoard()}}
+{\footnotesize\ttfamily void Game\+Window\+::display\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_ada8c32048b32506944bd7f10bca9d232_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_ada8c32048b32506944bd7f10bca9d232_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_a93ff3e0ddd8764b27f9f6e8204e8fc96}\label{classGameWindow_a93ff3e0ddd8764b27f9f6e8204e8fc96} 
+\index{GameWindow@{GameWindow}!displayPossibleMoves@{displayPossibleMoves}}
+\index{displayPossibleMoves@{displayPossibleMoves}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{displayPossibleMoves}{displayPossibleMoves}}
+{\footnotesize\ttfamily void Game\+Window\+::display\+Possible\+Moves (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Piece}{hive\+::models\+::\+Piece}} \&}]{piece }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a93ff3e0ddd8764b27f9f6e8204e8fc96_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a93ff3e0ddd8764b27f9f6e8204e8fc96_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_a5674a14afc834df5cbf11c7d3a52d8d2}\label{classGameWindow_a5674a14afc834df5cbf11c7d3a52d8d2} 
+\index{GameWindow@{GameWindow}!enableAllButtons@{enableAllButtons}}
+\index{enableAllButtons@{enableAllButtons}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{enableAllButtons()}{enableAllButtons()}}
+{\footnotesize\ttfamily void Game\+Window\+::enable\+All\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a5674a14afc834df5cbf11c7d3a52d8d2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a5674a14afc834df5cbf11c7d3a52d8d2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_ae926409e78666b8c290d84a71e9b2b0e}\label{classGameWindow_ae926409e78666b8c290d84a71e9b2b0e} 
+\index{GameWindow@{GameWindow}!enableHexSelectable@{enableHexSelectable}}
+\index{enableHexSelectable@{enableHexSelectable}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{enableHexSelectable()}{enableHexSelectable()}}
+{\footnotesize\ttfamily void Game\+Window\+::enable\+Hex\+Selectable (\begin{DoxyParamCaption}\item[{bool \&}]{hex\+Selectable }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_ae926409e78666b8c290d84a71e9b2b0e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_aae660a7017d283899ff9dd1dd9b36808}\label{classGameWindow_aae660a7017d283899ff9dd1dd9b36808} 
+\index{GameWindow@{GameWindow}!getTurn@{getTurn}}
+\index{getTurn@{getTurn}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{getTurn()}{getTurn()}}
+{\footnotesize\ttfamily void Game\+Window\+::get\+Turn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_aae660a7017d283899ff9dd1dd9b36808_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_aae660a7017d283899ff9dd1dd9b36808_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_ab2254bf2ba50defd19b185975d1190a2}\label{classGameWindow_ab2254bf2ba50defd19b185975d1190a2} 
+\index{GameWindow@{GameWindow}!isSelectedPieceOnBoard@{isSelectedPieceOnBoard}}
+\index{isSelectedPieceOnBoard@{isSelectedPieceOnBoard}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{isSelectedPieceOnBoard()}{isSelectedPieceOnBoard()}}
+{\footnotesize\ttfamily bool Game\+Window\+::is\+Selected\+Piece\+On\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_ab2254bf2ba50defd19b185975d1190a2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_ab2254bf2ba50defd19b185975d1190a2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_a56419355dbf68fa9e8240bf4f630352e}\label{classGameWindow_a56419355dbf68fa9e8240bf4f630352e} 
+\index{GameWindow@{GameWindow}!movePiece@{movePiece}}
+\index{movePiece@{movePiece}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{movePiece()}{movePiece()}}
+{\footnotesize\ttfamily void Game\+Window\+::move\+Piece (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{hive\+::models\+::\+Hex}} \&}]{to }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a56419355dbf68fa9e8240bf4f630352e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a56419355dbf68fa9e8240bf4f630352e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_a88f74eb991291011565e8ea3fa76f41f}\label{classGameWindow_a88f74eb991291011565e8ea3fa76f41f} 
+\index{GameWindow@{GameWindow}!nextTurn@{nextTurn}}
+\index{nextTurn@{nextTurn}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{nextTurn()}{nextTurn()}}
+{\footnotesize\ttfamily void Game\+Window\+::next\+Turn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameWindow_ad53954b7070a2f98fc8e4335e8ddeeed}\label{classGameWindow_ad53954b7070a2f98fc8e4335e8ddeeed} 
+\index{GameWindow@{GameWindow}!onCreatePieceButtonClicked@{onCreatePieceButtonClicked}}
+\index{onCreatePieceButtonClicked@{onCreatePieceButtonClicked}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{onCreatePieceButtonClicked}{onCreatePieceButtonClicked}}
+{\footnotesize\ttfamily void Game\+Window\+::on\+Create\+Piece\+Button\+Clicked (\begin{DoxyParamCaption}\item[{int}]{player\+Index,  }\item[{\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{hive\+::models\+::enums\+::\+Piece\+Type}}}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_ad53954b7070a2f98fc8e4335e8ddeeed_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_ad53954b7070a2f98fc8e4335e8ddeeed_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_a3d2d2afbc20fe6f9c494556bfbf39d5b}\label{classGameWindow_a3d2d2afbc20fe6f9c494556bfbf39d5b} 
+\index{GameWindow@{GameWindow}!onRedoClicked@{onRedoClicked}}
+\index{onRedoClicked@{onRedoClicked}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{onRedoClicked}{onRedoClicked}}
+{\footnotesize\ttfamily void Game\+Window\+::on\+Redo\+Clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a3d2d2afbc20fe6f9c494556bfbf39d5b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a3d2d2afbc20fe6f9c494556bfbf39d5b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_a9931dfa33915f6b56508ba24a8350337}\label{classGameWindow_a9931dfa33915f6b56508ba24a8350337} 
+\index{GameWindow@{GameWindow}!onSaveClicked@{onSaveClicked}}
+\index{onSaveClicked@{onSaveClicked}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{onSaveClicked}{onSaveClicked}}
+{\footnotesize\ttfamily void Game\+Window\+::on\+Save\+Clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a9931dfa33915f6b56508ba24a8350337_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a9931dfa33915f6b56508ba24a8350337_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_a3f8581191baa90b0e963a80102c87be7}\label{classGameWindow_a3f8581191baa90b0e963a80102c87be7} 
+\index{GameWindow@{GameWindow}!onUndoClicked@{onUndoClicked}}
+\index{onUndoClicked@{onUndoClicked}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{onUndoClicked}{onUndoClicked}}
+{\footnotesize\ttfamily void Game\+Window\+::on\+Undo\+Clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a3f8581191baa90b0e963a80102c87be7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a3f8581191baa90b0e963a80102c87be7_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_a379160a41f8d7e154cde54cec0c13393}\label{classGameWindow_a379160a41f8d7e154cde54cec0c13393} 
+\index{GameWindow@{GameWindow}!placePiece@{placePiece}}
+\index{placePiece@{placePiece}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{placePiece()}{placePiece()}}
+{\footnotesize\ttfamily void Game\+Window\+::place\+Piece (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{hive\+::models\+::\+Hex}} \&}]{to }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a379160a41f8d7e154cde54cec0c13393_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a379160a41f8d7e154cde54cec0c13393_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_aa43f3cf42f2971b92ad2f9873412f422}\label{classGameWindow_aa43f3cf42f2971b92ad2f9873412f422} 
+\index{GameWindow@{GameWindow}!selectPiece@{selectPiece}}
+\index{selectPiece@{selectPiece}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{selectPiece()}{selectPiece()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Game\+Window\+::select\+Piece (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{hive\+::models\+::\+Hex}} \&}]{hex }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_aa43f3cf42f2971b92ad2f9873412f422_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_aa43f3cf42f2971b92ad2f9873412f422_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_a411e974b2ef679b602ff4bf5bcfa5075}\label{classGameWindow_a411e974b2ef679b602ff4bf5bcfa5075} 
+\index{GameWindow@{GameWindow}!selectPiece@{selectPiece}}
+\index{selectPiece@{selectPiece}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{selectPiece()}{selectPiece()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Game\+Window\+::select\+Piece (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Piece}{hive\+::models\+::\+Piece}} \texorpdfstring{$\ast$}{*}}]{piece }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameWindow_a8eaadb2df45add29f0e2efec02c89f36}\label{classGameWindow_a8eaadb2df45add29f0e2efec02c89f36} 
+\index{GameWindow@{GameWindow}!setPlayerNames@{setPlayerNames}}
+\index{setPlayerNames@{setPlayerNames}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{setPlayerNames()}{setPlayerNames()}}
+{\footnotesize\ttfamily void Game\+Window\+::set\+Player\+Names (\begin{DoxyParamCaption}\item[{const QString \&}]{player1,  }\item[{const QString \&}]{player2 }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a8eaadb2df45add29f0e2efec02c89f36_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a8eaadb2df45add29f0e2efec02c89f36_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_a5b3bcfd2cd2b6f07f0be351f114119db}\label{classGameWindow_a5b3bcfd2cd2b6f07f0be351f114119db} 
+\index{GameWindow@{GameWindow}!setupUI@{setupUI}}
+\index{setupUI@{setupUI}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{setupUI()}{setupUI()}}
+{\footnotesize\ttfamily void Game\+Window\+::setup\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a5b3bcfd2cd2b6f07f0be351f114119db_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a5b3bcfd2cd2b6f07f0be351f114119db_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_adb55bf4d481961522203420bd111df94}\label{classGameWindow_adb55bf4d481961522203420bd111df94} 
+\index{GameWindow@{GameWindow}!unselectPiece@{unselectPiece}}
+\index{unselectPiece@{unselectPiece}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{unselectPiece()}{unselectPiece()}}
+{\footnotesize\ttfamily void Game\+Window\+::unselect\+Piece (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_adb55bf4d481961522203420bd111df94_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_adb55bf4d481961522203420bd111df94_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_a06b02213154df24f36631be44bbaa27f}\label{classGameWindow_a06b02213154df24f36631be44bbaa27f} 
+\index{GameWindow@{GameWindow}!updatePieceCreationButtons@{updatePieceCreationButtons}}
+\index{updatePieceCreationButtons@{updatePieceCreationButtons}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{updatePieceCreationButtons()}{updatePieceCreationButtons()}}
+{\footnotesize\ttfamily void Game\+Window\+::update\+Piece\+Creation\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a06b02213154df24f36631be44bbaa27f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a06b02213154df24f36631be44bbaa27f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_a82f869102019254d94df59d2aa1b9834}\label{classGameWindow_a82f869102019254d94df59d2aa1b9834} 
+\index{GameWindow@{GameWindow}!updateUndoRedoButtons@{updateUndoRedoButtons}}
+\index{updateUndoRedoButtons@{updateUndoRedoButtons}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{updateUndoRedoButtons()}{updateUndoRedoButtons()}}
+{\footnotesize\ttfamily void Game\+Window\+::update\+Undo\+Redo\+Buttons (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a82f869102019254d94df59d2aa1b9834_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a82f869102019254d94df59d2aa1b9834_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classGameWindow_a58e3b3ba09f1304cf4ff22a797146482}\label{classGameWindow_a58e3b3ba09f1304cf4ff22a797146482} 
+\index{GameWindow@{GameWindow}!updateValidMoves@{updateValidMoves}}
+\index{updateValidMoves@{updateValidMoves}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{updateValidMoves()}{updateValidMoves()}}
+{\footnotesize\ttfamily void Game\+Window\+::update\+Valid\+Moves (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a58e3b3ba09f1304cf4ff22a797146482_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameWindow_a58e3b3ba09f1304cf4ff22a797146482_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classGameWindow_abb758927b957dfd6f51b4aa0287dbe86}\label{classGameWindow_abb758927b957dfd6f51b4aa0287dbe86} 
+\index{GameWindow@{GameWindow}!currentTurn@{currentTurn}}
+\index{currentTurn@{currentTurn}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{currentTurn}{currentTurn}}
+{\footnotesize\ttfamily int Game\+Window\+::current\+Turn\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameWindow_a7a6523e5ae7c327cf8879fbab1273c25}\label{classGameWindow_a7a6523e5ae7c327cf8879fbab1273c25} 
+\index{GameWindow@{GameWindow}!game@{game}}
+\index{game@{game}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{game}{game}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhive_1_1models_1_1Game}{hive\+::models\+::\+Game}}\texorpdfstring{$\ast$}{*} Game\+Window\+::game\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameWindow_a36ba137180b10221e5e9e539c5efd090}\label{classGameWindow_a36ba137180b10221e5e9e539c5efd090} 
+\index{GameWindow@{GameWindow}!gameBoardView@{gameBoardView}}
+\index{gameBoardView@{gameBoardView}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{gameBoardView}{gameBoardView}}
+{\footnotesize\ttfamily QGraphics\+View\texorpdfstring{$\ast$}{*} Game\+Window\+::game\+Board\+View\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameWindow_a99ce7787411f8346f1e2971e11bcbd9e}\label{classGameWindow_a99ce7787411f8346f1e2971e11bcbd9e} 
+\index{GameWindow@{GameWindow}!hexSelectable@{hexSelectable}}
+\index{hexSelectable@{hexSelectable}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{hexSelectable}{hexSelectable}}
+{\footnotesize\ttfamily bool Game\+Window\+::hex\+Selectable\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameWindow_af10fbfaf2912318178f3be119657805b}\label{classGameWindow_af10fbfaf2912318178f3be119657805b} 
+\index{GameWindow@{GameWindow}!moveHighlights@{moveHighlights}}
+\index{moveHighlights@{moveHighlights}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{moveHighlights}{moveHighlights}}
+{\footnotesize\ttfamily std\+::vector$<$QGraphics\+Ellipse\+Item \texorpdfstring{$\ast$}{*}$>$ Game\+Window\+::move\+Highlights\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameWindow_aa16c2d223b137764325144f8e5005fab}\label{classGameWindow_aa16c2d223b137764325144f8e5005fab} 
+\index{GameWindow@{GameWindow}!player1Label@{player1Label}}
+\index{player1Label@{player1Label}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{player1Label}{player1Label}}
+{\footnotesize\ttfamily QLabel\texorpdfstring{$\ast$}{*} Game\+Window\+::player1\+Label\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameWindow_a429e7fb7e39cf0f5e6276267f3e0a020}\label{classGameWindow_a429e7fb7e39cf0f5e6276267f3e0a020} 
+\index{GameWindow@{GameWindow}!player2Label@{player2Label}}
+\index{player2Label@{player2Label}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{player2Label}{player2Label}}
+{\footnotesize\ttfamily QLabel\texorpdfstring{$\ast$}{*} Game\+Window\+::player2\+Label\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameWindow_abba9d8225c6b614c87659577f036ae51}\label{classGameWindow_abba9d8225c6b614c87659577f036ae51} 
+\index{GameWindow@{GameWindow}!playerInfoLabel@{playerInfoLabel}}
+\index{playerInfoLabel@{playerInfoLabel}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{playerInfoLabel}{playerInfoLabel}}
+{\footnotesize\ttfamily QLabel\texorpdfstring{$\ast$}{*} Game\+Window\+::player\+Info\+Label\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameWindow_a585559d3cb59ca46fc4b7ac832efdd8a}\label{classGameWindow_a585559d3cb59ca46fc4b7ac832efdd8a} 
+\index{GameWindow@{GameWindow}!redoButton@{redoButton}}
+\index{redoButton@{redoButton}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{redoButton}{redoButton}}
+{\footnotesize\ttfamily QPush\+Button\texorpdfstring{$\ast$}{*} Game\+Window\+::redo\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameWindow_af2f7a6de928c412af7adb5610aa83b97}\label{classGameWindow_af2f7a6de928c412af7adb5610aa83b97} 
+\index{GameWindow@{GameWindow}!saveButton@{saveButton}}
+\index{saveButton@{saveButton}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{saveButton}{saveButton}}
+{\footnotesize\ttfamily QPush\+Button\texorpdfstring{$\ast$}{*} Game\+Window\+::save\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameWindow_a30e66f8824cf672da87f29b28a5598a9}\label{classGameWindow_a30e66f8824cf672da87f29b28a5598a9} 
+\index{GameWindow@{GameWindow}!scene@{scene}}
+\index{scene@{scene}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{scene}{scene}}
+{\footnotesize\ttfamily QGraphics\+Scene\texorpdfstring{$\ast$}{*} Game\+Window\+::scene\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameWindow_a495016a0da068f810ea1f4d1cdee1d0d}\label{classGameWindow_a495016a0da068f810ea1f4d1cdee1d0d} 
+\index{GameWindow@{GameWindow}!selectedPiece@{selectedPiece}}
+\index{selectedPiece@{selectedPiece}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{selectedPiece}{selectedPiece}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classhive_1_1models_1_1Piece}{hive\+::models\+::\+Piece}}$>$ Game\+Window\+::selected\+Piece\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameWindow_ad4ae6af49a62a815c5a13c5f8b9b3122}\label{classGameWindow_ad4ae6af49a62a815c5a13c5f8b9b3122} 
+\index{GameWindow@{GameWindow}!sideMenuLayout@{sideMenuLayout}}
+\index{sideMenuLayout@{sideMenuLayout}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{sideMenuLayout}{sideMenuLayout}}
+{\footnotesize\ttfamily QVBox\+Layout\texorpdfstring{$\ast$}{*} Game\+Window\+::side\+Menu\+Layout\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameWindow_abcab64d2ffb176878b3da5cd4f051532}\label{classGameWindow_abcab64d2ffb176878b3da5cd4f051532} 
+\index{GameWindow@{GameWindow}!turnLabel@{turnLabel}}
+\index{turnLabel@{turnLabel}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{turnLabel}{turnLabel}}
+{\footnotesize\ttfamily QLabel\texorpdfstring{$\ast$}{*} Game\+Window\+::turn\+Label\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameWindow_a0bb80aadf29ec39810c170560afa3db0}\label{classGameWindow_a0bb80aadf29ec39810c170560afa3db0} 
+\index{GameWindow@{GameWindow}!undoButton@{undoButton}}
+\index{undoButton@{undoButton}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{undoButton}{undoButton}}
+{\footnotesize\ttfamily QPush\+Button\texorpdfstring{$\ast$}{*} Game\+Window\+::undo\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classGameWindow_a14e713ad393414cad7ed02cc04746782}\label{classGameWindow_a14e713ad393414cad7ed02cc04746782} 
+\index{GameWindow@{GameWindow}!validMoves@{validMoves}}
+\index{validMoves@{validMoves}!GameWindow@{GameWindow}}
+\doxysubsubsection{\texorpdfstring{validMoves}{validMoves}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classhive_1_1models_1_1Hex}{hive\+::models\+::\+Hex}}$>$ Game\+Window\+::valid\+Moves\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/controllers/gui/\mbox{\hyperlink{gamewindow_8h}{gamewindow.\+h}}\item 
+src/views/gui/\mbox{\hyperlink{gamewindow_8cpp}{gamewindow.\+cpp}}\end{DoxyCompactItemize}

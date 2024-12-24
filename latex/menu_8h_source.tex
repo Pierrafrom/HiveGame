@@ -1,0 +1,34 @@
+\doxysection{menu.\+h}
+\hypertarget{menu_8h_source}{}\label{menu_8h_source}\index{src/controllers/gui/menu.h@{src/controllers/gui/menu.h}}
+\mbox{\hyperlink{menu_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MENU\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MENU\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{Board_8h}{models/Board.h}}>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMenu}{Menu}}\ :\ \textcolor{keyword}{public}\ QWidget}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00010\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1Board}{hive::models::Board}}\ \mbox{\hyperlink{classMenu_a9446a746f86f37d53834d829e97e3081}{gameBoard}};}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classMenu}{Menu}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ signals:}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenu_a864d51782cf486b7dfdecbdafb05f791}{startTwoPlayerGame}}();}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenu_a6a16f03c921c1d9e0f05190efedc0c11}{startSinglePlayerGame}}();}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenu_acadf32979446ffa343c3a179b0f63dc9}{importGame}}();}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenu_ab36f57e15a80a14237f852eacd3f80ac}{quitGame}}();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{public}\ slots:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenu_ad623fdc5e77ed481a1611abfdf3c3129}{onStartTwoPlayerGame}}();}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenu_a2f914987122b07cda68ba37f277d889c}{onStartSinglePlayerGame}}();}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenu_a39dfdaa3104de72e7ac6800258facdee}{onImportGame}}();}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenu_abd051cfb0ca4e5542b2dd9dcf75fef1f}{onQuitGame}}();}
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MENU\_H}}
+
+\end{DoxyCode}

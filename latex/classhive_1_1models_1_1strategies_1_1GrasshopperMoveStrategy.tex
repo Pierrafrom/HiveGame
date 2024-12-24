@@ -1,0 +1,158 @@
+\doxysection{hive\+::models\+::strategies\+::Grasshopper\+Move\+Strategy Class Reference}
+\hypertarget{classhive_1_1models_1_1strategies_1_1GrasshopperMoveStrategy}{}\label{classhive_1_1models_1_1strategies_1_1GrasshopperMoveStrategy}\index{hive::models::strategies::GrasshopperMoveStrategy@{hive::models::strategies::GrasshopperMoveStrategy}}
+
+
+Movement strategy for the Grasshopper piece in the Hive game.  
+
+
+
+
+{\ttfamily \#include $<$Grasshopper\+Move\+Strategy.\+h$>$}
+
+
+
+Inheritance diagram for hive\+::models\+::strategies\+::Grasshopper\+Move\+Strategy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classhive_1_1models_1_1strategies_1_1GrasshopperMoveStrategy__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for hive\+::models\+::strategies\+::Grasshopper\+Move\+Strategy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classhive_1_1models_1_1strategies_1_1GrasshopperMoveStrategy__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1GrasshopperMoveStrategy_a378500b46f139d308a310cb00c2273b2}{Grasshopper\+Move\+Strategy}} (\mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classhive_1_1models_1_1strategies_1_1MoveStrategy}{Move\+Strategy} object for a specific piece. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1GrasshopperMoveStrategy_abd3d400c9b747035ee00e24958b23a7f}{\texorpdfstring{$\sim$}{\string~}\+Grasshopper\+Move\+Strategy}} () override=default
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} $>$ \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1GrasshopperMoveStrategy_a679d2feeb20e063e76d5f4b299a46d6e}{get\+Possible\+Moves}} (const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&board, const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&player) const override
+\begin{DoxyCompactList}\small\item\em Calculates the possible moves for the Grasshopper piece. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} $>$ \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1GrasshopperMoveStrategy_a51559cbf42bfebfb29e9f2bda8ff6585}{get\+Possible\+Moves}} (const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&board, const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&player, const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&hex) const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy}{hive\+::models\+::strategies\+::\+Move\+Strategy}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_a6c1ea6b9dc9bf0525ee14bdec6c0de23}{Move\+Strategy}} (\mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classhive_1_1models_1_1strategies_1_1MoveStrategy}{Move\+Strategy} object for a specific piece. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_a909f881318d52a3ebe7a0c6d3e73c330}{\texorpdfstring{$\sim$}{\string~}\+Move\+Strategy}} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_a48d7628901dc82afd773c744d41b2390}{has\+Piece}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the piece has a valid position. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} \& \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_abe1dc9f8e24c3d3fca4ea5d5c24e1745}{get\+Piece}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the piece that uses this movement strategy. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_a0e587377152ffd4de231007eff521164}{validate\+Piece\+Ownership}} (const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&player) const
+\begin{DoxyCompactList}\small\item\em Validates the ownership of the piece by the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy}{hive\+::models\+::strategies\+::\+Move\+Strategy}}}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_a2abbb7650b46a878c5edd2590b19c372}{is\+Hive\+Connected\+After\+Move}} (\mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} board, \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} from, \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} to)
+\begin{DoxyCompactList}\small\item\em Checks if a hive is connected after moving a piece. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy}{hive\+::models\+::strategies\+::\+Move\+Strategy}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_ad1ed492c91ea22eba2933911a976e05b}{piece}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Movement strategy for the Grasshopper piece in the Hive game. 
+
+Implements the specific movement rules for the Grasshopper piece, which allows it to jump over other pieces. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classhive_1_1models_1_1strategies_1_1GrasshopperMoveStrategy_a378500b46f139d308a310cb00c2273b2}\label{classhive_1_1models_1_1strategies_1_1GrasshopperMoveStrategy_a378500b46f139d308a310cb00c2273b2} 
+\index{hive::models::strategies::GrasshopperMoveStrategy@{hive::models::strategies::GrasshopperMoveStrategy}!GrasshopperMoveStrategy@{GrasshopperMoveStrategy}}
+\index{GrasshopperMoveStrategy@{GrasshopperMoveStrategy}!hive::models::strategies::GrasshopperMoveStrategy@{hive::models::strategies::GrasshopperMoveStrategy}}
+\doxysubsubsection{\texorpdfstring{GrasshopperMoveStrategy()}{GrasshopperMoveStrategy()}}
+{\footnotesize\ttfamily hive\+::models\+::strategies\+::\+Grasshopper\+Move\+Strategy\+::\+Grasshopper\+Move\+Strategy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} \texorpdfstring{$\ast$}{*}}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructs a \doxylink{classhive_1_1models_1_1strategies_1_1MoveStrategy}{Move\+Strategy} object for a specific piece. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Pointer to the piece that uses this movement strategy. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classhive_1_1models_1_1strategies_1_1GrasshopperMoveStrategy_abd3d400c9b747035ee00e24958b23a7f}\label{classhive_1_1models_1_1strategies_1_1GrasshopperMoveStrategy_abd3d400c9b747035ee00e24958b23a7f} 
+\index{hive::models::strategies::GrasshopperMoveStrategy@{hive::models::strategies::GrasshopperMoveStrategy}!````~GrasshopperMoveStrategy@{\texorpdfstring{$\sim$}{\string~}GrasshopperMoveStrategy}}
+\index{````~GrasshopperMoveStrategy@{\texorpdfstring{$\sim$}{\string~}GrasshopperMoveStrategy}!hive::models::strategies::GrasshopperMoveStrategy@{hive::models::strategies::GrasshopperMoveStrategy}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}GrasshopperMoveStrategy()}{\string~GrasshopperMoveStrategy()}}
+{\footnotesize\ttfamily hive\+::models\+::strategies\+::\+Grasshopper\+Move\+Strategy\+::\texorpdfstring{$\sim$}{\string~}\+Grasshopper\+Move\+Strategy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+Destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classhive_1_1models_1_1strategies_1_1GrasshopperMoveStrategy_a679d2feeb20e063e76d5f4b299a46d6e}\label{classhive_1_1models_1_1strategies_1_1GrasshopperMoveStrategy_a679d2feeb20e063e76d5f4b299a46d6e} 
+\index{hive::models::strategies::GrasshopperMoveStrategy@{hive::models::strategies::GrasshopperMoveStrategy}!getPossibleMoves@{getPossibleMoves}}
+\index{getPossibleMoves@{getPossibleMoves}!hive::models::strategies::GrasshopperMoveStrategy@{hive::models::strategies::GrasshopperMoveStrategy}}
+\doxysubsubsection{\texorpdfstring{getPossibleMoves()}{getPossibleMoves()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} $>$ hive\+::models\+::strategies\+::\+Grasshopper\+Move\+Strategy\+::get\+Possible\+Moves (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&}]{board,  }\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&}]{player }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Calculates the possible moves for the Grasshopper piece. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em board} & The current state of the game board. \\
+\hline
+{\em player} & The player that owns the Grasshopper. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of {\ttfamily \doxylink{classhive_1_1models_1_1Hex}{Hex}} objects representing all reachable positions.
+\end{DoxyReturn}
+The Grasshopper can jump in a straight line over adjacent pieces, landing on the first empty space beyond them. 
+
+Implements \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_aef5b0faabe9daa411d8dbde88ef25dd4}{hive\+::models\+::strategies\+::\+Move\+Strategy}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1strategies_1_1GrasshopperMoveStrategy_a679d2feeb20e063e76d5f4b299a46d6e_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1strategies_1_1GrasshopperMoveStrategy_a51559cbf42bfebfb29e9f2bda8ff6585}\label{classhive_1_1models_1_1strategies_1_1GrasshopperMoveStrategy_a51559cbf42bfebfb29e9f2bda8ff6585} 
+\index{hive::models::strategies::GrasshopperMoveStrategy@{hive::models::strategies::GrasshopperMoveStrategy}!getPossibleMoves@{getPossibleMoves}}
+\index{getPossibleMoves@{getPossibleMoves}!hive::models::strategies::GrasshopperMoveStrategy@{hive::models::strategies::GrasshopperMoveStrategy}}
+\doxysubsubsection{\texorpdfstring{getPossibleMoves()}{getPossibleMoves()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} $>$ hive\+::models\+::strategies\+::\+Grasshopper\+Move\+Strategy\+::get\+Possible\+Moves (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&}]{board,  }\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&}]{player,  }\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&}]{hex }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_ab6489149b0085b30f378d58b086eef73}{hive\+::models\+::strategies\+::\+Move\+Strategy}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1strategies_1_1GrasshopperMoveStrategy_a51559cbf42bfebfb29e9f2bda8ff6585_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+includes/models/strategies/\mbox{\hyperlink{GrasshopperMoveStrategy_8h}{Grasshopper\+Move\+Strategy.\+h}}\item 
+src/models/strategies/\mbox{\hyperlink{GrasshopperMoveStrategy_8cpp}{Grasshopper\+Move\+Strategy.\+cpp}}\end{DoxyCompactItemize}

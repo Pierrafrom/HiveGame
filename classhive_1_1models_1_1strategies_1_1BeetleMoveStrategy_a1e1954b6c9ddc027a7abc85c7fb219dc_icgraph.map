@@ -1,0 +1,7 @@
+<map id="hive::models::strategies::BeetleMoveStrategy::getPossibleMoves" name="hive::models::strategies::BeetleMoveStrategy::getPossibleMoves">
+<area shape="rect" id="Node000001" title="Calculates the possible moves for the Beetle piece." alt="" coords="235,53,523,93"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy.html#a6510b5c2c51cb50ff4a75f91ccc8f60d" title="Calculates the possible moves for the Mosquito piece." alt="" coords="5,5,187,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="224,53,186,48,187,43,224,48"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy.html#a82597f40b5a0084fca477a7ece185d48" title=" " alt="" coords="5,84,187,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="222,97,187,102,187,96,221,92"/>
+</map>

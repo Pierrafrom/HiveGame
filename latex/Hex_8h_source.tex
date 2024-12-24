@@ -1,0 +1,78 @@
+\doxysection{Hex.\+h}
+\hypertarget{Hex_8h_source}{}\label{Hex_8h_source}\index{includes/models/Hex.h@{includes/models/Hex.h}}
+\mbox{\hyperlink{Hex_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ HEX\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ HEX\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <ostream>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehive_1_1models}{hive::models}}\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}\ \{}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ \ \ \ \ \ \ /***************************************************************************}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Attributes}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ ***************************************************************************/}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::int8\_t\ \mbox{\hyperlink{classhive_1_1models_1_1Hex_a6ae4bafb14cdc24546fb979b5ad5b472}{x}};\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::int8\_t\ \mbox{\hyperlink{classhive_1_1models_1_1Hex_a03b5db40fdaa76dec77c1ea48339cfb3}{y}};\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::int8\_t\ \mbox{\hyperlink{classhive_1_1models_1_1Hex_a0a75d41bdbee79d8dba7ffa613815c35}{z}};\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ \ \ \ \ \ \ \ /***************************************************************************}}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Constructors}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ ***************************************************************************/}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}(std::int8\_t\ \mbox{\hyperlink{classhive_1_1models_1_1Hex_a6ae4bafb14cdc24546fb979b5ad5b472}{x}},\ std::int8\_t\ \mbox{\hyperlink{classhive_1_1models_1_1Hex_a03b5db40fdaa76dec77c1ea48339cfb3}{y}},\ std::int8\_t\ \mbox{\hyperlink{classhive_1_1models_1_1Hex_a0a75d41bdbee79d8dba7ffa613815c35}{z}});}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1Hex_afec50f3331ac79acf9901b1d111d067b}{Hex}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}\ \&other)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex_aeeb8e62bc12e70c7ec90088da1c4b537}{operator<}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1Hex_a501e4135ae3d229d7ba1e0d4174d6597}{Hex}}(\mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}\ \&\&)\ noexcept\ =\ default;}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}\ \&operator=(\mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}\ \&\&)\ noexcept;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{comment}{\ \ \ \ \ \ \ \ /***************************************************************************}}
+\DoxyCodeLine{00065\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Destructor}}
+\DoxyCodeLine{00066\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ ***************************************************************************/}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \string~\mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}()\ =\ default;}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{comment}{\ \ \ \ \ \ \ \ /***************************************************************************}}
+\DoxyCodeLine{00074\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Getters}}
+\DoxyCodeLine{00075\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ ***************************************************************************/}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::int8\_t\ \mbox{\hyperlink{classhive_1_1models_1_1Hex_a94e250128565af8fbae3c988af319bbf}{getX}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex_a6ae4bafb14cdc24546fb979b5ad5b472}{x}};\ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::int8\_t\ \mbox{\hyperlink{classhive_1_1models_1_1Hex_a18c77d5b702f072962352f4d84ccca4d}{getY}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex_a03b5db40fdaa76dec77c1ea48339cfb3}{y}};\ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::int8\_t\ \mbox{\hyperlink{classhive_1_1models_1_1Hex_a6fb2c3680c7bddfddaeff4e356650552}{getZ}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex_a0a75d41bdbee79d8dba7ffa613815c35}{z}};\ \}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{comment}{\ \ \ \ \ \ \ \ /***************************************************************************}}
+\DoxyCodeLine{00096\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Public\ methods}}
+\DoxyCodeLine{00097\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ ***************************************************************************/}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex_ac7a37be7edad1a7b93eef551261edf45}{hash\_code}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex_a921b42f7e01a729fd37a919738caf2d0}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}\ \&other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex_a73621c7899647de7d81cd4eb45bc9023}{operator!=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}\ \&other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ [[nodiscard]]\ std::string\ \mbox{\hyperlink{classhive_1_1models_1_1Hex_ae556b0a9493cc62ed4654eebfb4895f7}{toString}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\ \&\mbox{\hyperlink{classhive_1_1models_1_1Hex_a46f4f99126983e6fae70eb919876967d}{operator<<}}(std::ostream\ \&os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}\ \&hex);}
+\DoxyCodeLine{00140\ \ \ \ \ \};}
+\DoxyCodeLine{00141\ \}\ \textcolor{comment}{//\ namespace\ hive::models}}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00148\ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{00149\ \textcolor{keyword}{struct\ }std::hash<\mbox{\hyperlink{namespacehive}{hive}}::models::Hex>\ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structstd_1_1hash_3_01hive_1_1models_1_1Hex_01_4_a0de78d0c9ce64d220f4b75d5ae5ba8fd}{operator()}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{hive::models::Hex}}\ \&hex)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ hex.hash\_code();}
+\DoxyCodeLine{00157\ \ \ \ \ \}}
+\DoxyCodeLine{00158\ \};\ \textcolor{comment}{//\ namespace\ std}}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ HEX\_H}}
+
+\end{DoxyCode}

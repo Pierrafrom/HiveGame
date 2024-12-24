@@ -1,0 +1,68 @@
+\doxysection{hive\+::models\+::Piece\+Factory Class Reference}
+\hypertarget{classhive_1_1models_1_1PieceFactory}{}\label{classhive_1_1models_1_1PieceFactory}\index{hive::models::PieceFactory@{hive::models::PieceFactory}}
+
+
+Factory class for creating game pieces in the Hive game.  
+
+
+
+
+{\ttfamily \#include $<$Piece\+Factory.\+h$>$}
+
+
+
+Collaboration diagram for hive\+::models\+::Piece\+Factory\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{classhive_1_1models_1_1PieceFactory__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ \mbox{\hyperlink{classhive_1_1models_1_1PieceFactory_a133ee6c09d84b532db748416c3aaa8d0}{create\+Piece}} (\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{enums\+::\+Piece\+Type}} type, size\+\_\+t id=0)
+\begin{DoxyCompactList}\small\item\em Creates a piece based on the specified type with optional attributes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Factory class for creating game pieces in the Hive game. 
+
+The {\ttfamily \doxylink{classhive_1_1models_1_1PieceFactory}{Piece\+Factory}} class provides a centralized mechanism for creating various types of pieces in the Hive game. It ensures consistent and flexible piece creation while encapsulating construction logic. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classhive_1_1models_1_1PieceFactory_a133ee6c09d84b532db748416c3aaa8d0}\label{classhive_1_1models_1_1PieceFactory_a133ee6c09d84b532db748416c3aaa8d0} 
+\index{hive::models::PieceFactory@{hive::models::PieceFactory}!createPiece@{createPiece}}
+\index{createPiece@{createPiece}!hive::models::PieceFactory@{hive::models::PieceFactory}}
+\doxysubsubsection{\texorpdfstring{createPiece()}{createPiece()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} $>$ hive\+::models\+::\+Piece\+Factory\+::create\+Piece (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{enums\+::\+Piece\+Type}}}]{type,  }\item[{size\+\_\+t}]{id = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Creates a piece based on the specified type with optional attributes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of piece to create (e.\+g., Queen\+Bee, Ant). \\
+\hline
+{\em id} & Optional unique identifier for the piece. Defaults to 0 (indicating no specific ID). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A unique pointer to the created piece.
+\end{DoxyReturn}
+This method selects the appropriate constructor for the piece based on whether an ID is provided or not. Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1PieceFactory_a133ee6c09d84b532db748416c3aaa8d0_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+includes/models/\mbox{\hyperlink{PieceFactory_8h}{Piece\+Factory.\+h}}\item 
+src/models/\mbox{\hyperlink{PieceFactory_8cpp}{Piece\+Factory.\+cpp}}\end{DoxyCompactItemize}

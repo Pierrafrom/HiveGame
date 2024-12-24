@@ -1,0 +1,23 @@
+<map id="Menu::onImportGame" name="Menu::onImportGame">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,141,169,166"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1Game.html#a4c2c19a3fdca3cbc11999c7374e5aa2f" title="Retrieves the single instance of the Game class." alt="" coords="218,69,371,109"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,138,215,111,217,116,130,143"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1utils_1_1Serializer.html#aec52fa68d78d232118eb5c3a440379df" title="Returns the singleton instance of the Serializer class." alt="" coords="217,133,372,173"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="170,151,203,151,203,156,170,156"/>
+<area shape="rect" id="Node000004" href="$classhive_1_1utils_1_1Serializer.html#aacb397dc8b6469f10d261f8f66b1cb38" title="Loads a game state from a file." alt="" coords="217,197,372,237"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="130,164,217,191,215,196,129,169"/>
+<area shape="rect" id="Node000005" href="$classhive_1_1models_1_1PieceFactory.html#a133ee6c09d84b532db748416c3aaa8d0" title="Creates a piece based on the specified type with optional attributes." alt="" coords="420,5,616,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="355,195,370,183,382,168,389,152,393,120,397,88,405,72,418,55,423,51,426,55,422,59,409,75,403,90,398,121,394,153,387,170,374,187,359,199"/>
+<area shape="rect" id="Node000006" href="$classhive_1_1models_1_1Game.html#a1e2f52e7a24485701b82cbddccd21912" title="Gets the game board." alt="" coords="441,69,595,109"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="352,195,370,183,385,167,393,152,402,135,418,119,427,113,430,118,422,123,406,139,398,154,389,171,374,187,355,200"/>
+<area shape="rect" id="Node000007" href="$classhive_1_1models_1_1Game.html#adffa668dd4483fdaf21acfa4fac42f14" title="Gets the player corresponding to the given index, or the current player if no index is provided." alt="" coords="441,133,595,173"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="364,195,434,175,435,180,366,200"/>
+<area shape="rect" id="Node000008" href="$classhive_1_1models_1_1Game.html#aa0eb571c5102f2f04afc77d7318476a8" title="Gets the redo stack." alt="" coords="441,197,595,237"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="373,215,427,215,427,220,373,220"/>
+<area shape="rect" id="Node000009" href="$classhive_1_1models_1_1Game.html#aa1857cf3fb038d3924801ac414e16ae6" title="Gets the undo stack." alt="" coords="441,261,595,301"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="366,235,435,255,434,260,364,240"/>
+<area shape="rect" id="Node000010" href="$classhive_1_1models_1_1Game.html#ad4fd3a64a7ac1539477ce269ddfc4dd0" title="Advances the game to the next turn." alt="" coords="441,325,595,365"/>
+<area shape="poly" id="edge9_Node000004_Node000010" title=" " alt="" coords="319,235,364,273,421,311,435,318,433,322,419,316,361,278,316,240"/>
+<area shape="rect" id="Node000011" href="$classhive_1_1models_1_1Game.html#a345f1f4de5f02c0b0d275df74bc6f782" title="Resets the game with new player names." alt="" coords="441,389,595,429"/>
+<area shape="poly" id="edge10_Node000004_Node000011" title=" " alt="" coords="309,236,352,304,384,342,422,375,430,381,427,385,418,379,380,346,348,308,304,239"/>
+</map>

@@ -1,0 +1,148 @@
+\doxysection{hive\+::models Namespace Reference}
+\hypertarget{namespacehive_1_1models}{}\label{namespacehive_1_1models}\index{hive::models@{hive::models}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacehive_1_1models_1_1enums}{enums}}
+\item 
+namespace \mbox{\hyperlink{namespacehive_1_1models_1_1pieces}{pieces}}
+\item 
+namespace \mbox{\hyperlink{namespacehive_1_1models_1_1strategies}{strategies}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}}
+\begin{DoxyCompactList}\small\item\em Represents the game board for the Hive game. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classhive_1_1models_1_1Game}{Game}}
+\begin{DoxyCompactList}\small\item\em Singleton class managing the state of a Hive game. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classhive_1_1models_1_1GameRules}{Game\+Rules}}
+\begin{DoxyCompactList}\small\item\em Singleton class encapsulating the rules of the Hive game. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structhive_1_1models_1_1GameStatus}{Game\+Status}}
+\begin{DoxyCompactList}\small\item\em Represents the status of the game. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}}
+\begin{DoxyCompactList}\small\item\em Represents a hexagonal cell in the Hive game board using cube coordinates. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classhive_1_1models_1_1Move}{Move}}
+\begin{DoxyCompactList}\small\item\em Represents a move in the Hive game. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}}
+\begin{DoxyCompactList}\small\item\em Base class representing a generic game piece in the Hive game. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classhive_1_1models_1_1PieceFactory}{Piece\+Factory}}
+\begin{DoxyCompactList}\small\item\em Factory class for creating game pieces in the Hive game. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}}
+\begin{DoxyCompactList}\small\item\em Represents a player in the Hive game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{namespacehive_1_1models_af3d30aa05a293d7461f0c1ca4225d9ea}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&board)
+\item 
+std\+::ostream \& \mbox{\hyperlink{namespacehive_1_1models_a88279e2ad1dcce1d5196b460b06bb7c2}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classhive_1_1models_1_1Game}{Game}} \&game)
+\item 
+std\+::ostream \& \mbox{\hyperlink{namespacehive_1_1models_a8564a369f57187bfbb80569871d4bcde}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&hex)
+\item 
+std\+::ostream \& \mbox{\hyperlink{namespacehive_1_1models_ab8ae43a4be6f88cf94f4fb6a07c74296}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classhive_1_1models_1_1Move}{Move}} \&move)
+\item 
+std\+::ostream \& \mbox{\hyperlink{namespacehive_1_1models_a529bc769097bf6f8608ca59cd301b802}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} \&piece)
+\item 
+std\+::ostream \& \mbox{\hyperlink{namespacehive_1_1models_ab5be18573f3d5594c395973338c8c398}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&player)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacehive_1_1models_af3d30aa05a293d7461f0c1ca4225d9ea}\label{namespacehive_1_1models_af3d30aa05a293d7461f0c1ca4225d9ea} 
+\index{hive::models@{hive::models}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!hive::models@{hive::models}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily std\+::ostream \& hive\+::models\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&}]{board }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream. \\
+\hline
+{\em board} & The \doxylink{classhive_1_1models_1_1Board}{Board} object to output. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the output stream. 
+\end{DoxyReturn}
+\Hypertarget{namespacehive_1_1models_a88279e2ad1dcce1d5196b460b06bb7c2}\label{namespacehive_1_1models_a88279e2ad1dcce1d5196b460b06bb7c2} 
+\index{hive::models@{hive::models}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!hive::models@{hive::models}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily std\+::ostream \& hive\+::models\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Game}{Game}} \&}]{game }\end{DoxyParamCaption})}
+
+Outputs a human-\/readable string representation of the game state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream. \\
+\hline
+{\em game} & The \doxylink{classhive_1_1models_1_1Game}{Game} object to output. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the output stream. 
+\end{DoxyReturn}
+\Hypertarget{namespacehive_1_1models_a8564a369f57187bfbb80569871d4bcde}\label{namespacehive_1_1models_a8564a369f57187bfbb80569871d4bcde} 
+\index{hive::models@{hive::models}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!hive::models@{hive::models}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily std\+::ostream \& hive\+::models\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&}]{hex }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream. \\
+\hline
+{\em hex} & The \doxylink{classhive_1_1models_1_1Hex}{Hex} object to insert into the stream. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the output stream.
+\end{DoxyReturn}
+Allows \doxylink{classhive_1_1models_1_1Hex}{Hex} objects to be outputted to streams using the \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} operator, formatted as "{}\+Hex(x, y, z)"{}. \Hypertarget{namespacehive_1_1models_ab8ae43a4be6f88cf94f4fb6a07c74296}\label{namespacehive_1_1models_ab8ae43a4be6f88cf94f4fb6a07c74296} 
+\index{hive::models@{hive::models}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!hive::models@{hive::models}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily std\+::ostream \& hive\+::models\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Move}{Move}} \&}]{move }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream. \\
+\hline
+{\em move} & The \doxylink{classhive_1_1models_1_1Move}{Move} object to output. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the output stream. 
+\end{DoxyReturn}
+\Hypertarget{namespacehive_1_1models_a529bc769097bf6f8608ca59cd301b802}\label{namespacehive_1_1models_a529bc769097bf6f8608ca59cd301b802} 
+\index{hive::models@{hive::models}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!hive::models@{hive::models}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily std\+::ostream \& hive\+::models\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} \&}]{piece }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream. \\
+\hline
+{\em piece} & The \doxylink{classhive_1_1models_1_1Piece}{Piece} to output. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The output stream. 
+\end{DoxyReturn}
+\Hypertarget{namespacehive_1_1models_ab5be18573f3d5594c395973338c8c398}\label{namespacehive_1_1models_ab5be18573f3d5594c395973338c8c398} 
+\index{hive::models@{hive::models}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!hive::models@{hive::models}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily std\+::ostream \& hive\+::models\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&}]{player }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream. \\
+\hline
+{\em player} & The \doxylink{classhive_1_1models_1_1Player}{Player} object to output. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the output stream. 
+\end{DoxyReturn}

@@ -1,0 +1,5 @@
+<map id="Menu::onStartSinglePlayerGame" name="Menu::onStartSinglePlayerGame">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,239,31"/>
+<area shape="rect" id="Node000002" href="$classMenu.html#a6a16f03c921c1d9e0f05190efedc0c11" title=" " alt="" coords="287,5,503,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="239,15,273,15,273,21,239,21"/>
+</map>

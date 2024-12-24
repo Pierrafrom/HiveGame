@@ -1,0 +1,158 @@
+\doxysection{hive\+::models\+::strategies\+::Mosquito\+Move\+Strategy Class Reference}
+\hypertarget{classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy}{}\label{classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy}\index{hive::models::strategies::MosquitoMoveStrategy@{hive::models::strategies::MosquitoMoveStrategy}}
+
+
+Movement strategy for the Mosquito piece in the Hive game.  
+
+
+
+
+{\ttfamily \#include $<$Mosquito\+Move\+Strategy.\+h$>$}
+
+
+
+Inheritance diagram for hive\+::models\+::strategies\+::Mosquito\+Move\+Strategy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for hive\+::models\+::strategies\+::Mosquito\+Move\+Strategy\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy_a5788453b4219f207174daf25450dcdc4}{Mosquito\+Move\+Strategy}} (\mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classhive_1_1models_1_1strategies_1_1MoveStrategy}{Move\+Strategy} object for a specific piece. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy_aae76eb74ea3b12d43b2be205a41b39c4}{\texorpdfstring{$\sim$}{\string~}\+Mosquito\+Move\+Strategy}} () override=default
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} $>$ \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy_a6510b5c2c51cb50ff4a75f91ccc8f60d}{get\+Possible\+Moves}} (const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&board, const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&player) const override
+\begin{DoxyCompactList}\small\item\em Calculates the possible moves for the Mosquito piece. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} $>$ \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy_a82597f40b5a0084fca477a7ece185d48}{get\+Possible\+Moves}} (const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&board, const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&player, const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&hex) const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy}{hive\+::models\+::strategies\+::\+Move\+Strategy}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_a6c1ea6b9dc9bf0525ee14bdec6c0de23}{Move\+Strategy}} (\mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{classhive_1_1models_1_1strategies_1_1MoveStrategy}{Move\+Strategy} object for a specific piece. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_a909f881318d52a3ebe7a0c6d3e73c330}{\texorpdfstring{$\sim$}{\string~}\+Move\+Strategy}} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_a48d7628901dc82afd773c744d41b2390}{has\+Piece}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the piece has a valid position. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} \& \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_abe1dc9f8e24c3d3fca4ea5d5c24e1745}{get\+Piece}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the piece that uses this movement strategy. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_a0e587377152ffd4de231007eff521164}{validate\+Piece\+Ownership}} (const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&player) const
+\begin{DoxyCompactList}\small\item\em Validates the ownership of the piece by the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy}{hive\+::models\+::strategies\+::\+Move\+Strategy}}}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_a2abbb7650b46a878c5edd2590b19c372}{is\+Hive\+Connected\+After\+Move}} (\mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} board, \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} from, \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} to)
+\begin{DoxyCompactList}\small\item\em Checks if a hive is connected after moving a piece. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy}{hive\+::models\+::strategies\+::\+Move\+Strategy}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_ad1ed492c91ea22eba2933911a976e05b}{piece}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Movement strategy for the Mosquito piece in the Hive game. 
+
+The Mosquito imitates the movement abilities of adjacent pieces, making its movement behavior dynamic based on the current game state. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy_a5788453b4219f207174daf25450dcdc4}\label{classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy_a5788453b4219f207174daf25450dcdc4} 
+\index{hive::models::strategies::MosquitoMoveStrategy@{hive::models::strategies::MosquitoMoveStrategy}!MosquitoMoveStrategy@{MosquitoMoveStrategy}}
+\index{MosquitoMoveStrategy@{MosquitoMoveStrategy}!hive::models::strategies::MosquitoMoveStrategy@{hive::models::strategies::MosquitoMoveStrategy}}
+\doxysubsubsection{\texorpdfstring{MosquitoMoveStrategy()}{MosquitoMoveStrategy()}}
+{\footnotesize\ttfamily hive\+::models\+::strategies\+::\+Mosquito\+Move\+Strategy\+::\+Mosquito\+Move\+Strategy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}} \texorpdfstring{$\ast$}{*}}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructs a \doxylink{classhive_1_1models_1_1strategies_1_1MoveStrategy}{Move\+Strategy} object for a specific piece. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Pointer to the piece that uses this movement strategy. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy_aae76eb74ea3b12d43b2be205a41b39c4}\label{classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy_aae76eb74ea3b12d43b2be205a41b39c4} 
+\index{hive::models::strategies::MosquitoMoveStrategy@{hive::models::strategies::MosquitoMoveStrategy}!````~MosquitoMoveStrategy@{\texorpdfstring{$\sim$}{\string~}MosquitoMoveStrategy}}
+\index{````~MosquitoMoveStrategy@{\texorpdfstring{$\sim$}{\string~}MosquitoMoveStrategy}!hive::models::strategies::MosquitoMoveStrategy@{hive::models::strategies::MosquitoMoveStrategy}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}MosquitoMoveStrategy()}{\string~MosquitoMoveStrategy()}}
+{\footnotesize\ttfamily hive\+::models\+::strategies\+::\+Mosquito\+Move\+Strategy\+::\texorpdfstring{$\sim$}{\string~}\+Mosquito\+Move\+Strategy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+Destructor. 
+
+Ensures proper cleanup for the Mosquito\textquotesingle{}s movement strategy if necessary. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy_a6510b5c2c51cb50ff4a75f91ccc8f60d}\label{classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy_a6510b5c2c51cb50ff4a75f91ccc8f60d} 
+\index{hive::models::strategies::MosquitoMoveStrategy@{hive::models::strategies::MosquitoMoveStrategy}!getPossibleMoves@{getPossibleMoves}}
+\index{getPossibleMoves@{getPossibleMoves}!hive::models::strategies::MosquitoMoveStrategy@{hive::models::strategies::MosquitoMoveStrategy}}
+\doxysubsubsection{\texorpdfstring{getPossibleMoves()}{getPossibleMoves()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} $>$ hive\+::models\+::strategies\+::\+Mosquito\+Move\+Strategy\+::get\+Possible\+Moves (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&}]{board,  }\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&}]{player }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Calculates the possible moves for the Mosquito piece. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em board} & The current state of the game board. \\
+\hline
+{\em player} & The player that owns the Mosquito. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of {\ttfamily \doxylink{classhive_1_1models_1_1Hex}{Hex}} objects representing all reachable positions.
+\end{DoxyReturn}
+The Mosquito can move according to the movement abilities of any adjacent piece. 
+
+Implements \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_aef5b0faabe9daa411d8dbde88ef25dd4}{hive\+::models\+::strategies\+::\+Move\+Strategy}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy_a6510b5c2c51cb50ff4a75f91ccc8f60d_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy_a82597f40b5a0084fca477a7ece185d48}\label{classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy_a82597f40b5a0084fca477a7ece185d48} 
+\index{hive::models::strategies::MosquitoMoveStrategy@{hive::models::strategies::MosquitoMoveStrategy}!getPossibleMoves@{getPossibleMoves}}
+\index{getPossibleMoves@{getPossibleMoves}!hive::models::strategies::MosquitoMoveStrategy@{hive::models::strategies::MosquitoMoveStrategy}}
+\doxysubsubsection{\texorpdfstring{getPossibleMoves()}{getPossibleMoves()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} $>$ hive\+::models\+::strategies\+::\+Mosquito\+Move\+Strategy\+::get\+Possible\+Moves (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&}]{board,  }\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&}]{player,  }\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Hex}{Hex}} \&}]{hex }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classhive_1_1models_1_1strategies_1_1MoveStrategy_ab6489149b0085b30f378d58b086eef73}{hive\+::models\+::strategies\+::\+Move\+Strategy}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy_a82597f40b5a0084fca477a7ece185d48_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+includes/models/strategies/\mbox{\hyperlink{MosquitoMoveStrategy_8h}{Mosquito\+Move\+Strategy.\+h}}\item 
+src/models/strategies/\mbox{\hyperlink{MosquitoMoveStrategy_8cpp}{Mosquito\+Move\+Strategy.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,7 @@
+<map id="hive::models::Piece::getNeighbors" name="hive::models::Piece::getNeighbors">
+<area shape="rect" id="Node000001" title="Retrieves the neighboring pieces of this piece on the board." alt="" coords="235,53,384,93"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy.html#a6510b5c2c51cb50ff4a75f91ccc8f60d" title="Calculates the possible moves for the Mosquito piece." alt="" coords="5,5,187,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="221,59,186,52,187,47,222,54"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy.html#a82597f40b5a0084fca477a7ece185d48" title=" " alt="" coords="5,84,187,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="222,91,187,98,186,92,221,86"/>
+</map>

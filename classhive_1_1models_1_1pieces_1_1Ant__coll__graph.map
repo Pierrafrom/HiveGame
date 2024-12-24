@@ -1,0 +1,5 @@
+<map id="hive::models::pieces::Ant" name="hive::models::pieces::Ant">
+<area shape="rect" id="Node000001" title="Represents an Ant piece in the Hive game." alt="" coords="5,439,184,604"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1Piece.html" title="Base class representing a generic game piece in the Hive game." alt="" coords="19,5,170,391"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,404,97,439,92,439,92,404"/>
+</map>

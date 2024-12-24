@@ -1,0 +1,5 @@
+<map id="hive::models::GameRules::canAddPiece" name="hive::models::GameRules::canAddPiece">
+<area shape="rect" id="Node000001" title="Checks if the player can add a specific piece type according to the maximum limit." alt="" coords="5,5,195,45"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1Player.html#a60cbac742776f742e55b07f131801fc1" title="Retrieves the total number of pieces owned by the player." alt="" coords="243,5,397,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,23,229,23,229,28,195,28"/>
+</map>

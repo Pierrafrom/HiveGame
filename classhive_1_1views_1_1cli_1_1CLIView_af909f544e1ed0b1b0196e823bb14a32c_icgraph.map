@@ -1,0 +1,5 @@
+<map id="hive::views::cli::CLIView::displayBoard" name="hive::views::cli::CLIView::displayBoard">
+<area shape="rect" id="Node000001" title=" " alt="" coords="232,5,411,45"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1views_1_1cli_1_1CLIView.html#a3acbe182b13f85f5342f5e810cb11bd9" title="Affiche l&#39;état complet du jeu avec une mise en page soignée." alt="" coords="5,5,184,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="218,28,184,28,184,23,218,23"/>
+</map>

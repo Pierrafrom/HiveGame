@@ -1,0 +1,367 @@
+\doxysection{hive\+::models\+::Game\+Rules Class Reference}
+\hypertarget{classhive_1_1models_1_1GameRules}{}\label{classhive_1_1models_1_1GameRules}\index{hive::models::GameRules@{hive::models::GameRules}}
+
+
+Singleton class encapsulating the rules of the Hive game.  
+
+
+
+
+{\ttfamily \#include $<$Game\+Rules.\+h$>$}
+
+
+
+Collaboration diagram for hive\+::models\+::Game\+Rules\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{classhive_1_1models_1_1GameRules__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhive_1_1models_1_1GameRules_a48027567a5cf639d902a6208b0d1c43b}{Game\+Rules}} (const \mbox{\hyperlink{classhive_1_1models_1_1GameRules}{Game\+Rules}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Deleted copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhive_1_1models_1_1GameRules}{Game\+Rules}} \& \mbox{\hyperlink{classhive_1_1models_1_1GameRules_a50f3a91af5aa2d0105edc426d9c6fe27}{operator=}} (const \mbox{\hyperlink{classhive_1_1models_1_1GameRules}{Game\+Rules}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Deleted assignment operator. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhive_1_1models_1_1GameRules_a96bdda9e88b75c7cd27596c98baa09fb}{Game\+Rules}} (\mbox{\hyperlink{classhive_1_1models_1_1GameRules}{Game\+Rules}} \&\&)=delete
+\begin{DoxyCompactList}\small\item\em Deleted move constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhive_1_1models_1_1GameRules}{Game\+Rules}} \& \mbox{\hyperlink{classhive_1_1models_1_1GameRules_a975f3a1fbc7e01bfd30fe50dfb571053}{operator=}} (\mbox{\hyperlink{classhive_1_1models_1_1GameRules}{Game\+Rules}} \&\&)=delete
+\begin{DoxyCompactList}\small\item\em Deleted move assignment operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classhive_1_1models_1_1GameRules_a01eb724a216dedf1f8b7677f89e73c0c}{is\+Queen\+Placement\+Required}} (const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&player, size\+\_\+t turn\+Number)
+\begin{DoxyCompactList}\small\item\em Enforces the rule that the queen must be placed by the fourth turn. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classhive_1_1models_1_1GameRules}{Game\+Rules}} \& \mbox{\hyperlink{classhive_1_1models_1_1GameRules_ae098a2ad513579fd69f53f0e5d30d570}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the singleton instance of \doxylink{classhive_1_1models_1_1GameRules}{Game\+Rules}. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classhive_1_1models_1_1GameRules_af4639bd9adac498eff29a16e03fc8165}{validate\+Move}} (const \mbox{\hyperlink{classhive_1_1models_1_1Move}{Move}} \&move, const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&board, size\+\_\+t turn\+Number)
+\begin{DoxyCompactList}\small\item\em Validates a move according to its type. \end{DoxyCompactList}\item 
+static std\+::optional$<$ const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classhive_1_1models_1_1GameRules_abd49c7a464b050d6d8396a97e381537f}{get\+Victory\+Condition}} (const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&board, const std\+::vector$<$ const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \texorpdfstring{$\ast$}{*} $>$ \&players)
+\begin{DoxyCompactList}\small\item\em Checks the victory conditions in the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhive_1_1models_1_1GameRules_a0def0a879c514dc6af9d5e5c57adda5f}{Game\+Rules}} ()=default
+\begin{DoxyCompactList}\small\item\em Private constructor to enforce singleton pattern. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhive_1_1models_1_1GameRules_a1d779dad9ce1896ca58906ddf71bbb09}{\texorpdfstring{$\sim$}{\string~}\+Game\+Rules}} ()=default
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classhive_1_1models_1_1GameRules_afe688c8e8c742ccf08a21fdebcb75e4b}{validate\+Move\+Type}} (const \mbox{\hyperlink{classhive_1_1models_1_1Move}{Move}} \&move, const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&board)
+\begin{DoxyCompactList}\small\item\em Validates a MOVE-\/type move. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classhive_1_1models_1_1GameRules_a274494ae501490148c2233171d8bb65d}{validate\+Place\+Type}} (const \mbox{\hyperlink{classhive_1_1models_1_1Move}{Move}} \&move, const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&board)
+\begin{DoxyCompactList}\small\item\em Validates a PLACE-\/type move. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classhive_1_1models_1_1GameRules_a1b166e6772b05d46e2c175627fe8e823}{can\+Add\+Piece}} (const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&player, \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{enums\+::\+Piece\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Checks if the player can add a specific piece type according to the maximum limit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Singleton class encapsulating the rules of the Hive game. 
+
+The \doxylink{classhive_1_1models_1_1GameRules}{Game\+Rules} class provides methods to validate moves, enforce game rules, and check for game-\/ending conditions. As a singleton, it ensures that only one instance of the rules exists globally. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classhive_1_1models_1_1GameRules_a0def0a879c514dc6af9d5e5c57adda5f}\label{classhive_1_1models_1_1GameRules_a0def0a879c514dc6af9d5e5c57adda5f} 
+\index{hive::models::GameRules@{hive::models::GameRules}!GameRules@{GameRules}}
+\index{GameRules@{GameRules}!hive::models::GameRules@{hive::models::GameRules}}
+\doxysubsubsection{\texorpdfstring{GameRules()}{GameRules()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily hive\+::models\+::\+Game\+Rules\+::\+Game\+Rules (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [default]}}
+
+
+
+Private constructor to enforce singleton pattern. 
+
+\Hypertarget{classhive_1_1models_1_1GameRules_a1d779dad9ce1896ca58906ddf71bbb09}\label{classhive_1_1models_1_1GameRules_a1d779dad9ce1896ca58906ddf71bbb09} 
+\index{hive::models::GameRules@{hive::models::GameRules}!````~GameRules@{\texorpdfstring{$\sim$}{\string~}GameRules}}
+\index{````~GameRules@{\texorpdfstring{$\sim$}{\string~}GameRules}!hive::models::GameRules@{hive::models::GameRules}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}GameRules()}{\string~GameRules()}}
+{\footnotesize\ttfamily hive\+::models\+::\+Game\+Rules\+::\texorpdfstring{$\sim$}{\string~}\+Game\+Rules (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [default]}}
+
+
+
+Destructor. 
+
+The destructor is kept private and defaulted as no special cleanup is required. \Hypertarget{classhive_1_1models_1_1GameRules_a48027567a5cf639d902a6208b0d1c43b}\label{classhive_1_1models_1_1GameRules_a48027567a5cf639d902a6208b0d1c43b} 
+\index{hive::models::GameRules@{hive::models::GameRules}!GameRules@{GameRules}}
+\index{GameRules@{GameRules}!hive::models::GameRules@{hive::models::GameRules}}
+\doxysubsubsection{\texorpdfstring{GameRules()}{GameRules()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily hive\+::models\+::\+Game\+Rules\+::\+Game\+Rules (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1GameRules}{Game\+Rules}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Deleted copy constructor. 
+
+This prevents copying the singleton instance. \Hypertarget{classhive_1_1models_1_1GameRules_a96bdda9e88b75c7cd27596c98baa09fb}\label{classhive_1_1models_1_1GameRules_a96bdda9e88b75c7cd27596c98baa09fb} 
+\index{hive::models::GameRules@{hive::models::GameRules}!GameRules@{GameRules}}
+\index{GameRules@{GameRules}!hive::models::GameRules@{hive::models::GameRules}}
+\doxysubsubsection{\texorpdfstring{GameRules()}{GameRules()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily hive\+::models\+::\+Game\+Rules\+::\+Game\+Rules (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhive_1_1models_1_1GameRules}{Game\+Rules}} \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Deleted move constructor. 
+
+This prevents moving the singleton instance. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classhive_1_1models_1_1GameRules_a1b166e6772b05d46e2c175627fe8e823}\label{classhive_1_1models_1_1GameRules_a1b166e6772b05d46e2c175627fe8e823} 
+\index{hive::models::GameRules@{hive::models::GameRules}!canAddPiece@{canAddPiece}}
+\index{canAddPiece@{canAddPiece}!hive::models::GameRules@{hive::models::GameRules}}
+\doxysubsubsection{\texorpdfstring{canAddPiece()}{canAddPiece()}}
+{\footnotesize\ttfamily bool hive\+::models\+::\+Game\+Rules\+::can\+Add\+Piece (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&}]{player,  }\item[{\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{enums\+::\+Piece\+Type}}}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Checks if the player can add a specific piece type according to the maximum limit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player attempting to add the piece. \\
+\hline
+{\em type} & The type of the piece to add. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the player can add the piece, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1GameRules_a1b166e6772b05d46e2c175627fe8e823_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1GameRules_a1b166e6772b05d46e2c175627fe8e823_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1GameRules_ae098a2ad513579fd69f53f0e5d30d570}\label{classhive_1_1models_1_1GameRules_ae098a2ad513579fd69f53f0e5d30d570} 
+\index{hive::models::GameRules@{hive::models::GameRules}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!hive::models::GameRules@{hive::models::GameRules}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhive_1_1models_1_1GameRules}{Game\+Rules}} \& hive\+::models\+::\+Game\+Rules\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Retrieves the singleton instance of \doxylink{classhive_1_1models_1_1GameRules}{Game\+Rules}. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the single instance of \doxylink{classhive_1_1models_1_1GameRules}{Game\+Rules}.
+\end{DoxyReturn}
+This method ensures that only one instance of \doxylink{classhive_1_1models_1_1GameRules}{Game\+Rules} exists throughout the application. It creates the instance on first access and returns it on subsequent calls. \Hypertarget{classhive_1_1models_1_1GameRules_abd49c7a464b050d6d8396a97e381537f}\label{classhive_1_1models_1_1GameRules_abd49c7a464b050d6d8396a97e381537f} 
+\index{hive::models::GameRules@{hive::models::GameRules}!getVictoryCondition@{getVictoryCondition}}
+\index{getVictoryCondition@{getVictoryCondition}!hive::models::GameRules@{hive::models::GameRules}}
+\doxysubsubsection{\texorpdfstring{getVictoryCondition()}{getVictoryCondition()}}
+{\footnotesize\ttfamily std\+::optional$<$ const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \texorpdfstring{$\ast$}{*} $>$ hive\+::models\+::\+Game\+Rules\+::get\+Victory\+Condition (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&}]{board,  }\item[{const std\+::vector$<$ const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \texorpdfstring{$\ast$}{*} $>$ \&}]{players }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Checks the victory conditions in the game. 
+
+This method evaluates the current state of the game to determine if there is a winner, if the game is a draw, or if it should continue.
+
+
+\begin{DoxyItemize}
+\item A victory is declared if only one player\textquotesingle{}s queen bee is surrounded.
+\item A draw is declared if all queen bees present on the board are surrounded.
+\item If no queen bees are surrounded, the game continues without a winner.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em board} & The current game board. \\
+\hline
+{\em players} & A vector of players participating in the game. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the winning player if there is a winner, {\ttfamily std\+::nullopt} for a draw, or {\ttfamily nullptr} if the game continues without a winner. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1GameRules_abd49c7a464b050d6d8396a97e381537f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1GameRules_abd49c7a464b050d6d8396a97e381537f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1GameRules_a01eb724a216dedf1f8b7677f89e73c0c}\label{classhive_1_1models_1_1GameRules_a01eb724a216dedf1f8b7677f89e73c0c} 
+\index{hive::models::GameRules@{hive::models::GameRules}!isQueenPlacementRequired@{isQueenPlacementRequired}}
+\index{isQueenPlacementRequired@{isQueenPlacementRequired}!hive::models::GameRules@{hive::models::GameRules}}
+\doxysubsubsection{\texorpdfstring{isQueenPlacementRequired()}{isQueenPlacementRequired()}}
+{\footnotesize\ttfamily bool hive\+::models\+::\+Game\+Rules\+::is\+Queen\+Placement\+Required (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \&}]{player,  }\item[{size\+\_\+t}]{turn\+Number }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Enforces the rule that the queen must be placed by the fourth turn. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player to check. \\
+\hline
+{\em turn\+Number} & The current turn number. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the Queen placement is required, false otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1GameRules_a01eb724a216dedf1f8b7677f89e73c0c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1GameRules_a01eb724a216dedf1f8b7677f89e73c0c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1GameRules_a50f3a91af5aa2d0105edc426d9c6fe27}\label{classhive_1_1models_1_1GameRules_a50f3a91af5aa2d0105edc426d9c6fe27} 
+\index{hive::models::GameRules@{hive::models::GameRules}!operator=@{operator=}}
+\index{operator=@{operator=}!hive::models::GameRules@{hive::models::GameRules}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhive_1_1models_1_1GameRules}{Game\+Rules}} \& hive\+::models\+::\+Game\+Rules\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1GameRules}{Game\+Rules}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Deleted assignment operator. 
+
+This prevents assigning the singleton instance. \Hypertarget{classhive_1_1models_1_1GameRules_a975f3a1fbc7e01bfd30fe50dfb571053}\label{classhive_1_1models_1_1GameRules_a975f3a1fbc7e01bfd30fe50dfb571053} 
+\index{hive::models::GameRules@{hive::models::GameRules}!operator=@{operator=}}
+\index{operator=@{operator=}!hive::models::GameRules@{hive::models::GameRules}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhive_1_1models_1_1GameRules}{Game\+Rules}} \& hive\+::models\+::\+Game\+Rules\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhive_1_1models_1_1GameRules}{Game\+Rules}} \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Deleted move assignment operator. 
+
+This prevents moving the singleton instance. \Hypertarget{classhive_1_1models_1_1GameRules_af4639bd9adac498eff29a16e03fc8165}\label{classhive_1_1models_1_1GameRules_af4639bd9adac498eff29a16e03fc8165} 
+\index{hive::models::GameRules@{hive::models::GameRules}!validateMove@{validateMove}}
+\index{validateMove@{validateMove}!hive::models::GameRules@{hive::models::GameRules}}
+\doxysubsubsection{\texorpdfstring{validateMove()}{validateMove()}}
+{\footnotesize\ttfamily void hive\+::models\+::\+Game\+Rules\+::validate\+Move (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Move}{Move}} \&}]{move,  }\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&}]{board,  }\item[{size\+\_\+t}]{turn\+Number }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Validates a move according to its type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em move} & The move to validate. \\
+\hline
+{\em board} & The game board. \\
+\hline
+{\em turn\+Number} & The current turn number. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1GameRules_af4639bd9adac498eff29a16e03fc8165_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1GameRules_af4639bd9adac498eff29a16e03fc8165_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1GameRules_afe688c8e8c742ccf08a21fdebcb75e4b}\label{classhive_1_1models_1_1GameRules_afe688c8e8c742ccf08a21fdebcb75e4b} 
+\index{hive::models::GameRules@{hive::models::GameRules}!validateMoveType@{validateMoveType}}
+\index{validateMoveType@{validateMoveType}!hive::models::GameRules@{hive::models::GameRules}}
+\doxysubsubsection{\texorpdfstring{validateMoveType()}{validateMoveType()}}
+{\footnotesize\ttfamily void hive\+::models\+::\+Game\+Rules\+::validate\+Move\+Type (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Move}{Move}} \&}]{move,  }\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&}]{board }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Validates a MOVE-\/type move. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em move} & The move to validate. \\
+\hline
+{\em board} & The game board. \\
+\hline
+\end{DoxyParams}
+WARNING\+: All logic regarding the possibility of moving a piece will be handled by the get\+Possible\+MovesHere is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1GameRules_afe688c8e8c742ccf08a21fdebcb75e4b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1GameRules_afe688c8e8c742ccf08a21fdebcb75e4b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1models_1_1GameRules_a274494ae501490148c2233171d8bb65d}\label{classhive_1_1models_1_1GameRules_a274494ae501490148c2233171d8bb65d} 
+\index{hive::models::GameRules@{hive::models::GameRules}!validatePlaceType@{validatePlaceType}}
+\index{validatePlaceType@{validatePlaceType}!hive::models::GameRules@{hive::models::GameRules}}
+\doxysubsubsection{\texorpdfstring{validatePlaceType()}{validatePlaceType()}}
+{\footnotesize\ttfamily void hive\+::models\+::\+Game\+Rules\+::validate\+Place\+Type (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Move}{Move}} \&}]{move,  }\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}} \&}]{board }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Validates a PLACE-\/type move. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em move} & The move to validate. \\
+\hline
+{\em board} & The game board. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1GameRules_a274494ae501490148c2233171d8bb65d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1models_1_1GameRules_a274494ae501490148c2233171d8bb65d_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+includes/models/\mbox{\hyperlink{GameRules_8h}{Game\+Rules.\+h}}\item 
+src/models/\mbox{\hyperlink{GameRules_8cpp}{Game\+Rules.\+cpp}}\end{DoxyCompactItemize}

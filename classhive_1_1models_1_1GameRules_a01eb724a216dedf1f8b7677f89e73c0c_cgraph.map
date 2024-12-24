@@ -1,0 +1,5 @@
+<map id="hive::models::GameRules::isQueenPlacementRequired" name="hive::models::GameRules::isQueenPlacementRequired">
+<area shape="rect" id="Node000001" title="Enforces the rule that the queen must be placed by the fourth turn." alt="" coords="5,5,216,45"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1Player.html#a60cbac742776f742e55b07f131801fc1" title="Retrieves the total number of pieces owned by the player." alt="" coords="264,5,419,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="217,23,251,23,251,28,217,28"/>
+</map>

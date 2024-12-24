@@ -1,0 +1,100 @@
+\doxysection{gamewindow.\+h}
+\hypertarget{gamewindow_8h_source}{}\label{gamewindow_8h_source}\index{src/controllers/gui/gamewindow.h@{src/controllers/gui/gamewindow.h}}
+\mbox{\hyperlink{gamewindow_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GAMEWINDOW\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GAMEWINDOW\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QMainWindow>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QGraphicsView>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QLabel>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QPushButton>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <QVBoxLayout>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <QHBoxLayout>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <QGraphicsScene>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{PieceFactory_8h}{models/PieceFactory.h}}>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{Move_8h}{models/Move.h}}>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{GameRules_8h}{models/GameRules.h}}>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{Hex_8h}{models/Hex.h}}>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <QGroupBox>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Board_8h}{models/Board.h}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Game_8h}{models/Game.h}}"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGameWindow}{GameWindow}}\ :\ \textcolor{keyword}{public}\ QMainWindow\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classGameWindow}{GameWindow}}(\mbox{\hyperlink{classhive_1_1models_1_1Game}{hive::models::Game}}\ *\mbox{\hyperlink{classGameWindow_a7a6523e5ae7c327cf8879fbab1273c25}{game}},\ QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classGameWindow_a030c53102a1f6a3e7c09fb77037be6df}{\string~GameWindow}}()\ \textcolor{keyword}{override}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_a8eaadb2df45add29f0e2efec02c89f36}{setPlayerNames}}(\textcolor{keyword}{const}\ QString\ \&player1,\ \textcolor{keyword}{const}\ QString\ \&player2);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_ac53fea4b030b13de4f300ee04ced1c89}{createDefautConfig}}();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_a3f8581191baa90b0e963a80102c87be7}{onUndoClicked}}();}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_a3d2d2afbc20fe6f9c494556bfbf39d5b}{onRedoClicked}}();}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_a9931dfa33915f6b56508ba24a8350337}{onSaveClicked}}();}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_a93ff3e0ddd8764b27f9f6e8204e8fc96}{displayPossibleMoves}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{hive::models::Piece}}\ \&piece);}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_a8f2df7320d0645d4cac1ecd8056eec67}{clearPossibleMoves}}();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ Nouveau\ slot}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_ad53954b7070a2f98fc8e4335e8ddeeed}{onCreatePieceButtonClicked}}(\textcolor{keywordtype}{int}\ playerIndex,\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{hive::models::enums::PieceType}}\ type);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1Game}{hive::models::Game}}\ *\mbox{\hyperlink{classGameWindow_a7a6523e5ae7c327cf8879fbab1273c25}{game}};}
+\DoxyCodeLine{00042\ \ \ \ \ QPushButton\ *\mbox{\hyperlink{classGameWindow_a0bb80aadf29ec39810c170560afa3db0}{undoButton}};}
+\DoxyCodeLine{00043\ \ \ \ \ QPushButton\ *\mbox{\hyperlink{classGameWindow_a585559d3cb59ca46fc4b7ac832efdd8a}{redoButton}};}
+\DoxyCodeLine{00044\ \ \ \ \ QPushButton\ *\mbox{\hyperlink{classGameWindow_af2f7a6de928c412af7adb5610aa83b97}{saveButton}};}
+\DoxyCodeLine{00045\ \ \ \ \ QLabel\ *\mbox{\hyperlink{classGameWindow_abba9d8225c6b614c87659577f036ae51}{playerInfoLabel}};}
+\DoxyCodeLine{00046\ \ \ \ \ QLabel\ *\mbox{\hyperlink{classGameWindow_abcab64d2ffb176878b3da5cd4f051532}{turnLabel}};}
+\DoxyCodeLine{00047\ \ \ \ \ QGraphicsView\ *\mbox{\hyperlink{classGameWindow_a36ba137180b10221e5e9e539c5efd090}{gameBoardView}};}
+\DoxyCodeLine{00048\ \ \ \ \ QGraphicsScene\ *\mbox{\hyperlink{classGameWindow_a30e66f8824cf672da87f29b28a5598a9}{scene}};}
+\DoxyCodeLine{00049\ \ \ \ \ QVBoxLayout\ *\mbox{\hyperlink{classGameWindow_ad4ae6af49a62a815c5a13c5f8b9b3122}{sideMenuLayout}};}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGameWindow_a99ce7787411f8346f1e2971e11bcbd9e}{hexSelectable}};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ std::vector<QGraphicsEllipseItem\ *>\ \mbox{\hyperlink{classGameWindow_af10fbfaf2912318178f3be119657805b}{moveHighlights}};}
+\DoxyCodeLine{00053\ \ \ \ \ QLabel\ *\mbox{\hyperlink{classGameWindow_aa16c2d223b137764325144f8e5005fab}{player1Label}};}
+\DoxyCodeLine{00054\ \ \ \ \ QLabel\ *\mbox{\hyperlink{classGameWindow_a429e7fb7e39cf0f5e6276267f3e0a020}{player2Label}};}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classGameWindow_abb758927b957dfd6f51b4aa0287dbe86}{currentTurn}};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ std::shared\_ptr<hive::models::Piece>\ \mbox{\hyperlink{classGameWindow_a495016a0da068f810ea1f4d1cdee1d0d}{selectedPiece}};}
+\DoxyCodeLine{00058\ \ \ \ \ std::vector<hive::models::Hex>\ \mbox{\hyperlink{classGameWindow_a14e713ad393414cad7ed02cc04746782}{validMoves}};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_a5b3bcfd2cd2b6f07f0be351f114119db}{setupUI}}();}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_aa43f3cf42f2971b92ad2f9873412f422}{selectPiece}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{hive::models::Hex}}\ \&hex);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_a379160a41f8d7e154cde54cec0c13393}{placePiece}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{hive::models::Hex}}\ \&to);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_a411e974b2ef679b602ff4bf5bcfa5075}{selectPiece}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{hive::models::Piece}}\ *piece);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_a58e3b3ba09f1304cf4ff22a797146482}{updateValidMoves}}();}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_adb55bf4d481961522203420bd111df94}{unselectPiece}}();}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_ada8c32048b32506944bd7f10bca9d232}{displayBoard}}();}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGameWindow_ab2254bf2ba50defd19b185975d1190a2}{isSelectedPieceOnBoard}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_a56419355dbf68fa9e8240bf4f630352e}{movePiece}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{hive::models::Hex}}\ \&to);}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_aae660a7017d283899ff9dd1dd9b36808}{getTurn}}();}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_a88f74eb991291011565e8ea3fa76f41f}{nextTurn}}();}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_a82f869102019254d94df59d2aa1b9834}{updateUndoRedoButtons}}();}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_ae76cb74446680796df31dc284b998646}{disableAllButtons}}();}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_a5674a14afc834df5cbf11c7d3a52d8d2}{enableAllButtons}}();}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_abe00ba2567f80c89dbafc5ca36589d35}{checkEndGame}}();}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_a9895ce34a0d9bec1cdc4ef2efff5a5fd}{disabledHexSelectable}}(\textcolor{keywordtype}{bool}\ \&\mbox{\hyperlink{classGameWindow_a99ce7787411f8346f1e2971e11bcbd9e}{hexSelectable}});}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_ae926409e78666b8c290d84a71e9b2b0e}{enableHexSelectable}}(\textcolor{keywordtype}{bool}\ \&\mbox{\hyperlink{classGameWindow_a99ce7787411f8346f1e2971e11bcbd9e}{hexSelectable}});}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{comment}{//\ Ajout}}
+\DoxyCodeLine{00088\ \ \ \ \ QGroupBox*\ \mbox{\hyperlink{classGameWindow_ab2f97f7781012c179cbb1b1454eb5294}{createPieceCreationGroupBox}}(\textcolor{keywordtype}{int}\ playerIndex);}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGameWindow_a06b02213154df24f36631be44bbaa27f}{updatePieceCreationButtons}}();}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GAMEWINDOW\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,5 @@
+<map id="hive::models::Game::redo" name="hive::models::Game::redo">
+<area shape="rect" id="Node000001" title="Redoes the last undone move in the game." alt="" coords="5,5,159,45"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1Game.html#ad4fd3a64a7ac1539477ce269ddfc4dd0" title="Advances the game to the next turn." alt="" coords="207,5,360,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="159,23,193,23,193,28,159,28"/>
+</map>

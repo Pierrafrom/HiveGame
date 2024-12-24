@@ -1,0 +1,5 @@
+<map id="hive::models::enums::operator&lt;&lt;" name="hive::models::enums::operator&lt;&lt;">
+<area shape="rect" id="Node000001" title="Overloads the &lt;&lt; operator to output the string representation of a PieceType." alt="" coords="5,5,164,45"/>
+<area shape="rect" id="Node000002" href="$namespacehive_1_1models_1_1enums.html#afd71a53b513d7b5332c82e32d9a85254" title="Converts a PieceType enum to its string representation." alt="" coords="212,5,371,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,23,198,23,198,28,164,28"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="hive::controllers::cli::CLIController" name="hive::controllers::cli::CLIController">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,513,232,813"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1Game.html" title="Singleton class managing the state of a Hive game." alt="" coords="43,5,195,451"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="121,451,121,497,116,497,116,451"/>
+</map>

@@ -1,0 +1,49 @@
+\doxysection{constants.\+h}
+\hypertarget{constants_8h_source}{}\label{constants_8h_source}\index{includes/config/constants.h@{includes/config/constants.h}}
+\mbox{\hyperlink{constants_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CONSTANTS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CONSTANTS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{PieceType_8h}{models/enums/PieceType.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehive_1_1config_1_1constants}{hive::config::constants}}\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_afd9a4704c790b6602932329306df8ee4}{MAX\_QUEEN\_BEE}}\ =\ 1;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_a71c671f0958e1842af76acc8512a9b23}{MAX\_ANT}}\ =\ 3;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_aa28fd90649b35519aa211014a5960e2e}{MAX\_BEETLE}}\ =\ 2;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_a7b00ab07463ed8f37ce5b83529590df2}{MAX\_LADYBUG}}\ =\ 1;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_a816744bca6e81b7c2cb676c942d9ce02}{MAX\_MOSQUITO}}\ =\ 1;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_ae48a9fd3a8b88a444d5386abd21bcc85}{MAX\_SPIDER}}\ =\ 2;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_a5faefd3effa5dd8d20589b1555bfc0fa}{MAX\_PILLBUG}}\ =\ 1;}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_ae4591c758a936be443ed26c920fe8c4d}{MAX\_GRASSHOPPER}}\ =\ 3;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_aca1e79b78cc74abdcfe3be5980c3b069}{MAX\_TURN\_BEFORE\_QUEEN\_PLACEMENT}}\ =\ 4;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_ae6eea446103324d8b4753264b03e1f17}{MAX\_SPIDER\_MOVES}}\ =\ 3;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_a8aa37add7d1c407a23b25251a7c2a824}{MAX\_PIECES\_PER\_PLAYER}}\ =\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_a71c671f0958e1842af76acc8512a9b23}{MAX\_ANT}}\ +\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_aa28fd90649b35519aa211014a5960e2e}{MAX\_BEETLE}}\ +\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_ae4591c758a936be443ed26c920fe8c4d}{MAX\_GRASSHOPPER}}\ +\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_a7b00ab07463ed8f37ce5b83529590df2}{MAX\_LADYBUG}}\ +\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_a816744bca6e81b7c2cb676c942d9ce02}{MAX\_MOSQUITO}}\ +}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_a5faefd3effa5dd8d20589b1555bfc0fa}{MAX\_PILLBUG}}\ +\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_afd9a4704c790b6602932329306df8ee4}{MAX\_QUEEN\_BEE}}\ +\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_ae48a9fd3a8b88a444d5386abd21bcc85}{MAX\_SPIDER}};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{const}\ std::unordered\_map<models::enums::PieceType,\ int>\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_a78e796d84454f1fe354b65babbf8a3bf}{MAX\_PIECES}}\ =\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca42a0df0017ac2fee991da57be8adfb3a}{models::enums::PieceType::QUEEN\_BEE}},\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_afd9a4704c790b6602932329306df8ee4}{MAX\_QUEEN\_BEE}}\},}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca77ad205a076cee8291c4807c3b0ecb19}{models::enums::PieceType::ANT}},\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_a71c671f0958e1842af76acc8512a9b23}{MAX\_ANT}}\},}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca5947a2c004c7aee6dbfd803326a0fa5b}{models::enums::PieceType::BEETLE}},\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_aa28fd90649b35519aa211014a5960e2e}{MAX\_BEETLE}}\},}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459cad58295f6b3fb30f0c66af9f7f8a7cfd9}{models::enums::PieceType::LADYBUG}},\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_a7b00ab07463ed8f37ce5b83529590df2}{MAX\_LADYBUG}}\},}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca09b3cb988557bb129c52907d9caafc6e}{models::enums::PieceType::MOSQUITO}},\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_a816744bca6e81b7c2cb676c942d9ce02}{MAX\_MOSQUITO}}\},}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca9e7abc16c6a1b9bcd2d330c63933d981}{models::enums::PieceType::SPIDER}},\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_ae48a9fd3a8b88a444d5386abd21bcc85}{MAX\_SPIDER}}\},}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459cadc166070a22e38ededb54ae1a00c0551}{models::enums::PieceType::PILLBUG}},\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_a5faefd3effa5dd8d20589b1555bfc0fa}{MAX\_PILLBUG}}\},}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \{\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459cadff2521f18711f27da0d666cc73744b7}{models::enums::PieceType::GRASSHOPPER}},\ \mbox{\hyperlink{namespacehive_1_1config_1_1constants_ae4591c758a936be443ed26c920fe8c4d}{MAX\_GRASSHOPPER}}\}}
+\DoxyCodeLine{00080\ \ \ \ \ \};}
+\DoxyCodeLine{00081\ \}\ \textcolor{comment}{//\ namespace\ hive::config::constants}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CONSTANTS\_H}}
+
+\end{DoxyCode}

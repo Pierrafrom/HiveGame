@@ -1,0 +1,59 @@
+\doxysection{hive\+::models\+::Game\+Status Struct Reference}
+\hypertarget{structhive_1_1models_1_1GameStatus}{}\label{structhive_1_1models_1_1GameStatus}\index{hive::models::GameStatus@{hive::models::GameStatus}}
+
+
+Represents the status of the game.  
+
+
+
+
+{\ttfamily \#include $<$Game.\+h$>$}
+
+
+
+Collaboration diagram for hive\+::models\+::Game\+Status\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{structhive_1_1models_1_1GameStatus__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{structhive_1_1models_1_1GameStatus_aa4d28c9aeb5354e137e025a74288f595}{is\+Game\+Over}}
+\item 
+bool \mbox{\hyperlink{structhive_1_1models_1_1GameStatus_a650366042e03b5acb70035bcc232d79a}{is\+Draw}}
+\item 
+const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structhive_1_1models_1_1GameStatus_ae24891ee34a1f3d53c54d9cfe10d914e}{winner}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the status of the game. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structhive_1_1models_1_1GameStatus_a650366042e03b5acb70035bcc232d79a}\label{structhive_1_1models_1_1GameStatus_a650366042e03b5acb70035bcc232d79a} 
+\index{hive::models::GameStatus@{hive::models::GameStatus}!isDraw@{isDraw}}
+\index{isDraw@{isDraw}!hive::models::GameStatus@{hive::models::GameStatus}}
+\doxysubsubsection{\texorpdfstring{isDraw}{isDraw}}
+{\footnotesize\ttfamily bool hive\+::models\+::\+Game\+Status\+::is\+Draw}
+
+Indicates if the game is a draw. \Hypertarget{structhive_1_1models_1_1GameStatus_aa4d28c9aeb5354e137e025a74288f595}\label{structhive_1_1models_1_1GameStatus_aa4d28c9aeb5354e137e025a74288f595} 
+\index{hive::models::GameStatus@{hive::models::GameStatus}!isGameOver@{isGameOver}}
+\index{isGameOver@{isGameOver}!hive::models::GameStatus@{hive::models::GameStatus}}
+\doxysubsubsection{\texorpdfstring{isGameOver}{isGameOver}}
+{\footnotesize\ttfamily bool hive\+::models\+::\+Game\+Status\+::is\+Game\+Over}
+
+Indicates if the game has ended. \Hypertarget{structhive_1_1models_1_1GameStatus_ae24891ee34a1f3d53c54d9cfe10d914e}\label{structhive_1_1models_1_1GameStatus_ae24891ee34a1f3d53c54d9cfe10d914e} 
+\index{hive::models::GameStatus@{hive::models::GameStatus}!winner@{winner}}
+\index{winner@{winner}!hive::models::GameStatus@{hive::models::GameStatus}}
+\doxysubsubsection{\texorpdfstring{winner}{winner}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}}\texorpdfstring{$\ast$}{*} hive\+::models\+::\+Game\+Status\+::winner}
+
+Pointer to the winning player, or nullptr if the game is a draw or ongoing. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+includes/models/\mbox{\hyperlink{Game_8h}{Game.\+h}}\end{DoxyCompactItemize}

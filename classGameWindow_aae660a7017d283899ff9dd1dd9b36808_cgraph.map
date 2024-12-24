@@ -1,0 +1,5 @@
+<map id="GameWindow::getTurn" name="GameWindow::getTurn">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,13,173,38"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1Game.html#a29ad0abef9fdebafc716ced0154c3a7b" title="Gets the turn number." alt="" coords="221,5,375,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="174,23,208,23,208,28,174,28"/>
+</map>

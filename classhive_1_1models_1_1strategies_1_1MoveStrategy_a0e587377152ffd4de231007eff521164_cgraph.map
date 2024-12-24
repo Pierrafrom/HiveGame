@@ -1,0 +1,7 @@
+<map id="hive::models::strategies::MoveStrategy::validatePieceOwnership" name="hive::models::strategies::MoveStrategy::validatePieceOwnership">
+<area shape="rect" id="Node000001" title="Validates the ownership of the piece by the player." alt="" coords="5,37,291,77"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1strategies_1_1MoveStrategy.html#abe1dc9f8e24c3d3fca4ea5d5c24e1745" title="Retrieves the piece that uses this movement strategy." alt="" coords="340,5,524,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="291,39,326,35,327,40,291,44"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1models_1_1strategies_1_1MoveStrategy.html#a48d7628901dc82afd773c744d41b2390" title="Checks if the piece has a valid position." alt="" coords="339,69,525,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="291,71,325,75,325,80,291,76"/>
+</map>

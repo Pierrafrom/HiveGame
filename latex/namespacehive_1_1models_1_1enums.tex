@@ -1,0 +1,217 @@
+\doxysection{hive\+::models\+::enums Namespace Reference}
+\hypertarget{namespacehive_1_1models_1_1enums}{}\label{namespacehive_1_1models_1_1enums}\index{hive::models::enums@{hive::models::enums}}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513db}{Direction}} \{ \newline
+\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba9d1250c1be563879340211b990a1297c}{NORTH\+\_\+\+EAST}}
+, \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba45ac78bf3d4882ac520f4e7fb08d55c5}{EAST}}
+, \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba851c1766426329f3aed605f25b08f769}{SOUTH\+\_\+\+EAST}}
+, \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dbaca96c91342c9c847a70b11d29692ec01}{SOUTH\+\_\+\+WEST}}
+, \newline
+\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba83c9f5692281bf59471b13dfddb3af91}{WEST}}
+, \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dbaa284a013a2af9189373c41351330e0d3}{NORTH\+\_\+\+WEST}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumerates the six possible directions on a hexagonal grid. \end{DoxyCompactList}\item 
+enum class \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{Piece\+Type}} \{ \newline
+\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca42a0df0017ac2fee991da57be8adfb3a}{QUEEN\+\_\+\+BEE}}
+, \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca77ad205a076cee8291c4807c3b0ecb19}{ANT}}
+, \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca5947a2c004c7aee6dbfd803326a0fa5b}{BEETLE}}
+, \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459cad58295f6b3fb30f0c66af9f7f8a7cfd9}{LADYBUG}}
+, \newline
+\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca09b3cb988557bb129c52907d9caafc6e}{MOSQUITO}}
+, \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca9e7abc16c6a1b9bcd2d330c63933d981}{SPIDER}}
+, \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459cadc166070a22e38ededb54ae1a00c0551}{PILLBUG}}
+, \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459cadff2521f18711f27da0d666cc73744b7}{GRASSHOPPER}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumerates the different types of pieces in the Hive game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr std\+::tuple$<$ int, int, int $>$ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a354cab0fadb39b942e04e427c624f35d}{get\+Direction\+Offset}} (const \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513db}{Direction}} direction)
+\begin{DoxyCompactList}\small\item\em Retrieves the offset coordinates for each direction in cube coordinates. \end{DoxyCompactList}\item 
+constexpr std\+::array$<$ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513db}{Direction}}, 6 $>$ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a43af89b8a126e31344db8c8cafc8cf3f}{get\+All\+Directions}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves all possible directions in an array. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{namespacehive_1_1models_1_1enums_afd71a53b513d7b5332c82e32d9a85254}{to\+String}} (const \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{Piece\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Converts a Piece\+Type enum to its string representation. \end{DoxyCompactList}\item 
+std\+::ostream \& \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a23a126484d60ed3bfef2b1c73078d1d5}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{Piece\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Overloads the \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} operator to output the string representation of a Piece\+Type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513db}\label{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513db} 
+\index{hive::models::enums@{hive::models::enums}!Direction@{Direction}}
+\index{Direction@{Direction}!hive::models::enums@{hive::models::enums}}
+\doxysubsubsection{\texorpdfstring{Direction}{Direction}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513db}{hive\+::models\+::enums\+::\+Direction}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Enumerates the six possible directions on a hexagonal grid. 
+
+Represents the six cardinal directions used to navigate a hexagonal grid using cube coordinates. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NORTH\_EAST@{NORTH\_EAST}!hive::models::enums@{hive::models::enums}}\index{hive::models::enums@{hive::models::enums}!NORTH\_EAST@{NORTH\_EAST}}}\Hypertarget{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba9d1250c1be563879340211b990a1297c}\label{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba9d1250c1be563879340211b990a1297c} 
+NORTH\+\_\+\+EAST&Direction towards North-\/\+East \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EAST@{EAST}!hive::models::enums@{hive::models::enums}}\index{hive::models::enums@{hive::models::enums}!EAST@{EAST}}}\Hypertarget{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba45ac78bf3d4882ac520f4e7fb08d55c5}\label{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba45ac78bf3d4882ac520f4e7fb08d55c5} 
+EAST&Direction towards East \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOUTH\_EAST@{SOUTH\_EAST}!hive::models::enums@{hive::models::enums}}\index{hive::models::enums@{hive::models::enums}!SOUTH\_EAST@{SOUTH\_EAST}}}\Hypertarget{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba851c1766426329f3aed605f25b08f769}\label{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba851c1766426329f3aed605f25b08f769} 
+SOUTH\+\_\+\+EAST&Direction towards South-\/\+East \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOUTH\_WEST@{SOUTH\_WEST}!hive::models::enums@{hive::models::enums}}\index{hive::models::enums@{hive::models::enums}!SOUTH\_WEST@{SOUTH\_WEST}}}\Hypertarget{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dbaca96c91342c9c847a70b11d29692ec01}\label{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dbaca96c91342c9c847a70b11d29692ec01} 
+SOUTH\+\_\+\+WEST&Direction towards South-\/\+West \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WEST@{WEST}!hive::models::enums@{hive::models::enums}}\index{hive::models::enums@{hive::models::enums}!WEST@{WEST}}}\Hypertarget{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba83c9f5692281bf59471b13dfddb3af91}\label{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba83c9f5692281bf59471b13dfddb3af91} 
+WEST&Direction towards West \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NORTH\_WEST@{NORTH\_WEST}!hive::models::enums@{hive::models::enums}}\index{hive::models::enums@{hive::models::enums}!NORTH\_WEST@{NORTH\_WEST}}}\Hypertarget{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dbaa284a013a2af9189373c41351330e0d3}\label{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dbaa284a013a2af9189373c41351330e0d3} 
+NORTH\+\_\+\+WEST&Direction towards North-\/\+West \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}\label{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c} 
+\index{hive::models::enums@{hive::models::enums}!PieceType@{PieceType}}
+\index{PieceType@{PieceType}!hive::models::enums@{hive::models::enums}}
+\doxysubsubsection{\texorpdfstring{PieceType}{PieceType}}
+{\footnotesize\ttfamily enum class \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{hive\+::models\+::enums\+::\+Piece\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Enumerates the different types of pieces in the Hive game. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{QUEEN\_BEE@{QUEEN\_BEE}!hive::models::enums@{hive::models::enums}}\index{hive::models::enums@{hive::models::enums}!QUEEN\_BEE@{QUEEN\_BEE}}}\Hypertarget{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca42a0df0017ac2fee991da57be8adfb3a}\label{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca42a0df0017ac2fee991da57be8adfb3a} 
+QUEEN\+\_\+\+BEE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANT@{ANT}!hive::models::enums@{hive::models::enums}}\index{hive::models::enums@{hive::models::enums}!ANT@{ANT}}}\Hypertarget{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca77ad205a076cee8291c4807c3b0ecb19}\label{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca77ad205a076cee8291c4807c3b0ecb19} 
+ANT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BEETLE@{BEETLE}!hive::models::enums@{hive::models::enums}}\index{hive::models::enums@{hive::models::enums}!BEETLE@{BEETLE}}}\Hypertarget{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca5947a2c004c7aee6dbfd803326a0fa5b}\label{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca5947a2c004c7aee6dbfd803326a0fa5b} 
+BEETLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LADYBUG@{LADYBUG}!hive::models::enums@{hive::models::enums}}\index{hive::models::enums@{hive::models::enums}!LADYBUG@{LADYBUG}}}\Hypertarget{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459cad58295f6b3fb30f0c66af9f7f8a7cfd9}\label{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459cad58295f6b3fb30f0c66af9f7f8a7cfd9} 
+LADYBUG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOSQUITO@{MOSQUITO}!hive::models::enums@{hive::models::enums}}\index{hive::models::enums@{hive::models::enums}!MOSQUITO@{MOSQUITO}}}\Hypertarget{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca09b3cb988557bb129c52907d9caafc6e}\label{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca09b3cb988557bb129c52907d9caafc6e} 
+MOSQUITO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SPIDER@{SPIDER}!hive::models::enums@{hive::models::enums}}\index{hive::models::enums@{hive::models::enums}!SPIDER@{SPIDER}}}\Hypertarget{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca9e7abc16c6a1b9bcd2d330c63933d981}\label{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca9e7abc16c6a1b9bcd2d330c63933d981} 
+SPIDER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PILLBUG@{PILLBUG}!hive::models::enums@{hive::models::enums}}\index{hive::models::enums@{hive::models::enums}!PILLBUG@{PILLBUG}}}\Hypertarget{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459cadc166070a22e38ededb54ae1a00c0551}\label{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459cadc166070a22e38ededb54ae1a00c0551} 
+PILLBUG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GRASSHOPPER@{GRASSHOPPER}!hive::models::enums@{hive::models::enums}}\index{hive::models::enums@{hive::models::enums}!GRASSHOPPER@{GRASSHOPPER}}}\Hypertarget{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459cadff2521f18711f27da0d666cc73744b7}\label{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459cadff2521f18711f27da0d666cc73744b7} 
+GRASSHOPPER&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacehive_1_1models_1_1enums_a43af89b8a126e31344db8c8cafc8cf3f}\label{namespacehive_1_1models_1_1enums_a43af89b8a126e31344db8c8cafc8cf3f} 
+\index{hive::models::enums@{hive::models::enums}!getAllDirections@{getAllDirections}}
+\index{getAllDirections@{getAllDirections}!hive::models::enums@{hive::models::enums}}
+\doxysubsubsection{\texorpdfstring{getAllDirections()}{getAllDirections()}}
+{\footnotesize\ttfamily constexpr std\+::array$<$ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513db}{Direction}}, 6 $>$ hive\+::models\+::enums\+::get\+All\+Directions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Retrieves all possible directions in an array. 
+
+\begin{DoxyReturn}{Returns}
+A std\+::array containing all Direction enum values.
+\end{DoxyReturn}
+Useful for iterating over all directions when examining neighboring hexes. Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacehive_1_1models_1_1enums_a43af89b8a126e31344db8c8cafc8cf3f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespacehive_1_1models_1_1enums_a354cab0fadb39b942e04e427c624f35d}\label{namespacehive_1_1models_1_1enums_a354cab0fadb39b942e04e427c624f35d} 
+\index{hive::models::enums@{hive::models::enums}!getDirectionOffset@{getDirectionOffset}}
+\index{getDirectionOffset@{getDirectionOffset}!hive::models::enums@{hive::models::enums}}
+\doxysubsubsection{\texorpdfstring{getDirectionOffset()}{getDirectionOffset()}}
+{\footnotesize\ttfamily constexpr std\+::tuple$<$ int, int, int $>$ hive\+::models\+::enums\+::get\+Direction\+Offset (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513db}{Direction}}}]{direction }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Retrieves the offset coordinates for each direction in cube coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & The direction for which to get the offset. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A tuple containing the (x, y, z) offsets for the specified direction.
+\end{DoxyReturn}
+Provides the cube coordinate offsets corresponding to each direction, which can be used to find neighboring hexagons on the grid. \Hypertarget{namespacehive_1_1models_1_1enums_a23a126484d60ed3bfef2b1c73078d1d5}\label{namespacehive_1_1models_1_1enums_a23a126484d60ed3bfef2b1c73078d1d5} 
+\index{hive::models::enums@{hive::models::enums}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!hive::models::enums@{hive::models::enums}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily std\+::ostream \& hive\+::models\+::enums\+::operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{Piece\+Type}}}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overloads the \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} operator to output the string representation of a Piece\+Type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream. \\
+\hline
+{\em type} & The Piece\+Type enum value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The output stream with the Piece\+Type string representation. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacehive_1_1models_1_1enums_a23a126484d60ed3bfef2b1c73078d1d5_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespacehive_1_1models_1_1enums_afd71a53b513d7b5332c82e32d9a85254}\label{namespacehive_1_1models_1_1enums_afd71a53b513d7b5332c82e32d9a85254} 
+\index{hive::models::enums@{hive::models::enums}!toString@{toString}}
+\index{toString@{toString}!hive::models::enums@{hive::models::enums}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily std\+::string hive\+::models\+::enums\+::to\+String (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{Piece\+Type}}}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Converts a Piece\+Type enum to its string representation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The Piece\+Type enum value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A string representing the Piece\+Type. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacehive_1_1models_1_1enums_afd71a53b513d7b5332c82e32d9a85254_icgraph}
+\end{center}
+\end{figure}

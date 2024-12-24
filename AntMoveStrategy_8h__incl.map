@@ -1,0 +1,36 @@
+<map id="includes/models/strategies/AntMoveStrategy.h" name="includes/models/strategies/AntMoveStrategy.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="233,5,431,45"/>
+<area shape="rect" id="Node000002" href="$Player_8h.html" title=" " alt="" coords="459,93,586,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="379,43,483,86,481,91,377,48"/>
+<area shape="rect" id="Node000011" href="$MoveStrategy_8h.html" title=" " alt="" coords="18,240,262,265"/>
+<area shape="poly" id="edge19_Node000001_Node000011" title=" " alt="" coords="318,47,161,231,157,227,314,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="634,167,694,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="547,116,630,158,628,163,544,121"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="393,313,455,339"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="535,118,555,145,574,184,581,205,584,226,582,247,573,267,552,289,525,305,497,316,470,322,468,317,495,311,523,300,548,285,568,264,577,246,579,226,576,206,569,186,550,148,530,121"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="287,240,364,265"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="460,117,403,135,376,149,353,168,336,197,329,227,324,226,331,195,349,165,373,145,401,130,458,112"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="484,240,559,265"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="525,119,524,226,519,226,520,119"/>
+<area shape="rect" id="Node000007" href="$Piece_8h.html" title=" " alt="" coords="363,167,485,192"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="508,121,453,161,450,156,505,117"/>
+<area shape="rect" id="Node000009" href="$PieceType_8h.html" title=" " alt="" coords="633,240,831,265"/>
+<area shape="poly" id="edge18_Node000002_Node000009" title=" " alt="" coords="587,110,650,128,682,143,709,165,719,179,726,195,733,226,728,227,721,196,714,181,705,169,679,148,649,133,586,116"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="410,194,354,234,351,230,407,190"/>
+<area shape="poly" id="edge9_Node000007_Node000006" title=" " alt="" coords="441,190,496,229,493,234,438,194"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="389,240,459,265"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="427,192,427,226,421,226,421,192"/>
+<area shape="poly" id="edge10_Node000007_Node000009" title=" " alt="" coords="474,189,670,234,669,240,473,195"/>
+<area shape="poly" id="edge12_Node000007_Node000011" title=" " alt="" coords="379,195,200,239,198,234,378,189"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="703,313,761,339"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="735,266,735,300,729,300,729,266"/>
+<area shape="poly" id="edge13_Node000011_Node000004" title=" " alt="" coords="186,263,380,311,379,316,185,268"/>
+<area shape="rect" id="Node000012" href="$Hex_8h.html" title=" " alt="" coords="84,313,196,339"/>
+<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="143,266,143,300,137,300,137,266"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="5,387,72,412"/>
+<area shape="poly" id="edge15_Node000012_Node000013" title=" " alt="" coords="125,341,68,381,65,376,122,336"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="97,387,183,412"/>
+<area shape="poly" id="edge16_Node000012_Node000014" title=" " alt="" coords="143,339,143,373,137,373,137,339"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="207,387,283,412"/>
+<area shape="poly" id="edge17_Node000012_Node000015" title=" " alt="" coords="158,336,218,377,216,381,155,341"/>
+</map>

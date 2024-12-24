@@ -1,0 +1,5 @@
+<map id="hive::models::Move" name="hive::models::Move">
+<area shape="rect" id="Node000001" title="Represents a move in the Hive game." alt="" coords="5,413,148,719"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1Hex.html" title="Represents a hexagonal cell in the Hive game board using cube coordinates." alt="" coords="11,5,143,351"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,351,79,397,74,397,74,351"/>
+</map>

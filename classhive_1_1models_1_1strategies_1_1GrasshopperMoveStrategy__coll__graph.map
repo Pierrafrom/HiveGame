@@ -1,0 +1,7 @@
+<map id="hive::models::strategies::GrasshopperMoveStrategy" name="hive::models::strategies::GrasshopperMoveStrategy">
+<area shape="rect" id="Node000001" title="Movement strategy for the Grasshopper piece in the Hive game." alt="" coords="5,723,228,863"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1strategies_1_1MoveStrategy.html" title="Abstract class defining the movement strategy for game pieces." alt="" coords="9,453,225,673"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,687,119,722,114,722,114,687"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1models_1_1Piece.html" title="Base class representing a generic game piece in the Hive game." alt="" coords="41,5,192,391"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="119,391,119,436,114,436,114,391"/>
+</map>

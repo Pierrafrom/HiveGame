@@ -1,0 +1,86 @@
+\doxysection{hive\+::views\+::cli Namespace Reference}
+\hypertarget{namespacehive_1_1views_1_1cli}{}\label{namespacehive_1_1views_1_1cli}\index{hive::views::cli@{hive::views::cli}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classhive_1_1views_1_1cli_1_1CLIView}{CLIView}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{namespacehive_1_1views_1_1cli_a634c266c35adef0c47c7175f6c332526}{get\+Colored\+String}} (const std\+::string \&text, const std\+::string \&color\+Name)
+\item 
+static std\+::string \mbox{\hyperlink{namespacehive_1_1views_1_1cli_a6dcf04742d624ffdb0c372fdfac514a7}{piece\+Type\+To\+Char}} (\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{hive\+::models\+::enums\+::\+Piece\+Type}} type)
+\item 
+static std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{namespacehive_1_1views_1_1cli_a64baf4d9e0cde1da79dff13d447dbacf}{draw\+Hex\+Cell}} (const std\+::string \&color, const std\+::string \&label\+Top, const std\+::string \&label\+Bot)
+\begin{DoxyCompactList}\small\item\em Construit l\textquotesingle{}ASCII d\textquotesingle{}un seul hexagone. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacehive_1_1views_1_1cli_a64baf4d9e0cde1da79dff13d447dbacf}\label{namespacehive_1_1views_1_1cli_a64baf4d9e0cde1da79dff13d447dbacf} 
+\index{hive::views::cli@{hive::views::cli}!drawHexCell@{drawHexCell}}
+\index{drawHexCell@{drawHexCell}!hive::views::cli@{hive::views::cli}}
+\doxysubsubsection{\texorpdfstring{drawHexCell()}{drawHexCell()}}
+{\footnotesize\ttfamily static std\+::vector$<$ std\+::string $>$ hive\+::views\+::cli\+::draw\+Hex\+Cell (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{color,  }\item[{const std\+::string \&}]{label\+Top,  }\item[{const std\+::string \&}]{label\+Bot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Construit l\textquotesingle{}ASCII d\textquotesingle{}un seul hexagone. 
+
+Chaque hexagone fera \texorpdfstring{$\sim$}{\string~}6 lignes. On va s\textquotesingle{}inspirer de la forme donnée \+:
+
+/•\textbackslash{} /• •\textbackslash{} \texorpdfstring{$\vert$}{|}• HX •\texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|}• PCE •\texorpdfstring{$\vert$}{|} \textbackslash{}• •/ \textbackslash{}•/
+
+On ajustera pour afficher x,y,z ou le type de la pièce.
+
+Paramètres \+:
+\begin{DoxyItemize}
+\item color \+: couleur à appliquer au texte principal du hex.
+\item label\+Top \+: texte affiché dans la première ligne interne (ex\+: "{}\+HX1"{}).
+\item label\+Bot \+: texte affiché dans la seconde ligne interne (ex\+: "{}-\/\+B-\/"{} ou coords).
+\end{DoxyItemize}
+
+Retourne un vector$<$string$>$ de 6 lignes. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacehive_1_1views_1_1cli_a64baf4d9e0cde1da79dff13d447dbacf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacehive_1_1views_1_1cli_a64baf4d9e0cde1da79dff13d447dbacf_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespacehive_1_1views_1_1cli_a634c266c35adef0c47c7175f6c332526}\label{namespacehive_1_1views_1_1cli_a634c266c35adef0c47c7175f6c332526} 
+\index{hive::views::cli@{hive::views::cli}!getColoredString@{getColoredString}}
+\index{getColoredString@{getColoredString}!hive::views::cli@{hive::views::cli}}
+\doxysubsubsection{\texorpdfstring{getColoredString()}{getColoredString()}}
+{\footnotesize\ttfamily std\+::string hive\+::views\+::cli\+::get\+Colored\+String (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text,  }\item[{const std\+::string \&}]{color\+Name }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacehive_1_1views_1_1cli_a634c266c35adef0c47c7175f6c332526_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{namespacehive_1_1views_1_1cli_a6dcf04742d624ffdb0c372fdfac514a7}\label{namespacehive_1_1views_1_1cli_a6dcf04742d624ffdb0c372fdfac514a7} 
+\index{hive::views::cli@{hive::views::cli}!pieceTypeToChar@{pieceTypeToChar}}
+\index{pieceTypeToChar@{pieceTypeToChar}!hive::views::cli@{hive::views::cli}}
+\doxysubsubsection{\texorpdfstring{pieceTypeToChar()}{pieceTypeToChar()}}
+{\footnotesize\ttfamily static std\+::string hive\+::views\+::cli\+::piece\+Type\+To\+Char (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{hive\+::models\+::enums\+::\+Piece\+Type}}}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacehive_1_1views_1_1cli_a6dcf04742d624ffdb0c372fdfac514a7_icgraph}
+\end{center}
+\end{figure}

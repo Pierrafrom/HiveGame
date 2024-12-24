@@ -1,0 +1,60 @@
+\doxysection{src/views/gui/gamewindow.cpp File Reference}
+\hypertarget{gamewindow_8cpp}{}\label{gamewindow_8cpp}\index{src/views/gui/gamewindow.cpp@{src/views/gui/gamewindow.cpp}}
+{\ttfamily \#include "{}../src/controllers/gui/gamewindow.\+h"{}}\newline
+{\ttfamily \#include $<$QGraphics\+Polygon\+Item$>$}\newline
+{\ttfamily \#include $<$QGraphics\+Ellipse\+Item$>$}\newline
+{\ttfamily \#include $<$QPen$>$}\newline
+{\ttfamily \#include $<$QBrush$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$models/\+Board.\+h$>$}\newline
+{\ttfamily \#include "{}../src/controllers/gui/\+Hex\+Graphics\+Item.\+h"{}}\newline
+{\ttfamily \#include $<$QMessage\+Box$>$}\newline
+{\ttfamily \#include $<$models/\+Game\+Rules.\+h$>$}\newline
+{\ttfamily \#include $<$models/\+Piece.\+h$>$}\newline
+{\ttfamily \#include $<$models/\+Move.\+h$>$}\newline
+{\ttfamily \#include $<$QTimer$>$}\newline
+{\ttfamily \#include "{}utils/\+Serializer.\+h"{}}\newline
+Include dependency graph for gamewindow.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gamewindow_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{gamewindow_8cpp_a905221aaf16fd851d7d2849d3bf91c2e}{hex\+Size}}~50
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{gamewindow_8cpp_a82004155ba4ae600701b6f605f4cd435}{max\+Pieces\+For\+Type}} (\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{hive\+::models\+::enums\+::\+Piece\+Type}} type)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{gamewindow_8cpp_a905221aaf16fd851d7d2849d3bf91c2e}\label{gamewindow_8cpp_a905221aaf16fd851d7d2849d3bf91c2e} 
+\index{gamewindow.cpp@{gamewindow.cpp}!hexSize@{hexSize}}
+\index{hexSize@{hexSize}!gamewindow.cpp@{gamewindow.cpp}}
+\doxysubsubsection{\texorpdfstring{hexSize}{hexSize}}
+{\footnotesize\ttfamily \#define hex\+Size~50}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{gamewindow_8cpp_a82004155ba4ae600701b6f605f4cd435}\label{gamewindow_8cpp_a82004155ba4ae600701b6f605f4cd435} 
+\index{gamewindow.cpp@{gamewindow.cpp}!maxPiecesForType@{maxPiecesForType}}
+\index{maxPiecesForType@{maxPiecesForType}!gamewindow.cpp@{gamewindow.cpp}}
+\doxysubsubsection{\texorpdfstring{maxPiecesForType()}{maxPiecesForType()}}
+{\footnotesize\ttfamily static int max\+Pieces\+For\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{hive\+::models\+::enums\+::\+Piece\+Type}}}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{gamewindow_8cpp_a82004155ba4ae600701b6f605f4cd435_icgraph}
+\end{center}
+\end{figure}

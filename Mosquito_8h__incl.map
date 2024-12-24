@@ -1,0 +1,30 @@
+<map id="includes/models/pieces/Mosquito.h" name="includes/models/pieces/Mosquito.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="325,5,500,45"/>
+<area shape="rect" id="Node000002" href="$Piece_8h.html" title=" " alt="" coords="259,101,380,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="394,48,344,93,341,89,390,44"/>
+<area shape="rect" id="Node000014" href="$MosquitoMoveStrategy_8h.html" title=" " alt="" coords="474,93,677,133"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="450,43,529,85,527,89,447,48"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,181,76,207"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="280,129,90,182,89,176,278,123"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="101,181,178,207"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="294,128,179,178,177,173,292,124"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="202,181,277,207"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="309,128,263,173,259,169,306,124"/>
+<area shape="rect" id="Node000006" href="$PieceType_8h.html" title=" " alt="" coords="300,181,499,207"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="333,124,379,169,376,173,329,128"/>
+<area shape="rect" id="Node000008" href="$MoveStrategy_8h.html" title=" " alt="" coords="523,181,767,207"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="367,123,585,176,583,181,366,129"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="370,255,429,280"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="402,207,402,241,397,241,397,207"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="557,255,620,280"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="638,209,608,245,604,242,633,205"/>
+<area shape="rect" id="Node000010" href="$Hex_8h.html" title=" " alt="" coords="645,255,757,280"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="656,205,685,242,681,245,652,209"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="566,328,633,353"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="686,282,629,322,626,318,683,278"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="657,328,744,353"/>
+<area shape="poly" id="edge11_Node000010_Node000012" title=" " alt="" coords="703,280,703,314,698,314,698,280"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="768,328,844,353"/>
+<area shape="poly" id="edge12_Node000010_Node000013" title=" " alt="" coords="719,278,779,318,776,323,716,282"/>
+<area shape="poly" id="edge14_Node000014_Node000008" title=" " alt="" coords="594,132,627,169,623,172,590,135"/>
+</map>

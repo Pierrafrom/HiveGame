@@ -1,0 +1,167 @@
+\doxysection{hive\+::utils\+::Serializer Class Reference}
+\hypertarget{classhive_1_1utils_1_1Serializer}{}\label{classhive_1_1utils_1_1Serializer}\index{hive::utils::Serializer@{hive::utils::Serializer}}
+
+
+Provides methods for serializing and deserializing the state of the game.  
+
+
+
+
+{\ttfamily \#include $<$Serializer.\+h$>$}
+
+
+
+Collaboration diagram for hive\+::utils\+::Serializer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classhive_1_1utils_1_1Serializer__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classhive_1_1utils_1_1Serializer}{Serializer}} \& \mbox{\hyperlink{classhive_1_1utils_1_1Serializer_aec52fa68d78d232118eb5c3a440379df}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Returns the singleton instance of the \doxylink{classhive_1_1utils_1_1Serializer}{Serializer} class. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classhive_1_1utils_1_1Serializer_a257aca9f5c1f02150ae7aa18446865b0}{save\+Game}} (const \mbox{\hyperlink{classhive_1_1models_1_1Game}{hive\+::models\+::\+Game}} \&game, const std\+::string \&filename="{}"{})
+\begin{DoxyCompactList}\small\item\em Saves the current game state to a file. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classhive_1_1utils_1_1Serializer_aacb397dc8b6469f10d261f8f66b1cb38}{load\+Game}} (\mbox{\hyperlink{classhive_1_1models_1_1Game}{hive\+::models\+::\+Game}} \&game, const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Loads a game state from a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhive_1_1utils_1_1Serializer_a531b89808bd64a69ee2239bda34fcada}{Serializer}} ()=default
+\item 
+\mbox{\hyperlink{classhive_1_1utils_1_1Serializer_aff704df3128f22044681078ea8feb293}{Serializer}} (const \mbox{\hyperlink{classhive_1_1utils_1_1Serializer}{Serializer}} \&)=delete
+\item 
+\mbox{\hyperlink{classhive_1_1utils_1_1Serializer}{Serializer}} \& \mbox{\hyperlink{classhive_1_1utils_1_1Serializer_a12f623d23a53019e202f77031a7c54fb}{operator=}} (const \mbox{\hyperlink{classhive_1_1utils_1_1Serializer}{Serializer}} \&)=delete
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides methods for serializing and deserializing the state of the game. 
+
+The \doxylink{classhive_1_1utils_1_1Serializer}{Serializer} class allows saving and loading the game state to/from a file. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classhive_1_1utils_1_1Serializer_a531b89808bd64a69ee2239bda34fcada}\label{classhive_1_1utils_1_1Serializer_a531b89808bd64a69ee2239bda34fcada} 
+\index{hive::utils::Serializer@{hive::utils::Serializer}!Serializer@{Serializer}}
+\index{Serializer@{Serializer}!hive::utils::Serializer@{hive::utils::Serializer}}
+\doxysubsubsection{\texorpdfstring{Serializer()}{Serializer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily hive\+::utils\+::\+Serializer\+::\+Serializer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [default]}}
+
+\Hypertarget{classhive_1_1utils_1_1Serializer_aff704df3128f22044681078ea8feb293}\label{classhive_1_1utils_1_1Serializer_aff704df3128f22044681078ea8feb293} 
+\index{hive::utils::Serializer@{hive::utils::Serializer}!Serializer@{Serializer}}
+\index{Serializer@{Serializer}!hive::utils::Serializer@{hive::utils::Serializer}}
+\doxysubsubsection{\texorpdfstring{Serializer()}{Serializer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily hive\+::utils\+::\+Serializer\+::\+Serializer (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1utils_1_1Serializer}{Serializer}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classhive_1_1utils_1_1Serializer_aec52fa68d78d232118eb5c3a440379df}\label{classhive_1_1utils_1_1Serializer_aec52fa68d78d232118eb5c3a440379df} 
+\index{hive::utils::Serializer@{hive::utils::Serializer}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!hive::utils::Serializer@{hive::utils::Serializer}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classhive_1_1utils_1_1Serializer}{Serializer}} \& hive\+::utils\+::\+Serializer\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns the singleton instance of the \doxylink{classhive_1_1utils_1_1Serializer}{Serializer} class. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the \doxylink{classhive_1_1utils_1_1Serializer}{Serializer} instance. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1utils_1_1Serializer_aec52fa68d78d232118eb5c3a440379df_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1utils_1_1Serializer_aacb397dc8b6469f10d261f8f66b1cb38}\label{classhive_1_1utils_1_1Serializer_aacb397dc8b6469f10d261f8f66b1cb38} 
+\index{hive::utils::Serializer@{hive::utils::Serializer}!loadGame@{loadGame}}
+\index{loadGame@{loadGame}!hive::utils::Serializer@{hive::utils::Serializer}}
+\doxysubsubsection{\texorpdfstring{loadGame()}{loadGame()}}
+{\footnotesize\ttfamily bool hive\+::utils\+::\+Serializer\+::load\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classhive_1_1models_1_1Game}{hive\+::models\+::\+Game}} \&}]{game,  }\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Loads a game state from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & The game instance to load into. \\
+\hline
+{\em filename} & The name of the file to load from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the game was successfully loaded, otherwise false. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1utils_1_1Serializer_aacb397dc8b6469f10d261f8f66b1cb38_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1utils_1_1Serializer_aacb397dc8b6469f10d261f8f66b1cb38_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1utils_1_1Serializer_a12f623d23a53019e202f77031a7c54fb}\label{classhive_1_1utils_1_1Serializer_a12f623d23a53019e202f77031a7c54fb} 
+\index{hive::utils::Serializer@{hive::utils::Serializer}!operator=@{operator=}}
+\index{operator=@{operator=}!hive::utils::Serializer@{hive::utils::Serializer}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhive_1_1utils_1_1Serializer}{Serializer}} \& hive\+::utils\+::\+Serializer\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1utils_1_1Serializer}{Serializer}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [delete]}}
+
+\Hypertarget{classhive_1_1utils_1_1Serializer_a257aca9f5c1f02150ae7aa18446865b0}\label{classhive_1_1utils_1_1Serializer_a257aca9f5c1f02150ae7aa18446865b0} 
+\index{hive::utils::Serializer@{hive::utils::Serializer}!saveGame@{saveGame}}
+\index{saveGame@{saveGame}!hive::utils::Serializer@{hive::utils::Serializer}}
+\doxysubsubsection{\texorpdfstring{saveGame()}{saveGame()}}
+{\footnotesize\ttfamily bool hive\+::utils\+::\+Serializer\+::save\+Game (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Game}{hive\+::models\+::\+Game}} \&}]{game,  }\item[{const std\+::string \&}]{filename = {\ttfamily "{}"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Saves the current game state to a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & The game instance to data. \\
+\hline
+{\em filename} & The name of the file to data to. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the game was successfully saved, otherwise false. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{classhive_1_1utils_1_1Serializer_a257aca9f5c1f02150ae7aa18446865b0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1utils_1_1Serializer_a257aca9f5c1f02150ae7aa18446865b0_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+includes/utils/\mbox{\hyperlink{Serializer_8h}{Serializer.\+h}}\item 
+src/utils/\mbox{\hyperlink{Serializer_8cpp}{Serializer.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,9 @@
+<map id="hive::utils::Serializer::saveGame" name="hive::utils::Serializer::saveGame">
+<area shape="rect" id="Node000001" title="Saves the current game state to a file." alt="" coords="745,5,900,45"/>
+<area shape="rect" id="Node000002" href="$classGameWindow.html#a9931dfa33915f6b56508ba24a8350337" title=" " alt="" coords="483,13,697,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="731,28,697,28,697,23,731,23"/>
+<area shape="rect" id="Node000003" href="$classGameWindow.html#a5b3bcfd2cd2b6f07f0be351f114119db" title=" " alt="" coords="264,13,435,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="469,28,435,28,435,23,469,23"/>
+<area shape="rect" id="Node000004" href="$classGameWindow.html#aba82e451e3ca31cb27b36faefeee8d6c" title=" " alt="" coords="5,13,216,38"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="250,28,216,28,216,23,250,23"/>
+</map>

@@ -1,0 +1,16 @@
+<map id="hive::models::Board::hasNonEmptyNeighbors" name="hive::models::Board::hasNonEmptyNeighbors">
+<area shape="rect" id="Node000001" title="Checks if a hex location has non&#45;empty neighboring hexes." alt="" coords="5,113,192,153"/>
+<area shape="rect" id="Node000002" href="$namespacehive_1_1models_1_1enums.html#a43af89b8a126e31344db8c8cafc8cf3f" title="Retrieves all possible directions in an array." alt="" coords="240,5,399,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,111,264,49,267,54,142,116"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1models_1_1Hex.html#a94e250128565af8fbae3c988af319bbf" title="Retrieves the x&#45;coordinate of the hex cell." alt="" coords="447,86,625,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="192,123,433,104,433,109,192,129"/>
+<area shape="rect" id="Node000004" href="$classhive_1_1models_1_1Hex.html#a18c77d5b702f072962352f4d84ccca4d" title="Retrieves the y&#45;coordinate of the hex cell." alt="" coords="447,151,625,177"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="192,137,434,154,434,160,192,142"/>
+<area shape="rect" id="Node000005" href="$classhive_1_1models_1_1Hex.html#a6fb2c3680c7bddfddaeff4e356650552" title="Retrieves the z&#45;coordinate of the hex cell." alt="" coords="447,205,625,230"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="124,152,175,189,207,207,241,220,294,231,350,235,403,234,452,229,452,234,403,239,349,240,294,236,239,225,205,212,172,194,121,156"/>
+<area shape="rect" id="Node000006" href="$classhive_1_1models_1_1Board.html#adb2633e6c0842bf0ed582c81015e7cb4" title="Retrieves the neighboring hex in the given direction." alt="" coords="243,171,395,211"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="177,151,231,165,229,170,176,156"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="367,168,491,114,494,119,369,173"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="395,179,433,174,434,179,396,184"/>
+<area shape="poly" id="edge8_Node000006_Node000005" title=" " alt="" coords="396,197,434,202,433,207,395,203"/>
+</map>

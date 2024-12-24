@@ -1,0 +1,48 @@
+\doxysection{Direction.\+h}
+\hypertarget{Direction_8h_source}{}\label{Direction_8h_source}\index{includes/models/enums/Direction.h@{includes/models/enums/Direction.h}}
+\mbox{\hyperlink{Direction_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DIRECTION\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DIRECTION\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehive_1_1models_1_1enums}{hive::models::enums}}\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513db}{Direction}}\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba9d1250c1be563879340211b990a1297c}{NORTH\_EAST}},\ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba45ac78bf3d4882ac520f4e7fb08d55c5}{EAST}},\ }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba851c1766426329f3aed605f25b08f769}{SOUTH\_EAST}},\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dbaca96c91342c9c847a70b11d29692ec01}{SOUTH\_WEST}},\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba83c9f5692281bf59471b13dfddb3af91}{WEST}},\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dbaa284a013a2af9189373c41351330e0d3}{NORTH\_WEST}}\ }
+\DoxyCodeLine{00024\ \ \ \ \ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{constexpr}\ std::tuple<int,\ int,\ int>\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a354cab0fadb39b942e04e427c624f35d}{getDirectionOffset}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513db}{Direction}}\ direction)\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (direction)\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba9d1250c1be563879340211b990a1297c}{Direction::NORTH\_EAST}}:\ \textcolor{keywordflow}{return}\ \{1,\ -\/1,\ 0\};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba45ac78bf3d4882ac520f4e7fb08d55c5}{Direction::EAST}}:\ \textcolor{keywordflow}{return}\ \{1,\ 0,\ -\/1\};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba851c1766426329f3aed605f25b08f769}{Direction::SOUTH\_EAST}}:\ \textcolor{keywordflow}{return}\ \{0,\ 1,\ -\/1\};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dbaca96c91342c9c847a70b11d29692ec01}{Direction::SOUTH\_WEST}}:\ \textcolor{keywordflow}{return}\ \{-\/1,\ 1,\ 0\};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba83c9f5692281bf59471b13dfddb3af91}{Direction::WEST}}:\ \textcolor{keywordflow}{return}\ \{-\/1,\ 0,\ 1\};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dbaa284a013a2af9189373c41351330e0d3}{Direction::NORTH\_WEST}}:\ \textcolor{keywordflow}{return}\ \{0,\ -\/1,\ 1\};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Invalid\ direction"{}});}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{constexpr}\ std::array<Direction,\ 6>\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a43af89b8a126e31344db8c8cafc8cf3f}{getAllDirections}}()\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba9d1250c1be563879340211b990a1297c}{Direction::NORTH\_EAST}},\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba45ac78bf3d4882ac520f4e7fb08d55c5}{Direction::EAST}},\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba851c1766426329f3aed605f25b08f769}{Direction::SOUTH\_EAST}},}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dbaca96c91342c9c847a70b11d29692ec01}{Direction::SOUTH\_WEST}},\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dba83c9f5692281bf59471b13dfddb3af91}{Direction::WEST}},\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a8a6eec241a9d7547b105d542f9a513dbaa284a013a2af9189373c41351330e0d3}{Direction::NORTH\_WEST}}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \}\ \textcolor{comment}{//\ namespace\ hive::models::enums}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ DIRECTION\_H}}
+
+\end{DoxyCode}

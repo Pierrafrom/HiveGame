@@ -1,0 +1,72 @@
+<map id="GameWindow::updateValidMoves" name="GameWindow::updateValidMoves">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,237,245,262"/>
+<area shape="rect" id="Node000002" href="$classGameWindow.html#a8f2df7320d0645d4cac1ecd8056eec67" title=" " alt="" coords="301,5,507,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="132,235,155,199,191,151,237,99,292,55,303,49,305,53,295,60,241,103,195,154,159,202,136,238"/>
+<area shape="rect" id="Node000003" href="$classGameWindow.html#a93ff3e0ddd8764b27f9f6e8204e8fc96" title=" " alt="" coords="293,69,515,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="138,234,201,179,245,147,292,119,308,112,310,117,295,124,248,152,204,183,141,238"/>
+<area shape="rect" id="Node000005" href="$classhive_1_1models_1_1Game.html#a1e2f52e7a24485701b82cbddccd21912" title="Gets the game board." alt="" coords="327,133,481,173"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="157,234,292,183,317,175,319,180,294,188,159,239"/>
+<area shape="rect" id="Node000006" href="$classhive_1_1models_1_1Game.html#a1ca50d2bf0c92521605b292da44366d8" title="Gets the current player." alt="" coords="327,197,481,237"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="236,234,314,225,314,230,236,239"/>
+<area shape="rect" id="Node000007" href="$classhive_1_1models_1_1Game.html#adffa668dd4483fdaf21acfa4fac42f14" title="Gets the player corresponding to the given index, or the current player if no index is provided." alt="" coords="327,261,481,301"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="236,259,314,268,314,274,236,265"/>
+<area shape="rect" id="Node000008" href="$classhive_1_1models_1_1Game.html#a29ad0abef9fdebafc716ced0154c3a7b" title="Gets the turn number." alt="" coords="327,325,481,365"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="159,260,294,311,319,319,317,324,292,316,157,265"/>
+<area shape="rect" id="Node000009" href="$classhive_1_1models_1_1Move.html#a9f7d7c15e5e42d0a5144dcdce43bc5c8" title="Converts the Move object to a string representation." alt="" coords="329,389,479,429"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="141,260,204,315,248,347,295,375,316,385,314,389,292,380,245,352,201,319,138,264"/>
+<area shape="rect" id="Node000011" href="$classhive_1_1models_1_1GameRules.html#af4639bd9adac498eff29a16e03fc8165" title="Validates a move according to its type." alt="" coords="309,517,499,557"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="139,261,203,338,295,439,369,506,365,510,291,443,199,342,135,264"/>
+<area shape="rect" id="Node000004" href="$classhive_1_1models_1_1Piece.html#a6b34b0d19127deadb1ed39263b642e0d" title="Retrieves the current position of the piece." alt="" coords="593,69,743,109"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="515,87,580,87,580,92,515,92"/>
+<area shape="rect" id="Node000010" href="$classhive_1_1models_1_1Hex.html#ae556b0a9493cc62ed4654eebfb4895f7" title="Converts the Hex object to a string representation." alt="" coords="594,325,742,365"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="479,389,580,364,581,369,480,394"/>
+<area shape="rect" id="Node000012" href="$classhive_1_1models_1_1Move.html#ac5abd320c5ed007fe9d62b4c46ebb7cc" title="Retrieves the piece involved in the move." alt="" coords="841,861,991,901"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="416,556,437,599,469,654,512,711,537,737,564,761,628,799,697,829,766,851,828,865,827,870,764,856,695,834,625,804,561,765,533,741,508,714,465,657,433,601,412,559"/>
+<area shape="rect" id="Node000013" href="$classhive_1_1models_1_1Move.html#a049a2f8ca126c3304852c182de9cb574" title="Retrieves the player who made the move." alt="" coords="841,797,991,837"/>
+<area shape="poly" id="edge12_Node000011_Node000013" title=" " alt="" coords="436,555,597,660,707,724,822,783,839,790,837,795,820,788,704,729,594,665,433,560"/>
+<area shape="rect" id="Node000014" href="$classhive_1_1models_1_1Move.html#ac7e11d589ea05e87aad566e3ae31692f" title="Retrieves the type of the move." alt="" coords="593,389,743,429"/>
+<area shape="poly" id="edge13_Node000011_Node000014" title=" " alt="" coords="432,515,490,477,562,439,579,432,581,436,564,444,493,482,435,519"/>
+<area shape="rect" id="Node000015" href="$classhive_1_1models_1_1GameRules.html#a01eb724a216dedf1f8b7677f89e73c0c" title="Enforces the rule that the queen must be placed by the fourth turn." alt="" coords="563,453,773,493"/>
+<area shape="poly" id="edge14_Node000011_Node000015" title=" " alt="" coords="487,515,571,494,573,499,488,520"/>
+<area shape="rect" id="Node000017" href="$classhive_1_1models_1_1GameRules.html#afe688c8e8c742ccf08a21fdebcb75e4b" title="Validates a MOVE&#45;type move." alt="" coords="573,517,763,557"/>
+<area shape="poly" id="edge16_Node000011_Node000017" title=" " alt="" coords="499,535,560,535,560,540,499,540"/>
+<area shape="rect" id="Node000022" href="$classhive_1_1models_1_1GameRules.html#a274494ae501490148c2233171d8bb65d" title="Validates a PLACE&#45;type move." alt="" coords="573,581,763,621"/>
+<area shape="poly" id="edge22_Node000011_Node000022" title=" " alt="" coords="488,555,573,576,571,581,487,560"/>
+<area shape="rect" id="Node000016" href="$classhive_1_1models_1_1Player.html#a60cbac742776f742e55b07f131801fc1" title="Retrieves the total number of pieces owned by the player." alt="" coords="1061,415,1215,455"/>
+<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="756,451,771,439,784,424,790,408,793,374,796,341,805,325,820,311,845,296,868,286,891,281,913,281,959,291,1012,311,1044,329,1073,352,1117,402,1113,405,1070,356,1041,333,1010,316,957,296,912,286,891,287,870,291,847,301,823,315,809,329,802,343,798,375,795,409,788,427,775,443,759,455"/>
+<area shape="poly" id="edge18_Node000017_Node000013" title=" " alt="" coords="761,555,775,568,794,595,802,623,803,650,800,677,798,704,798,730,806,757,823,784,831,791,827,795,819,787,801,759,793,731,792,704,795,677,798,650,797,624,789,597,771,571,757,560"/>
+<area shape="rect" id="Node000018" href="$classhive_1_1models_1_1Move.html#a45c99c5cf9be5c5f1fab0b13bae554b8" title="Retrieves the starting position of the piece." alt="" coords="841,325,991,365"/>
+<area shape="poly" id="edge17_Node000017_Node000018" title=" " alt="" coords="756,515,772,503,784,488,791,473,795,441,799,409,806,392,819,375,827,369,830,373,823,379,811,395,804,410,800,442,796,474,789,491,775,507,759,519"/>
+<area shape="rect" id="Node000019" href="$classhive_1_1models_1_1Move.html#accb38544e44b75c7e512d40372ac7831" title="Retrieves the target position of the piece." alt="" coords="841,517,991,557"/>
+<area shape="poly" id="edge19_Node000017_Node000019" title=" " alt="" coords="763,535,827,535,827,540,763,540"/>
+<area shape="rect" id="Node000020" href="$classhive_1_1models_1_1Board.html#a46282da1d7c235347de43646fa4e5dd9" title="Retrieves the top piece at a specific hex location." alt="" coords="840,389,992,429"/>
+<area shape="poly" id="edge20_Node000017_Node000020" title=" " alt="" coords="751,515,772,503,787,488,795,472,804,456,820,439,828,433,831,438,823,443,808,459,800,475,791,491,775,507,754,520"/>
+<area shape="rect" id="Node000021" href="$classhive_1_1models_1_1Board.html#a73e7cb8c98d471ff351ce0baafb48d03" title="Checks if a hex location is occupied by any pieces." alt="" coords="840,453,992,493"/>
+<area shape="poly" id="edge21_Node000017_Node000021" title=" " alt="" coords="746,515,826,494,827,499,747,520"/>
+<area shape="poly" id="edge25_Node000022_Node000012" title=" " alt="" coords="684,620,762,753,823,848,830,852,827,857,819,851,758,755,679,623"/>
+<area shape="poly" id="edge26_Node000022_Node000013" title=" " alt="" coords="690,620,775,718,797,754,807,768,823,783,831,789,828,793,820,787,803,772,793,757,771,722,686,623"/>
+<area shape="poly" id="edge27_Node000022_Node000019" title=" " alt="" coords="746,579,827,558,828,563,747,584"/>
+<area shape="poly" id="edge28_Node000022_Node000020" title=" " alt="" coords="756,579,772,567,784,552,791,537,795,505,799,473,806,456,819,439,827,433,830,437,823,443,811,459,804,474,800,506,796,538,789,555,775,571,759,583"/>
+<area shape="poly" id="edge29_Node000022_Node000021" title=" " alt="" coords="751,579,772,567,787,552,795,536,804,520,820,503,828,497,831,502,823,507,808,523,800,539,791,555,775,571,754,584"/>
+<area shape="rect" id="Node000023" href="$classhive_1_1models_1_1GameRules.html#a1b166e6772b05d46e2c175627fe8e823" title="Checks if the player can add a specific piece type according to the maximum limit." alt="" coords="821,645,1011,685"/>
+<area shape="poly" id="edge23_Node000022_Node000023" title=" " alt="" coords="747,619,825,639,824,644,746,624"/>
+<area shape="rect" id="Node000024" href="$classhive_1_1models_1_1Board.html#a5d547cf394c28d4801fb6e6cfe4eb5e9" title="Retrieves all hexes surrounding a specific hex location." alt="" coords="840,733,992,773"/>
+<area shape="poly" id="edge30_Node000022_Node000024" title=" " alt="" coords="702,619,823,695,870,724,868,729,820,700,699,624"/>
+<area shape="rect" id="Node000030" href="$classhive_1_1models_1_1Board.html#afab2afbd4b7466185c8937755928f364" title="Gets the total number of pieces on the board." alt="" coords="840,581,992,621"/>
+<area shape="poly" id="edge40_Node000022_Node000030" title=" " alt="" coords="763,599,826,599,826,604,763,604"/>
+<area shape="poly" id="edge24_Node000023_Node000016" title=" " alt="" coords="990,643,1009,631,1048,593,1080,548,1104,504,1122,466,1127,468,1109,507,1084,551,1052,596,1012,635,993,647"/>
+<area shape="poly" id="edge39_Node000024_Node000024" title=" " alt="" coords="875,734,872,724,879,714,894,709,916,707,942,710,956,717,954,722,940,715,916,712,895,714,882,719,877,725,880,732"/>
+<area shape="rect" id="Node000025" href="$namespacehive_1_1models_1_1enums.html#a43af89b8a126e31344db8c8cafc8cf3f" title="Retrieves all possible directions in an array." alt="" coords="1059,676,1217,716"/>
+<area shape="poly" id="edge31_Node000024_Node000025" title=" " alt="" coords="992,731,1046,717,1048,722,993,736"/>
+<area shape="rect" id="Node000026" href="$classhive_1_1models_1_1Hex.html#a94e250128565af8fbae3c988af319bbf" title="Retrieves the x&#45;coordinate of the hex cell." alt="" coords="1265,770,1444,795"/>
+<area shape="poly" id="edge32_Node000024_Node000026" title=" " alt="" coords="992,756,1252,773,1251,778,992,761"/>
+<area shape="rect" id="Node000027" href="$classhive_1_1models_1_1Hex.html#a18c77d5b702f072962352f4d84ccca4d" title="Retrieves the y&#45;coordinate of the hex cell." alt="" coords="1266,851,1443,877"/>
+<area shape="poly" id="edge33_Node000024_Node000027" title=" " alt="" coords="990,771,1012,783,1028,799,1036,814,1045,828,1060,840,1106,858,1156,869,1205,873,1252,873,1252,878,1205,878,1155,874,1105,863,1057,845,1041,832,1032,817,1023,802,1009,787,988,776"/>
+<area shape="rect" id="Node000028" href="$classhive_1_1models_1_1Hex.html#a6fb2c3680c7bddfddaeff4e356650552" title="Retrieves the z&#45;coordinate of the hex cell." alt="" coords="1265,659,1444,685"/>
+<area shape="poly" id="edge34_Node000024_Node000028" title=" " alt="" coords="951,731,1009,695,1032,676,1042,668,1058,661,1115,649,1174,646,1231,648,1281,654,1280,660,1230,654,1174,651,1116,655,1059,667,1045,673,1035,680,1012,700,954,735"/>
+<area shape="rect" id="Node000029" href="$classhive_1_1models_1_1Board.html#adb2633e6c0842bf0ed582c81015e7cb4" title="Retrieves the neighboring hex in the given direction." alt="" coords="1062,791,1214,831"/>
+<area shape="poly" id="edge35_Node000024_Node000029" title=" " alt="" coords="993,770,1049,785,1048,790,992,775"/>
+<area shape="poly" id="edge36_Node000029_Node000026" title=" " alt="" coords="1214,798,1252,793,1252,799,1215,804"/>
+<area shape="poly" id="edge37_Node000029_Node000027" title=" " alt="" coords="1215,827,1290,845,1288,851,1214,832"/>
+<area shape="poly" id="edge38_Node000029_Node000028" title=" " alt="" coords="1169,788,1321,690,1324,694,1172,793"/>
+</map>

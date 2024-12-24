@@ -1,0 +1,296 @@
+\doxysection{hive\+::controllers\+::cli\+::CLIController Class Reference}
+\hypertarget{classhive_1_1controllers_1_1cli_1_1CLIController}{}\label{classhive_1_1controllers_1_1cli_1_1CLIController}\index{hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}}
+
+
+{\ttfamily \#include $<$CLIController.\+h$>$}
+
+
+
+Collaboration diagram for hive\+::controllers\+::cli\+::CLIController\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classhive_1_1controllers_1_1cli_1_1CLIController__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_ab5b3abbce6d9effb00b9aa9768dd4fa4}{CLIController}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1views_1_1cli_1_1CLIView}{views\+::cli\+::\+CLIView}} $>$ \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_a283c0d961a9b9d794b71cdd5853a48bb}{view}})
+\item 
+void \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_af90a649a6748372a139ad3fd0957dadb}{run}} () const
+\item 
+bool \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_a433affa887a3f911ff615224e5b28b7b}{load\+Game\+From\+File}} (const std\+::string \&file\+Path) const
+\item 
+void \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_a477d6c1bf15f3024dde28b75d642753c}{run}} (const std\+::string \&save\+File\+Path) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_abdc584083fcdee33df53409497cac430}{handle\+Command}} (const std\+::string \&command) const
+\item 
+void \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_a10a8cd7f81a293a29f121c62cb42044f}{place\+Piece}} () const
+\item 
+void \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_afddc0cdff435f4c4379eda9707aec1e2}{move\+Piece}} () const
+\item 
+void \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_a5645dca83f8d250b5b8f0f2cb2c41311}{undo\+Move}} () const
+\item 
+void \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_a05edd06f4f4b8fe73cc9f75ebd982954}{redo\+Move}} () const
+\item 
+void \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_add6605f0fbd857c259e90991a605c538}{display\+Game\+State}} () const
+\item 
+\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{models\+::enums\+::\+Piece\+Type}} \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_abbfb8389e5d567253aa0d4de2bad4e12}{choose\+Piece\+Type}} () const
+\item 
+\mbox{\hyperlink{classhive_1_1models_1_1Hex}{models\+::\+Hex}} \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_aaae374c98a88ed73dd5afa6f9d97ea2f}{choose\+Target\+Hex\+From\+Moves}} (const std\+::vector$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{models\+::\+Hex}} $>$ \&possible\+Moves) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1views_1_1cli_1_1CLIView}{views\+::cli\+::\+CLIView}} $>$ \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_a283c0d961a9b9d794b71cdd5853a48bb}{view}}
+\item 
+\mbox{\hyperlink{classhive_1_1models_1_1Game}{models\+::\+Game}} \& \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_a0e9a624bf39f33e6f3fd2ac800eabf06}{game}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classhive_1_1controllers_1_1cli_1_1CLIController_ab5b3abbce6d9effb00b9aa9768dd4fa4}\label{classhive_1_1controllers_1_1cli_1_1CLIController_ab5b3abbce6d9effb00b9aa9768dd4fa4} 
+\index{hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}!CLIController@{CLIController}}
+\index{CLIController@{CLIController}!hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}}
+\doxysubsubsection{\texorpdfstring{CLIController()}{CLIController()}}
+{\footnotesize\ttfamily hive\+::controllers\+::cli\+::\+CLIController\+::\+CLIController (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhive_1_1views_1_1cli_1_1CLIView}{views\+::cli\+::\+CLIView}} $>$}]{view }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classhive_1_1controllers_1_1cli_1_1CLIController_abbfb8389e5d567253aa0d4de2bad4e12}\label{classhive_1_1controllers_1_1cli_1_1CLIController_abbfb8389e5d567253aa0d4de2bad4e12} 
+\index{hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}!choosePieceType@{choosePieceType}}
+\index{choosePieceType@{choosePieceType}!hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}}
+\doxysubsubsection{\texorpdfstring{choosePieceType()}{choosePieceType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{models\+::enums\+::\+Piece\+Type}} hive\+::controllers\+::cli\+::\+CLIController\+::choose\+Piece\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1controllers_1_1cli_1_1CLIController_abbfb8389e5d567253aa0d4de2bad4e12_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1controllers_1_1cli_1_1CLIController_aaae374c98a88ed73dd5afa6f9d97ea2f}\label{classhive_1_1controllers_1_1cli_1_1CLIController_aaae374c98a88ed73dd5afa6f9d97ea2f} 
+\index{hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}!chooseTargetHexFromMoves@{chooseTargetHexFromMoves}}
+\index{chooseTargetHexFromMoves@{chooseTargetHexFromMoves}!hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}}
+\doxysubsubsection{\texorpdfstring{chooseTargetHexFromMoves()}{chooseTargetHexFromMoves()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhive_1_1models_1_1Hex}{models\+::\+Hex}} hive\+::controllers\+::cli\+::\+CLIController\+::choose\+Target\+Hex\+From\+Moves (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{models\+::\+Hex}} $>$ \&}]{possible\+Moves }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1controllers_1_1cli_1_1CLIController_aaae374c98a88ed73dd5afa6f9d97ea2f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1controllers_1_1cli_1_1CLIController_add6605f0fbd857c259e90991a605c538}\label{classhive_1_1controllers_1_1cli_1_1CLIController_add6605f0fbd857c259e90991a605c538} 
+\index{hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}!displayGameState@{displayGameState}}
+\index{displayGameState@{displayGameState}!hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}}
+\doxysubsubsection{\texorpdfstring{displayGameState()}{displayGameState()}}
+{\footnotesize\ttfamily void hive\+::controllers\+::cli\+::\+CLIController\+::display\+Game\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1controllers_1_1cli_1_1CLIController_add6605f0fbd857c259e90991a605c538_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1controllers_1_1cli_1_1CLIController_abdc584083fcdee33df53409497cac430}\label{classhive_1_1controllers_1_1cli_1_1CLIController_abdc584083fcdee33df53409497cac430} 
+\index{hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}!handleCommand@{handleCommand}}
+\index{handleCommand@{handleCommand}!hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}}
+\doxysubsubsection{\texorpdfstring{handleCommand()}{handleCommand()}}
+{\footnotesize\ttfamily bool hive\+::controllers\+::cli\+::\+CLIController\+::handle\+Command (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{command }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1controllers_1_1cli_1_1CLIController_abdc584083fcdee33df53409497cac430_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1controllers_1_1cli_1_1CLIController_abdc584083fcdee33df53409497cac430_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1controllers_1_1cli_1_1CLIController_a433affa887a3f911ff615224e5b28b7b}\label{classhive_1_1controllers_1_1cli_1_1CLIController_a433affa887a3f911ff615224e5b28b7b} 
+\index{hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}!loadGameFromFile@{loadGameFromFile}}
+\index{loadGameFromFile@{loadGameFromFile}!hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}}
+\doxysubsubsection{\texorpdfstring{loadGameFromFile()}{loadGameFromFile()}}
+{\footnotesize\ttfamily bool hive\+::controllers\+::cli\+::\+CLIController\+::load\+Game\+From\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Path }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1controllers_1_1cli_1_1CLIController_a433affa887a3f911ff615224e5b28b7b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{classhive_1_1controllers_1_1cli_1_1CLIController_a433affa887a3f911ff615224e5b28b7b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1controllers_1_1cli_1_1CLIController_afddc0cdff435f4c4379eda9707aec1e2}\label{classhive_1_1controllers_1_1cli_1_1CLIController_afddc0cdff435f4c4379eda9707aec1e2} 
+\index{hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}!movePiece@{movePiece}}
+\index{movePiece@{movePiece}!hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}}
+\doxysubsubsection{\texorpdfstring{movePiece()}{movePiece()}}
+{\footnotesize\ttfamily void hive\+::controllers\+::cli\+::\+CLIController\+::move\+Piece (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1controllers_1_1cli_1_1CLIController_afddc0cdff435f4c4379eda9707aec1e2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1controllers_1_1cli_1_1CLIController_afddc0cdff435f4c4379eda9707aec1e2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1controllers_1_1cli_1_1CLIController_a10a8cd7f81a293a29f121c62cb42044f}\label{classhive_1_1controllers_1_1cli_1_1CLIController_a10a8cd7f81a293a29f121c62cb42044f} 
+\index{hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}!placePiece@{placePiece}}
+\index{placePiece@{placePiece}!hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}}
+\doxysubsubsection{\texorpdfstring{placePiece()}{placePiece()}}
+{\footnotesize\ttfamily void hive\+::controllers\+::cli\+::\+CLIController\+::place\+Piece (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1controllers_1_1cli_1_1CLIController_a10a8cd7f81a293a29f121c62cb42044f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1controllers_1_1cli_1_1CLIController_a10a8cd7f81a293a29f121c62cb42044f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1controllers_1_1cli_1_1CLIController_a05edd06f4f4b8fe73cc9f75ebd982954}\label{classhive_1_1controllers_1_1cli_1_1CLIController_a05edd06f4f4b8fe73cc9f75ebd982954} 
+\index{hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}!redoMove@{redoMove}}
+\index{redoMove@{redoMove}!hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}}
+\doxysubsubsection{\texorpdfstring{redoMove()}{redoMove()}}
+{\footnotesize\ttfamily void hive\+::controllers\+::cli\+::\+CLIController\+::redo\+Move (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1controllers_1_1cli_1_1CLIController_a05edd06f4f4b8fe73cc9f75ebd982954_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1controllers_1_1cli_1_1CLIController_a05edd06f4f4b8fe73cc9f75ebd982954_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1controllers_1_1cli_1_1CLIController_af90a649a6748372a139ad3fd0957dadb}\label{classhive_1_1controllers_1_1cli_1_1CLIController_af90a649a6748372a139ad3fd0957dadb} 
+\index{hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}!run@{run}}
+\index{run@{run}!hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void hive\+::controllers\+::cli\+::\+CLIController\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1controllers_1_1cli_1_1CLIController_af90a649a6748372a139ad3fd0957dadb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{classhive_1_1controllers_1_1cli_1_1CLIController_af90a649a6748372a139ad3fd0957dadb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1controllers_1_1cli_1_1CLIController_a477d6c1bf15f3024dde28b75d642753c}\label{classhive_1_1controllers_1_1cli_1_1CLIController_a477d6c1bf15f3024dde28b75d642753c} 
+\index{hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}!run@{run}}
+\index{run@{run}!hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void hive\+::controllers\+::cli\+::\+CLIController\+::run (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{save\+File\+Path }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1controllers_1_1cli_1_1CLIController_a477d6c1bf15f3024dde28b75d642753c_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1controllers_1_1cli_1_1CLIController_a5645dca83f8d250b5b8f0f2cb2c41311}\label{classhive_1_1controllers_1_1cli_1_1CLIController_a5645dca83f8d250b5b8f0f2cb2c41311} 
+\index{hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}!undoMove@{undoMove}}
+\index{undoMove@{undoMove}!hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}}
+\doxysubsubsection{\texorpdfstring{undoMove()}{undoMove()}}
+{\footnotesize\ttfamily void hive\+::controllers\+::cli\+::\+CLIController\+::undo\+Move (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{classhive_1_1controllers_1_1cli_1_1CLIController_a5645dca83f8d250b5b8f0f2cb2c41311_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1controllers_1_1cli_1_1CLIController_a5645dca83f8d250b5b8f0f2cb2c41311_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classhive_1_1controllers_1_1cli_1_1CLIController_a0e9a624bf39f33e6f3fd2ac800eabf06}\label{classhive_1_1controllers_1_1cli_1_1CLIController_a0e9a624bf39f33e6f3fd2ac800eabf06} 
+\index{hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}!game@{game}}
+\index{game@{game}!hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}}
+\doxysubsubsection{\texorpdfstring{game}{game}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhive_1_1models_1_1Game}{models\+::\+Game}}\& hive\+::controllers\+::cli\+::\+CLIController\+::game\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classhive_1_1controllers_1_1cli_1_1CLIController_a283c0d961a9b9d794b71cdd5853a48bb}\label{classhive_1_1controllers_1_1cli_1_1CLIController_a283c0d961a9b9d794b71cdd5853a48bb} 
+\index{hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}!view@{view}}
+\index{view@{view}!hive::controllers::cli::CLIController@{hive::controllers::cli::CLIController}}
+\doxysubsubsection{\texorpdfstring{view}{view}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classhive_1_1views_1_1cli_1_1CLIView}{views\+::cli\+::\+CLIView}}$>$ hive\+::controllers\+::cli\+::\+CLIController\+::view\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+includes/controllers/cli/\mbox{\hyperlink{CLIController_8h}{CLIController.\+h}}\item 
+src/controllers/cli/\mbox{\hyperlink{CLIController_8cpp}{CLIController.\+cpp}}\end{DoxyCompactItemize}

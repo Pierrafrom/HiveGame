@@ -1,0 +1,7 @@
+<map id="GameWindow::setPlayerNames" name="GameWindow::setPlayerNames">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,45,232,70"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1Player.html#a1894963211584b2646e971845080c345" title="Retrieves the player&#39;s name." alt="" coords="280,5,435,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="213,42,266,35,267,40,214,47"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1models_1_1Game.html#a56a9152901e8cafc9a4525c60ba7568d" title="Gets the player by index." alt="" coords="281,69,434,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="214,67,267,75,266,80,213,73"/>
+</map>

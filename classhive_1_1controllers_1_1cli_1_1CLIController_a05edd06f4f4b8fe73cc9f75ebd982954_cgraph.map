@@ -1,0 +1,7 @@
+<map id="hive::controllers::cli::CLIController::redoMove" name="hive::controllers::cli::CLIController::redoMove">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,143,60"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1Game.html#ab98d1a36b2d30a9d037af1376f6bc195" title="Redoes the last undone move in the game." alt="" coords="191,13,344,53"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,30,176,30,176,35,143,35"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1models_1_1Game.html#ad4fd3a64a7ac1539477ce269ddfc4dd0" title="Advances the game to the next turn." alt="" coords="392,13,545,53"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="344,30,378,30,378,35,344,35"/>
+</map>

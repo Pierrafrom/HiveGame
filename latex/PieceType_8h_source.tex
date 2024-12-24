@@ -1,0 +1,43 @@
+\doxysection{Piece\+Type.\+h}
+\hypertarget{PieceType_8h_source}{}\label{PieceType_8h_source}\index{includes/models/enums/PieceType.h@{includes/models/enums/PieceType.h}}
+\mbox{\hyperlink{PieceType_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PIECE\_TYPE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PIECE\_TYPE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehive_1_1models_1_1enums}{hive::models::enums}}\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{PieceType}}\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca42a0df0017ac2fee991da57be8adfb3a}{QUEEN\_BEE}},}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca77ad205a076cee8291c4807c3b0ecb19}{ANT}},}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca5947a2c004c7aee6dbfd803326a0fa5b}{BEETLE}},}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459cad58295f6b3fb30f0c66af9f7f8a7cfd9}{LADYBUG}},}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca09b3cb988557bb129c52907d9caafc6e}{MOSQUITO}},}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca9e7abc16c6a1b9bcd2d330c63933d981}{SPIDER}},}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459cadc166070a22e38ededb54ae1a00c0551}{PILLBUG}},}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459cadff2521f18711f27da0d666cc73744b7}{GRASSHOPPER}}}
+\DoxyCodeLine{00020\ \ \ \ \ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_afd71a53b513d7b5332c82e32d9a85254}{toString}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{PieceType}}\ type)\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca42a0df0017ac2fee991da57be8adfb3a}{PieceType::QUEEN\_BEE}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Queen\ Bee"{}};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca77ad205a076cee8291c4807c3b0ecb19}{PieceType::ANT}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Ant"{}};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca5947a2c004c7aee6dbfd803326a0fa5b}{PieceType::BEETLE}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Beetle"{}};}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459cad58295f6b3fb30f0c66af9f7f8a7cfd9}{PieceType::LADYBUG}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Ladybug"{}};}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca09b3cb988557bb129c52907d9caafc6e}{PieceType::MOSQUITO}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Mosquito"{}};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459ca9e7abc16c6a1b9bcd2d330c63933d981}{PieceType::SPIDER}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Spider"{}};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459cadc166070a22e38ededb54ae1a00c0551}{PieceType::PILLBUG}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Pillbug"{}};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459cadff2521f18711f27da0d666cc73744b7}{PieceType::GRASSHOPPER}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Grasshopper"{}};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Unknown"{}};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{inline}\ std::ostream\ \&\mbox{\hyperlink{namespacehive_1_1models_1_1enums_a23a126484d60ed3bfef2b1c73078d1d5}{operator<<}}(std::ostream\ \&os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{PieceType}}\ type)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os\ <<\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_afd71a53b513d7b5332c82e32d9a85254}{toString}}(type);}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \}\ \textcolor{comment}{//\ namespace\ hive::models::enums}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PIECE\_TYPE\_H}}
+
+\end{DoxyCode}

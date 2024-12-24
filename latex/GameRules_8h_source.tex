@@ -1,0 +1,59 @@
+\doxysection{Game\+Rules.\+h}
+\hypertarget{GameRules_8h_source}{}\label{GameRules_8h_source}\index{includes/models/GameRules.h@{includes/models/GameRules.h}}
+\mbox{\hyperlink{GameRules_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GAMERULES\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GAMERULES\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <optional>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Player_8h}{models/Player.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Move_8h}{models/Move.h}}"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ TODO:\ Create\ a\ test\ suite\ for\ the\ GameRules\ class}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehive_1_1models}{hive::models}}\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classhive_1_1models_1_1GameRules}{GameRules}}\ \{}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ \ \ \ \ \ \ \ /****************************************************************************}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Singleton\ class:\ private\ constructor\ and\ destructor.}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ **************************************************************************/}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1GameRules_a0def0a879c514dc6af9d5e5c57adda5f}{GameRules}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1GameRules_a1d779dad9ce1896ca58906ddf71bbb09}{\string~GameRules}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhive_1_1models_1_1GameRules_afe688c8e8c742ccf08a21fdebcb75e4b}{validateMoveType}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Move}{Move}}\ \&move,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}}\ \&board);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhive_1_1models_1_1GameRules_a274494ae501490148c2233171d8bb65d}{validatePlaceType}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Move}{Move}}\ \&move,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}}\ \&board);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classhive_1_1models_1_1GameRules_a1b166e6772b05d46e2c175627fe8e823}{canAddPiece}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}}\ \&player,\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{enums::PieceType}}\ type);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classhive_1_1models_1_1GameRules_a01eb724a216dedf1f8b7677f89e73c0c}{isQueenPlacementRequired}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Player}{Player}}\ \&player,\ \textcolor{keywordtype}{size\_t}\ turnNumber);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classhive_1_1models_1_1GameRules}{GameRules}}\ \&\mbox{\hyperlink{classhive_1_1models_1_1GameRules_ae098a2ad513579fd69f53f0e5d30d570}{getInstance}}();}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhive_1_1models_1_1GameRules_af4639bd9adac498eff29a16e03fc8165}{validateMove}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Move}{Move}}\ \&move,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}}\ \&board,\ \textcolor{keywordtype}{size\_t}\ turnNumber);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::optional<const\ Player\ *>}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1GameRules_abd49c7a464b050d6d8396a97e381537f}{getVictoryCondition}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1Board}{Board}}\ \&board,\ \textcolor{keyword}{const}\ std::vector<const\ Player\ *>\ \&players);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \textcolor{comment}{\ \ \ \ \ \ \ \ /****************************************************************************}}
+\DoxyCodeLine{00107\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Singleton\ class:\ prevent\ copying\ and\ moving\ the\ singleton\ instance.}}
+\DoxyCodeLine{00108\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ **************************************************************************/}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1GameRules_a48027567a5cf639d902a6208b0d1c43b}{GameRules}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1GameRules}{GameRules}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1GameRules}{GameRules}}\ \&\mbox{\hyperlink{classhive_1_1models_1_1GameRules_a50f3a91af5aa2d0105edc426d9c6fe27}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1GameRules}{GameRules}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1GameRules_a96bdda9e88b75c7cd27596c98baa09fb}{GameRules}}(\mbox{\hyperlink{classhive_1_1models_1_1GameRules}{GameRules}}\ \&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1GameRules}{GameRules}}\ \&\mbox{\hyperlink{classhive_1_1models_1_1GameRules_a975f3a1fbc7e01bfd30fe50dfb571053}{operator=}}(\mbox{\hyperlink{classhive_1_1models_1_1GameRules}{GameRules}}\ \&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00137\ \ \ \ \ \};}
+\DoxyCodeLine{00138\ \}\ \textcolor{comment}{//\ namespace\ hive::models}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GAMERULES\_H}}
+
+\end{DoxyCode}

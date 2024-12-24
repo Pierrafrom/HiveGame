@@ -1,0 +1,7 @@
+<map id="hive::models::GameStatus" name="hive::models::GameStatus">
+<area shape="rect" id="Node000001" title="Represents the status of the game." alt="" coords="5,543,192,628"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1Player.html" title="Represents a player in the Hive game." alt="" coords="21,135,177,480"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,480,101,526,96,526,96,480"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="21,5,176,85"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="101,99,101,134,96,134,96,99"/>
+</map>

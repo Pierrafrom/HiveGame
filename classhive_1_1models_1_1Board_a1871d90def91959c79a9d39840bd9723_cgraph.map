@@ -1,0 +1,13 @@
+<map id="hive::models::Board::canSliceBetween" name="hive::models::Board::canSliceBetween">
+<area shape="rect" id="Node000001" title="Checks if a slice can be made between two hexes." alt="" coords="5,37,157,77"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1Board.html#a73e7cb8c98d471ff351ce0baafb48d03" title="Checks if a hex location is occupied by any pieces." alt="" coords="205,5,357,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,43,191,37,192,42,158,48"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1models_1_1Board.html#adb2633e6c0842bf0ed582c81015e7cb4" title="Retrieves the neighboring hex in the given direction." alt="" coords="205,69,357,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="158,67,192,72,191,78,157,72"/>
+<area shape="rect" id="Node000004" href="$classhive_1_1models_1_1Hex.html#a94e250128565af8fbae3c988af319bbf" title="Retrieves the x&#45;coordinate of the hex cell." alt="" coords="405,27,584,53"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="357,69,425,53,427,58,358,74"/>
+<area shape="rect" id="Node000005" href="$classhive_1_1models_1_1Hex.html#a18c77d5b702f072962352f4d84ccca4d" title="Retrieves the y&#45;coordinate of the hex cell." alt="" coords="406,77,583,102"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="358,87,392,87,392,92,358,92"/>
+<area shape="rect" id="Node000006" href="$classhive_1_1models_1_1Hex.html#a6fb2c3680c7bddfddaeff4e356650552" title="Retrieves the z&#45;coordinate of the hex cell." alt="" coords="405,126,584,151"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="358,104,427,120,425,125,357,109"/>
+</map>

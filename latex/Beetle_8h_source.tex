@@ -1,0 +1,50 @@
+\doxysection{Beetle.\+h}
+\hypertarget{Beetle_8h_source}{}\label{Beetle_8h_source}\index{includes/models/pieces/Beetle.h@{includes/models/pieces/Beetle.h}}
+\mbox{\hyperlink{Beetle_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BEETLE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BEETLE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Piece_8h}{models/Piece.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{BeetleMoveStrategy_8h}{models/strategies/BeetleMoveStrategy.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehive_1_1models_1_1pieces}{hive::models::pieces}}\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Beetle}{Beetle}}\ final\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}}\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ \ \ \ /**************************************************************************************************}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Constructors}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *************************************************************************************************/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Beetle_a85b2b98e1f54d9d4e55b0939853c4c2a}{Beetle}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{classhive_1_1models_1_1Piece_a1509acf76a90dac6e987632950411d32}{pieceNextId}}++,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::shared\_ptr<Player>\ \&\mbox{\hyperlink{classhive_1_1models_1_1Piece_ab65b3c157d40966a1602a114e3ab700b}{owner}}\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<Hex>\ \&\mbox{\hyperlink{classhive_1_1models_1_1Piece_a66696b83d188451fd7b41235d4ec7142}{position}}\ =\ std::nullopt)}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}}(\mbox{\hyperlink{classhive_1_1models_1_1Piece_a97bbf039eb80718ebce7d51b3df1454f}{id}},}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ enums::PieceType::BEETLE,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::make\_unique<strategies::BeetleMoveStrategy>(this),}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1Piece_ab65b3c157d40966a1602a114e3ab700b}{owner}},}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1Piece_a66696b83d188451fd7b41235d4ec7142}{position}})\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{comment}{\ \ \ \ \ \ \ \ /**************************************************************************************************}}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Destructor}}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *************************************************************************************************/}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Beetle_a94270605f1e41742a700bb7a32389e23}{\string~Beetle}}()\ \textcolor{keyword}{override}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{comment}{\ \ \ \ \ \ \ \ /**************************************************************************************************}}
+\DoxyCodeLine{00053\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Other\ constructors\ and\ operators}}
+\DoxyCodeLine{00054\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *************************************************************************************************/}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Beetle_ac81b424c93e2747f61a3904bb54c23e8}{Beetle}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Beetle}{Beetle}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Beetle}{Beetle}}\ \&\mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Beetle_a693bf5e5f156a63ef75b79ce2c329146}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Beetle}{Beetle}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Beetle_afb7f732b789d5d1535e1d975aa2dbb20}{Beetle}}(\mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Beetle}{Beetle}}\ \&\&)\ noexcept\ =\ default;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Beetle}{Beetle}}\ \&operator=(\mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Beetle}{Beetle}}\ \&\&)\ noexcept\ =\ default;}
+\DoxyCodeLine{00075\ \ \ \ \ \};}
+\DoxyCodeLine{00076\ \}\ \textcolor{comment}{//\ namespace\ hive::models::pieces}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ BEETLE\_H}}
+
+\end{DoxyCode}

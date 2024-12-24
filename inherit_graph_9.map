@@ -1,0 +1,19 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classhive_1_1models_1_1strategies_1_1MoveStrategy.html" title="Abstract class defining the movement strategy for game pieces." alt="" coords="5,229,184,269"/>
+<area shape="rect" id="Node000001" href="$classhive_1_1models_1_1strategies_1_1AntMoveStrategy.html" title="Movement strategy for the Ant piece in the Hive game." alt="" coords="244,5,423,45"/>
+<area shape="poly" id="edge9_Node000000_Node000001" title=" " alt="" coords="108,216,128,179,155,136,190,92,230,55,251,43,253,48,234,59,193,96,160,139,133,181,113,218"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1strategies_1_1BeetleMoveStrategy.html" title="Movement strategy for the Beetle piece in the Hive game." alt="" coords="244,69,423,109"/>
+<area shape="poly" id="edge10_Node000000_Node000002" title=" " alt="" coords="119,217,168,167,198,141,231,119,256,107,258,112,233,124,201,146,171,171,123,221"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1models_1_1strategies_1_1GrasshopperMoveStrategy.html" title="Movement strategy for the Grasshopper piece in the Hive game." alt="" coords="232,133,435,173"/>
+<area shape="poly" id="edge11_Node000000_Node000003" title=" " alt="" coords="146,221,231,183,264,171,266,176,233,188,149,226"/>
+<area shape="rect" id="Node000004" href="$classhive_1_1models_1_1strategies_1_1LadybugMoveStrategy.html" title="Movement strategy for the Ladybug piece in the Hive game." alt="" coords="244,197,423,237"/>
+<area shape="poly" id="edge12_Node000000_Node000004" title=" " alt="" coords="197,233,244,227,244,232,198,238"/>
+<area shape="rect" id="Node000005" href="$classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy.html" title="Movement strategy for the Mosquito piece in the Hive game." alt="" coords="243,261,424,301"/>
+<area shape="poly" id="edge13_Node000000_Node000005" title=" " alt="" coords="198,260,243,267,242,272,197,266"/>
+<area shape="rect" id="Node000006" href="$classhive_1_1models_1_1strategies_1_1PillbugMoveStrategy.html" title="Movement strategy for the Pillbug piece in the Hive game." alt="" coords="244,325,423,365"/>
+<area shape="poly" id="edge14_Node000000_Node000006" title=" " alt="" coords="149,273,233,311,266,323,264,328,231,316,146,278"/>
+<area shape="rect" id="Node000007" href="$classhive_1_1models_1_1strategies_1_1QueenBeeMoveStrategy.html" title="Movement strategy for the Queen Bee piece in the Hive game." alt="" coords="239,389,427,429"/>
+<area shape="poly" id="edge15_Node000000_Node000007" title=" " alt="" coords="123,278,171,328,201,353,233,375,258,387,256,392,231,380,198,357,168,332,119,282"/>
+<area shape="rect" id="Node000008" href="$classhive_1_1models_1_1strategies_1_1SpiderMoveStrategy.html" title="Movement strategy for the Spider piece in the Hive game." alt="" coords="244,453,423,493"/>
+<area shape="poly" id="edge16_Node000000_Node000008" title=" " alt="" coords="113,280,133,317,160,360,193,403,234,439,253,451,251,455,230,443,190,406,155,363,128,320,108,283"/>
+</map>

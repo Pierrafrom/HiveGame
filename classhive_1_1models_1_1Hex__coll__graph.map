@@ -1,0 +1,3 @@
+<map id="hive::models::Hex" name="hive::models::Hex">
+<area shape="rect" id="Node000001" title="Represents a hexagonal cell in the Hive game board using cube coordinates." alt="" coords="5,5,137,351"/>
+</map>

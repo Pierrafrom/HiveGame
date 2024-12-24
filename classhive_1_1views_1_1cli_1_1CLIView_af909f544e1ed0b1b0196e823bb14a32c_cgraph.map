@@ -1,0 +1,13 @@
+<map id="hive::views::cli::CLIView::displayBoard" name="hive::views::cli::CLIView::displayBoard">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,95,184,135"/>
+<area shape="rect" id="Node000002" href="$namespacehive_1_1views_1_1cli.html#a64baf4d9e0cde1da79dff13d447dbacf" title="Construit l&#39;ASCII d&#39;un seul hexagone." alt="" coords="232,13,443,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="132,92,179,70,231,48,261,39,263,44,233,53,181,74,134,97"/>
+<area shape="rect" id="Node000004" href="$classhive_1_1models_1_1Board.html#a3f6817faace7fffc2f7dfdd63cf4b78e" title="Retrieves the board map with read access only." alt="" coords="261,63,413,103"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="184,100,247,92,248,97,184,106"/>
+<area shape="rect" id="Node000005" href="$classhive_1_1models_1_1Game.html#a1e2f52e7a24485701b82cbddccd21912" title="Gets the game board." alt="" coords="261,127,414,167"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="184,124,248,132,247,137,184,129"/>
+<area shape="rect" id="Node000006" href="$namespacehive_1_1views_1_1cli.html#a6dcf04742d624ffdb0c372fdfac514a7" title=" " alt="" coords="241,191,433,231"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="136,133,233,176,254,184,252,189,231,181,134,137"/>
+<area shape="rect" id="Node000003" href="$namespacehive_1_1views_1_1cli.html#a634c266c35adef0c47c7175f6c332526" title=" " alt="" coords="491,5,689,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="443,23,477,23,477,28,443,28"/>
+</map>

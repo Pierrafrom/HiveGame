@@ -1,0 +1,47 @@
+\doxysection{CLIController.\+h}
+\hypertarget{CLIController_8h_source}{}\label{CLIController_8h_source}\index{includes/controllers/cli/CLIController.h@{includes/controllers/cli/CLIController.h}}
+\mbox{\hyperlink{CLIController_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ HIVELIB\_CONTROLLERS\_CLI\_CLICONTROLLER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ HIVELIB\_CONTROLLERS\_CLI\_CLICONTROLLER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Game_8h}{models/Game.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{CLIView_8h}{views/cli/CLIView.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehive_1_1controllers_1_1cli}{hive::controllers::cli}}\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController}{CLIController}}\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController}{CLIController}}(std::shared\_ptr<views::cli::CLIView>\ \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_a283c0d961a9b9d794b71cdd5853a48bb}{view}});}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_af90a649a6748372a139ad3fd0957dadb}{run}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_a433affa887a3f911ff615224e5b28b7b}{loadGameFromFile}}(\textcolor{keyword}{const}\ std::string\ \&filePath)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_af90a649a6748372a139ad3fd0957dadb}{run}}(\textcolor{keyword}{const}\ std::string\ \&saveFilePath)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ std::shared\_ptr<views::cli::CLIView>\ \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_a283c0d961a9b9d794b71cdd5853a48bb}{view}};}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1Game}{models::Game}}\ \&\mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_a0e9a624bf39f33e6f3fd2ac800eabf06}{game}};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_abdc584083fcdee33df53409497cac430}{handleCommand}}(\textcolor{keyword}{const}\ std::string\ \&command)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_a10a8cd7f81a293a29f121c62cb42044f}{placePiece}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_afddc0cdff435f4c4379eda9707aec1e2}{movePiece}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_a5645dca83f8d250b5b8f0f2cb2c41311}{undoMove}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_a05edd06f4f4b8fe73cc9f75ebd982954}{redoMove}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_add6605f0fbd857c259e90991a605c538}{displayGameState}}()\textcolor{keyword}{\ const\ }\{\ \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_a283c0d961a9b9d794b71cdd5853a48bb}{view}}-\/>displayGameState(\mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_a0e9a624bf39f33e6f3fd2ac800eabf06}{game}});\ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{namespacehive_1_1models_1_1enums_a303ff590e73cc476099a7067f158459c}{models::enums::PieceType}}\ \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_abbfb8389e5d567253aa0d4de2bad4e12}{choosePieceType}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ [[nodiscard]]\ \mbox{\hyperlink{classhive_1_1models_1_1Hex}{models::Hex}}\ \mbox{\hyperlink{classhive_1_1controllers_1_1cli_1_1CLIController_aaae374c98a88ed73dd5afa6f9d97ea2f}{chooseTargetHexFromMoves}}(\textcolor{keyword}{const}\ std::vector<models::Hex>\ \&possibleMoves)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00038\ \ \ \ \ \};}
+\DoxyCodeLine{00039\ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ HIVELIB\_CONTROLLERS\_CLI\_CLICONTROLLER\_H}}
+
+\end{DoxyCode}

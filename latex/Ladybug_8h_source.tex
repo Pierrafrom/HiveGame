@@ -1,0 +1,50 @@
+\doxysection{Ladybug.\+h}
+\hypertarget{Ladybug_8h_source}{}\label{Ladybug_8h_source}\index{includes/models/pieces/Ladybug.h@{includes/models/pieces/Ladybug.h}}
+\mbox{\hyperlink{Ladybug_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LADYBUG\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LADYBUG\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Piece_8h}{models/Piece.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{LadybugMoveStrategy_8h}{models/strategies/LadybugMoveStrategy.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacehive_1_1models_1_1pieces}{hive::models::pieces}}\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Ladybug}{Ladybug}}\ final\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}}\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ \ \ \ \ /**************************************************************************************************}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Constructors}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *************************************************************************************************/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Ladybug_a4e9ce007e379cf2c2dfe0452f703e9c7}{Ladybug}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{classhive_1_1models_1_1Piece_a1509acf76a90dac6e987632950411d32}{pieceNextId}}++,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::shared\_ptr<Player>\ \&\mbox{\hyperlink{classhive_1_1models_1_1Piece_ab65b3c157d40966a1602a114e3ab700b}{owner}}\ =\ \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::optional<Hex>\ \&\mbox{\hyperlink{classhive_1_1models_1_1Piece_a66696b83d188451fd7b41235d4ec7142}{position}}\ =\ std::nullopt)}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classhive_1_1models_1_1Piece}{Piece}}(\mbox{\hyperlink{classhive_1_1models_1_1Piece_a97bbf039eb80718ebce7d51b3df1454f}{id}},}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ enums::PieceType::LADYBUG,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::make\_unique<strategies::LadybugMoveStrategy>(this),}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1Piece_ab65b3c157d40966a1602a114e3ab700b}{owner}},}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1Piece_a66696b83d188451fd7b41235d4ec7142}{position}})\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{comment}{\ \ \ \ \ \ \ \ /**************************************************************************************************}}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Destructor}}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *************************************************************************************************/}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Ladybug_afe1b02b3126bee7cb23903b82f4cd026}{\string~Ladybug}}()\ \textcolor{keyword}{override}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{comment}{\ \ \ \ \ \ \ \ /**************************************************************************************************}}
+\DoxyCodeLine{00053\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *\ Other\ constructors\ and\ operators}}
+\DoxyCodeLine{00054\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ *************************************************************************************************/}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Ladybug_afe67c22266605763a8d08d3eea0ead5c}{Ladybug}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Ladybug}{Ladybug}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Ladybug}{Ladybug}}\ \&\mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Ladybug_ac69136b0500bbfb846ca733b0fc05d22}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Ladybug}{Ladybug}}\ \&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Ladybug_a42424d56cad3b9799cd4d254bb568331}{Ladybug}}(\mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Ladybug}{Ladybug}}\ \&\&)\ noexcept\ =\ default;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Ladybug}{Ladybug}}\ \&operator=(\mbox{\hyperlink{classhive_1_1models_1_1pieces_1_1Ladybug}{Ladybug}}\ \&\&)\ noexcept\ =\ default;}
+\DoxyCodeLine{00075\ \ \ \ \ \};}
+\DoxyCodeLine{00076\ \}\ \textcolor{comment}{//\ namespace\ hive::models::pieces}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LADYBUG\_H}}
+
+\end{DoxyCode}

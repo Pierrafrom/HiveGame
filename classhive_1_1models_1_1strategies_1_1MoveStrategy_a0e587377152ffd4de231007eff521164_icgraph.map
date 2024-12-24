@@ -1,0 +1,29 @@
+<map id="hive::models::strategies::MoveStrategy::validatePieceOwnership" name="hive::models::strategies::MoveStrategy::validatePieceOwnership">
+<area shape="rect" id="Node000001" title="Validates the ownership of the piece by the player." alt="" coords="571,357,856,397"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1strategies_1_1AntMoveStrategy.html#a82a3955dc6b49af1c5da17e38b164e35" title="Calculates the possible moves for the Ant piece." alt="" coords="245,5,513,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="699,345,676,285,638,209,614,170,587,132,556,97,521,66,488,48,491,43,524,62,560,93,591,128,619,167,643,207,680,283,704,343"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1models_1_1strategies_1_1BeetleMoveStrategy.html#a1e1954b6c9ddc027a7abc85c7fb219dc" title="Calculates the possible moves for the Beetle piece." alt="" coords="235,120,523,160"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="688,347,659,309,620,264,574,219,521,181,480,163,483,158,524,176,577,215,624,260,663,305,693,344"/>
+<area shape="rect" id="Node000004" href="$classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy.html#a6510b5c2c51cb50ff4a75f91ccc8f60d" title="Calculates the possible moves for the Mosquito piece." alt="" coords="5,65,187,119"/>
+<area shape="poly" id="edge6_Node000001_Node000004" title=" " alt="" coords="698,345,674,291,636,225,613,192,586,160,555,133,521,110,481,92,438,79,394,71,349,67,263,68,187,76,187,71,263,62,350,62,395,66,440,74,483,87,524,106,559,129,590,157,617,188,641,222,678,288,703,343"/>
+<area shape="rect" id="Node000005" href="$classhive_1_1models_1_1strategies_1_1MosquitoMoveStrategy.html#a82597f40b5a0084fca477a7ece185d48" title=" " alt="" coords="5,153,187,207"/>
+<area shape="poly" id="edge12_Node000001_Node000005" title=" " alt="" coords="684,349,615,284,570,252,522,226,436,200,347,184,261,178,187,177,187,172,261,173,347,179,437,194,524,222,573,248,618,280,687,345"/>
+<area shape="rect" id="Node000006" href="$classhive_1_1models_1_1strategies_1_1GrasshopperMoveStrategy.html#a679d2feeb20e063e76d5f4b299a46d6e" title="Calculates the possible moves for the Grasshopper piece." alt="" coords="277,235,480,290"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="652,355,522,305,479,292,481,287,524,300,653,350"/>
+<area shape="rect" id="Node000007" href="$classhive_1_1models_1_1strategies_1_1QueenBeeMoveStrategy.html#a0656765f8e292093cc118333b1ef5406" title="Calculates the possible moves for the Queen Bee piece." alt="" coords="285,314,473,369"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="556,363,473,354,473,349,557,358"/>
+<area shape="rect" id="Node000008" href="$classhive_1_1models_1_1strategies_1_1SpiderMoveStrategy.html#a36c03d48c53daa99e5b6c5dcd1045e52" title="Calculates the possible moves for the Spider piece." alt="" coords="235,393,522,433"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="557,397,523,401,522,395,557,392"/>
+<area shape="rect" id="Node000009" href="$classhive_1_1models_1_1strategies_1_1AntMoveStrategy.html#a41d99f5ba0ecb4a35010b436dcc0b680" title=" " alt="" coords="245,457,513,497"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="650,405,523,448,478,460,476,455,522,443,648,400"/>
+<area shape="rect" id="Node000010" href="$classhive_1_1models_1_1strategies_1_1BeetleMoveStrategy.html#ae42f95f6edd8b0a671d0b6c3857e021a" title=" " alt="" coords="235,521,523,561"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="681,409,611,462,569,489,524,512,491,524,489,519,522,507,566,484,608,457,677,404"/>
+<area shape="rect" id="Node000011" href="$classhive_1_1models_1_1strategies_1_1GrasshopperMoveStrategy.html#a51559cbf42bfebfb29e9f2bda8ff6585" title=" " alt="" coords="277,586,480,641"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="692,410,663,448,624,493,577,538,524,576,481,595,479,590,521,571,573,533,620,489,659,445,688,407"/>
+<area shape="rect" id="Node000012" href="$classhive_1_1models_1_1strategies_1_1QueenBeeMoveStrategy.html#ab257e6c639f8d8015bdfc3bb66be15b4" title=" " alt="" coords="285,665,473,719"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="701,411,676,465,637,531,587,598,557,629,524,656,500,669,474,679,472,675,498,665,521,651,553,625,583,595,633,528,671,462,696,409"/>
+<area shape="rect" id="Node000013" href="$classhive_1_1models_1_1strategies_1_1SpiderMoveStrategy.html#a7bf42d7c9c3effd582ea0b38745be80d" title=" " alt="" coords="235,744,522,784"/>
+<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="707,412,686,480,650,568,626,614,597,658,563,699,524,734,504,746,502,742,521,730,559,695,593,655,621,611,645,566,681,478,702,410"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="247,120,187,110,187,105,248,115"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="224,165,187,170,186,165,224,159"/>
+</map>

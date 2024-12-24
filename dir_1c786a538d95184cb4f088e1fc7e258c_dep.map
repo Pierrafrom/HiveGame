@@ -1,0 +1,10 @@
+<map id="includes/controllers/cli" name="includes/controllers/cli">
+<area shape="rect" id="node1" href="dir_1c786a538d95184cb4f088e1fc7e258c.html" title="cli" alt="" coords="65,52,104,77"/>
+<area shape="rect" id="node2" href="dir_4428fdfe0eb0da98abb7123d472f1d53.html" title="models" alt="" coords="5,125,76,151"/>
+<area shape="poly" id="edge1" href="dir_000000_000012.html" alt="" coords="80,79,57,115,53,112,75,76"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000000_000012.html" title="1" alt="" coords="60,107,69,122"/>
+<area shape="rect" id="node3" href="dir_57dc54e314e1a70febf30cb527d9c1f7.html" title="views" alt="" coords="100,125,160,151"/>
+<area shape="poly" id="edge2" href="dir_000000_000020.html" alt="" coords="94,76,118,112,113,115,90,79"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000000_000020.html" title="1" alt="" coords="115,98,125,113"/>
+<area shape="rect" id="clust1" href="dir_fae636d715a2826c5bea851a8d3a722f.html" title="controllers" alt="" coords="39,16,130,88"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="HexGraphicsItem" name="HexGraphicsItem">
+<area shape="rect" id="Node000001" title=" " alt="" coords="100,413,255,499"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,145,72,211"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="47,224,61,286,72,318,86,349,108,382,134,411,130,415,104,385,82,352,67,320,56,287,42,225"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="96,145,259,211"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="180,224,180,413,175,413,175,224"/>
+<area shape="rect" id="Node000004" href="$classhive_1_1models_1_1Hex.html" title="Represents a hexagonal cell in the Hive game board using cube coordinates." alt="" coords="283,5,415,351"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="286,332,273,352,233,403,229,399,268,349,281,329"/>
+</map>

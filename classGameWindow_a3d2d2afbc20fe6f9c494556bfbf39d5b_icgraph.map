@@ -1,0 +1,7 @@
+<map id="GameWindow::onRedoClicked" name="GameWindow::onRedoClicked">
+<area shape="rect" id="Node000001" title=" " alt="" coords="483,5,699,31"/>
+<area shape="rect" id="Node000002" href="$classGameWindow.html#a5b3bcfd2cd2b6f07f0be351f114119db" title=" " alt="" coords="264,5,435,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="469,21,435,21,435,15,469,15"/>
+<area shape="rect" id="Node000003" href="$classGameWindow.html#aba82e451e3ca31cb27b36faefeee8d6c" title=" " alt="" coords="5,5,216,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="250,21,216,21,216,15,250,15"/>
+</map>

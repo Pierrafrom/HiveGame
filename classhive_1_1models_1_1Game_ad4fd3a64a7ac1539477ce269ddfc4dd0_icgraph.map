@@ -1,0 +1,56 @@
+<map id="hive::models::Game::nextTurn" name="hive::models::Game::nextTurn">
+<area shape="rect" id="Node000001" title="Advances the game to the next turn." alt="" coords="1491,220,1644,260"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1Game.html#a8c86b067e124d8b323c77d37397ae2ad" title="Executes a move for the current player." alt="" coords="1289,220,1443,260"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1477,243,1443,243,1443,238,1477,238"/>
+<area shape="rect" id="Node000019" href="$classhive_1_1utils_1_1Serializer.html#aacb397dc8b6469f10d261f8f66b1cb38" title="Loads a game state from a file." alt="" coords="1068,403,1223,443"/>
+<area shape="poly" id="edge23_Node000001_Node000019" title=" " alt="" coords="1515,269,1391,327,1242,392,1208,405,1206,400,1240,387,1389,322,1512,264"/>
+<area shape="rect" id="Node000022" href="$classhive_1_1models_1_1Game.html#ab98d1a36b2d30a9d037af1376f6bc195" title="Redoes the last undone move in the game." alt="" coords="1289,122,1443,162"/>
+<area shape="poly" id="edge28_Node000001_Node000022" title=" " alt="" coords="1512,216,1406,164,1409,159,1514,212"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1controllers_1_1cli_1_1CLIController.html#afddc0cdff435f4c4379eda9707aec1e2" title=" " alt="" coords="1077,324,1214,378"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1322,270,1243,313,1215,326,1213,321,1240,309,1319,265"/>
+<area shape="rect" id="Node000008" href="$classGameWindow.html#a56419355dbf68fa9e8240bf4f630352e" title=" " alt="" coords="1049,65,1241,90"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="1326,213,1287,175,1273,155,1265,136,1256,120,1240,104,1219,93,1221,88,1243,99,1261,117,1270,134,1278,152,1291,172,1330,209"/>
+<area shape="rect" id="Node000017" href="$classGameWindow.html#a379160a41f8d7e154cde54cec0c13393" title=" " alt="" coords="544,180,735,205"/>
+<area shape="poly" id="edge22_Node000002_Node000017" title=" " alt="" coords="1276,237,735,201,735,196,1276,232"/>
+<area shape="rect" id="Node000018" href="$classhive_1_1controllers_1_1cli_1_1CLIController.html#a10a8cd7f81a293a29f121c62cb42044f" title=" " alt="" coords="1077,245,1214,300"/>
+<area shape="poly" id="edge20_Node000002_Node000018" title=" " alt="" coords="1276,256,1215,265,1214,260,1275,251"/>
+<area shape="rect" id="Node000004" href="$classhive_1_1controllers_1_1cli_1_1CLIController.html#abdc584083fcdee33df53409497cac430" title=" " alt="" coords="830,248,967,302"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="1062,328,967,299,968,293,1064,323"/>
+<area shape="rect" id="Node000005" href="$classhive_1_1controllers_1_1cli_1_1CLIController.html#af90a649a6748372a139ad3fd0957dadb" title=" " alt="" coords="560,255,719,295"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="816,278,719,278,719,272,816,272"/>
+<area shape="rect" id="Node000007" href="$classhive_1_1controllers_1_1cli_1_1CLIController.html#a477d6c1bf15f3024dde28b75d642753c" title=" " alt="" coords="560,327,719,367"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="818,300,713,329,711,324,816,295"/>
+<area shape="rect" id="Node000006" href="$main__cli_8cpp.html#a7114aa2dd6837734db57667a298dfcc4" title=" " alt="" coords="346,262,401,288"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="546,278,401,278,401,272,546,272"/>
+<area shape="rect" id="Node000009" href="$classGameWindow.html#ada8c32048b32506944bd7f10bca9d232" title=" " alt="" coords="796,65,1001,90"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="1036,89,1001,89,1002,84,1036,84"/>
+<area shape="poly" id="edge12_Node000009_Node000008" title=" " alt="" coords="1015,66,1049,66,1049,71,1015,71"/>
+<area shape="rect" id="Node000010" href="$classGameWindow.html#ac53fea4b030b13de4f300ee04ced1c89" title=" " alt="" coords="537,115,742,155"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="828,96,731,117,730,112,826,91"/>
+<area shape="rect" id="Node000013" href="$classGameWindow.html#a3d2d2afbc20fe6f9c494556bfbf39d5b" title=" " alt="" coords="531,16,747,41"/>
+<area shape="poly" id="edge13_Node000009_Node000013" title=" " alt="" coords="817,65,706,44,707,38,818,60"/>
+<area shape="rect" id="Node000016" href="$classGameWindow.html#a3f8581191baa90b0e963a80102c87be7" title=" " alt="" coords="531,65,748,90"/>
+<area shape="poly" id="edge16_Node000009_Node000016" title=" " alt="" coords="783,80,748,80,748,75,783,75"/>
+<area shape="poly" id="edge18_Node000009_Node000017" title=" " alt="" coords="880,102,823,143,749,181,736,186,734,181,747,176,820,138,877,97"/>
+<area shape="rect" id="Node000011" href="$classMenu.html#ad623fdc5e77ed481a1611abfdf3c3129" title=" " alt="" coords="264,168,483,193"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="524,157,449,170,448,165,523,152"/>
+<area shape="rect" id="Node000012" href="$classMenu.html#a81e517b62384dc184425757e6dba87d3" title=" " alt="" coords="59,262,162,288"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="325,200,148,265,146,260,323,195"/>
+<area shape="rect" id="Node000014" href="$classGameWindow.html#a5b3bcfd2cd2b6f07f0be351f114119db" title=" " alt="" coords="288,41,459,66"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="518,42,459,48,459,43,517,37"/>
+<area shape="rect" id="Node000015" href="$classGameWindow.html#aba82e451e3ca31cb27b36faefeee8d6c" title=" " alt="" coords="5,41,216,66"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="274,56,216,56,216,51,274,51"/>
+<area shape="poly" id="edge17_Node000016_Node000014" title=" " alt="" coords="517,69,459,64,459,59,517,64"/>
+<area shape="poly" id="edge19_Node000017_Node000009" title=" " alt="" coords="677,173,747,152,812,120,865,88,868,93,814,125,749,157,678,179"/>
+<area shape="poly" id="edge21_Node000018_Node000004" title=" " alt="" coords="1063,276,968,277,968,271,1063,270"/>
+<area shape="rect" id="Node000020" href="$classhive_1_1controllers_1_1cli_1_1CLIController.html#a433affa887a3f911ff615224e5b28b7b" title=" " alt="" coords="826,328,971,382"/>
+<area shape="poly" id="edge24_Node000019_Node000020" title=" " alt="" coords="1058,402,971,377,972,372,1060,397"/>
+<area shape="rect" id="Node000021" href="$classMenu.html#a39dfdaa3104de72e7ac6800258facdee" title=" " alt="" coords="291,358,455,384"/>
+<area shape="poly" id="edge26_Node000019_Node000021" title=" " alt="" coords="1054,419,455,379,456,374,1054,414"/>
+<area shape="poly" id="edge25_Node000020_Node000007" title=" " alt="" coords="812,355,719,352,719,347,812,350"/>
+<area shape="poly" id="edge27_Node000021_Node000012" title=" " alt="" coords="324,356,146,290,148,285,325,351"/>
+<area shape="poly" id="edge29_Node000022_Node000013" title=" " alt="" coords="1333,114,1291,81,1267,66,1240,55,1175,36,1107,22,1038,14,970,10,842,10,736,18,735,13,841,5,970,4,1038,9,1108,17,1176,31,1242,50,1269,62,1294,77,1337,110"/>
+<area shape="rect" id="Node000023" href="$classhive_1_1controllers_1_1cli_1_1CLIController.html#a05edd06f4f4b8fe73cc9f75ebd982954" title=" " alt="" coords="1077,114,1214,169"/>
+<area shape="poly" id="edge30_Node000022_Node000023" title=" " alt="" coords="1275,144,1214,144,1214,139,1275,139"/>
+<area shape="poly" id="edge31_Node000023_Node000004" title=" " alt="" coords="1083,178,951,250,949,245,1080,173"/>
+</map>

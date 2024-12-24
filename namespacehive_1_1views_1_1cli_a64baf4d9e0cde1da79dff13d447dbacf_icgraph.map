@@ -1,0 +1,7 @@
+<map id="hive::views::cli::drawHexCell" name="hive::views::cli::drawHexCell">
+<area shape="rect" id="Node000001" title="Construit l&#39;ASCII d&#39;un seul hexagone." alt="" coords="459,13,669,38"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1views_1_1cli_1_1CLIView.html#af909f544e1ed0b1b0196e823bb14a32c" title=" " alt="" coords="232,5,411,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="445,28,411,28,411,23,445,23"/>
+<area shape="rect" id="Node000003" href="$classhive_1_1views_1_1cli_1_1CLIView.html#a3acbe182b13f85f5342f5e810cb11bd9" title="Affiche l&#39;état complet du jeu avec une mise en page soignée." alt="" coords="5,5,184,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="218,28,184,28,184,23,218,23"/>
+</map>

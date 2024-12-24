@@ -1,0 +1,5 @@
+<map id="hive::models::strategies::MoveStrategy" name="hive::models::strategies::MoveStrategy">
+<area shape="rect" id="Node000001" title="Abstract class defining the movement strategy for game pieces." alt="" coords="5,453,221,673"/>
+<area shape="rect" id="Node000002" href="$classhive_1_1models_1_1Piece.html" title="Base class representing a generic game piece in the Hive game." alt="" coords="38,5,189,391"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,391,116,436,111,436,111,391"/>
+</map>

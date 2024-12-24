@@ -1,0 +1,219 @@
+\doxysection{hive\+::views\+::cli\+::CLIView Class Reference}
+\hypertarget{classhive_1_1views_1_1cli_1_1CLIView}{}\label{classhive_1_1views_1_1cli_1_1CLIView}\index{hive::views::cli::CLIView@{hive::views::cli::CLIView}}
+
+
+{\ttfamily \#include $<$CLIView.\+h$>$}
+
+
+
+Collaboration diagram for hive\+::views\+::cli\+::CLIView\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{classhive_1_1views_1_1cli_1_1CLIView__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhive_1_1views_1_1cli_1_1CLIView_a8531822e520acefaf3f652b384eb58fe}{CLIView}} ()=default
+\item 
+\mbox{\hyperlink{classhive_1_1views_1_1cli_1_1CLIView_a309c7b905db6b65bb5faaeac4fc17f22}{\texorpdfstring{$\sim$}{\string~}\+CLIView}} ()=default
+\item 
+void \mbox{\hyperlink{classhive_1_1views_1_1cli_1_1CLIView_a2be16d405fdf6fe39a058091a96dfade}{display\+Message}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em Affiche un message à l\textquotesingle{}utilisateur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classhive_1_1views_1_1cli_1_1CLIView_acca2aa4ecfb68db0507f9ef48492183c}{display\+Error}} (const std\+::string \&error)
+\begin{DoxyCompactList}\small\item\em Affiche un message d\textquotesingle{}erreur. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classhive_1_1views_1_1cli_1_1CLIView_aef8dbb21ff0ee6c233674661cdb73d43}{ask\+Player\+Name}} (int player\+Number)
+\begin{DoxyCompactList}\small\item\em Demande le nom d\textquotesingle{}un joueur. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classhive_1_1views_1_1cli_1_1CLIView_ad60d6d6065c746c8722605980f486c8f}{get\+User\+Command}} ()
+\begin{DoxyCompactList}\small\item\em Demande une commande à l\textquotesingle{}utilisateur. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classhive_1_1views_1_1cli_1_1CLIView_a9187e9f4c6be3b58a444bd528f77f599}{ask\+Int}} (const std\+::string \&prompt) const
+\begin{DoxyCompactList}\small\item\em Demande un entier (par exemple pour un choix dans un menu). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classhive_1_1views_1_1cli_1_1CLIView_a3acbe182b13f85f5342f5e810cb11bd9}{display\+Game\+State}} (const \mbox{\hyperlink{classhive_1_1models_1_1Game}{hive\+::models\+::\+Game}} \&game) const
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}état complet du jeu avec une mise en page soignée. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classhive_1_1views_1_1cli_1_1CLIView_a20615366c7a66d78edc62287228f16ed}{ask\+Option}} (const std\+::string \&prompt, const std\+::vector$<$ std\+::string $>$ \&options) const
+\begin{DoxyCompactList}\small\item\em Affiche une liste d\textquotesingle{}options et demande à l\textquotesingle{}utilisateur d\textquotesingle{}en sélectionner une. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classhive_1_1views_1_1cli_1_1CLIView_a5f64148dc16b81d2a833acdbaeab8de2}{print\+Title}} (const std\+::string \&title) const
+\item 
+void \mbox{\hyperlink{classhive_1_1views_1_1cli_1_1CLIView_a054563057b100bf461d34f70adf4bb83}{print\+Colored}} (const std\+::string \&text, const std\+::string \&color) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classhive_1_1views_1_1cli_1_1CLIView_a2c988296cfc22a375a66eaa5d814b69f}{print\+Separator}} (char sep=\textquotesingle{}-\/\textquotesingle{}, int length=50)
+\item 
+static void \mbox{\hyperlink{classhive_1_1views_1_1cli_1_1CLIView_af909f544e1ed0b1b0196e823bb14a32c}{display\+Board}} (const \mbox{\hyperlink{classhive_1_1models_1_1Game}{hive\+::models\+::\+Game}} \&game)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classhive_1_1views_1_1cli_1_1CLIView_a8531822e520acefaf3f652b384eb58fe}\label{classhive_1_1views_1_1cli_1_1CLIView_a8531822e520acefaf3f652b384eb58fe} 
+\index{hive::views::cli::CLIView@{hive::views::cli::CLIView}!CLIView@{CLIView}}
+\index{CLIView@{CLIView}!hive::views::cli::CLIView@{hive::views::cli::CLIView}}
+\doxysubsubsection{\texorpdfstring{CLIView()}{CLIView()}}
+{\footnotesize\ttfamily hive\+::views\+::cli\+::\+CLIView\+::\+CLIView (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\Hypertarget{classhive_1_1views_1_1cli_1_1CLIView_a309c7b905db6b65bb5faaeac4fc17f22}\label{classhive_1_1views_1_1cli_1_1CLIView_a309c7b905db6b65bb5faaeac4fc17f22} 
+\index{hive::views::cli::CLIView@{hive::views::cli::CLIView}!````~CLIView@{\texorpdfstring{$\sim$}{\string~}CLIView}}
+\index{````~CLIView@{\texorpdfstring{$\sim$}{\string~}CLIView}!hive::views::cli::CLIView@{hive::views::cli::CLIView}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}CLIView()}{\string~CLIView()}}
+{\footnotesize\ttfamily hive\+::views\+::cli\+::\+CLIView\+::\texorpdfstring{$\sim$}{\string~}\+CLIView (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classhive_1_1views_1_1cli_1_1CLIView_a9187e9f4c6be3b58a444bd528f77f599}\label{classhive_1_1views_1_1cli_1_1CLIView_a9187e9f4c6be3b58a444bd528f77f599} 
+\index{hive::views::cli::CLIView@{hive::views::cli::CLIView}!askInt@{askInt}}
+\index{askInt@{askInt}!hive::views::cli::CLIView@{hive::views::cli::CLIView}}
+\doxysubsubsection{\texorpdfstring{askInt()}{askInt()}}
+{\footnotesize\ttfamily int hive\+::views\+::cli\+::\+CLIView\+::ask\+Int (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{prompt }\end{DoxyParamCaption}) const}
+
+
+
+Demande un entier (par exemple pour un choix dans un menu). 
+
+\Hypertarget{classhive_1_1views_1_1cli_1_1CLIView_a20615366c7a66d78edc62287228f16ed}\label{classhive_1_1views_1_1cli_1_1CLIView_a20615366c7a66d78edc62287228f16ed} 
+\index{hive::views::cli::CLIView@{hive::views::cli::CLIView}!askOption@{askOption}}
+\index{askOption@{askOption}!hive::views::cli::CLIView@{hive::views::cli::CLIView}}
+\doxysubsubsection{\texorpdfstring{askOption()}{askOption()}}
+{\footnotesize\ttfamily int hive\+::views\+::cli\+::\+CLIView\+::ask\+Option (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{prompt,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{options }\end{DoxyParamCaption}) const}
+
+
+
+Affiche une liste d\textquotesingle{}options et demande à l\textquotesingle{}utilisateur d\textquotesingle{}en sélectionner une. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prompt} & Message d\textquotesingle{}invite. \\
+\hline
+{\em options} & Liste d\textquotesingle{}options. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\textquotesingle{}index de l\textquotesingle{}option choisie. 
+\end{DoxyReturn}
+\Hypertarget{classhive_1_1views_1_1cli_1_1CLIView_aef8dbb21ff0ee6c233674661cdb73d43}\label{classhive_1_1views_1_1cli_1_1CLIView_aef8dbb21ff0ee6c233674661cdb73d43} 
+\index{hive::views::cli::CLIView@{hive::views::cli::CLIView}!askPlayerName@{askPlayerName}}
+\index{askPlayerName@{askPlayerName}!hive::views::cli::CLIView@{hive::views::cli::CLIView}}
+\doxysubsubsection{\texorpdfstring{askPlayerName()}{askPlayerName()}}
+{\footnotesize\ttfamily std\+::string hive\+::views\+::cli\+::\+CLIView\+::ask\+Player\+Name (\begin{DoxyParamCaption}\item[{int}]{player\+Number }\end{DoxyParamCaption})}
+
+
+
+Demande le nom d\textquotesingle{}un joueur. 
+
+\Hypertarget{classhive_1_1views_1_1cli_1_1CLIView_af909f544e1ed0b1b0196e823bb14a32c}\label{classhive_1_1views_1_1cli_1_1CLIView_af909f544e1ed0b1b0196e823bb14a32c} 
+\index{hive::views::cli::CLIView@{hive::views::cli::CLIView}!displayBoard@{displayBoard}}
+\index{displayBoard@{displayBoard}!hive::views::cli::CLIView@{hive::views::cli::CLIView}}
+\doxysubsubsection{\texorpdfstring{displayBoard()}{displayBoard()}}
+{\footnotesize\ttfamily void hive\+::views\+::cli\+::\+CLIView\+::display\+Board (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Game}{hive\+::models\+::\+Game}} \&}]{game }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1views_1_1cli_1_1CLIView_af909f544e1ed0b1b0196e823bb14a32c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1views_1_1cli_1_1CLIView_af909f544e1ed0b1b0196e823bb14a32c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1views_1_1cli_1_1CLIView_acca2aa4ecfb68db0507f9ef48492183c}\label{classhive_1_1views_1_1cli_1_1CLIView_acca2aa4ecfb68db0507f9ef48492183c} 
+\index{hive::views::cli::CLIView@{hive::views::cli::CLIView}!displayError@{displayError}}
+\index{displayError@{displayError}!hive::views::cli::CLIView@{hive::views::cli::CLIView}}
+\doxysubsubsection{\texorpdfstring{displayError()}{displayError()}}
+{\footnotesize\ttfamily void hive\+::views\+::cli\+::\+CLIView\+::display\+Error (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{error }\end{DoxyParamCaption})}
+
+
+
+Affiche un message d\textquotesingle{}erreur. 
+
+\Hypertarget{classhive_1_1views_1_1cli_1_1CLIView_a3acbe182b13f85f5342f5e810cb11bd9}\label{classhive_1_1views_1_1cli_1_1CLIView_a3acbe182b13f85f5342f5e810cb11bd9} 
+\index{hive::views::cli::CLIView@{hive::views::cli::CLIView}!displayGameState@{displayGameState}}
+\index{displayGameState@{displayGameState}!hive::views::cli::CLIView@{hive::views::cli::CLIView}}
+\doxysubsubsection{\texorpdfstring{displayGameState()}{displayGameState()}}
+{\footnotesize\ttfamily void hive\+::views\+::cli\+::\+CLIView\+::display\+Game\+State (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhive_1_1models_1_1Game}{hive\+::models\+::\+Game}} \&}]{game }\end{DoxyParamCaption}) const}
+
+
+
+Affiche l\textquotesingle{}état complet du jeu avec une mise en page soignée. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1views_1_1cli_1_1CLIView_a3acbe182b13f85f5342f5e810cb11bd9_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1views_1_1cli_1_1CLIView_a2be16d405fdf6fe39a058091a96dfade}\label{classhive_1_1views_1_1cli_1_1CLIView_a2be16d405fdf6fe39a058091a96dfade} 
+\index{hive::views::cli::CLIView@{hive::views::cli::CLIView}!displayMessage@{displayMessage}}
+\index{displayMessage@{displayMessage}!hive::views::cli::CLIView@{hive::views::cli::CLIView}}
+\doxysubsubsection{\texorpdfstring{displayMessage()}{displayMessage()}}
+{\footnotesize\ttfamily void hive\+::views\+::cli\+::\+CLIView\+::display\+Message (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
+
+
+
+Affiche un message à l\textquotesingle{}utilisateur. 
+
+\Hypertarget{classhive_1_1views_1_1cli_1_1CLIView_ad60d6d6065c746c8722605980f486c8f}\label{classhive_1_1views_1_1cli_1_1CLIView_ad60d6d6065c746c8722605980f486c8f} 
+\index{hive::views::cli::CLIView@{hive::views::cli::CLIView}!getUserCommand@{getUserCommand}}
+\index{getUserCommand@{getUserCommand}!hive::views::cli::CLIView@{hive::views::cli::CLIView}}
+\doxysubsubsection{\texorpdfstring{getUserCommand()}{getUserCommand()}}
+{\footnotesize\ttfamily std\+::string hive\+::views\+::cli\+::\+CLIView\+::get\+User\+Command (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Demande une commande à l\textquotesingle{}utilisateur. 
+
+\Hypertarget{classhive_1_1views_1_1cli_1_1CLIView_a054563057b100bf461d34f70adf4bb83}\label{classhive_1_1views_1_1cli_1_1CLIView_a054563057b100bf461d34f70adf4bb83} 
+\index{hive::views::cli::CLIView@{hive::views::cli::CLIView}!printColored@{printColored}}
+\index{printColored@{printColored}!hive::views::cli::CLIView@{hive::views::cli::CLIView}}
+\doxysubsubsection{\texorpdfstring{printColored()}{printColored()}}
+{\footnotesize\ttfamily void hive\+::views\+::cli\+::\+CLIView\+::print\+Colored (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text,  }\item[{const std\+::string \&}]{color }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classhive_1_1views_1_1cli_1_1CLIView_a2c988296cfc22a375a66eaa5d814b69f}\label{classhive_1_1views_1_1cli_1_1CLIView_a2c988296cfc22a375a66eaa5d814b69f} 
+\index{hive::views::cli::CLIView@{hive::views::cli::CLIView}!printSeparator@{printSeparator}}
+\index{printSeparator@{printSeparator}!hive::views::cli::CLIView@{hive::views::cli::CLIView}}
+\doxysubsubsection{\texorpdfstring{printSeparator()}{printSeparator()}}
+{\footnotesize\ttfamily void hive\+::views\+::cli\+::\+CLIView\+::print\+Separator (\begin{DoxyParamCaption}\item[{char}]{sep = {\ttfamily \textquotesingle{}-\/\textquotesingle{}},  }\item[{int}]{length = {\ttfamily 50} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1views_1_1cli_1_1CLIView_a2c988296cfc22a375a66eaa5d814b69f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classhive_1_1views_1_1cli_1_1CLIView_a5f64148dc16b81d2a833acdbaeab8de2}\label{classhive_1_1views_1_1cli_1_1CLIView_a5f64148dc16b81d2a833acdbaeab8de2} 
+\index{hive::views::cli::CLIView@{hive::views::cli::CLIView}!printTitle@{printTitle}}
+\index{printTitle@{printTitle}!hive::views::cli::CLIView@{hive::views::cli::CLIView}}
+\doxysubsubsection{\texorpdfstring{printTitle()}{printTitle()}}
+{\footnotesize\ttfamily void hive\+::views\+::cli\+::\+CLIView\+::print\+Title (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{title }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhive_1_1views_1_1cli_1_1CLIView_a5f64148dc16b81d2a833acdbaeab8de2_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+includes/views/cli/\mbox{\hyperlink{CLIView_8h}{CLIView.\+h}}\item 
+src/views/cli/\mbox{\hyperlink{CLIView_8cpp}{CLIView.\+cpp}}\end{DoxyCompactItemize}

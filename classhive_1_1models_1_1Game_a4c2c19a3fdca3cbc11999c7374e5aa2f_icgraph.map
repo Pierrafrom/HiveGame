@@ -1,0 +1,10 @@
+<map id="hive::models::Game::getInstance" name="hive::models::Game::getInstance">
+<area shape="rect" id="Node000001" title="Retrieves the single instance of the Game class." alt="" coords="423,23,576,63"/>
+<area shape="rect" id="Node000002" href="$classMenu.html#a39dfdaa3104de72e7ac6800258facdee" title=" " alt="" coords="183,5,347,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="408,36,347,29,348,24,409,31"/>
+<area shape="rect" id="Node000004" href="$classMenu.html#ad623fdc5e77ed481a1611abfdf3c3129" title=" " alt="" coords="156,55,375,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="409,55,375,59,375,53,409,50"/>
+<area shape="rect" id="Node000003" href="$classMenu.html#a81e517b62384dc184425757e6dba87d3" title=" " alt="" coords="5,31,108,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="170,32,109,40,108,35,169,27"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="142,56,108,52,109,47,142,50"/>
+</map>
