@@ -27,7 +27,7 @@ namespace hive::views::cli {
 
     std::string CLIView::getUserCommand() {
         std::cout << termcolor::yellow
-                << "Entrez une commande [place, move, undo, redo, quit]: "
+                << "Entrez une commande [place, move, undo, redo, quit, load]: "
                 << termcolor::reset;
         std::string command;
         std::getline(std::cin, command);

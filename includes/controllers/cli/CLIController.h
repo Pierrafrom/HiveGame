@@ -12,6 +12,10 @@ namespace hive::controllers::cli {
 
         void run() const;
 
+        bool loadGameFromFile(const std::string &filePath) const;
+
+        void run(const std::string &saveFilePath) const;
+
     private:
         std::shared_ptr<views::cli::CLIView> view;
         models::Game &game;

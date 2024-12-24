@@ -3,6 +3,7 @@
 #include "models/PieceFactory.h"
 #include <stdexcept>
 #include <models/GameRules.h>
+#include <utils/Serializer.h>
 
 namespace hive::controllers::cli {
     CLIController::CLIController(std::shared_ptr<views::cli::CLIView> view)
@@ -36,6 +37,58 @@ namespace hive::controllers::cli {
         view->displayMessage("Merci d’avoir joué !");
     }
 
+    bool CLIController::loadGameFromFile(const std::string& filePath) const {
+        try {
+            if (hive::utils::Serializer::loadGame(game, filePath)) {
+                view->displayMessage("Partie chargée avec succès !");
+                return true;
+            } else {
+                view->displayError("Impossible de charger la partie depuis le fichier fourni.");
+                return false;
+            }
+        } catch (const std::exception& e) {
+            view->displayError("Erreur lors du chargement de la partie : " + std::string(e.what()));
+            return false;
+        }
+    }
+
+
+    void CLIController::run(const std::string& saveFilePath) const {
+        view->displayMessage("=== Bienvenue dans Hive (CLI) ===");
+
+        // Charger une partie si un fichier est passé en paramètre
+        if (!saveFilePath.empty()) {
+            view->displayMessage("Chargement de la partie depuis le fichier : " + saveFilePath);
+            if (!loadGameFromFile(saveFilePath)) {
+                view->displayError("Échec du chargement de la partie. Initialisation d'une nouvelle partie.");
+            }
+        } else {
+            const std::string p1 = view->askPlayerName(1);
+            const std::string p2 = view->askPlayerName(2);
+            game.resetGame(p1, p2);
+        }
+
+        bool continueGame = true;
+        while (continueGame) {
+            displayGameState();
+
+            if (const auto [isGameOver, isDraw, winner] = game.getGameStatus();
+                isGameOver) {
+                if (isDraw) {
+                    view->displayMessage("La partie est terminée : match nul !");
+                } else {
+                    view->displayMessage("La partie est terminée, le gagnant est : " + winner->getName());
+                }
+                break;
+                }
+
+            std::string command = view->getUserCommand();
+            continueGame = handleCommand(command);
+        }
+
+        view->displayMessage("Merci d’avoir joué !");
+    }
+
     bool CLIController::handleCommand(const std::string &command) const {
         if (command == "place") {
             placePiece();
@@ -45,7 +98,17 @@ namespace hive::controllers::cli {
             undoMove();
         } else if (command == "redo") {
             redoMove();
+        } else if (command == "load") {
+            /*
+            const std::string filePath = view->getLoadFilePath();
+            loadGameFromFile(filePath);
+            */
         } else if (command == "quit") {
+            /*
+            if (view->wantToSave()) {
+                const std::string saveFilePath = view->getSaveFilePath();
+                utils::Serializer::saveGame(game, saveFilePath);
+            }*/
             return false;
         } else {
             view->displayError("Commande inconnue. Commandes possibles: place, move, undo, redo, quit.");
