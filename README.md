@@ -7,12 +7,12 @@
 
 A full C++ implementation of **Hive** (John Yianni's tile-laying board
 game where players place and slide bug pieces to surround the opponent's
-queen bee, no board or dice), playable through a console (CLI) or a
-Qt graphical interface — same game engine underneath both. Built as a
-4-person student project for the LO21 (advanced OOP/design patterns)
-course, applying MVC, Factory, Strategy and Singleton where each pattern
+queen bee, no board or dice), playable through a console (CLI) or a Qt
+graphical interface, with the same game engine underneath both. Built as
+a 4-person student project for an advanced OOP and design-patterns
+course, applying MVC, Factory, Strategy, and Singleton where each pattern
 actually earns its place rather than as a checklist. Full documentation
-is generated from the code with Doxygen — see the
+is generated from the code with Doxygen: see the
 [Documentation](https://pierrafrom.github.io/HiveGame/) link above.
 
 ## Build Modes
