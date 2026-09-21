@@ -1,12 +1,19 @@
-Here is your **HiveGame README rewritten in English** for your public GitHub:
-
----
-
 # HiveGame
 
-[Documentation](https://pierrafrom.github.io/HiveGame/)
+[![Tests](https://github.com/Pierrafrom/HiveGame/actions/workflows/unit-tests-pipeline.yml/badge.svg)](https://github.com/Pierrafrom/HiveGame/actions/workflows/unit-tests-pipeline.yml)
+[![Docs](https://github.com/Pierrafrom/HiveGame/actions/workflows/generate-docs.yml/badge.svg)](https://pierrafrom.github.io/HiveGame/)
+[![C++](https://img.shields.io/badge/C%2B%2B-CMake-00599C?logo=cplusplus)](CMakeLists.txt)
+[![Qt](https://img.shields.io/badge/GUI-Qt-41CD52?logo=qt)](#build-modes)
 
-**HiveGame** is a student project developed for the LO21 course. It implements the board game **Hive** (by John Yianni), allowing gameplay either in **console mode (CLI)** or with a **graphical interface (Qt-based GUI)**. Detailed documentation is available in the `docs` folder and can be generated using Doxygen.
+A full C++ implementation of **Hive** (John Yianni's tile-laying board
+game where players place and slide bug pieces to surround the opponent's
+queen bee, no board or dice), playable through a console (CLI) or a
+Qt graphical interface — same game engine underneath both. Built as a
+4-person student project for the LO21 (advanced OOP/design patterns)
+course, applying MVC, Factory, Strategy and Singleton where each pattern
+actually earns its place rather than as a checklist. Full documentation
+is generated from the code with Doxygen — see the
+[Documentation](https://pierrafrom.github.io/HiveGame/) link above.
 
 ## Build Modes
 
@@ -78,7 +85,3 @@ ctest --output-on-failure
 * Alberic Peveraud de Vaumas
 * Benoit de Miscault
 * Robin Lanfranchi
-
----
-
-Let me know if you would like a **badge section**, **license section**, or a **feature roadmap** added for your public GitHub presentation.
