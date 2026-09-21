@@ -1,7 +1,5 @@
 # HiveGame
 
-[![Tests](https://github.com/Pierrafrom/HiveGame/actions/workflows/unit-tests-pipeline.yml/badge.svg)](https://github.com/Pierrafrom/HiveGame/actions/workflows/unit-tests-pipeline.yml)
-[![Docs](https://github.com/Pierrafrom/HiveGame/actions/workflows/generate-docs.yml/badge.svg)](https://pierrafrom.github.io/HiveGame/)
 [![C++](https://img.shields.io/badge/C%2B%2B-CMake-00599C?logo=cplusplus)](CMakeLists.txt)
 [![Qt](https://img.shields.io/badge/GUI-Qt-41CD52?logo=qt)](#build-modes)
 
